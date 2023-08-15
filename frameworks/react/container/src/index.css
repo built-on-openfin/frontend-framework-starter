@@ -1,0 +1,6 @@
+#root {
+  display: flex;
+  width: 100%;
+}
+
+@import "openfin.css" 
