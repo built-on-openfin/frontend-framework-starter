@@ -9,7 +9,7 @@ npx create-react-app@latest container --template typescript
 ## Add dependencies
 
 ```shell
-npm install @openfin/core @finos/fdc3 openfin-notifications react-router-dom
+npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications react-router-dom
 ```
 
 ## Add script to package.json
@@ -17,7 +17,7 @@ npm install @openfin/core @finos/fdc3 openfin-notifications react-router-dom
 ```json
 "scripts": {
    ...
-   "client": "start fin://localhost:3000/platform/manifest.fin.json"
+   "client": "node launch.mjs"
 }
 ```
 
@@ -32,6 +32,7 @@ npm install @openfin/core @finos/fdc3 openfin-notifications react-router-dom
 - Copy `assets/favicon.ico` to `public/favicon.ico`
 - Copy `assets/logo192.png` to `public/logo192.png`
 - Copy `assets/logo512.png` to `public/logo512.png`
+- Copy `assets/launch.mjs` to `.`
 
 ## Update src/index.css
 
@@ -284,6 +285,7 @@ export default View1;
 ## Add src/views/View2.tsx
 
 ```tsx
+import "@finos/fdc3";
 import React, { useEffect, useState } from 'react';
 import logo from '../logo.svg';
 

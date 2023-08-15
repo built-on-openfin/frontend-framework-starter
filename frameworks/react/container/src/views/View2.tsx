@@ -1,3 +1,4 @@
+import "@finos/fdc3";
 import React, { useEffect, useState } from 'react';
 import logo from '../logo.svg';
 

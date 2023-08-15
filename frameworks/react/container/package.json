@@ -12,6 +12,7 @@
     "@types/node": "^16.18.40",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "openfin-adapter": "^32.76.10",
     "openfin-notifications": "^1.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "client": "start fin://localhost:3000/platform/manifest.fin.json"
+    "client": "node launch.mjs"
   },
   "eslintConfig": {
     "extends": [
