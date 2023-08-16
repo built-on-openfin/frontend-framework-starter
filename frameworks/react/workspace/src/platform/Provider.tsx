@@ -51,7 +51,7 @@ function Provider() {
 			<header className="row spread middle">
 				<div className="col">
 					<h1>OpenFin Platform Window</h1>
-					<h1 className="tag">Container platform window</h1>
+					<h1 className="tag">Workspace platform window</h1>
 				</div>
 				<div className="row middle gap10">
 					<img src={logo} alt="OpenFin" height="40px" />

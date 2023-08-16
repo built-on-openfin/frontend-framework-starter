@@ -38,7 +38,7 @@ If you then run `npm run client` it will start the platform instead, you should 
 
 ![Workspace Platform](./workspace-platform.png)
 
-The platform window content is the [./workspace/src/platform/Provider.tsx](./container/src/platform/Provider.tsx) which also initializes the platform. The applications made available in your platform are read from [./workspace/public/platform/manifest.fin.json](./workspace/public/platform/manifest.fin.json)
+The platform window content is the [./workspace/src/platform/Provider.tsx](./workspace/src/platform/Provider.tsx) which also initializes the platform. The applications made available in your platform are read from [./workspace/public/platform/manifest.fin.json](./workspace/public/platform/manifest.fin.json)
 
 The component visible with the platform window is the OpenFin Workspace Home component, the Home component lists 2 applications which can be launched.
 
