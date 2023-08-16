@@ -1,10 +1,10 @@
 {
 	"runtime": {
 		"arguments": "--v=1 --inspect",
-		"version": "32.114.76.10"
+		"version": "31.112.75.4"
 	},
 	"platform": {
-		"uuid": "container-react-starter",
+		"uuid": "react-container-starter",
 		"icon": "http://localhost:3000/favicon.ico",
 		"autoShow": true,
 		"providerUrl": "http://localhost:3000/platform/provider"

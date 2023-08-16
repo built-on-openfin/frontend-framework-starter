@@ -4,11 +4,10 @@ Contained in this folder are samples for the following patterns.
 
 * [container](./container) - A platform built using the OpenFin container technology.
 * [workspace](./workspace) - A platform which demonstrates implementing an OpenFin workspace platform and interacting with its components.
-* [view](./view) - A simple view pattern which demonstrates using the OpenFin API in a react app.
 
 ## Container
 
-For a guide on how this example was created see [create-container.md](./creating-container.md)
+For a guide on how this example was created see [creating-container.md](./creating-container.md)
 
 When you execute this example with `npm run start`, the following will launch your system browser (this is the `container/src/App.tsx` content).
 
@@ -26,3 +25,38 @@ These components demonstrate the following:
 
 * Displaying a notification
 * Broadcasting/listening for FDC3 contexts between views
+
+## Workspace
+
+For a guide on how this example was created see [creating-workspace.md](./creating-workspace.md)
+
+When you execute this example with `npm run start`, the following will launch your system browser (this is the `workspace/src/App.tsx` content).
+
+![Workspace Browser](./workspace-browser.png)
+
+If you then run `npm run client` it will start the platform instead, you should see the following.
+
+![Workspace Platform](./workspace-platform.png)
+
+The platform window content is the [./workspace/src/platform/Provider.tsx](./container/src/platform/Provider.tsx) which also initializes the platform. The applications made available in your platform are read from [./workspace/public/platform/manifest.fin.json](./workspace/public/platform/manifest.fin.json)
+
+The component visible with the platform window is the OpenFin Workspace Home component, the Home component lists 2 applications which can be launched.
+
+![Workspace Browsers](./workspace-browsers.png)
+
+These views demonstrate the following:
+
+* Displaying a notification
+* Broadcasting/listening for FDC3 contexts between views
+
+Also from the Home component you can launch `/dock`
+
+![Workspace Dock](./workspace-dock.png)
+
+You can also launch `/store`
+
+![Workspace Dock](./workspace-store.png)
+
+The notification center is launch with `/notifications`
+
+![Workspace Dock](./workspace-notifications.png)

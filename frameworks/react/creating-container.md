@@ -27,23 +27,12 @@ npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications reac
 - Delete `src/App.test.tsx`
 - Delete `src/reportWebVitals.ts`
 - Delete `src/setupTests.ts`
-- Copy `assets/openfin.css` to `src/openfin.css`
+- Copy `assets/index.css` to `src/index.css`
 - Copy `assets/logo.svg` to `src/logo.svg`
 - Copy `assets/favicon.ico` to `public/favicon.ico`
 - Copy `assets/logo192.png` to `public/logo192.png`
 - Copy `assets/logo512.png` to `public/logo512.png`
 - Copy `assets/launch.mjs` to `.`
-
-## Update src/index.css
-
-```css
-#root {
-  display: flex;
-  width: 100%;
-}
-
-@import "openfin.css" 
-```
 
 ## Update src/index.tsx
 
@@ -53,9 +42,10 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from './App';
 import './index.css';
-import Provider from './platform/Provider';
-import View1 from './views/View1';
-import View2 from './views/View2';
+
+const Provider = React.lazy(() => import('./platform/Provider'));
+const View1 = React.lazy(() => import('./views/View1'));
+const View2 = React.lazy(() => import('./views/View2'));
 
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement
@@ -109,10 +99,10 @@ export default App;
 {
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.10"
+      "version": "31.112.75.4"
    },
    "platform": {
-      "uuid": "container-react-starter",
+      "uuid": "react-container-starter",
       "icon": "http://localhost:3000/favicon.ico",
       "autoShow": true,
       "providerUrl": "http://localhost:3000/platform/provider"

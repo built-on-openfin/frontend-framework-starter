@@ -1,0 +1,71 @@
+ {
+	"licenseKey": "openfin-demo-license-key",
+	"runtime": {
+		"arguments": "--v=1 --inspect",
+		"version": "31.112.75.4"
+	},
+	"platform": {
+		"uuid": "react-workspace-starter",
+		"icon": "http://localhost:3000/favicon.ico",
+		"autoShow": true,
+		"providerUrl": "http://localhost:3000/platform/provider",
+		"preventQuitOnLastWindowClosed": true
+	},
+	"shortcut": {
+		"company": "OpenFin",
+		"description": "A way of showing examples of what OpenFin can do.",
+		"icon": "http://localhost:3000/favicon.ico",
+		"name": "React Workspace Starter",
+		"target": ["desktop", "start-menu"]
+	},
+	"supportInformation": {
+		"company": "OpenFin",
+		"product": "Workspace Starter - React Workspace Starter",
+		"email": "support@openfin.co",
+		"forwardErrorReports": true
+	},
+	"customSettings": {
+		"apps": [
+			{
+				"appId": "react-view1",
+				"name": "react-view1",
+				"title": "React View 1",
+				"description": "Display the React View 1",
+				"manifest": "http://localhost:3000/views/view1.fin.json",
+				"manifestType": "view",
+				"icons": [
+					{
+						"src": "http://localhost:3000/favicon.ico"
+					}
+				],
+				"contactEmail": "contact@example.com",
+				"supportEmail": "support@example.com",
+				"publisher": "OpenFin",
+				"intents": [],
+				"images": [
+				],
+				"tags": ["view", "openfin"]
+			},
+			{
+				"appId": "react-view2",
+				"name": "react-view2",
+				"title": "React View 2",
+				"description": "Display the React View 2",
+				"manifest": "http://localhost:3000/views/view2.fin.json",
+				"manifestType": "view",
+				"icons": [
+					{
+						"src": "http://localhost:3000/favicon.ico"
+					}
+				],
+				"contactEmail": "contact@example.com",
+				"supportEmail": "support@example.com",
+				"publisher": "OpenFin",
+				"intents": [],
+				"images": [
+				],
+				"tags": ["view", "openfin"]
+			}
+		]
+	}
+}
