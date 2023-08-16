@@ -9,7 +9,7 @@ Contained in this folder are samples for the following patterns.
 
 For a guide on how this example was created see [creating-container.md](./creating-container.md)
 
-When you execute this example with `npm run start`, the following will launch your system browser (this is the `container/src/App.tsx` content).
+When you execute this example with `npm run start`, the following will launch your system browser (this is the [./container/src/App.tsx](./container/src/App.tsx) content).
 
 ![Container Browser](./container-browser.png)
 
@@ -30,7 +30,7 @@ These components demonstrate the following:
 
 For a guide on how this example was created see [creating-workspace.md](./creating-workspace.md)
 
-When you execute this example with `npm run start`, the following will launch your system browser (this is the `workspace/src/App.tsx` content).
+When you execute this example with `npm run start`, the following will launch your system browser (this is the [./workspace/src/App.tsx](./workspace/src/App.tsx) content).
 
 ![Workspace Browser](./workspace-browser.png)
 
