@@ -17,7 +17,7 @@ npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications reac
 ```json
 "scripts": {
    ...
-   "client": "node launch.mjs"
+   "client": "node launch.mjs http://localhost:3000/platform/manifest.fin.json"
 }
 ```
 

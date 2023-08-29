@@ -22,7 +22,6 @@ function Provider() {
 			} else {
 				setMessage("OpenFin runtime is not available");
 			}
-
 		})();
 	}, []);
 

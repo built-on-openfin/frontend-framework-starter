@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-	"client": "node launch.mjs"
+	"client": "node launch.mjs http://localhost:3000/platform/manifest.fin.json"
   },
   "eslintConfig": {
     "extends": [
