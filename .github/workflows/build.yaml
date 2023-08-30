@@ -23,16 +23,16 @@ jobs:
           npm run build
       - name: Build Angular Workspace
         run: |
-          cd ../workspace
+          cd frameworks/angular/workspace
           npm ci
           npm run build
       - name: Build React Container
         run: |
-          cd ../../react/container
+          cd frameworks/react/container
           npm ci
           npm run build
       - name: Build React Workspace
         run: |
-          cd ../workspace
+          cd frameworks/react/workspace
           npm ci
           npm run build
