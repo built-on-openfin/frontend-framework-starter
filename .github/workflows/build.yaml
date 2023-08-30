@@ -1,0 +1,38 @@
+name: Build All Examples
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+          scope: '@openfin'
+      - name: Build Angular Container
+        run: |
+          cd frameworks/angular/container
+          npm ci
+          npm run build
+      - name: Build Angular Workspace
+        run: |
+          cd frameworks/angular/workspace
+          npm ci
+          npm run build
+      - name: Build React Container
+        run: |
+          cd frameworks/react/container
+          npm ci
+          npm run build
+      - name: Build React Workspace
+        run: |
+          cd frameworks/react/workspace
+          npm ci
+          npm run build

@@ -17,7 +17,7 @@ npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin
 ```json
 "scripts": {
    ...
-   "client": "node launch.mjs"
+   "client": "node launch.mjs http://localhost:3000/platform/manifest.fin.json"
 }
 ```
 

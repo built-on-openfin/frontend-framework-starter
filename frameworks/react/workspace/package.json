@@ -3,31 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@finos/fdc3": "^2.0.3",
+    "@finos/fdc3": "2.0.3",
     "@openfin/core": "31.75.4",
-    "@openfin/workspace": "13.1.5",
-    "@openfin/workspace-platform": "13.1.5",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.40",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7",
+    "@openfin/workspace": "13.1.7",
+    "@openfin/workspace-platform": "13.1.7",
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "13.5.0",
+    "@types/jest": "27.5.2",
+    "@types/node": "16.18.40",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
     "openfin-adapter": "31.75.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.15.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "typescript": "4.9.5",
+    "web-vitals": "2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-	"client": "node launch.mjs"
+	"client": "node launch.mjs http://localhost:3000/platform/manifest.fin.json"
   },
   "eslintConfig": {
     "extends": [
