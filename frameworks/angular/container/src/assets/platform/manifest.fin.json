@@ -4,7 +4,7 @@
 	   "version": "31.112.75.4"
 	},
 	"platform": {
-	   "uuid": "react-container-starter",
+	   "uuid": "angular-container-starter",
 	   "icon": "http://localhost:4200/favicon.ico",
 	   "autoShow": true,
 	   "providerUrl": "http://localhost:4200/platform/provider"

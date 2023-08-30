@@ -1,16 +1,16 @@
-# Creating Container Angular App
+# Creating Workspace Angular App
 
 ## Generate the Angular boilerplate
 
 ```shell
 npm install -g @angular/cli
-ng new container --routing --style css
+ng new workspace --routing --style css
 ```
 
 ## Add dependencies
 
 ```shell
-npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications
+npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin-adapter @finos/fdc3
 ```
 
 ## Add script to package.json
@@ -28,7 +28,9 @@ npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications
 {
   "compilerOptions": {
     ...
-    "skipLibCheck": true
+    "noImplicitReturns": false,
+    "skipLibCheck": true,
+    "types": ["./src/types/fin"]
   },
 ```
 
@@ -39,7 +41,14 @@ npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications
 - Copy `assets/index.css` to `src/styles.css`
 - Copy `assets/logo.svg` to `src/assets/logo.svg`
 - Copy `assets/favicon.ico` to `src/favicon.ico`
+- Copy `assets/fin.d.ts` to `src/types.`
 - Copy `assets/launch.mjs` to `.`
+- Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/home.ts` to `src/app/platform`
+- Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/dock.ts` to `src/app/platform`
+- Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/store.ts` to `src/app/platform`
+- Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/launch.ts` to `src/app/platform`
+- Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/notifications.ts` to `src/app/platform`
+- Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/shapes.ts` to `src/app/platform`
 
 ## Update src/app-routing.module.ts
 
@@ -77,7 +86,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'Container';
+  title = 'Workspace';
 }
 ```
 
@@ -108,67 +117,73 @@ export class AppModule { }
 
 ```json
 {
+   "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
       "version": "31.112.75.4"
    },
    "platform": {
-      "uuid": "angular-container-starter",
+      "uuid": "angular-workspace-starter",
       "icon": "http://localhost:4200/favicon.ico",
       "autoShow": true,
-      "providerUrl": "http://localhost:4200/platform/provider"
+      "providerUrl": "http://localhost:4200/platform/provider",
+      "preventQuitOnLastWindowClosed": true
    },
-   "snapshot": {
-      "windows": [
-        {
-          "layout": {
-            "content": [
+   "shortcut": {
+      "company": "OpenFin",
+      "description": "A way of showing examples of what OpenFin can do.",
+      "icon": "http://localhost:4200/favicon.ico",
+      "name": "Angular Workspace Starter",
+      "target": ["desktop", "start-menu"]
+   },
+   "supportInformation": {
+      "company": "OpenFin",
+      "product": "Workspace Starter - Angular Workspace Starter",
+      "email": "support@openfin.co",
+      "forwardErrorReports": true
+   },
+   "customSettings": {
+      "apps": [
+         {
+            "appId": "angular-view1",
+            "name": "angular-view1",
+            "title": "Angular View 1",
+            "description": "Display the Angular View 1",
+            "manifest": "http://localhost:4200/assets/views/view1.fin.json",
+            "manifestType": "view",
+            "icons": [
                {
-                 "type": "row",
-                 "content": [
-                   {
-                     "type": "stack",
-                     "content": [
-                        {
-                          "type": "component",
-                          "title": "view1",
-                          "componentName": "view",
-                          "componentState": {
-                            "url": "http://localhost:4200/views/view1",
-                            "name": "view1",
-                            "componentName": "view",
-                            "fdc3InteropApi": "1.2",
-                            "interop": {
-                              "currentContextGroup": "green"
-                            }
-                          }
-                        }
-                     ]
-                   },
-                   {
-                     "type": "stack",
-                     "content": [
-                        {
-                          "type": "component",
-                          "title": "view2",
-                          "componentName": "view",
-                          "componentState": {
-                            "url": "http://localhost:4200/views/view2",
-                            "name": "view2",
-                            "componentName": "view",
-                            "fdc3InteropApi": "1.2",
-                            "interop": {
-                              "currentContextGroup": "green"
-                            }
-                          }
-                        }
-                     ]
-                   }
-                 ]
+                  "src": "http://localhost:4200/favicon.ico"
                }
-            ]
-          }
-        }
+            ],
+            "contactEmail": "contact@example.com",
+            "supportEmail": "support@example.com",
+            "publisher": "OpenFin",
+            "intents": [],
+            "images": [
+            ],
+            "tags": ["view", "openfin"]
+         },
+         {
+            "appId": "angular-view2",
+            "name": "angular-view2",
+            "title": "Angular View 2",
+            "description": "Display the Angular View 2",
+            "manifest": "http://localhost:4200/assets/views/view2.fin.json",
+            "manifestType": "view",
+            "icons": [
+               {
+                  "src": "http://localhost:4200/favicon.ico"
+               }
+            ],
+            "contactEmail": "contact@example.com",
+            "supportEmail": "support@example.com",
+            "publisher": "OpenFin",
+            "intents": [],
+            "images": [
+            ],
+            "tags": ["view", "openfin"]
+         }
       ]
    }
 }
@@ -220,38 +235,179 @@ export class ProviderRoutingModule { }
 ## Add src/app/platform/provider.component.ts
 
 ```ts
+import { Component, NgZone } from '@angular/core';
+import type OpenFin from "@openfin/core";
 import { fin } from "@openfin/core";
-import { Component } from '@angular/core';
+import { Dock, Home, Storefront, type App } from "@openfin/workspace";
+import { CustomActionCallerType, init } from "@openfin/workspace-platform";
+import { deregisterPlatform } from "@openfin/workspace/notifications";
+import { register as registerDock } from "./dock";
+import { register as registerHome } from "./home";
+import { launchApp } from "./launch";
+import { register as registerNotifications } from "./notifications";
+import type { CustomSettings, PlatformSettings } from "./shapes";
+import { register as registerStore } from "./store";
 
 @Component({
    selector: 'app-provider',
    templateUrl: './provider.component.html'
 })
 export class ProviderComponent {
+   private _zone: NgZone;
    public message: string;
 
-   constructor() {
+   constructor(zone: NgZone) {
+      this._zone = zone;
       this.message = "";
    }
 
-   async ngOnInit() {
-      let runtimeAvailable = false;
-      if (fin) {
-         try {
-            await fin.Platform.init({});
-            runtimeAvailable = true;
-         } catch {
-         }
-      }
+   logMessage(message: string) {
+      this._zone.run(() => this.message = message);
+   }
 
-      if (runtimeAvailable) {
-         const runtimeInfo = await fin.System.getRuntimeInfo();
-         this.message = `OpenFin Runtime: ${runtimeInfo.version}`;
-      } else {
-         this.message = "OpenFin runtime is not available";
+   async ngOnInit() {
+      try {
+         this.logMessage("Workspace platform initializing");
+
+         // Load the settings from the manifest
+         const settings = await this.getManifestCustomSettings();
+
+         // When the platform api is ready we bootstrap the platform.
+         const platform = fin.Platform.getCurrentSync();
+         await platform.once("platform-api-ready", async () => {
+            await this.initializeWorkspaceComponents(settings.platformSettings, settings.customSettings)
+            this.logMessage("Workspace platform initialized");
+         });
+
+         // The DOM is ready so initialize the platform
+         // Provide default icons and default theme for the browser windows
+         await this.initializeWorkspacePlatform(settings.platformSettings);
+      } catch (err) {
+         this.logMessage(`Error Initializing Platform: ${err instanceof Error ? err.message : err}`);
       }
    }
+
+   /**
+ * Initialize the workspace platform.
+ * @param platformSettings The platform settings from the manifest.
+ */
+   async initializeWorkspacePlatform(platformSettings: PlatformSettings): Promise<void> {
+      this.logMessage("Initializing workspace platform");
+      await init({
+         browser: {
+            defaultWindowOptions: {
+               icon: platformSettings.icon,
+               workspacePlatform: {
+                  pages: [],
+                  favicon: platformSettings.icon
+               }
+            }
+         },
+         theme: [
+            {
+               label: "Default",
+               default: "dark",
+               palette: {
+                  brandPrimary: "#0A76D3",
+                  brandSecondary: "#383A40",
+                  backgroundPrimary: "#1E1F23"
+               }
+            }
+         ],
+         customActions: {
+            "launch-app": async (e): Promise<void> => {
+               if (
+                  e.callerType === CustomActionCallerType.CustomButton ||
+                  e.callerType === CustomActionCallerType.CustomDropdownItem
+               ) {
+                  await launchApp(e.customData as App);
+               }
+            }
+         }
+      });
+   }
+
+   /**
+    * Bring the platform to life.
+    * @param platformSettings The platform settings from the manifest.
+    * @param customSettings The custom settings from the manifest.
+    */
+   async initializeWorkspaceComponents(
+      platformSettings: PlatformSettings,
+      customSettings?: CustomSettings
+   ): Promise<void> {
+      this.logMessage("Initializing the workspace components");
+
+      // Register with home and show it
+      this.logMessage("Initializing the workspace components: home");
+      await registerHome(platformSettings, customSettings?.apps);
+      await Home.show();
+
+      // Register with store
+      this.logMessage("Initializing the workspace components: store");
+      await registerStore(platformSettings, customSettings?.apps);
+
+      // Register with dock
+      this.logMessage("Initializing the workspace components: dock");
+      await registerDock(platformSettings, customSettings?.apps);
+
+      // Register with notifications
+      this.logMessage("Initializing the workspace components: notifications");
+      await registerNotifications(platformSettings);
+
+      // When the platform requests to be close we deregister from home and quit
+      const providerWindow = fin.Window.getCurrentSync();
+      await providerWindow.once("close-requested", async () => {
+         await Home.deregister(platformSettings.id);
+         await Storefront.deregister(platformSettings.id);
+         await Dock.deregister();
+         await deregisterPlatform(platformSettings.id);
+         await fin.Platform.getCurrentSync().quit();
+      });
+   }
+
+   /**
+    * Read the custom settings from the manifest.fin.json.
+    * @returns The custom settings from the manifest.
+    */
+   async getManifestCustomSettings(): Promise<{
+      platformSettings: PlatformSettings;
+      customSettings?: CustomSettings;
+   }> {
+      // Get the manifest for the current application
+      const app = await fin.Application.getCurrent();
+
+      // Extract the custom settings for this application
+      const manifest: OpenFin.Manifest & { customSettings?: CustomSettings } = await app.getManifest();
+      return {
+         platformSettings: {
+            id: manifest.platform?.uuid ?? "",
+            title: manifest.shortcut?.name ?? "",
+            icon: manifest.platform?.icon ?? ""
+         },
+         customSettings: manifest.customSettings
+      };
+   }
 }
+```
+
+## Add src/app/platform/provider.module.ts
+
+```ts
+import { NgModule } from '@angular/core';
+
+import { ProviderRoutingModule } from './provider-routing.module';
+import { ProviderComponent } from './provider.component';
+
+@NgModule({
+   imports: [
+      ProviderRoutingModule
+   ],
+   declarations: [
+      ProviderComponent
+   ]
+})
+export class ProviderModule { }
 ```
 
 ## Add src/instructions/instructions-routing.module.ts
@@ -284,7 +440,7 @@ export class InstructionsRoutingModule { }
    <header class="row spread middle">
       <div class="col">
          <h1>OpenFin Angular</h1>
-         <h1 class="tag">Example demonstrating running a Angular app in an OpenFin container</h1>
+         <h1 class="tag">Example demonstrating running a Angular app in an OpenFin workspace</h1>
       </div>
       <div class="row middle gap10">
          <img src="../assets/logo.svg" alt="OpenFin" height="40px" />
@@ -358,7 +514,7 @@ export class View1RoutingModule { }
    <header class="row spread middle">
       <div class="col">
          <h1>OpenFin Angular View 1</h1>
-         <h1 class="tag">Angular app view in an OpenFin container</h1>
+         <h1 class="tag">Angular app view in an OpenFin workspace</h1>
       </div>
       <div class="row middle gap10">
          <img src="../../assets/logo.svg" alt="OpenFin" height="40px" />
@@ -376,7 +532,7 @@ export class View1RoutingModule { }
 ```ts
 import { Component } from '@angular/core';
 import "@finos/fdc3";
-import * as Notifications from "openfin-notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 
 @Component({
   selector: 'app-view1',
@@ -407,6 +563,7 @@ export class View1Component {
       }
    }
 }
+
 ```
 
 ## Add src/app/view1/view1.module.ts
@@ -435,7 +592,7 @@ export class View1Module { }
    <header class="row spread middle">
       <div class="col">
          <h1>OpenFin Angular View 2</h1>
-         <h1 class="tag">Angular app view in an OpenFin container</h1>
+         <h1 class="tag">Angular app view in an OpenFin workspace</h1>
       </div>
       <div class="row middle gap10">
          <img src="../../assets/logo.svg" alt="OpenFin" height="40px" />
