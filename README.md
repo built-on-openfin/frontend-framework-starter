@@ -8,4 +8,5 @@ Deeper coverage of the OpenFin capability is covered by the [Container Starters]
 
 The frameworks with examples can be found in the following folders.
 
+* [Angular](./frameworks/angular)
 * [React](./frameworks/react)
