@@ -13,12 +13,15 @@ ng new container --routing --style css
 npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications
 ```
 
-## Add script to package.json
+## Modify and add scripts in package.json
+
+The `--host` switch is required for NodeJs v17+ to be able to resolve the Angular server from the OpenFin launch script. (see [https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705](https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705))
 
 ```json
 "scripts": {
+   "start": "ng serve --host=127.0.0.1",
    ...
-   "client": "node launch.mjs http://localhost:4200/assets/platform/manifest.fin.json"
+   "client": "node launch.mjs http://127.0.0.1:4200/assets/platform/manifest.fin.json"
 }
 ```
 
