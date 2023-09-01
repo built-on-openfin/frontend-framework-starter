@@ -15,7 +15,7 @@ npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin
 
 ## Modify and add scripts in package.json
 
-The `--host` and `--disable-host-check` switches are required for NodeJs v17+ to be able to resolve the Angular server from the OpenFin launch script. (see [https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705](https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705))
+The `--host` switch is required for NodeJs v17+ to be able to resolve the Angular server from the OpenFin launch script. (see [https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705](https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705))
 
 ```json
 "scripts": {
