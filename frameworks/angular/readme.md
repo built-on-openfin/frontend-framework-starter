@@ -9,7 +9,7 @@ Contained in this folder are samples for the following patterns.
 
 For a guide on how this example was created see [creating-container.md](./creating-container.md)
 
-When you execute this example with `npm run start`, you can launch [http://localhost:4200](http://localhost:4200) in your system browser (this is the [./container/src/app/app.component.ts](./container/src/app/app.component.ts) content).
+When you execute this example with `npm run start`, you can launch [http://127.0.0.1:4200](http://127.0.0.1:4200) in your system browser (this is the [./container/src/app/app.component.ts](./container/src/app/app.component.ts) content).
 
 ![Container Browser](./container-browser.png)
 
@@ -30,7 +30,7 @@ These components demonstrate the following:
 
 For a guide on how this example was created see [creating-workspace.md](./creating-workspace.md)
 
-When you execute this example with `npm run start`,you can launch [http://localhost:4200](http://localhost:4200) in your system browser (this is the [./workspace/src/app/app.component.ts](./workspace/src/app/app.component.ts) content).
+When you execute this example with `npm run start`,you can launch [http://127.0.0.1:4200](http://127.0.0.1:4200) in your system browser (this is the [./workspace/src/app/app.component.ts](./workspace/src/app/app.component.ts) content).
 
 ![Workspace Browser](./workspace-browser.png)
 
