@@ -8,10 +8,10 @@
 			<img src="../../assets/logo.svg" alt="OpenFin" height="40px" />
 		</div>
 	</header>
-	<main class="col gap10 left">
-		<fieldset>
+	<main class="col gap10 left width-full">
+		<fieldset class="width-full">
 			<label htmlFor="message">Context Received</label>
-			<pre id="message">{{message}}</pre>
+			<pre id="message" class="width-full" style="min-height:110px">{{message}}</pre>
 		</fieldset>
 		<button (click)="message=''">Clear</button>
 	</main>

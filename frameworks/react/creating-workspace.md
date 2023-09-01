@@ -41,6 +41,12 @@ npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin
 - Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/notifications.ts` to `src/platform`
 - Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/shapes.ts` to `src/platform`
 
+## Add .env
+
+```shell
+GENERATE_SOURCEMAP=false
+```
+
 ## Update src/index.tsx
 
 ```tsx
@@ -357,7 +363,7 @@ export default Provider;
 ```tsx
 import React from 'react';
 import logo from '../logo.svg';
-import * as Notifications from "openfin-notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 import "@finos/fdc3";
 
 function View1() {
@@ -371,13 +377,29 @@ function View1() {
       });
    }
 
-   async function sendFDC3Context() {
+   async function broadcastFDC3Context() {
       if (window.fdc3) {
          await window.fdc3.broadcast({
             type: 'fdc3.instrument',
             name: 'Microsoft Corporation',
             id: {
                ticker: 'MSFT'
+            }
+         });
+      } else {
+         console.error("FDC3 is not available");
+      }
+   }
+
+   async function broadcastFDC3ContextAppChannel() {
+      if (window.fdc3) {
+         const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+
+         await appChannel.broadcast({
+            type: 'fdc3.instrument',
+            name: 'Apple Inc.',
+            id: {
+               ticker: 'AAPL'
             }
          });
       } else {
@@ -398,7 +420,8 @@ function View1() {
          </header>
          <main className="col gap10 left">
             <button onClick={() => showNotification()}>Show Notification</button>
-            <button onClick={() => sendFDC3Context()}>Send FDC3 Context</button>
+            <button onClick={() => broadcastFDC3Context()}>Broadcast FDC3 Context</button>
+            <button onClick={() => broadcastFDC3ContextAppChannel()}>Broadcast FDC3 Context on App Channel</button>
          </main>
       </div>
    );
@@ -419,15 +442,32 @@ function View2() {
 
    useEffect(() => {
       (async function () {
-         if (window.fdc3) {
-            await window.fdc3.addContextListener((context) => {
-               setMessage(JSON.stringify(context, undefined, "  "));
-            });
-         } else {
-            console.error("FDC3 is not available");
-         }
+         await listenForFDC3Context();
+         await listenForFDC3ContextAppChannel();
       })();
    }, []);
+
+   async function listenForFDC3Context() {
+      if (window.fdc3) {
+         await window.fdc3.addContextListener((context) => {
+            setMessage(JSON.stringify(context, undefined, "  "));
+         });
+      } else {
+         console.error("FDC3 is not available");
+      }
+   }   
+
+   async function listenForFDC3ContextAppChannel() {
+      if (window.fdc3) {
+         const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+
+         await appChannel.addContextListener((context) => {
+            setMessage(JSON.stringify(context, undefined, "  "));
+         });
+      } else {
+         console.error("FDC3 is not available");
+      }
+   }   
 
    return (
       <div className="col fill gap20">
@@ -440,10 +480,10 @@ function View2() {
                <img src={logo} alt="OpenFin" height="40px" />
             </div>
          </header>
-         <main className="col gap10 left">
-            <fieldset>
+         <main className="col gap10 left width-full">
+            <fieldset className="width-full">
                <label htmlFor="message">Context Received</label>
-               <pre id="message">{message}</pre>
+               <pre id="message" className="width-full" style={{minHeight:"110px"}}>{message}</pre>
             </fieldset>
             <button onClick={() => setMessage("")}>Clear</button>
          </main>
