@@ -13,10 +13,13 @@ ng new workspace --routing --style css
 npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin-adapter @finos/fdc3
 ```
 
-## Add script to package.json
+## Modify and add scripts in package.json
+
+The `--host` and `--disable-host-check` switches are required for NodeJs v18+ to be able to resolve the Angular server from the OpenFin launch script.
 
 ```json
 "scripts": {
+   "start": "ng serve --host=0.0.0.0 --disable-host-check",
    ...
    "client": "node launch.mjs http://localhost:4200/assets/platform/manifest.fin.json"
 }
