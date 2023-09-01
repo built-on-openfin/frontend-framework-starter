@@ -17,13 +17,29 @@ export class View1Component {
 		});
 	}
 
-	async sendFDC3Context() {
+	async broadcastFDC3Context() {
 		if (window.fdc3) {
 			await window.fdc3.broadcast({
 				type: 'fdc3.instrument',
 				name: 'Microsoft Corporation',
 				id: {
 					ticker: 'MSFT'
+				}
+			});
+		} else {
+			console.error("FDC3 is not available");
+		}
+	}
+
+	async broadcastFDC3ContextAppChannel() {
+		if (window.fdc3) {
+			const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+
+			await appChannel.broadcast({
+				type: 'fdc3.instrument',
+				name: 'Apple Inc.',
+				id: {
+					ticker: 'AAPL'
 				}
 			});
 		} else {
