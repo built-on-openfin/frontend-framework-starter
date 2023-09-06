@@ -6,7 +6,7 @@
 		"remove-packages": "npx --yes rimraf --glob **/node_modules && npx rimraf --glob **/package-lock.json"
 	},
 	"contributors": [
-		"adam.saland@openfin.co",
+		"joe.ransegnola@openfin.co ",
 		"john.mandia@openfin.co",
 		"martyn.janes@openfin.co"
 	],
