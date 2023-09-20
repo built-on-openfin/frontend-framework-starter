@@ -138,7 +138,7 @@ export class AppModule { }
    "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "31.112.75.4"
+      "version": "32.114.76.10"
    },
    "platform": {
       "uuid": "angular-workspace-starter",

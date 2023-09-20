@@ -1,6 +1,6 @@
 {
-  "name": "workspace",
-  "version": "0.0.0",
+  "name": "angular-workspace-starter",
+  "version": "14.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -20,9 +20,9 @@
     "@angular/platform-browser-dynamic": "16.2.0",
     "@angular/router": "16.2.0",
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "31.75.4",
-    "@openfin/workspace": "13.1.8",
-    "@openfin/workspace-platform": "13.1.8",
+    "@openfin/core": "32.76.10",
+    "@openfin/workspace": "14.0.22",
+    "@openfin/workspace-platform": "14.0.22",
     "openfin-adapter": "32.76.10",
     "rxjs": "~7.8.0",
     "tslib": "2.3.0",
