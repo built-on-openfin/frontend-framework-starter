@@ -20,9 +20,9 @@
     "@angular/platform-browser-dynamic": "16.2.5",
     "@angular/router": "16.2.5",
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "32.76.10",
+    "@openfin/core": "32.76.20",
     "openfin-adapter": "32.76.10",
-    "openfin-notifications": "2.0.0-alpha-2685",
+    "openfin-notifications": "2.0.2",
     "rxjs": "7.8.1",
     "tslib": "2.6.2",
     "zone.js": "0.13.0"
