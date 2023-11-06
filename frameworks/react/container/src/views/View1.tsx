@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../logo.svg';
-import * as Notifications from "openfin-notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 import "@finos/fdc3";
 
 function View1() {

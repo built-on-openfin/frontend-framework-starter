@@ -9,7 +9,7 @@ npx create-react-app@latest container --template typescript
 ## Add dependencies
 
 ```shell
-npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications react-router-dom
+npm install @openfin/core @openfin/workspace @openfin/node-adapter @finos/fdc3 react-router-dom
 ```
 
 ## Add script to package.json
@@ -99,7 +99,7 @@ export default App;
 {
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.20"
+      "version": "33.116.77.11"
    },
    "platform": {
       "uuid": "react-container-starter",
@@ -222,7 +222,7 @@ export default Provider;
 ```tsx
 import React from 'react';
 import logo from '../logo.svg';
-import * as Notifications from "openfin-notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 import "@finos/fdc3";
 
 function View1() {

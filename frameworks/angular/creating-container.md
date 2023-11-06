@@ -10,7 +10,7 @@ ng new container --routing --style css
 ## Add dependencies
 
 ```shell
-npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications
+npm install @openfin/core @openfin/workspace @openfin/node-adapter @finos/fdc3
 ```
 
 ## Modify and add scripts in package.json
@@ -128,7 +128,7 @@ export class AppModule { }
 {
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.20"
+      "version": "33.116.77.11"
    },
    "platform": {
       "uuid": "angular-container-starter",
@@ -395,7 +395,7 @@ export class View1RoutingModule { }
 ```ts
 import { Component } from '@angular/core';
 import "@finos/fdc3";
-import * as Notifications from "openfin-notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 
 @Component({
   selector: 'app-view1',

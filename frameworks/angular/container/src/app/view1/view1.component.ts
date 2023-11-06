@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import "@finos/fdc3";
-import * as Notifications from "openfin-notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 
 @Component({
   selector: 'app-view1',

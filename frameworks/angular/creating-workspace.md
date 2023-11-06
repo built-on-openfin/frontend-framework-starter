@@ -10,7 +10,7 @@ ng new workspace --routing --style css
 ## Add dependencies
 
 ```shell
-npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin-adapter @finos/fdc3
+npm install @openfin/core @openfin/workspace @openfin/workspace-platform @openfin/node-adapter @finos/fdc3
 ```
 
 ## Modify and add scripts in package.json
@@ -138,7 +138,7 @@ export class AppModule { }
    "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.20"
+      "version": "33.116.77.11"
    },
    "platform": {
       "uuid": "angular-workspace-starter",

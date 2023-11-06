@@ -9,7 +9,7 @@ npx create-react-app@latest workspace --template typescript
 ## Add dependencies
 
 ```shell
-npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin-adapter @finos/fdc3 react-router-dom
+npm install @openfin/core @openfin/workspace @openfin/workspace-platform @openfin/node-adapter @finos/fdc3 react-router-dom
 ```
 
 ## Add script to package.json
@@ -113,7 +113,7 @@ export default App;
    "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.20"
+      "version": "33.116.77.11"
    },
    "platform": {
       "uuid": "react-workspace-starter",
