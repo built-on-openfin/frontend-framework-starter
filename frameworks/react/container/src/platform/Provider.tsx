@@ -1,6 +1,7 @@
 import { fin } from "@openfin/core";
 import React, { useEffect, useState } from 'react';
 import logo from '../logo.svg';
+import * as Notifications from "@openfin/workspace/notifications";
 
 function Provider() {
 	const [message, setMessage] = useState("");
@@ -11,6 +12,14 @@ function Provider() {
 			if (fin) {
 				try {
 					await fin.Platform.init({});
+
+					await Notifications.register({
+						notificationsPlatformOptions: {
+							id: fin.me.identity.uuid,
+							title: "React Container Starter",
+							icon: "http://localhost:3000/favicon.ico"
+						}
+					});
 					runtimeAvailable = true;
 				} catch {
 				}

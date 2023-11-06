@@ -1,3 +1,4 @@
+import { fin } from "@openfin/core";
 import { Component } from '@angular/core';
 import "@finos/fdc3";
 import * as Notifications from "@openfin/workspace/notifications";
@@ -9,6 +10,7 @@ import * as Notifications from "@openfin/workspace/notifications";
 export class View1Component {
 	async showNotification() {
 		await Notifications.create({
+			platform: fin.me.identity.uuid,
 			title: "Simple Notification",
 			body: "This is a simple notification",
 			toast: "transient",
