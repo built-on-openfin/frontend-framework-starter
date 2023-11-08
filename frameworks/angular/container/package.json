@@ -1,6 +1,6 @@
 {
   "name": "angular-container-starter",
-  "version": "14.0.0",
+  "version": "15.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "16.2.0",
+	"@angular/animations": "16.2.0",
     "@angular/common": "16.2.0",
     "@angular/compiler": "16.2.0",
     "@angular/core": "16.2.0",
@@ -20,24 +20,24 @@
     "@angular/platform-browser-dynamic": "16.2.0",
     "@angular/router": "16.2.0",
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "32.76.10",
+    "@openfin/core": "32.76.20",
     "openfin-adapter": "32.76.10",
-    "openfin-notifications": "1.25.1",
+    "openfin-notifications": "2.0.2",
     "rxjs": "7.8.0",
     "tslib": "2.3.0",
     "zone.js": "0.13.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "16.2.0",
-    "@angular/cli": "16.2.0",
+    "@angular-devkit/build-angular": "16.2.9",
+    "@angular/cli": "16.2.9",
     "@angular/compiler-cli": "16.2.0",
-    "@types/jasmine": "~4.3.0",
-    "jasmine-core": "~4.6.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "@types/jasmine": "4.3.0",
+    "jasmine-core": "4.6.0",
+    "karma": "6.4.0",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "2.2.0",
+    "karma-jasmine": "5.1.0",
+    "karma-jasmine-html-reporter": "2.1.0",
     "typescript": "5.1.3"
   }
 }

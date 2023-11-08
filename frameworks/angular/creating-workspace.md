@@ -138,7 +138,7 @@ export class AppModule { }
    "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.10"
+      "version": "32.114.76.20"
    },
    "platform": {
       "uuid": "angular-workspace-starter",
@@ -258,7 +258,7 @@ import type OpenFin from "@openfin/core";
 import { fin } from "@openfin/core";
 import { Dock, Home, Storefront, type App } from "@openfin/workspace";
 import { CustomActionCallerType, init } from "@openfin/workspace-platform";
-import { deregisterPlatform } from "@openfin/workspace/notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 import { register as registerDock } from "./dock";
 import { register as registerHome } from "./home";
 import { launchApp } from "./launch";
@@ -379,7 +379,7 @@ export class ProviderComponent {
          await Home.deregister(platformSettings.id);
          await Storefront.deregister(platformSettings.id);
          await Dock.deregister();
-         await deregisterPlatform(platformSettings.id);
+         await Notifications.deregister(platformSettings.id);
          await fin.Platform.getCurrentSync().quit();
       });
    }

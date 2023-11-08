@@ -128,7 +128,7 @@ export class AppModule { }
 {
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.10"
+      "version": "32.114.76.20"
    },
    "platform": {
       "uuid": "angular-container-starter",
