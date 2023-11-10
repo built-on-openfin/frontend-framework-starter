@@ -10,3 +10,12 @@ The frameworks with examples can be found in the following folders.
 
 * [Angular](./frameworks/angular)
 * [React](./frameworks/react)
+
+## Versions
+
+This branch covers the following versions:
+
+* OpenFin Workspace 16.0.4
+* OpenFin Notifications 2.1.1
+* Angular 17.0.0
+* React 18.2.0
