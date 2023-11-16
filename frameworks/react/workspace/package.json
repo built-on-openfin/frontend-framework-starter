@@ -5,8 +5,8 @@
   "dependencies": {
     "@finos/fdc3": "2.0.3",
     "@openfin/core": "32.76.20",
-    "@openfin/workspace": "15.0.11",
-    "@openfin/workspace-platform": "15.0.11",
+    "@openfin/workspace": "15.0.12",
+    "@openfin/workspace-platform": "15.0.12",
     "openfin-adapter": "32.76.10",
 	"@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "13.4.0",
