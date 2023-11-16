@@ -22,7 +22,7 @@
     "@finos/fdc3": "2.0.3",
     "@openfin/core": "32.76.20",
     "openfin-adapter": "32.76.10",
-    "openfin-notifications": "2.0.2",
+    "openfin-notifications": "2.0.4",
     "rxjs": "7.8.0",
     "tslib": "2.3.0",
     "zone.js": "0.13.0"
