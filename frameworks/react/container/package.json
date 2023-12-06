@@ -5,7 +5,7 @@
   "dependencies": {
     "@finos/fdc3": "2.0.3",
     "@openfin/core": "33.77.11",
-	"@openfin/workspace": "16.0.6",
+	"@openfin/workspace": "16.0.9",
     "@openfin/node-adapter": "33.77.11",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "13.4.0",

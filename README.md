@@ -15,7 +15,7 @@ The frameworks with examples can be found in the following folders.
 
 This branch covers the following versions:
 
-* OpenFin Workspace 16.0.6
+* OpenFin Workspace 16.0.9
 * OpenFin Notifications 2.1.2
 * Angular 17.0.0
 * React 18.2.0
