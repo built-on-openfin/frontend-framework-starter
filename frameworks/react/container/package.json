@@ -1,13 +1,13 @@
 {
   "name": "react-container-starter",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "private": true,
   "dependencies": {
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "32.76.20",
-    "openfin-adapter": "32.76.10",
-    "openfin-notifications": "2.0.4",
-	"@testing-library/jest-dom": "5.17.0",
+    "@openfin/core": "33.77.11",
+	"@openfin/workspace": "16.0.9",
+    "@openfin/node-adapter": "33.77.11",
+    "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "13.5.0",
     "@types/jest": "27.5.2",

@@ -9,7 +9,7 @@ npx create-react-app@latest workspace --template typescript
 ## Add dependencies
 
 ```shell
-npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin-adapter @finos/fdc3 react-router-dom
+npm install @openfin/core @openfin/workspace @openfin/workspace-platform @openfin/node-adapter @finos/fdc3 react-router-dom
 ```
 
 ## Add script to package.json
@@ -113,7 +113,7 @@ export default App;
    "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.20"
+      "version": "33.116.77.11"
    },
    "platform": {
       "uuid": "react-workspace-starter",
@@ -361,6 +361,7 @@ export default Provider;
 ## Add src/views/View1.tsx
 
 ```tsx
+import { fin } from "@openfin/core";
 import React from 'react';
 import logo from '../logo.svg';
 import * as Notifications from "@openfin/workspace/notifications";
@@ -369,6 +370,7 @@ import "@finos/fdc3";
 function View1() {
    async function showNotification() {
       await Notifications.create({
+         platform: fin.me.identity.uuid,
          title: "Simple Notification",
          body: "This is a simple notification",
          toast: "transient",

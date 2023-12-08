@@ -1,11 +1,13 @@
+import { fin } from "@openfin/core";
 import React from 'react';
 import logo from '../logo.svg';
-import * as Notifications from "openfin-notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 import "@finos/fdc3";
 
 function View1() {
 	async function showNotification() {
 		await Notifications.create({
+			platform: fin.me.identity.uuid,
 			title: "Simple Notification",
 			body: "This is a simple notification",
 			toast: "transient",

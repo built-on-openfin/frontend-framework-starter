@@ -10,7 +10,7 @@ ng new workspace --routing --style css
 ## Add dependencies
 
 ```shell
-npm install @openfin/core @openfin/workspace @openfin/workspace-platform openfin-adapter @finos/fdc3
+npm install @openfin/core @openfin/workspace @openfin/workspace-platform @openfin/node-adapter @finos/fdc3
 ```
 
 ## Modify and add scripts in package.json
@@ -68,24 +68,17 @@ The `host` option is required for NodeJs v17+ to be able to resolve the Angular 
 - Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/notifications.ts` to `src/app/platform`
 - Copy `https://github.com/built-on-openfin/workspace-starter/blob/main/how-to/workspace-platform-starter-basic/client/src/shapes.ts` to `src/app/platform`
 
-## Update src/app-routing.module.ts
+## Update src/app.routes.ts
 
 ```ts
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
-const routes: Routes = [
+export const routes: Routes = [
    { path: "", loadChildren: () => import('./instructions/instructions.module').then(m => m.InstructionsModule) },
    { path: "platform/provider", loadChildren: () => import('./platform/provider.module').then(m => m.ProviderModule) },
    { path: "views/view1", loadChildren: () => import('./view1/view1.module').then(m => m.View1Module) },
    { path: "views/view2", loadChildren: () => import('./view2/view2.module').then(m => m.View2Module) },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
 ```
 
 ## Update src/app/app.component.html
@@ -98,37 +91,18 @@ export class AppRoutingModule { }
 
 ```ts
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'Workspace';
+  title = 'workspace';
 }
-```
-
-## Update src/app/app.module.ts
-
-```ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
 ```
 
 ## Add src/assets/platform/manifest.fin.json
@@ -138,7 +112,7 @@ export class AppModule { }
    "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.20"
+      "version": "33.116.77.11"
    },
    "platform": {
       "uuid": "angular-workspace-starter",
@@ -549,6 +523,7 @@ export class View1RoutingModule { }
 ## Add src/app/view1/view1.component.ts
 
 ```ts
+import { fin } from "@openfin/core";
 import { Component } from '@angular/core';
 import "@finos/fdc3";
 import * as Notifications from "@openfin/workspace/notifications";
@@ -560,6 +535,7 @@ import * as Notifications from "@openfin/workspace/notifications";
 export class View1Component {
    async showNotification() {
       await Notifications.create({
+         platform: fin.me.identity.uuid,
          title: "Simple Notification",
          body: "This is a simple notification",
          toast: "transient",

@@ -1,7 +1,7 @@
 {
 	"runtime": {
 	   "arguments": "--v=1 --inspect",
-	   "version": "32.114.76.20"
+	   "version": "33.116.77.11"
 	},
 	"platform": {
 	   "uuid": "angular-container-starter",
@@ -11,56 +11,55 @@
 	},
 	"snapshot": {
 	   "windows": [
-		  {
-			 "layout": {
-				"content": [
-				   {
-					  "type": "row",
+		 {
+		   "layout": {
+			 "content": [
+				{
+				  "type": "row",
+				  "content": [
+					{
+					  "type": "stack",
 					  "content": [
 						 {
-							"type": "stack",
-							"content": [
-							   {
-								  "type": "component",
-								  "title": "view1",
-								  "componentName": "view",
-								  "componentState": {
-									 "url": "http://localhost:4200/views/view1",
-									 "name": "view1",
-									 "componentName": "view",
-									 "fdc3InteropApi": "1.2",
-									 "interop": {
-										"currentContextGroup": "green"
-									 }
-								  }
-							   }
-							]
-						 },
-						 {
-							"type": "stack",
-							"content": [
-							   {
-								  "type": "component",
-								  "title": "view2",
-								  "componentName": "view",
-								  "componentState": {
-									 "url": "http://localhost:4200/views/view2",
-									 "name": "view2",
-									 "componentName": "view",
-									 "fdc3InteropApi": "1.2",
-									 "interop": {
-										"currentContextGroup": "green"
-									 }
-								  }
-							   }
-							]
+						   "type": "component",
+						   "title": "view1",
+						   "componentName": "view",
+						   "componentState": {
+							 "url": "http://localhost:4200/views/view1",
+							 "name": "view1",
+							 "componentName": "view",
+							 "fdc3InteropApi": "1.2",
+							 "interop": {
+							   "currentContextGroup": "green"
+							 }
+						   }
 						 }
 					  ]
-				   }
-				]
-			 }
-		  }
+					},
+					{
+					  "type": "stack",
+					  "content": [
+						 {
+						   "type": "component",
+						   "title": "view2",
+						   "componentName": "view",
+						   "componentState": {
+							 "url": "http://localhost:4200/views/view2",
+							 "name": "view2",
+							 "componentName": "view",
+							 "fdc3InteropApi": "1.2",
+							 "interop": {
+							   "currentContextGroup": "green"
+							 }
+						   }
+						 }
+					  ]
+					}
+				  ]
+				}
+			 ]
+		   }
+		 }
 	   ]
 	}
  }
- 

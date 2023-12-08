@@ -9,7 +9,7 @@ npx create-react-app@latest container --template typescript
 ## Add dependencies
 
 ```shell
-npm install @openfin/core openfin-adapter @finos/fdc3 openfin-notifications react-router-dom
+npm install @openfin/core @openfin/workspace @openfin/node-adapter @finos/fdc3 react-router-dom
 ```
 
 ## Add script to package.json
@@ -99,7 +99,7 @@ export default App;
 {
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "32.114.76.20"
+      "version": "33.116.77.11"
    },
    "platform": {
       "uuid": "react-container-starter",
@@ -169,6 +169,7 @@ export default App;
 import { fin } from "@openfin/core";
 import React, { useEffect, useState } from 'react';
 import logo from '../logo.svg';
+import * as Notifications from "@openfin/workspace/notifications";
 
 function Provider() {
    const [message, setMessage] = useState("");
@@ -179,7 +180,16 @@ function Provider() {
          if (fin) {
             try {
                await fin.Platform.init({});
-               runtimeAvailable = true;
+
+               await Notifications.register({
+                  notificationsPlatformOptions: {
+                     id: fin.me.identity.uuid,
+                     title: "React Container Starter",
+                     icon: "http://localhost:3000/favicon.ico"
+                  }
+                });
+
+                runtimeAvailable = true;
             } catch {
             }
          }
@@ -220,14 +230,16 @@ export default Provider;
 ## Add src/views/View1.tsx
 
 ```tsx
+import { fin } from "@openfin/core";
 import React from 'react';
 import logo from '../logo.svg';
-import * as Notifications from "openfin-notifications";
+import * as Notifications from "@openfin/workspace/notifications";
 import "@finos/fdc3";
 
 function View1() {
    async function showNotification() {
       await Notifications.create({
+         platform: fin.me.identity.uuid,
          title: "Simple Notification",
          body: "This is a simple notification",
          toast: "transient",

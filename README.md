@@ -16,3 +16,12 @@ The frameworks with examples can be found in the following folders.
 The current main branch always matches the stable release of the OpenFin components.
 
 There are older branches which match the container/workspace release with the version of the frameworks that were available at the time of release.
+
+## Versions
+
+This branch covers the following versions:
+
+* OpenFin Workspace 16.0.9
+* OpenFin Notifications 2.1.2
+* Angular 17.0.0
+* React 18.2.0
