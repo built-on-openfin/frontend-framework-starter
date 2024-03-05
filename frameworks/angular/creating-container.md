@@ -18,7 +18,7 @@ npm install @openfin/core @openfin/workspace @openfin/node-adapter @finos/fdc3
 ```json
 "scripts": {
    ...
-   "client": "node launch.mjs http://127.0.0.1:4200/assets/platform/manifest.fin.json"
+   "client": "node launch.mjs http://localhost:4200/assets/platform/manifest.fin.json"
 }
 ```
 
@@ -524,7 +524,7 @@ export class View2Component {
       } else {
          console.error("FDC3 is not available");
       }
-   }   
+   }
 
    async listenForFDC3ContextAppChannel() {
       if (window.fdc3) {
@@ -536,7 +536,7 @@ export class View2Component {
       } else {
          console.error("FDC3 is not available");
       }
-   }   
+   }
 }
 
 ```

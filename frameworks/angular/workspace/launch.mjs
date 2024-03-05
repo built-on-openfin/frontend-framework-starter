@@ -98,7 +98,7 @@ async function launchFromNode(manifestUrl, exitMethod) {
 		// We will use the port to connect from Node to determine when OpenFin exists.
 		const fin = await connect({
 			uuid: `dev-connection-${Date.now()}`, // Supply an addressable Id for the connection
-			address: `ws://127.0.0.1:${port}`, // Connect to the given port.
+			address: `ws://localhost:${port}`, // Connect to the given port.
 			nonPersistent: true // We want OpenFin to exit as our application exists.
 		});
 
