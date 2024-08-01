@@ -2,14 +2,14 @@
   "licenseKey": "openfin-demo-license-key",
   "runtime": {
     "arguments": "--v=1 --inspect",
-    "version": "36.122.80.11"
+    "version": "38.126.82.61"
   },
   "platform": {
-    "uuid": "angular-workspace-starter",
+    "uuid": "angular-workspace-next-workspace-starter",
     "icon": "http://localhost:4200/favicon.ico",
     "autoShow": true,
-    "providerUrl": "http://localhost:4200/platform/provider",
-    "preventQuitOnLastWindowClosed": true
+    "providerUrl": "http://localhost:4200/provider",
+    "preventQuitOnLastWindowClosed": false
   },
   "shortcut": {
     "company": "OpenFin",
@@ -20,7 +20,7 @@
   },
   "supportInformation": {
     "company": "OpenFin",
-    "product": "Workspace Starter - Angular Workspace Starter",
+    "product": "Workspace Starter - Angular Signals Workspace Starter",
     "email": "support@openfin.co",
     "forwardErrorReports": true
   },
@@ -31,7 +31,7 @@
         "name": "angular-view1",
         "title": "Angular View 1",
         "description": "Display the Angular View 1",
-        "manifest": "http://localhost:4200/assets/views/view1.fin.json",
+        "manifest": "http://localhost:4200/view1.fin.json",
         "manifestType": "view",
         "icons": [
           {
@@ -50,7 +50,7 @@
         "name": "angular-view2",
         "title": "Angular View 2",
         "description": "Display the Angular View 2",
-        "manifest": "http://localhost:4200/assets/views/view2.fin.json",
+        "manifest": "http://localhost:4200/view2.fin.json",
         "manifestType": "view",
         "icons": [
           {

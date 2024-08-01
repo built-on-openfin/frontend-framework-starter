@@ -1,42 +1,69 @@
-import { Component, NgZone } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from "@angular/core";
+import { Subscription } from "rxjs";
+import { ChannelService } from "../services/channel.service";
+import { ContextService } from "../services/context.service";
 
 @Component({
-  selector: 'app-view2',
-  templateUrl: './view2.component.html'
+	standalone: true,
+	selector: "app-view2",
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	imports: [CommonModule],
+	template: `
+		<div class="col fill gap20">
+			<header class="row spread middle">
+				<div class="col">
+					<h1>OpenFin Angular View 2</h1>
+					<h1 class="tag">Angular app view in an OpenFin workspace</h1>
+				</div>
+				<div class="row middle gap10">
+					<img src="logo.svg" alt="OpenFin" height="40px" />
+				</div>
+			</header>
+			<main class="col gap10 left width-full">
+				@if (message()) {
+					<fieldset class="width-full">
+						<label htmlFor="message">Context Received</label>
+						<pre id="message" class="width-full" style="min-height: 110px">{{ message() }}</pre>
+					</fieldset>
+					<button (click)="clearMessage()">Clear</button>
+				}
+			</main>
+		</div>
+	`,
 })
-export class View2Component {
-	private _zone: NgZone;
-	public message: string;
+export class View2Component implements OnInit, OnDestroy {
+	private contextService = inject(ContextService);
+	private channelService = inject(ChannelService);
+	private contextSubscription: Subscription | null = null;
+	private channelSubscription: Subscription | null = null;
 
-	constructor(zone: NgZone) {
-		this._zone = zone;
-		this.message = "";
+	message = signal<string>("");
+
+	ngOnInit(): void {
+		this.contextService.registerContextListener("fdc3.instrument");
+		this.contextSubscription = this.contextService.context$.subscribe((context) => {
+			this.message.set(JSON.stringify(context, undefined, "  "));
+		});
+
+		this.channelService.registerChannelListener("CUSTOM-APP-CHANNEL", "fdc3.instrument");
+		this.channelSubscription = this.channelService.channel$.subscribe((context) => {
+			this.message.set(JSON.stringify(context, undefined, "  "));
+		});
 	}
 
-	async ngOnInit() {
-		await this.listenForFDC3Context();
-		await this.listenForFDC3ContextAppChannel();
+	ngOnDestroy() {
+		if (this.contextSubscription) {
+			this.contextSubscription.unsubscribe();
+		}
+		if (this.channelSubscription) {
+			this.channelSubscription.unsubscribe();
+		}
+		this.contextService.removeListener();
+		this.channelService.removeListener();
 	}
 
-	async listenForFDC3Context() {
-		if (window.fdc3) {
-			await window.fdc3.addContextListener((context) => {
-				this._zone.run(() => this.message = JSON.stringify(context, undefined, "  "));
-			});
-		} else {
-			console.error("FDC3 is not available");
-		}
-	}	
-
-	async listenForFDC3ContextAppChannel() {
-		if (window.fdc3) {
-			const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
-
-			await appChannel.addContextListener((context) => {
-				this._zone.run(() => this.message = JSON.stringify(context, undefined, "  "));
-			});
-		} else {
-			console.error("FDC3 is not available");
-		}
-	}	
+	clearMessage() {
+		this.message.set("");
+	}
 }
