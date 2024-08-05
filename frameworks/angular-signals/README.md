@@ -1,9 +1,13 @@
 # OpenFin Front-End Framework Starter: Angular Signals
 
-Demonstrates basic usage patterns using OpenFin Workspace with Angular 17+ where the Signals pattern was introduced.
+Shows usage patterns using OpenFin Workspace with Angular 17+
 
-Also demonstrates newer patterns encouraged in the Angular community:
-- [Standalone components](https://v17.angular.io/guide/standalone-components)
+Demonstrates newer patterns and best practices encouraged in the Angular community including:
+- [Standalone components](https://v17.angular.io/guide/standalone-components) without modules
+- [Signals](https://angular.dev/guide/signals) for reactivity and data binding
+- [Strict mode](https://v17.angular.io/guide/strict-mode) following strict esline and TypeScript rules
+- Adherence to [Angular style guide](https://angular.dev/style-guide)
+- Testing with [Jest](https://blog.angular.dev/moving-angular-cli-to-jest-and-web-test-runner-ef85ef69ceca)
 
 ---
 
@@ -27,3 +31,6 @@ npm run workspace
 ```
 
 OpenFin is launched via a Node.js script leveraging [@openfin/node-adapter](https://www.npmjs.com/package/@openfin/node-adapter) to streamline development, rather than to demonstrate a production flow.  
+
+## Testing
+
