@@ -8,6 +8,7 @@ Demonstrates newer patterns and best practices encouraged in the Angular communi
 - [Strict mode](https://v17.angular.io/guide/strict-mode) following strict esline and TypeScript rules
 - Adherence to [Angular style guide](https://angular.dev/style-guide)
 - Testing with [Jest](https://blog.angular.dev/moving-angular-cli-to-jest-and-web-test-runner-ef85ef69ceca)
+- Service pattern with RxJS observables
 
 ---
 

@@ -1,12 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { WorkspaceService } from '../services/workspace.service';
 
 @Component({
   standalone: true,
   selector: 'app-provider',
   templateUrl: './provider.component.html',
-  styleUrls: ['./provider.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule],
+  providers: [WorkspaceService],
 })
-export class ProviderComponent {}
+export class ProviderComponent implements OnInit {
+  private workspaceService = inject(WorkspaceService);
+
+  ngOnInit(): void {
+    this.workspaceService.init();
+  }
+}

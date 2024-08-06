@@ -2,13 +2,13 @@
   "licenseKey": "openfin-demo-license-key",
   "runtime": {
     "arguments": "--v=1 --inspect",
-    "version": "stable"
+    "version": "36.122.80.11"
   },
   "platform": {
     "uuid": "angular-signals-workspace-starter",
     "icon": "http://localhost:4200/favicon.ico",
     "autoShow": true,
-    "providerUrl": "http://localhost:4200/platform/provider",
+    "providerUrl": "http://localhost:4200/provider",
     "preventQuitOnLastWindowClosed": false
   },
   "shortcut": {
