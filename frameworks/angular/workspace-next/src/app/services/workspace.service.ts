@@ -67,8 +67,10 @@ export class WorkspaceService {
   }): Promise<void> {
     await this.dockService.register(platformSettings, customSettings?.apps);
     await this.homeService.register(platformSettings);
-    await this.notificationsService.register(platformSettings);
     await this.storeService.register(platformSettings);
+
+    // WIP
+    // await this.notificationsService.register(platformSettings);
   }
 
   async deregister() {

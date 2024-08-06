@@ -5,7 +5,7 @@
     "version": "36.122.80.11"
   },
   "platform": {
-    "uuid": "angular-signals-workspace-starter",
+    "uuid": "angular-workspace-next-workspace-starter",
     "icon": "http://localhost:4200/favicon.ico",
     "autoShow": true,
     "providerUrl": "http://localhost:4200/provider",
