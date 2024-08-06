@@ -15,7 +15,7 @@
     "company": "OpenFin",
     "description": "A way of showing examples of what OpenFin can do.",
     "icon": "http://localhost:4200/favicon.ico",
-    "name": "Angular Signals Workspace Starter",
+    "name": "Angular Workspace Starter",
     "target": ["desktop", "start-menu"]
   },
   "supportInformation": {
