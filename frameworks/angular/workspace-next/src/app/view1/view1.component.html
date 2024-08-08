@@ -1,1 +1,16 @@
-<h1>View 1</h1>
+<div class="col fill gap20">
+  <header class="row spread middle">
+    <div class="col">
+      <h1>OpenFin Angular View 1</h1>
+      <h1 class="tag">Angular app view in an OpenFin workspace</h1>
+    </div>
+    <div class="row middle gap10">
+      <img src="../assets/logo.svg" alt="OpenFin" height="40px" />
+    </div>
+  </header>
+  <main class="col gap10 left">
+    <button (click)="showNotification()">Show Notification</button>
+    <button (click)="broadcastFDC3Context()">Broadcast FDC3 Context</button>
+    <button (click)="broadcastFDC3ContextAppChannel()">Broadcast FDC3 Context on App Channel</button>
+  </main>
+</div>
