@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { InteropService } from '../services/interop.service';
+import { ChannelService } from '../services/channel.service';
+import { ContextService } from '../services/context.service';
 import { NotificationsService } from '../services/notifications.service';
 
 @Component({
@@ -10,11 +11,11 @@ import { NotificationsService } from '../services/notifications.service';
   styleUrls: ['./view1.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
-  providers: [NotificationsService, InteropService],
 })
 export class View1Component {
   private notificationService = inject(NotificationsService);
-  private interopService = inject(InteropService);
+  private contextService = inject(ContextService);
+  private channelService = inject(ChannelService);
 
   showNotification(): void {
     this.notificationService.create({
@@ -30,7 +31,7 @@ export class View1Component {
   }
 
   broadcastFDC3Context(): void {
-    this.interopService.broadcast({
+    this.contextService.broadcast({
       type: 'fdc3.instrument',
       name: 'Microsoft Corporation',
       id: {
@@ -40,18 +41,12 @@ export class View1Component {
   }
 
   broadcastFDC3ContextAppChannel(): void {
-    // if (window.fdc3) {
-    //   const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
-    //
-    //   await appChannel.broadcast({
-    //     type: 'fdc3.instrument',
-    //     name: 'Apple Inc.',
-    //     id: {
-    //       ticker: 'AAPL'
-    //     }
-    //   });
-    // } else {
-    //   console.error("FDC3 is not available");
-    // }
+    this.channelService.broadcast('CUSTOM-APP-CHANNEL', {
+      type: 'fdc3.instrument',
+      name: 'Apple Inc.',
+      id: {
+        ticker: 'AAPL',
+      },
+    });
   }
 }

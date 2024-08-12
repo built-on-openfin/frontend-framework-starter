@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { InteropService } from '../services/interop.service';
+import { ChannelService } from '../services/channel.service';
+import { ContextService } from '../services/context.service';
 
 @Component({
   standalone: true,
@@ -12,15 +13,21 @@ import { InteropService } from '../services/interop.service';
   imports: [CommonModule],
 })
 export class View2Component implements OnInit, OnDestroy {
-  private interopService = inject(InteropService);
+  private contextService = inject(ContextService);
+  private channelService = inject(ChannelService);
   private contextSubscription: Subscription | null = null;
+  private channelSubscription: Subscription | null = null;
 
   message = signal<string>('');
 
   ngOnInit(): void {
-    this.interopService.registerListener();
-    this.contextSubscription = this.interopService.context$.subscribe((context) => {
-      console.log('Received context:', context);
+    this.contextService.registerContextListener('fdc3.instrument');
+    this.contextSubscription = this.contextService.context$.subscribe((context) => {
+      this.message.set(JSON.stringify(context, undefined, '  '));
+    });
+
+    this.channelService.registerChannelListener('CUSTOM-APP-CHANNEL', 'fdc3.instrument');
+    this.channelSubscription = this.channelService.channel$.subscribe((context) => {
       this.message.set(JSON.stringify(context, undefined, '  '));
     });
   }
@@ -29,7 +36,11 @@ export class View2Component implements OnInit, OnDestroy {
     if (this.contextSubscription) {
       this.contextSubscription.unsubscribe();
     }
-    this.interopService.removeListener();
+    if (this.channelSubscription) {
+      this.channelSubscription.unsubscribe();
+    }
+    this.contextService.removeListener();
+    this.channelService.removeListener();
   }
 
   clearMessage() {

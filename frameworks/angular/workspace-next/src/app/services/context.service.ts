@@ -4,8 +4,11 @@ import type { Context } from '@finos/fdc3';
 import { Listener } from '@finos/fdc3/src/api/Listener';
 import { Observable, shareReplay, Subject } from 'rxjs';
 
+/**
+ * Demonstrates the use of a general fdc3 broadcast of context
+ */
 @Injectable({ providedIn: 'root' })
-export class InteropService {
+export class ContextService {
   private contextSubject = new Subject();
   private listenerRef: Listener | null = null;
 
@@ -19,16 +22,17 @@ export class InteropService {
   }
 
   broadcast(context: Context): void {
-    console.log('Broadcasting fdc3 context', context);
+    console.log('ContextService: Broadcasting fdc3 context', context);
     window.fdc3?.broadcast(context);
   }
 
-  registerListener(contextType: string | null = null): void {
+  registerContextListener(contextType: string | null = null): void {
     if (this.listenerRef) {
-      console.warn('Listener already registered, removing old listener');
+      console.warn('ContextService: Listener already registered, removing old listener');
       this.removeListener();
     }
     this.listenerRef = window.fdc3?.addContextListener(contextType, (context) => {
+      console.log('ContextService: received message', context);
       this.contextSubject.next(context);
     });
   }
