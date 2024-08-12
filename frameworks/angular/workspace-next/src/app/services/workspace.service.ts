@@ -37,7 +37,7 @@ export class WorkspaceService {
       await platform.once('platform-api-ready', async () => {
         await this.registerComponents(settings);
 
-        // In this example, we want to show all the components when we start the platform (they are hidden by default)
+        // Show the components we want to show the user at startup (they are hidden by default)
         this.homeService.show();
         this.dockService.show();
 

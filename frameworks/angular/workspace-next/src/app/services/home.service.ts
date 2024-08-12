@@ -10,11 +10,11 @@ export class HomeService {
     const homeProvider: HomeProvider = {
       ...platformSettings,
       onUserInput: async (request: HomeSearchListenerRequest, response: HomeSearchListenerResponse) => {
-        // Here you decide what to do with the user input into the home search box
-        // In this example we simulate an asynchronous lookup and return results via the response
-        // function provided in the parameters
+        // Here you decide what to do with the user input
+        // In this example we simulate an asynchronous lookup and return results via the response param
 
         const queryLower = request.query.toLowerCase();
+        console.log(queryLower);
 
         // Async results
         response.respond([]);

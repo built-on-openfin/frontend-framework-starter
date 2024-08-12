@@ -7,7 +7,7 @@
   "platform": {
     "uuid": "angular-workspace-next-workspace-starter",
     "icon": "http://localhost:4200/favicon.ico",
-    "autoShow": false,
+    "autoShow": true,
     "providerUrl": "http://localhost:4200/provider",
     "preventQuitOnLastWindowClosed": false
   },
