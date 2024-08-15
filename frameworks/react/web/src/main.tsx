@@ -1,10 +1,19 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "@openfin/core-web/styles.css";
+import "./index.css";
+import { init } from "./provider.ts";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+init()
+	.then(() => {
+		console.log("Created the OpenFin Web Layout.");
+		return true;
+	})
+	.catch((err) => console.error(err));
+
+createRoot(document.getElementById("root")!).render(
+	<StrictMode>
+		<App />
+	</StrictMode>,
+);

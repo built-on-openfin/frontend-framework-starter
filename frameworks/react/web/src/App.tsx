@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<>
+			<header className="row spread middle">
+				<div className="col">
+					<h1>Web Layout Basic Example</h1>
+					<h1 className="tag">Demonstrate a very basic layout with generic content</h1>
+				</div>
+				<div className="row middle gap20">
+					<img src="./icon-blue.png" alt="OpenFin" height="40px"></img>
+				</div>
+			</header>
+			<main className="row fill gap10">
+				<div className="row fill" id="main-page">
+					<div id="layout_container" className="col fill"></div>
+				</div>
+			</main>
+		</>
+	);
 }
 
-export default App
+export default App;
