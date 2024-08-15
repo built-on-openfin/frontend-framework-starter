@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes } from "@angular/router";
 
 /*
 Routes for OpenFin sample application
@@ -11,16 +11,16 @@ so that the whole application isn't bootstrapped when opening an individual wind
 (Note for standalone components use loadComponent and not loadChildren)
 */
 export const routes: Routes = [
-  {
-    path: 'provider',
-    loadComponent: () => import('./provider/provider.component').then((m) => m.ProviderComponent),
-  },
-  {
-    path: 'view1',
-    loadComponent: () => import('./view1/view1.component').then((m) => m.View1Component),
-  },
-  {
-    path: 'view2',
-    loadComponent: () => import('./view2/view2.component').then((m) => m.View2Component),
-  },
+	{
+		path: "provider",
+		loadComponent: () => import("./provider/provider.component").then((m) => m.ProviderComponent),
+	},
+	{
+		path: "view1",
+		loadComponent: () => import("./view1/view1.component").then((m) => m.View1Component),
+	},
+	{
+		path: "view2",
+		loadComponent: () => import("./view2/view2.component").then((m) => m.View2Component),
+	},
 ];

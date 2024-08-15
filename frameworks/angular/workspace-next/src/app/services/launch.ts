@@ -8,7 +8,7 @@ import { AppManifestType, getCurrentSync } from "@openfin/workspace-platform";
  * @returns The value returned by the launch.
  */
 export async function launchApp(
-	app: App
+	app: App,
 ): Promise<OpenFin.Platform | OpenFin.Identity | OpenFin.View | OpenFin.Application | undefined> {
 	if (!app.manifest) {
 		console.error(`No manifest was provided for type ${app.manifestType}`);

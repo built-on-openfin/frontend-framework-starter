@@ -1,22 +1,20 @@
 <div class="col fill gap20">
-  <header class="row spread middle">
-    <div class="col">
-      <h1>OpenFin Angular View 2</h1>
-      <h1 class="tag">Angular app view in an OpenFin workspace</h1>
-    </div>
-    <div class="row middle gap10">
-      <img src="../assets/logo.svg" alt="OpenFin" height="40px" />
-    </div>
-  </header>
-  <main class="col gap10 left width-full">
-
-    @if (message()) {
-      <fieldset class="width-full">
-        <label htmlFor="message">Context Received</label>
-        <pre id="message" class="width-full" style="min-height:110px">{{ message() }}</pre>
-      </fieldset>
-      <button (click)="clearMessage()">Clear</button>
-    }
-
-  </main>
+	<header class="row spread middle">
+		<div class="col">
+			<h1>OpenFin Angular View 2</h1>
+			<h1 class="tag">Angular app view in an OpenFin workspace</h1>
+		</div>
+		<div class="row middle gap10">
+			<img src="../assets/logo.svg" alt="OpenFin" height="40px" />
+		</div>
+	</header>
+	<main class="col gap10 left width-full">
+		@if (message()) {
+			<fieldset class="width-full">
+				<label htmlFor="message">Context Received</label>
+				<pre id="message" class="width-full" style="min-height: 110px">{{ message() }}</pre>
+			</fieldset>
+			<button (click)="clearMessage()">Clear</button>
+		}
+	</main>
 </div>

@@ -1,17 +1,17 @@
-import type { App } from '@openfin/workspace';
+import type { App } from "@openfin/workspace";
 
 /**
  * The custom settings stored in the manifest.fin.json.
  */
 export type CustomSettings = {
-  apps?: App[];
+	apps?: App[];
 };
 
 /**
  * The platform settings stored in the manifest.fin.json.
  */
 export type PlatformSettings = {
-  id: string;
-  title: string;
-  icon: string;
+	id: string;
+	title: string;
+	icon: string;
 };
