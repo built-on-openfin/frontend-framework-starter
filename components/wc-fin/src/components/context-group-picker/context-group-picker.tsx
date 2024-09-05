@@ -173,73 +173,79 @@ export class ContextGroupPicker {
 	}
 
 	async updateContextGroup(contextGroupId: string, viewIdentity?: any, deselectOnMatch = true) {
-		let selectedContextGroup = this.availableContextGroups.find(entry => entry.id === contextGroupId);
+		setTimeout(async ()=> {
+			let selectedContextGroup = this.availableContextGroups.find(entry => entry.id === contextGroupId);
 
-		if (selectedContextGroup !== null && selectedContextGroup !== undefined) {
-			if (this.contextGroupId === contextGroupId && deselectOnMatch) {
-				this.updateContextGroupIcon();
-				await this.leaveContextGroup(viewIdentity);
-			} else {
-				let joinAllViews = this.contextGroupId === undefined;
-				this.updateContextGroupIcon(contextGroupId);
-				if (joinAllViews) {
-					await this.joinContextGroup(contextGroupId);
+			if (selectedContextGroup !== null && selectedContextGroup !== undefined) {
+				if (this.contextGroupId === contextGroupId && deselectOnMatch) {
+					this.updateContextGroupIcon();
+					await this.leaveContextGroup(viewIdentity);
 				} else {
-					await this.joinContextGroup(contextGroupId, viewIdentity);
+					let joinAllViews = this.contextGroupId === undefined;
+					this.updateContextGroupIcon(contextGroupId);
+					if (joinAllViews) {
+						await this.joinContextGroup(contextGroupId);
+					} else {
+						await this.joinContextGroup(contextGroupId, viewIdentity);
+					}
 				}
+	
+				await this.saveSelectedContextGroup(this.contextGroupId);
+				this.showContextGroupList = false;
 			}
-
-			await this.saveSelectedContextGroup(this.contextGroupId);
-			this.showContextGroupList = false;
-		}
+		}, 1000);
 	}
 
 	private async getTargetContextGroup(name?: string): Promise<string> {
-		let targets: { name: string }[] = [];
+		return new Promise((resolve) => {
+			setTimeout(async () => {
+				let targets: { name: string }[] = [];
 
-		if(name !== undefined && this.bindSelf && !this.bindViews) {
-			targets.push({ name });
-		} else if(this.bindViews) {
-			const views = await this.getViews();
-			targets.push(...views);
-		}
-		if (targets.length > 0) {
-			const groupCounts: { [key: string]: number } = {};
+				if(name !== undefined && this.bindSelf && !this.bindViews) {
+					targets.push({ name });
+				} else if(this.bindViews) {
+					const views = await this.getViews();
+					targets.push(...views);
+				}
+				if (targets.length > 0) {
+					const groupCounts: { [key: string]: number } = {};
 
-			for (let i = 0; i < this.availableContextGroups.length; i++) {
-				const group = this.availableContextGroups[i];
-				const contextGroupClients: { name: string }[] = await fin.me.interop.getAllClientsInContextGroup(group.id);
+					for (let i = 0; i < this.availableContextGroups.length; i++) {
+						const group = this.availableContextGroups[i];
+						const contextGroupClients: { name: string }[] = await fin.me.interop.getAllClientsInContextGroup(group.id);
 
-				// Initialize the count for this group
-				groupCounts[group.id] = 0;
+						// Initialize the count for this group
+						groupCounts[group.id] = 0;
 
-				// Count the number of views in this context group
-				for (const target of targets) {
-					if (contextGroupClients.some(client => client.name === target.name)) {
-						groupCounts[group.id]++;
-						if(targets.length === 1) {
-							// if we are only checking one target and we have a match then we can break early
-							break;
+						// Count the number of views in this context group
+						for (const target of targets) {
+							if (contextGroupClients.some(client => client.name === target.name)) {
+								groupCounts[group.id]++;
+								if(targets.length === 1) {
+									// if we are only checking one target and we have a match then we can break early
+									break;
+								}
+							}
 						}
 					}
+
+					// Find the context group with the maximum count
+					let targetGroupId = this.contextGroupId;
+					let maxCount = 0;
+
+					for (const groupId in groupCounts) {
+						if (groupCounts[groupId] > maxCount) {
+							maxCount = groupCounts[groupId];
+							targetGroupId = groupId;
+						}
+					}
+
+					resolve(targetGroupId);
+				} else {
+					resolve(this.contextGroupId);
 				}
-			}
-
-			// Find the context group with the maximum count
-			let targetGroupId = this.contextGroupId;
-			let maxCount = 0;
-
-			for (const groupId in groupCounts) {
-				if (groupCounts[groupId] > maxCount) {
-					maxCount = groupCounts[groupId];
-					targetGroupId = groupId;
-				}
-			}
-
-			return targetGroupId;
-		}
-
-		return this.contextGroupId;
+			}, 1000);
+		});
 	}
 
 	private showContextList() {
@@ -269,27 +275,48 @@ export class ContextGroupPicker {
 	}
 
 	private async getCurrentContextGroup(): Promise<string> {
-		let selectedContextGroup: string;
-		if(fin.me.getOptions !== undefined) {
-			let options = await fin.me.getOptions();
+		return new Promise((resolve) => {
+			setTimeout(async () => {
+				let selectedContextGroup: string;
+				if(fin.me.getOptions !== undefined) {
+					let options = await fin.me.getOptions();
 
-			if (options.interop !== undefined && options.interop.currentContextGroup !== undefined) {
-				selectedContextGroup = options.interop.currentContextGroup;
-			} else if (
-				this.bindSelf === false &&
-				options.customData !== undefined &&
-				options.customData.selectedContextGroup !== undefined
-			) {
-				selectedContextGroup = options.customData.selectedContextGroup;
-			}			
-		} else if(window["fdc3"] !== undefined) {
-			const currentContextGroup = await window["fdc3"].getCurrentChannel();
-			selectedContextGroup = currentContextGroup.id;
-		} else {
-			// if we don't have access to any of the above options then go through context groups looking for a match for the current identity.
-			selectedContextGroup = await this.getTargetContextGroup(fin.me.identity.name)
-		}
-		return selectedContextGroup;
+					if (options.interop !== undefined && options.interop.currentContextGroup !== undefined) {
+						selectedContextGroup = options.interop.currentContextGroup;
+					} else if (
+						this.bindSelf === false &&
+						options.customData !== undefined &&
+						options.customData.selectedContextGroup !== undefined
+					) {
+						selectedContextGroup = options.customData.selectedContextGroup;
+					}			
+				} else if(window["fdc3"] !== undefined) {
+					const currentContextGroup = await window["fdc3"].getCurrentChannel();
+					selectedContextGroup = currentContextGroup.id;
+				} else {
+					// if we don't have access to any of the above options then go through context groups looking for a match for the current identity.
+					selectedContextGroup = await this.getTargetContextGroup(fin.me.identity.name)
+				}
+				resolve(selectedContextGroup);
+			}, 1000);
+		});
+	}
+
+	private monitor() {
+		setTimeout(async () => {
+			let currentContextGroup: string | undefined;
+
+			if(this.bindSelf) {
+				currentContextGroup = await this.getCurrentContextGroup();
+			} else if(this.bindViews) {
+				currentContextGroup = await this.getTargetContextGroup();
+			}
+
+			if(currentContextGroup !== undefined) {
+				this.updateContextGroupIcon(currentContextGroup);
+			}
+			this.monitor();
+		}, 2000);
 	}
 
 	private async setupContextPicker() {
@@ -298,13 +325,11 @@ export class ContextGroupPicker {
 				let win = await fin.Window.getCurrent();
 				win.on('view-attached', async attachedView => {
 					if (this.contextGroupId !== undefined) {
-						setTimeout(async () => {
-							await this.updateContextGroup(
-								this.contextGroupId,
-								attachedView.viewIdentity,
-								false,
-							);
-						}, 1000);
+						await this.updateContextGroup(
+							this.contextGroupId,
+							attachedView.viewIdentity,
+							false,
+						);
 					} else {
 						let view = fin.View.wrapSync(attachedView.viewIdentity);
 						let options = await view.getOptions();
@@ -333,44 +358,26 @@ export class ContextGroupPicker {
 				const urlParams = new URLSearchParams(window.location.search);
 				const contextGroupId = urlParams.get('contextGroupId');
 				if (contextGroupId !== undefined && contextGroupId !== null) {
-					setTimeout(async () => {
-						await this.updateContextGroup(contextGroupId);
-					}, 1000);
+					await this.updateContextGroup(contextGroupId);
 				}
 			}
 
 			if (this.contextGroupId === undefined) {
-				setTimeout(async () => {
 					let selectedContextGroup: string = await this.getCurrentContextGroup();
 					await this.updateContextGroup(selectedContextGroup);
-				}, 1000);
 			}
 
 			if(this.isMonitoringEnabled) {
 				// for now this is an interval check which works across all environments
-				setInterval(async () => {
-					let currentContextGroup: string | undefined;
-
-					if(this.bindSelf) {
-						currentContextGroup = await this.getCurrentContextGroup();
-					} else if(this.bindViews) {
-						currentContextGroup = await this.getTargetContextGroup();
-					}
-
-					if(currentContextGroup !== undefined) {
-						this.updateContextGroupIcon(currentContextGroup);
-					}
-				}, 2000);
+				this.monitor();
 			}
 
 			if(this.bindViews && !this.bindSelf) {
-				setTimeout(async () => {
 					const majorityContextGroup = await this.getTargetContextGroup();
 					if (this.contextGroupId !== majorityContextGroup) {
 						await this.updateContextGroup(majorityContextGroup);
 					}
 					window.addEventListener(this.contextGroupRefreshEventId, async (event: CustomEvent) => {
-						setTimeout(async () => {
 							// the trigger may be a layout being created/removed and the view may not have been applied yet.
 							if(event.detail !== null && event.detail !== undefined &&
 								event.detail.contextGroupId !== null && 
@@ -380,10 +387,7 @@ export class ContextGroupPicker {
 								const majorityContextGroup = await this.getTargetContextGroup();
 								this.updateContextGroupIcon(majorityContextGroup);
 							}
-	
-						}, 1000);
 					});
-				}, 1000);
 			}
 		}
 	}
