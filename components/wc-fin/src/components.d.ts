@@ -16,6 +16,14 @@ export namespace Components {
          */
         "bindViews": boolean;
         /**
+          * The DOM event this component should listen for to refresh the context group icon.  If the event is passed a contextGroupId in the detail then it will update the icon to that context group otherwise it will try and determine it. Only used when bindViews is true and bindSelf is false.
+         */
+        "contextGroupRefreshEventId": string;
+        /**
+          * Should the component monitor to see if the context group for the hosting page (if bind self is true) has been assigned to a context group outside of the context group picker. Useful for views that allow selection but can be set by the host.
+         */
+        "isMonitoringEnabled": boolean;
+        /**
           * Support setting context group by Querystring: ?contextGroupId=green
          */
         "isQueryStringEnabled": boolean;
@@ -44,6 +52,10 @@ export namespace Components {
          */
         "unselectedColor": string;
         /**
+          * What should the no context group selected line color be
+         */
+        "unselectedLineColor": string;
+        /**
           * What should the tooltip show when no context group is selected
          */
         "unselectedText": string;
@@ -70,6 +82,14 @@ declare namespace LocalJSX {
           * Bind views on Context Selection. Only supported when the control is on a window with childViews
          */
         "bindViews"?: boolean;
+        /**
+          * The DOM event this component should listen for to refresh the context group icon.  If the event is passed a contextGroupId in the detail then it will update the icon to that context group otherwise it will try and determine it. Only used when bindViews is true and bindSelf is false.
+         */
+        "contextGroupRefreshEventId"?: string;
+        /**
+          * Should the component monitor to see if the context group for the hosting page (if bind self is true) has been assigned to a context group outside of the context group picker. Useful for views that allow selection but can be set by the host.
+         */
+        "isMonitoringEnabled"?: boolean;
         /**
           * Support setting context group by Querystring: ?contextGroupId=green
          */
@@ -98,6 +118,10 @@ declare namespace LocalJSX {
           * What should the no context group selected color be
          */
         "unselectedColor"?: string;
+        /**
+          * What should the no context group selected line color be
+         */
+        "unselectedLineColor"?: string;
         /**
           * What should the tooltip show when no context group is selected
          */
