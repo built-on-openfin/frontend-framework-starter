@@ -1,7 +1,7 @@
 {
   "runtime": {
     "arguments": "--v=1 --inspect",
-    "version": "34.118.78.80"
+    "version": "36.122.80.11"
   },
   "platform": {
     "uuid": "react-container-starter",
