@@ -1,13 +1,13 @@
 {
   "name": "angular-workspace-starter",
-  "version": "16.0.0",
+  "version": "17.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-	"client": "node launch.mjs http://127.0.0.1:4200/assets/platform/manifest.fin.json"
+    "client": "node launch.mjs http://localhost:4200/assets/platform/manifest.fin.json"
   },
   "private": true,
   "dependencies": {
@@ -19,11 +19,11 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
-	"@finos/fdc3": "2.0.3",
-    "@openfin/core": "33.77.11",
-	"@openfin/workspace": "16.0.9",
-	"@openfin/workspace-platform": "16.0.9",
-    "@openfin/node-adapter": "33.77.11",
+    "@finos/fdc3": "2.0.3",
+    "@openfin/core": "34.78.80",
+    "@openfin/workspace": "17.0.15",
+    "@openfin/workspace-platform": "17.0.15",
+    "@openfin/node-adapter": "34.78.80",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

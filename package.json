@@ -1,15 +1,15 @@
 {
-	"name": "frontend-framework-starter",
-	"version": "16.0.0",
-	"description": "Examples using OpenFin with frontend frameworks",
-	"scripts": {
-		"remove-packages": "npx --yes rimraf --glob **/node_modules && npx rimraf --glob **/package-lock.json",
-		"list-update-packages": "npx --yes npm-check-updates --deep > updatable-packages.txt",
-		"update-packages": "npx --yes npm-check-updates --upgrade --deep -x @openfin/core,@openfin/node-adapter,@openfin/workspace,@openfin/workspace-platform"
-	},
-	"contributors": [
-		"joe.ransegnola@openfin.co",
-		"martyn.janes@openfin.co"
-	],
-	"license": "SEE LICENSE IN LICENSE.MD"
+  "name": "frontend-framework-starter",
+  "version": "17.0.0",
+  "description": "Examples using OpenFin with frontend frameworks",
+  "scripts": {
+    "remove-packages": "npx --yes rimraf --glob **/node_modules && npx rimraf --glob **/package-lock.json",
+    "list-update-packages": "npx --yes npm-check-updates --deep > updatable-packages.txt",
+    "update-packages": "npx --yes npm-check-updates --upgrade --deep -x @openfin/core,@openfin/node-adapter,@openfin/workspace,@openfin/workspace-platform"
+  },
+  "contributors": [
+    "joe.ransegnola@openfin.co",
+    "martyn.janes@openfin.co"
+  ],
+  "license": "SEE LICENSE IN LICENSE.MD"
 }

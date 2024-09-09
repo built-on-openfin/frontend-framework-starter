@@ -21,7 +21,6 @@ There are older branches which match the container/workspace release with the ve
 
 This branch covers the following versions:
 
-* OpenFin Workspace 16.0.9
-* OpenFin Notifications 2.1.2
+* OpenFin Workspace 17.0.15
 * Angular 17.0.0
 * React 18.2.0
