@@ -1,7 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { Storefront, StorefrontTemplate, StoreRegistration } from "@openfin/workspace";
-import { Observable } from "rxjs";
-import { fromPromise } from "rxjs/internal/observable/innerFrom";
+import { from, Observable } from "rxjs";
 import { launchApp } from "./launch";
 import { SettingsService } from "./settings.service";
 import { PlatformSettings } from "./types";
@@ -15,7 +14,7 @@ export class StoreService {
 
 		const apps = this.settingsService.getApps();
 
-		return fromPromise(
+		return from(
 			Storefront.register({
 				...platformSettings,
 				getNavigation: async () => [

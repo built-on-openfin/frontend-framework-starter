@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import "@finos/fdc3";
 import type { Context } from "@finos/fdc3";
-import { Listener } from "@finos/fdc3/src/api/Listener";
+import { Listener } from "@finos/fdc3";
 import { Observable, shareReplay, Subject } from "rxjs";
 
 /**

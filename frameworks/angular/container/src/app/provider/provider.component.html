@@ -5,12 +5,15 @@
 			<h1 class="tag">Container platform window</h1>
 		</div>
 		<div class="row middle gap10">
-			<img src="../../assets/logo.svg" alt="OpenFin" height="40px" />
+			<img src="logo.svg" alt="OpenFin" height="40px" />
 		</div>
 	</header>
 	<main class="col gap10">
 		<p>This is the platform window, which initializes the platform.</p>
-		<p>The window would usually be hidden, you can make it hidden on startup by setting the platform.autoShow flag to false in the manifest.fin.json</p>
-		<p>{{message}}</p>
+		<p>
+			The window would usually be hidden, you can make it hidden on startup by setting the
+			platform.autoShow flag to false in the manifest.fin.json
+		</p>
+		<p class="message">Status: {{ message() }}</p>
 	</main>
 </div>

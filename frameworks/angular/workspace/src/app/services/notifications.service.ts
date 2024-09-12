@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { fin } from "@openfin/core";
 import { addEventListener, create, NotificationOptions, register } from "@openfin/workspace/notifications";
-import { fromPromise } from "rxjs/internal/observable/innerFrom";
+import { from } from "rxjs";
 import { PlatformSettings } from "./types";
 
 /**
@@ -16,7 +16,7 @@ export class NotificationsService {
 			console.log("action", event);
 		});
 
-		return fromPromise(
+		return from(
 			register({
 				notificationsPlatformOptions: platformSettings,
 			}),

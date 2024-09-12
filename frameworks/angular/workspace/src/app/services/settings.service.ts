@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { App } from "@openfin/workspace";
-import { BehaviorSubject, map, Observable, tap } from "rxjs";
-import { fromPromise } from "rxjs/internal/observable/innerFrom";
+import { BehaviorSubject, from, map, Observable, tap } from "rxjs";
 import { CustomSettings, ManifestWithCustomSettings, PlatformSettings } from "./types";
 
 @Injectable({ providedIn: "root" })
@@ -17,7 +16,7 @@ export class SettingsService {
 		customSettings?: CustomSettings;
 	}> {
 		const app = fin.Application.getCurrentSync();
-		return fromPromise(app.getManifest()).pipe(
+		return from(app.getManifest()).pipe(
 			map((manifest: ManifestWithCustomSettings) => ({
 				platformSettings: {
 					id: manifest.platform?.uuid ?? "",

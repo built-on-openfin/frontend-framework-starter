@@ -10,8 +10,7 @@ import {
 	HomeSearchListenerResponse,
 	HomeSearchResult,
 } from "@openfin/workspace";
-import { Observable } from "rxjs";
-import { fromPromise } from "rxjs/internal/observable/innerFrom";
+import { from, Observable } from "rxjs";
 import { launchApp } from "./launch";
 import { SettingsService } from "./settings.service";
 import { PlatformSettings } from "./types";
@@ -53,7 +52,7 @@ export class HomeService {
 			},
 		};
 
-		return fromPromise(Home.register(homeProvider));
+		return from(Home.register(homeProvider));
 	}
 
 	show(): Promise<void> {

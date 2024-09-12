@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
-import "@finos/fdc3";
 import type { Context } from "@finos/fdc3";
-import { Listener } from "@finos/fdc3/src/api/Listener";
+import { Listener } from "@finos/fdc3";
 import { Observable, shareReplay, Subject } from "rxjs";
 
 /**
@@ -26,12 +25,12 @@ export class ContextService {
 		window.fdc3?.broadcast(context);
 	}
 
-	registerContextListener(contextType: string | null = null): void {
+	async registerContextListener(contextType: string | null = null): Promise<void> {
 		if (this.listenerRef) {
 			console.warn("ContextService: Listener already registered, removing old listener");
 			this.removeListener();
 		}
-		this.listenerRef = window.fdc3?.addContextListener(contextType, (context) => {
+		this.listenerRef = await window.fdc3?.addContextListener(contextType, (context) => {
 			console.log("ContextService: received message", context);
 			this.contextSubject.next(context);
 		});

@@ -52,7 +52,7 @@ export class WorkspaceService {
 		return new Observable<void>((observer) => {
 			const platform = fin.Platform.getCurrentSync();
 			platform.once("platform-api-ready", () => {
-				this.status$.next("Platform ready");
+				this.status$.next("Platform api ready...");
 				observer.next();
 				observer.complete();
 			});
@@ -66,6 +66,7 @@ export class WorkspaceService {
 		platformSettings: PlatformSettings;
 		customSettings?: CustomSettings;
 	}): Observable<any> {
+		this.status$.next("Registering workspace components...");
 		return forkJoin([
 			this.dockService.register(platformSettings, customSettings?.apps),
 			this.homeService.register(platformSettings),

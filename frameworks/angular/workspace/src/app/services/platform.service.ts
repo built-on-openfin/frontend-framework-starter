@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import type { App } from "@openfin/workspace";
 import { CustomActionCallerType, init } from "@openfin/workspace-platform";
-import { Observable } from "rxjs";
-import { fromPromise } from "rxjs/internal/observable/innerFrom";
+import { from, Observable } from "rxjs";
 import { launchApp } from "./launch";
 import type { PlatformSettings } from "./types";
 
@@ -11,7 +10,7 @@ export class PlatformService {
 	initializeWorkspacePlatform(platformSettings: PlatformSettings): Observable<void> {
 		console.log("Initializing workspace platform");
 
-		return fromPromise(
+		return from(
 			init({
 				browser: {
 					defaultWindowOptions: {

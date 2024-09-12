@@ -1,6 +1,6 @@
-# OpenFin Front-End Framework Starter: Angular
+# OpenFin Front-End Framework Starter: Angular Workspace
 
-Shows usage patterns using OpenFin Workspace with Angular 17+
+Shows usage patterns using OpenFin Workspace with Angular 18+
 
 Demonstrates newer patterns and best practices encouraged in the Angular community including:
 
@@ -10,6 +10,8 @@ Demonstrates newer patterns and best practices encouraged in the Angular communi
 - Adherence to [Angular style guide](https://angular.dev/style-guide)
 - Service pattern 
 - RxJS observables wrapping promise-based platform apis
+
+For more comprehensive examples of OpenFin features see the [workspace-starter](https://github.com/built-on-openfin/workspace-starter) repo.
 
 ---
 
@@ -22,6 +24,12 @@ Node.js v20+
 
 ## Getting started
 
+Install dependencies
+
+```
+npm install
+```
+
 Start the Angular dev server
 
 ```
@@ -33,6 +41,3 @@ Launch OpenFin (separate console)
 ```
 npm run client
 ```
-
-OpenFin is launched via a Node.js script leveraging [@openfin/node-adapter](https://www.npmjs.com/package/@openfin/node-adapter) to streamline development, rather than to demonstrate a production flow.
-
