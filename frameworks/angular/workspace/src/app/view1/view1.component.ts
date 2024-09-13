@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
+import { addEventListener, register } from "@openfin/workspace/notifications";
 import { ChannelService } from "../services/channel.service";
 import { ContextService } from "../services/context.service";
 import { NotificationsService } from "../services/notifications.service";
@@ -30,10 +31,18 @@ import { NotificationsService } from "../services/notifications.service";
 		</div>
 	`,
 })
-export class View1Component {
+export class View1Component implements OnInit {
 	private notificationService = inject(NotificationsService);
 	private contextService = inject(ContextService);
 	private channelService = inject(ChannelService);
+
+	ngOnInit(): void {
+		register().then(() => {
+			addEventListener("notification-action", (event) => {
+				console.log("Notification clicked:", event.result["customData"]);
+			});
+		});
+	}
 
 	showNotification(): void {
 		this.notificationService.create({
@@ -43,6 +52,11 @@ export class View1Component {
 			buttons: [
 				{
 					title: "Click me",
+					type: "button",
+					cta: true,
+					onClick: {
+						customData: "Arbitrary custom data",
+					},
 				},
 			],
 		});

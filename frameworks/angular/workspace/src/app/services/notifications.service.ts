@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { fin } from "@openfin/core";
-import { addEventListener, create, NotificationOptions, register } from "@openfin/workspace/notifications";
+import { create, NotificationOptions, register } from "@openfin/workspace/notifications";
 import { from } from "rxjs";
 import { PlatformSettings } from "./types";
 
@@ -11,11 +11,6 @@ import { PlatformSettings } from "./types";
 export class NotificationsService {
 	register(platformSettings: PlatformSettings) {
 		console.log("Registering the Notifications provider");
-
-		addEventListener("notification-action", (event) => {
-			console.log("action", event);
-		});
-
 		return from(
 			register({
 				notificationsPlatformOptions: platformSettings,
