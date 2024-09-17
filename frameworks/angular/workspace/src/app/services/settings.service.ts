@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { App } from "@openfin/workspace";
-import { BehaviorSubject, from, map, Observable, tap } from "rxjs";
-import { CustomSettings, ManifestWithCustomSettings, PlatformSettings } from "./types";
+import { type App } from "@openfin/workspace";
+import { BehaviorSubject, from, map, type Observable, tap } from "rxjs";
+import { type CustomSettings, type ManifestWithCustomSettings, type PlatformSettings } from "./types";
 
 @Injectable({ providedIn: "root" })
 export class SettingsService {

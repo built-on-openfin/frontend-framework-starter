@@ -1,6 +1,13 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from "@angular/core";
-import { Subscription } from "rxjs";
+import {
+	ChangeDetectionStrategy,
+	Component,
+	inject,
+	type OnDestroy,
+	type OnInit,
+	signal,
+} from "@angular/core";
+import { type Subscription } from "rxjs";
 import { ChannelService } from "../services/channel.service";
 import { ContextService } from "../services/context.service";
 

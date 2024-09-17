@@ -1,19 +1,19 @@
 import { Injectable } from "@angular/core";
 import "@finos/fdc3";
 import type { Context } from "@finos/fdc3";
-import { Listener } from "@finos/fdc3";
-import { Observable, shareReplay, Subject } from "rxjs";
+import { type Listener } from "@finos/fdc3";
+import { type Observable, shareReplay, Subject } from "rxjs";
 
 /**
  * Demonstrates the use of a specific app channel over fdc3
  */
 @Injectable({ providedIn: "root" })
 export class ChannelService {
-	private channelSubject = new Subject();
+	private channelSubject = new Subject<Context>();
 	private listenerRef: Listener | null = null;
 
 	// shareReplay operator ensures that late subscribers get the most recent context value.
-	channel$: Observable<any> = this.channelSubject.asObservable().pipe(shareReplay(1));
+	channel$: Observable<Context> = this.channelSubject.asObservable().pipe(shareReplay(1));
 
 	constructor() {
 		if (!window.fdc3) {

@@ -28,5 +28,9 @@ export default tseslint.config({
 		...react.configs.recommended.rules,
 		...react.configs["jsx-runtime"].rules,
 		"react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+		"@typescript-eslint/consistent-type-imports": [
+			"warn",
+			{ prefer: "type-imports", fixStyle: "inline-type-imports" },
+		],
 	},
 });

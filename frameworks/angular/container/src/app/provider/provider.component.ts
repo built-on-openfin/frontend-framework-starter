@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, type OnDestroy, type OnInit, signal } from "@angular/core";
 import * as Notifications from "@openfin/workspace/notifications";
-import { catchError, concatMap, from, map, Observable, of, Subject, takeUntil, tap } from "rxjs";
+import { catchError, concatMap, from, map, type Observable, of, Subject, takeUntil, tap } from "rxjs";
 
 @Component({
 	standalone: true,

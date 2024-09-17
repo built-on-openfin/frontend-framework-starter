@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { fin } from "@openfin/core";
-import { create, NotificationOptions, register } from "@openfin/workspace/notifications";
+import { create, type NotificationOptions, register } from "@openfin/workspace/notifications";
 import { from } from "rxjs";
-import { PlatformSettings } from "./types";
+import { type PlatformSettings } from "./types";
 
 /**
  * Note openfin-notifications package is deprecated - use @openfin/workspace/notifications (as shown here)

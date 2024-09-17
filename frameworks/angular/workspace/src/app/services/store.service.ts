@@ -1,9 +1,9 @@
 import { inject, Injectable } from "@angular/core";
-import { Storefront, StorefrontTemplate, StoreRegistration } from "@openfin/workspace";
-import { from, Observable } from "rxjs";
+import { Storefront, StorefrontTemplate, type StoreRegistration } from "@openfin/workspace";
+import { from, type Observable } from "rxjs";
 import { launchApp } from "./launch";
 import { SettingsService } from "./settings.service";
-import { PlatformSettings } from "./types";
+import { type PlatformSettings } from "./types";
 
 @Injectable({ providedIn: "root" })
 export class StoreService {

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import type { App } from "@openfin/workspace";
 import { CustomActionCallerType, init } from "@openfin/workspace-platform";
-import { from, Observable } from "rxjs";
+import { from, type Observable } from "rxjs";
 import { launchApp } from "./launch";
 import type { PlatformSettings } from "./types";
 

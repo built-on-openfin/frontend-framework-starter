@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { App, Dock, DockButtonNames, RegistrationMetaInfo } from "@openfin/workspace";
-import { from, Observable } from "rxjs";
-import { PlatformSettings } from "./types";
+import { type App, Dock, type DockButtonNames, type RegistrationMetaInfo } from "@openfin/workspace";
+import { from, type Observable } from "rxjs";
+import { type PlatformSettings } from "./types";
 
 @Injectable({ providedIn: "root" })
 export class DockService {

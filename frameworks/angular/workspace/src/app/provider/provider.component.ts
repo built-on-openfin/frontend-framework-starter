@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, type OnDestroy, type OnInit } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { WorkspaceService } from "../services/workspace.service";
 

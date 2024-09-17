@@ -1,18 +1,18 @@
 import { Injectable } from "@angular/core";
 import type { Context } from "@finos/fdc3";
-import { Listener } from "@finos/fdc3";
-import { Observable, shareReplay, Subject } from "rxjs";
+import { type Listener } from "@finos/fdc3";
+import { type Observable, shareReplay, Subject } from "rxjs";
 
 /**
  * Demonstrates the use of a general fdc3 broadcast of context
  */
 @Injectable({ providedIn: "root" })
 export class ContextService {
-	private contextSubject = new Subject();
+	private contextSubject = new Subject<Context>();
 	private listenerRef: Listener | null = null;
 
 	// shareReplay operator ensures that late subscribers get the most recent context value.
-	context$: Observable<any> = this.contextSubject.asObservable().pipe(shareReplay(1));
+	context$: Observable<Context> = this.contextSubject.asObservable().pipe(shareReplay(1));
 
 	constructor() {
 		if (!window.fdc3) {

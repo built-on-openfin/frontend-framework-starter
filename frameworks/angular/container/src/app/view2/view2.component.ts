@@ -1,6 +1,6 @@
 import "@finos/fdc3";
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, OnInit, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angular/core";
 
 @Component({
 	standalone: true,

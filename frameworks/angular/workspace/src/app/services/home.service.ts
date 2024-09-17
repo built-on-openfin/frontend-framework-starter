@@ -1,19 +1,19 @@
 import { inject, Injectable } from "@angular/core";
 import {
-	App,
+	type App,
 	CLITemplate,
 	Home,
-	HomeDispatchedSearchResult,
-	HomeProvider,
-	HomeRegistration,
-	HomeSearchListenerRequest,
-	HomeSearchListenerResponse,
-	HomeSearchResult,
+	type HomeDispatchedSearchResult,
+	type HomeProvider,
+	type HomeRegistration,
+	type HomeSearchListenerRequest,
+	type HomeSearchListenerResponse,
+	type HomeSearchResult,
 } from "@openfin/workspace";
-import { from, Observable } from "rxjs";
+import { from, type Observable } from "rxjs";
 import { launchApp } from "./launch";
 import { SettingsService } from "./settings.service";
-import { PlatformSettings } from "./types";
+import { type PlatformSettings } from "./types";
 
 @Injectable({ providedIn: "root" })
 export class HomeService {
@@ -36,7 +36,11 @@ export class HomeService {
 
 				// Immediate results
 				return {
-					results: this.mapAppEntriesToSearchEntries(this.settingsService.getApps()),
+					results: this.mapAppEntriesToSearchEntries(this.settingsService.getApps()).filter(
+						(app: HomeSearchResult) => {
+							return app.title.toLowerCase().includes(queryLower);
+						},
+					),
 				};
 			},
 			/**

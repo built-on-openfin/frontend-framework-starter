@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, type OnInit } from "@angular/core";
 import { addEventListener, register } from "@openfin/workspace/notifications";
 import { ChannelService } from "../services/channel.service";
 import { ContextService } from "../services/context.service";

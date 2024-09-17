@@ -65,7 +65,7 @@ export class WorkspaceService {
 	}: {
 		platformSettings: PlatformSettings;
 		customSettings?: CustomSettings;
-	}): Observable<any> {
+	}): Observable<unknown[]> {
 		this.status$.next("Registering workspace components...");
 		return forkJoin([
 			this.dockService.register(platformSettings, customSettings?.apps),
@@ -76,7 +76,7 @@ export class WorkspaceService {
 	}
 
 	// Display the components to the user at startup (they are hidden by default)
-	showComponents(): Observable<any> {
+	showComponents(): Observable<void[]> {
 		return forkJoin([this.homeService.show(), this.dockService.show()]);
 	}
 
