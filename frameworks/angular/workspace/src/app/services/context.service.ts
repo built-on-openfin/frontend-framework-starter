@@ -15,14 +15,14 @@ export class ContextService {
 	context$: Observable<Context> = this.contextSubject.asObservable().pipe(shareReplay(1));
 
 	constructor() {
-		if (!window.fdc3) {
+		if (!fdc3) {
 			console.error("FDC3 is not available");
 		}
 	}
 
 	broadcast(context: Context): void {
 		console.log("ContextService: Broadcasting fdc3 context", context);
-		window.fdc3?.broadcast(context);
+		fdc3?.broadcast(context);
 	}
 
 	async registerContextListener(contextType: string | null = null): Promise<void> {
@@ -30,7 +30,7 @@ export class ContextService {
 			console.warn("ContextService: Listener already registered, removing old listener");
 			this.removeListener();
 		}
-		this.listenerRef = await window.fdc3?.addContextListener(contextType, (context) => {
+		this.listenerRef = await fdc3?.addContextListener(contextType, (context) => {
 			console.log("ContextService: received message", context);
 			this.contextSubject.next(context);
 		});

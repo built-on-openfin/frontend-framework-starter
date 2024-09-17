@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { fin } from "@openfin/core";
 import { create, type NotificationOptions, register } from "@openfin/workspace/notifications";
 import { from } from "rxjs";
 import { type PlatformSettings } from "./types";

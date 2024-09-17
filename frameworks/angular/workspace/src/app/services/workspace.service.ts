@@ -1,5 +1,4 @@
 import { inject, Injectable } from "@angular/core";
-import { fin } from "@openfin/core";
 import { BehaviorSubject, catchError, concatMap, forkJoin, map, Observable, of, tap } from "rxjs";
 import { DockService } from "./dock.service";
 import { HomeService } from "./home.service";

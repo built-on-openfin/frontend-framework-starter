@@ -25,7 +25,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "types": ["./src/types/fin"],
+    "types": ["./src/types/fin", "./src/types/fdc3"],
     "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {

@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import "@finos/fdc3";
 import type { Context } from "@finos/fdc3";
 import { type Listener } from "@finos/fdc3";
 import { type Observable, shareReplay, Subject } from "rxjs";
@@ -16,14 +15,14 @@ export class ChannelService {
 	channel$: Observable<Context> = this.channelSubject.asObservable().pipe(shareReplay(1));
 
 	constructor() {
-		if (!window.fdc3) {
+		if (!fdc3) {
 			console.error("FDC3 is not available");
 		}
 	}
 
 	broadcast(channelName: string, context: Context): void {
 		console.log("ChannelService: Broadcasting fdc3 app channel", channelName, context);
-		window.fdc3?.getOrCreateChannel(channelName).then((appChannel) => {
+		fdc3?.getOrCreateChannel(channelName).then((appChannel) => {
 			appChannel.broadcast(context);
 		});
 	}
@@ -33,7 +32,7 @@ export class ChannelService {
 			console.warn("ChannelService: Listener already registered, removing old listener");
 			this.removeListener();
 		}
-		window.fdc3?.getOrCreateChannel(channelName).then((appChannel) => {
+		fdc3?.getOrCreateChannel(channelName).then((appChannel) => {
 			appChannel.addContextListener(contextType, (context) => {
 				console.log("ChannelService: received message", context);
 				this.channelSubject.next(context);

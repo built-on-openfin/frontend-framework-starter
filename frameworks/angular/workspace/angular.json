@@ -25,7 +25,12 @@
               }
             ],
             "styles": ["src/styles.css", "src/openfin.css"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "@openfin/workspace/notifications",
+              "@openfin/workspace",
+              "@openfin/workspace-platform"
+            ]
           },
           "configurations": {
             "production": {

@@ -38,8 +38,8 @@ export class View2Component implements OnInit {
 	}
 
 	listenForFDC3Context() {
-		if (window.fdc3) {
-			window.fdc3?.addContextListener("fdc3.instrument", (context) => {
+		if (fdc3) {
+			fdc3?.addContextListener("fdc3.instrument", (context) => {
 				console.log("ContextService: received message", context);
 				this.message.set(JSON.stringify(context, undefined, "  "));
 			});
@@ -49,8 +49,8 @@ export class View2Component implements OnInit {
 	}
 
 	async listenForFDC3ContextAppChannel() {
-		if (window.fdc3) {
-			const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+		if (fdc3) {
+			const appChannel = await fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
 			await appChannel.addContextListener((context) => {
 				this.message.set(JSON.stringify(context, undefined, "  "));
 			});

@@ -1,7 +1,5 @@
-import "@finos/fdc3";
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { fin } from "@openfin/core";
 import { create } from "@openfin/workspace/notifications";
 
 @Component({
@@ -41,8 +39,8 @@ export class View1Component {
 	}
 
 	broadcastFDC3Context() {
-		if (window.fdc3) {
-			window.fdc3.broadcast({
+		if (fdc3) {
+			fdc3.broadcast({
 				type: "fdc3.instrument",
 				name: "Microsoft Corporation",
 				id: {
@@ -55,8 +53,8 @@ export class View1Component {
 	}
 
 	async broadcastFDC3ContextAppChannel() {
-		if (window.fdc3) {
-			const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+		if (fdc3) {
+			const appChannel = await fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
 
 			await appChannel.broadcast({
 				type: "fdc3.instrument",
