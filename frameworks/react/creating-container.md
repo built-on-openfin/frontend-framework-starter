@@ -126,7 +126,7 @@ export default App;
                                     "url": "http://localhost:3000/views/view1",
                                     "name": "view1",
                                     "componentName": "view",
-                                    "fdc3InteropApi": "1.2",
+                                    "fdc3InteropApi": "2.0",
                                     "interop": {
                                        "currentContextGroup": "green"
                                     }
@@ -145,7 +145,7 @@ export default App;
                                     "url": "http://localhost:3000/views/view2",
                                     "name": "view2",
                                     "componentName": "view",
-                                    "fdc3InteropApi": "1.2",
+                                    "fdc3InteropApi": "2.0",
                                     "interop": {
                                        "currentContextGroup": "green"
                                     }
