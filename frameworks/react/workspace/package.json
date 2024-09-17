@@ -1,13 +1,13 @@
 {
   "name": "react-workspace-starter",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "private": true,
   "dependencies": {
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "34.78.80",
-    "@openfin/node-adapter": "34.78.80",
-    "@openfin/workspace": "17.0.15",
-    "@openfin/workspace-platform": "17.0.15",
+    "@openfin/core": "36.80.11",
+    "@openfin/workspace": "18.0.10",
+    "@openfin/workspace-platform": "18.0.10",
+    "@openfin/node-adapter": "36.80.11",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "13.5.0",
