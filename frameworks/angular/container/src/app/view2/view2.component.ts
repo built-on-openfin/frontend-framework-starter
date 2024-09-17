@@ -1,4 +1,3 @@
-import "@finos/fdc3";
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angular/core";
 
