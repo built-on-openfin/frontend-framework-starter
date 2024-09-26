@@ -1,0 +1,65 @@
+{
+  "runtime": {
+    "arguments": "--v=1 --inspect",
+    "version": "38.126.82.64"
+  },
+  "platform": {
+    "uuid": "angular-container-starter",
+    "icon": "http://localhost:4200/favicon.ico",
+    "autoShow": true,
+    "providerUrl": "http://localhost:4200/provider"
+  },
+  "snapshot": {
+    "windows": [
+      {
+        "layout": {
+          "content": [
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "stack",
+                  "content": [
+                    {
+                      "type": "component",
+                      "title": "view1",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:4200/view1",
+                        "name": "view1",
+                        "componentName": "view",
+                        "fdc3InteropApi": "2.0",
+                        "interop": {
+                          "currentContextGroup": "green"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "stack",
+                  "content": [
+                    {
+                      "type": "component",
+                      "title": "view2",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:4200/view2",
+                        "name": "view2",
+                        "componentName": "view",
+                        "fdc3InteropApi": "2.0",
+                        "interop": {
+                          "currentContextGroup": "green"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

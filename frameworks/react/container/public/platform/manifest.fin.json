@@ -1,7 +1,7 @@
 {
   "runtime": {
     "arguments": "--v=1 --inspect",
-    "version": "36.122.80.11"
+    "version": "38.126.82.64"
   },
   "platform": {
     "uuid": "react-container-starter",
@@ -28,7 +28,7 @@
                         "url": "http://localhost:3000/views/view1",
                         "name": "view1",
                         "componentName": "view",
-                        "fdc3InteropApi": "1.2",
+                        "fdc3InteropApi": "2.0",
                         "interop": {
                           "currentContextGroup": "green"
                         }
@@ -47,7 +47,7 @@
                         "url": "http://localhost:3000/views/view2",
                         "name": "view2",
                         "componentName": "view",
-                        "fdc3InteropApi": "1.2",
+                        "fdc3InteropApi": "2.0",
                         "interop": {
                           "currentContextGroup": "green"
                         }

@@ -1,27 +1,43 @@
-# Workspace
+# OpenFin Front-End Framework Starter: Angular Workspace
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Shows usage patterns using OpenFin Workspace with Angular 18+
 
-## Development server
+Demonstrates newer patterns and best practices encouraged in the Angular community including:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Standalone components](https://v17.angular.io/guide/standalone-components) without modules
+- [Signals](https://angular.dev/guide/signals) for reactivity and data binding
+- [Strict mode](https://v17.angular.io/guide/strict-mode) following strict eslint and TypeScript rules
+- Adherence to [Angular style guide](https://angular.dev/style-guide)
+- Service pattern 
+- RxJS observables wrapping promise-based platform apis
 
-## Code scaffolding
+For more comprehensive examples of OpenFin features see the [workspace-starter](https://github.com/built-on-openfin/workspace-starter) repo.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Prerequisites
 
-## Running unit tests
+OpenFin RVM  
+Node.js v20+
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Getting started
 
-## Running end-to-end tests
+Install dependencies
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+npm install
+```
 
-## Further help
+Start the Angular dev server
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+npm start
+```
+
+Launch OpenFin (separate console)
+
+```
+npm run client
+```

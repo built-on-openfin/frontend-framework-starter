@@ -1,7 +1,6 @@
-import { fin } from "@openfin/core";
-import React, { useEffect, useState } from 'react';
-import logo from '../logo.svg';
 import * as Notifications from "@openfin/workspace/notifications";
+import React, { useEffect, useState } from "react";
+import logo from "../logo.svg";
 
 function Provider() {
 	const [message, setMessage] = useState("");
@@ -17,12 +16,11 @@ function Provider() {
 						notificationsPlatformOptions: {
 							id: fin.me.identity.uuid,
 							title: "React Container Starter",
-							icon: "http://localhost:3000/favicon.ico"
-						}
+							icon: "http://localhost:3000/favicon.ico",
+						},
 					});
 					runtimeAvailable = true;
-				} catch {
-				}
+				} catch {}
 			}
 
 			if (runtimeAvailable) {
@@ -47,7 +45,10 @@ function Provider() {
 			</header>
 			<main className="col gap10">
 				<p>This is the platform window, which initializes the platform.</p>
-				<p>The window would usually be hidden, you can make it hidden on startup by setting the platform.autoShow flag to false in the manifest.fin.json</p>
+				<p>
+					The window would usually be hidden, you can make it hidden on startup by setting the
+					platform.autoShow flag to false in the manifest.fin.json
+				</p>
 				<p>{message}</p>
 			</main>
 		</div>

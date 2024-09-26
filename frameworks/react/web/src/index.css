@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root {
+	--brand-background: var(--theme-background-primary, #1e1f23);
+	--brand-border: var(--theme-background4, #2f3136);
+	--brand-primary: var(--theme-brand-primary, #0a76d3);
+	--brand-text: var(--theme-text-default, #ffffff);
+	--brand-text-secondary: var(--theme-text-help, #c9cbd2);
+	--brand-input-background: var(--theme-background5, #383a40);
+	--brand-input-border: var(--theme-background6, #53565f);
+	--brand-input-border-highlight: var(--theme-input-focused, #c9cbd2);
+	--brand-table-header: var(--theme-background1, #111214);
+	--brand-table-header-text: var(--theme-text-default, #ffffff);
+	--brand-table-row-even: var(--theme-background3, #24262b);
+	--brand-table-row-odd: var(--theme-background4, #2f3136);
+	--brand-error: var(--theme-status-critical, #be1d1f);
+	--brand-success: var(--theme-status-success, #35c759);
+
+	--header-height: 60px;
+}
+
+* {
+	font-family: Inter, 'Sans Serif', sans-serif;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	overflow: hidden;
+	padding: 20px;
+	margin: 0;
+	background-color: var(--brand-background);
+	color: var(--brand-text);
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	width: 100dvw;
+	height: calc(100dvh - var(--header-height));
+}

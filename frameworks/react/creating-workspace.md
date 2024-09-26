@@ -113,7 +113,7 @@ export default App;
    "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "36.122.80.11"
+      "version": "38.126.82.64"
    },
    "platform": {
       "uuid": "react-workspace-starter",
@@ -361,11 +361,9 @@ export default Provider;
 ## Add src/views/View1.tsx
 
 ```tsx
-import { fin } from "@openfin/core";
 import React from 'react';
 import logo from '../logo.svg';
 import * as Notifications from "@openfin/workspace/notifications";
-import "@finos/fdc3";
 
 function View1() {
    async function showNotification() {
@@ -380,8 +378,8 @@ function View1() {
    }
 
    async function broadcastFDC3Context() {
-      if (window.fdc3) {
-         await window.fdc3.broadcast({
+      if (fdc3) {
+         await fdc3.broadcast({
             type: 'fdc3.instrument',
             name: 'Microsoft Corporation',
             id: {
@@ -394,8 +392,8 @@ function View1() {
    }
 
    async function broadcastFDC3ContextAppChannel() {
-      if (window.fdc3) {
-         const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+      if (fdc3) {
+         const appChannel = await fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
 
          await appChannel.broadcast({
             type: 'fdc3.instrument',
@@ -435,7 +433,6 @@ export default View1;
 ## Add src/views/View2.tsx
 
 ```tsx
-import "@finos/fdc3";
 import React, { useEffect, useState } from 'react';
 import logo from '../logo.svg';
 
@@ -450,8 +447,8 @@ function View2() {
    }, []);
 
    async function listenForFDC3Context() {
-      if (window.fdc3) {
-         await window.fdc3.addContextListener((context) => {
+      if (fdc3) {
+         await fdc3.addContextListener((context) => {
             setMessage(JSON.stringify(context, undefined, "  "));
          });
       } else {
@@ -460,8 +457,8 @@ function View2() {
    }   
 
    async function listenForFDC3ContextAppChannel() {
-      if (window.fdc3) {
-         const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+      if (fdc3) {
+         const appChannel = await fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
 
          await appChannel.addContextListener((context) => {
             setMessage(JSON.stringify(context, undefined, "  "));
