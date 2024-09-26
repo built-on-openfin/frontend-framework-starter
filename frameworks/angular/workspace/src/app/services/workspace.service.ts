@@ -2,7 +2,6 @@ import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, concatMap, forkJoin, map, Observable, of, tap } from "rxjs";
 import { DockService } from "./dock.service";
 import { HomeService } from "./home.service";
-import { NotificationsService } from "./notifications.service";
 import { PlatformService } from "./platform.service";
 import { SettingsService } from "./settings.service";
 import { StoreService } from "./store.service";
@@ -17,7 +16,6 @@ export class WorkspaceService {
 	private platformService = inject(PlatformService);
 	private dockService = inject(DockService);
 	private homeService = inject(HomeService);
-	private notificationsService = inject(NotificationsService);
 	private storeService = inject(StoreService);
 	private settingsService = inject(SettingsService);
 
@@ -28,20 +26,26 @@ export class WorkspaceService {
 	}
 
 	init(): Observable<boolean> {
+		if (!this.isOpenFin()) {
+			this.status$.next("Not running in openfin");
+			return of(false);
+		}
+
 		this.status$.next("Workspace platform initializing...");
-		return this.settingsService.getManifestCustomSettings().pipe(
+		return this.settingsService.getManifestSettings().pipe(
 			concatMap((settings) =>
 				this.platformService.initializeWorkspacePlatform(settings.platformSettings).pipe(
 					concatMap(() => this.awaitPlatformReady()),
 					concatMap(() => this.registerComponents(settings)),
-					concatMap(() => this.showComponents()),
+					concatMap(() => this.showStartupComponents()),
 					tap(() => this.status$.next("Platform initialized")),
 				),
 			),
 			map(() => true),
 			catchError((e) => {
-				console.error(`Error Initializing Platform: ${e instanceof Error ? e.message : e}`);
-				this.status$.next("Error Initializing Platform");
+				const msg = e instanceof Error ? e.message : e;
+				console.error("Error Initializing Platform", msg);
+				this.status$.next(`Error Initializing Platform ${msg}`);
 				return of(false);
 			}),
 		);
@@ -70,20 +74,22 @@ export class WorkspaceService {
 			this.dockService.register(platformSettings, customSettings?.apps),
 			this.homeService.register(platformSettings),
 			this.storeService.register(platformSettings),
-			this.notificationsService.register(platformSettings),
 		]);
 	}
 
-	// Display the components to the user at startup (they are hidden by default)
-	showComponents(): Observable<void[]> {
+	showStartupComponents(): Observable<void[]> {
+		// Display the workspace components to the user at startup (they are hidden by default)
 		return forkJoin([this.homeService.show(), this.dockService.show()]);
 	}
 
-	/**
-	 * Helper method to determine whether we are in an OpenFin container
-	 */
 	isOpenFin() {
-		return fin.me.isOpenFin;
+		return fin?.me.isOpenFin;
+	}
+
+	quit() {
+		if (this.isOpenFin()) {
+			fin.Platform.getCurrentSync().quit();
+		}
 	}
 
 	getStatus$(): Observable<string> {

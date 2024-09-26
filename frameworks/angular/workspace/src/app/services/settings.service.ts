@@ -11,7 +11,7 @@ export class SettingsService {
 	 * Reads the custom settings from the manifest.fin.json
 	 * @returns The custom settings from the manifest.
 	 */
-	getManifestCustomSettings(): Observable<{
+	getManifestSettings(): Observable<{
 		platformSettings: PlatformSettings;
 		customSettings?: CustomSettings;
 	}> {
@@ -19,7 +19,7 @@ export class SettingsService {
 		return from(app.getManifest()).pipe(
 			map((manifest: ManifestWithCustomSettings) => ({
 				platformSettings: {
-					id: manifest.platform?.uuid ?? "",
+					id: manifest.platform?.uuid ?? fin.me.identity.uuid,
 					title: manifest.shortcut?.name ?? "",
 					icon: manifest.platform?.icon ?? "",
 				},

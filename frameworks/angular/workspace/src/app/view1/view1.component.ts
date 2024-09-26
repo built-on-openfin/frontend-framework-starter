@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, type OnInit } from "@angular/core";
-import { addEventListener, register } from "@openfin/workspace/notifications";
+import { ChangeDetectionStrategy, Component, inject, type OnDestroy, type OnInit } from "@angular/core";
+import { Subject, takeUntil, tap } from "rxjs";
 import { ChannelService } from "../services/channel.service";
 import { ContextService } from "../services/context.service";
 import { NotificationsService } from "../services/notifications.service";
@@ -31,21 +31,34 @@ import { NotificationsService } from "../services/notifications.service";
 		</div>
 	`,
 })
-export class View1Component implements OnInit {
+export class View1Component implements OnInit, OnDestroy {
 	private notificationService = inject(NotificationsService);
 	private contextService = inject(ContextService);
 	private channelService = inject(ChannelService);
 
+	private unsubscribe$ = new Subject<void>();
+
 	ngOnInit(): void {
-		register().then(() => {
-			addEventListener("notification-action", (event) => {
-				console.log("Notification clicked:", event.result["customData"]);
-			});
-		});
+		this.notificationService
+			.observeNotificationActions()
+			.pipe(
+				tap((event) => {
+					console.log("Notification clicked:", event.result["customData"]);
+				}),
+				takeUntil(this.unsubscribe$),
+			)
+			.subscribe();
+	}
+
+	ngOnDestroy(): void {
+		this.notificationService.deregister(fin.me.identity.uuid);
+		this.unsubscribe$.next();
+		this.unsubscribe$.complete();
 	}
 
 	showNotification(): void {
 		this.notificationService.create({
+			platform: fin.me.identity.uuid,
 			title: "Simple Notification",
 			body: "This is a simple notification",
 			toast: "transient",
