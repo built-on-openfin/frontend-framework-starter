@@ -1,8 +1,16 @@
 import * as Notifications from "@openfin/workspace/notifications";
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../logo.svg";
 
 function View1() {
+	useEffect(() => {
+		Notifications.register().then(() => {
+			Notifications.addEventListener("notification-action", (event) => {
+				console.log("Notification action", event);
+			});
+		});
+	}, []);
+
 	async function showNotification() {
 		await Notifications.create({
 			platform: fin.me.identity.uuid,
@@ -11,6 +19,16 @@ function View1() {
 			toast: "transient",
 			category: "default",
 			template: "markdown",
+			buttons: [
+				{
+					title: "Click me",
+					type: "button",
+					cta: true,
+					onClick: {
+						customData: "Arbitrary custom data",
+					},
+				},
+			],
 		});
 	}
 
