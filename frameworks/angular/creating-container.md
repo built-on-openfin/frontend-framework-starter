@@ -102,7 +102,7 @@ export class AppComponent {
 {
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "36.122.80.11"
+      "version": "38.126.82.64"
    },
    "platform": {
       "uuid": "angular-container-starter",
@@ -129,7 +129,7 @@ export class AppComponent {
                             "url": "http://localhost:4200/views/view1",
                             "name": "view1",
                             "componentName": "view",
-                            "fdc3InteropApi": "1.2",
+                            "fdc3InteropApi": "2.0",
                             "interop": {
                               "currentContextGroup": "green"
                             }
@@ -148,7 +148,7 @@ export class AppComponent {
                             "url": "http://localhost:4200/views/view2",
                             "name": "view2",
                             "componentName": "view",
-                            "fdc3InteropApi": "1.2",
+                            "fdc3InteropApi": "2.0",
                             "interop": {
                               "currentContextGroup": "green"
                             }
@@ -212,7 +212,6 @@ export class ProviderRoutingModule { }
 ## Add src/app/platform/provider.component.ts
 
 ```ts
-import { fin } from "@openfin/core";
 import { Component } from '@angular/core';
 import * as Notifications from "@openfin/workspace/notifications";
 
@@ -376,9 +375,7 @@ export class View1RoutingModule { }
 ## Add src/app/view1/view1.component.ts
 
 ```ts
-import { fin } from "@openfin/core";
 import { Component } from '@angular/core';
-import "@finos/fdc3";
 import * as Notifications from "@openfin/workspace/notifications";
 
 @Component({
@@ -398,8 +395,8 @@ export class View1Component {
    }
 
    async broadcastFDC3Context() {
-      if (window.fdc3) {
-         await window.fdc3.broadcast({
+      if (fdc3) {
+         await fdc3.broadcast({
             type: 'fdc3.instrument',
             name: 'Microsoft Corporation',
             id: {
@@ -412,8 +409,8 @@ export class View1Component {
    }
 
    async broadcastFDC3ContextAppChannel() {
-      if (window.fdc3) {
-         const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+      if (fdc3) {
+         const appChannel = await fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
 
          await appChannel.broadcast({
             type: 'fdc3.instrument',
@@ -517,8 +514,8 @@ export class View2Component {
    }
 
    async listenForFDC3Context() {
-      if (window.fdc3) {
-         await window.fdc3.addContextListener((context) => {
+      if (fdc3) {
+         await fdc3.addContextListener((context) => {
             this._zone.run(() => this.message = JSON.stringify(context, undefined, "  "));
          });
       } else {
@@ -527,8 +524,8 @@ export class View2Component {
    }
 
    async listenForFDC3ContextAppChannel() {
-      if (window.fdc3) {
-         const appChannel = await window.fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
+      if (fdc3) {
+         const appChannel = await fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
 
          await appChannel.addContextListener((context) => {
             this._zone.run(() => this.message = JSON.stringify(context, undefined, "  "));
