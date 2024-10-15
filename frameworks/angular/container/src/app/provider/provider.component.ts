@@ -1,7 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, type OnDestroy, type OnInit, signal } from "@angular/core";
-import * as Notifications from "@openfin/workspace/notifications";
-import { catchError, concatMap, from, map, type Observable, of, Subject, takeUntil, tap } from "rxjs";
+import { catchError, concatMap, from, map, of, Subject, takeUntil, tap } from "rxjs";
 
 @Component({
 	standalone: true,
@@ -21,7 +20,6 @@ export class ProviderComponent implements OnInit, OnDestroy {
 			from(fin.Platform.init({}))
 				.pipe(
 					tap(() => this.message.set("Initializing...")),
-					concatMap(() => this.registerNotifications()),
 					concatMap(() => from(fin.System.getRuntimeInfo())),
 					map((runtimeInfo) => this.message.set(`OpenFin Runtime: ${runtimeInfo.version}`)),
 					takeUntil(this.unsubscribe$),
@@ -35,18 +33,6 @@ export class ProviderComponent implements OnInit, OnDestroy {
 		} else {
 			this.message.set("OpenFin runtime is not available");
 		}
-	}
-
-	registerNotifications(): Observable<unknown> {
-		return from(
-			Notifications.register({
-				notificationsPlatformOptions: {
-					id: fin.me.identity.uuid,
-					title: "Angular Container Starter",
-					icon: "http://localhost:4200/favicon.ico",
-				},
-			}),
-		).pipe(catchError(() => of(false)));
 	}
 
 	ngOnDestroy(): void {

@@ -1,4 +1,3 @@
-import * as Notifications from "@openfin/workspace/notifications";
 import React, { useEffect, useState } from "react";
 import logo from "../logo.svg";
 
@@ -11,18 +10,9 @@ function Provider() {
 			if (fin) {
 				try {
 					await fin.Platform.init({});
-
-					await Notifications.register({
-						notificationsPlatformOptions: {
-							id: fin.me.identity.uuid,
-							title: "React Container Starter",
-							icon: "http://localhost:3000/favicon.ico",
-						},
-					});
 					runtimeAvailable = true;
 				} catch {}
 			}
-
 			if (runtimeAvailable) {
 				const runtimeInfo = await fin.System.getRuntimeInfo();
 				setMessage(`OpenFin Runtime: ${runtimeInfo.version}`);
