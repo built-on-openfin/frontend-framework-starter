@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { create } from "@openfin/workspace/notifications";
 
 @Component({
-	standalone: true,
 	selector: "app-view1",
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [CommonModule],

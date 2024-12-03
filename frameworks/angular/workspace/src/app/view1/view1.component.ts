@@ -6,7 +6,6 @@ import { ContextService } from "../services/context.service";
 import { NotificationsService } from "../services/notifications.service";
 
 @Component({
-	standalone: true,
 	selector: "app-view1",
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [CommonModule],
