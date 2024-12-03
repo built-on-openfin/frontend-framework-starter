@@ -54,6 +54,25 @@
                       }
                     }
                   ]
+                },
+                {
+                  "type": "stack",
+                  "content": [
+                    {
+                      "type": "component",
+                      "title": "view3",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:3000/views/view3",
+                        "name": "view3",
+                        "componentName": "view",
+                        "fdc3InteropApi": "2.0",
+                        "interop": {
+                          "currentContextGroup": "green"
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }

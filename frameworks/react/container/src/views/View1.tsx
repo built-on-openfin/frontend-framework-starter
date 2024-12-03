@@ -1,21 +1,10 @@
-import * as Notifications from "@openfin/workspace/notifications";
 import React from "react";
 import logo from "../logo.svg";
 
 function View1() {
-	async function showNotification() {
-		await Notifications.create({
-			platform: fin.me.identity.uuid,
-			title: "Simple Notification",
-			body: "This is a simple notification",
-			toast: "transient",
-			category: "default",
-			template: "markdown",
-		});
-	}
-
+	
 	async function broadcastFDC3Context() {
-		if (fdc3) {
+		if (window.fdc3) {
 			await fdc3.broadcast({
 				type: "fdc3.instrument",
 				name: "Microsoft Corporation",
@@ -29,7 +18,7 @@ function View1() {
 	}
 
 	async function broadcastFDC3ContextAppChannel() {
-		if (fdc3) {
+		if (window.fdc3) {
 			const appChannel = await fdc3.getOrCreateChannel("CUSTOM-APP-CHANNEL");
 
 			await appChannel.broadcast({
@@ -56,10 +45,9 @@ function View1() {
 				</div>
 			</header>
 			<main className="col gap10 left">
-				<button onClick={() => showNotification()}>Show Notification</button>
-				<button onClick={() => broadcastFDC3Context()}>Broadcast FDC3 Context</button>
+				<button onClick={() => broadcastFDC3Context()}>Broadcast FDC3 User Context</button>
 				<button onClick={() => broadcastFDC3ContextAppChannel()}>
-					Broadcast FDC3 Context on App Channel
+					Broadcast FDC3 App Context
 				</button>
 			</main>
 		</div>
