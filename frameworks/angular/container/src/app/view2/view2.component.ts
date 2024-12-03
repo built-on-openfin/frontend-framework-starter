@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angular/core";
 
 @Component({
-	standalone: true,
 	selector: "app-view2",
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [CommonModule],

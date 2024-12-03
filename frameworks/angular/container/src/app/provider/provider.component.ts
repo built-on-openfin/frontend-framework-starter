@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, type OnDestroy, type OnInit, signal
 import { catchError, concatMap, from, map, of, Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-	standalone: true,
 	selector: "app-provider",
 	templateUrl: "./provider.component.html",
 	styleUrl: "provider.component.css",

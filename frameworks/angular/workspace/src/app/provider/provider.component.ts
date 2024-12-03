@@ -4,7 +4,6 @@ import { Subject, takeUntil } from "rxjs";
 import { WorkspaceService } from "../services/workspace.service";
 
 @Component({
-	standalone: true,
 	selector: "app-provider",
 	template: ` <div class="col fill gap20">
 		<header class="row spread middle">

@@ -12,7 +12,6 @@ import { ChannelService } from "../services/channel.service";
 import { ContextService } from "../services/context.service";
 
 @Component({
-	standalone: true,
 	selector: "app-view2",
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [CommonModule],
