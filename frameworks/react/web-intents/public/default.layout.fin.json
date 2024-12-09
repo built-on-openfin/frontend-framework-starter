@@ -1,0 +1,66 @@
+{
+  "layouts": {
+    "tab-developer-tools": {
+      "content": [
+        {
+          "type": "row",
+          "content": [
+            {
+              "type": "column",
+              "width": 50,
+              "content": [
+                {
+                  "type": "stack",
+                  "width": 50,
+                  "height": 50,
+                  "content": [
+                    {
+                      "type": "component",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:6060/views/fdc3-intent-view.html",
+                        "name": "local-fdc3-intent-view/54a8ef85-a885-4234-be46-9d52e88fsb74"
+                      },
+
+                      "title": "FDC3 Local Intent"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "column",
+              "width": 50,
+              "content": [
+                {
+                  "type": "stack",
+                  "width": 50,
+                  "height": 50,
+                  "content": [
+                    {
+                      "type": "component",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:3001",
+                        "name": "local-interop-intent-view/54a8ef86-a775-4234-be46-9d52e88fsb74"
+                      },
+
+                      "title": "Interop Local Intent"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "layoutTitles": {
+    "tab-developer-tools": "Developer Tools",
+    "tab-manager-portal": "Manager Portal",
+    "tab-crm": "CRM",
+    "tab-finance": "Finance"
+  },
+  "layoutSelected": "tab-developer-tools"
+}
