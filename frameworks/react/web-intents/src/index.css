@@ -44,3 +44,7 @@ body {
 	height: calc(100dvh - var(--header-height) - (var(--body-padding) * 2));
 	width: calc(100dvw - var(--body-padding) * 2);
 }
+
+.hidden {
+	display: none;
+}

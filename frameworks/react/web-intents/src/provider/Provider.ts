@@ -1,19 +1,21 @@
 import { cloudInteropOverride } from "@openfin/cloud-interop";
 import { type OpenFin } from "@openfin/core";
 import { connect, type WebLayoutSnapshot } from "@openfin/core-web";
+import { type PlatformLayoutSnapshot } from "../shapes/layout-shapes.ts";
 import { type Settings } from "../shapes/setting-shapes.ts";
 import { getConstructorOverride } from "./broker/interop-override.ts";
 import { makeOverride } from "./layout/layout-override.ts";
 import { getDefaultLayout, getSettings } from "./settings/settings.ts";
 
 export class Provider {
+	public layout: PlatformLayoutSnapshot | null = null;
+
 	constructor() {
 		console.log("Provider initialized");
 	}
 
 	public async initializeWorkspacePlatform(): Promise<void> {
 		const settings = await getSettings();
-
 		const layoutSnapshot = await getDefaultLayout();
 
 		if (settings === undefined || layoutSnapshot === undefined) {
@@ -79,6 +81,8 @@ export class Provider {
 			}
 			// setup listeners now that everything has been initialized
 			// await attachListeners();
+
+			this.layout = layoutSnapshot as PlatformLayoutSnapshot;
 		}
 	}
 

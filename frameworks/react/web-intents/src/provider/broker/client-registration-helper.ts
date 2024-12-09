@@ -92,8 +92,6 @@ export class ClientRegistrationHelper {
 			);
 
 			if (isEmpty(trackedHandler)) {
-				debugger;
-
 				this._logger.info(
 					`intentHandler endpoint not registered. Registering ${clientIdentity.endpointId} against intent ${intentName} and looking up app name.`,
 				);

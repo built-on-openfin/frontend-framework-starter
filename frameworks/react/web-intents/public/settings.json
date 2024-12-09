@@ -38,7 +38,16 @@
       "defaultLayout": "http://localhost:3000/default.layout.fin.json"
     },
     "app": {
-      "directory": ["http://localhost:3000/apps.json"],
+      "directory": [
+        "http://localhost:6060/apps.json",
+        "http://localhost:6060/common/apps-tools.json",
+        "http://localhost:6060/common/apps.json",
+        "http://localhost:6060/common/apps-fdc3-2-0.json",
+        "http://localhost:6060/common/apps-interop.json",
+        "http://localhost:6060/common/apps-contact.json",
+        "http://localhost:6060/common/apps-manager.json",
+        "http://localhost:6060/common/apps-finance.json"
+      ],
       "appResolver": {
         "url": "http://localhost:3000/app-picker",
         "title": "App Resolver"
