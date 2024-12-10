@@ -14,12 +14,18 @@ export function Tabs({ layout, onTabClick }: TabsProps) {
 	};
 
 	return (
-		<ul>
-			{Object.entries(layout.layoutTitles).map(([key, value]) => (
-				<li key={key} onClick={() => handleTabClick(key)}>
-					{value}
-				</li>
-			))}
-		</ul>
+		<div className="bg-gray-900 text-white p-1">
+			<div className="flex space-x-2 gap-1">
+				{Object.entries(layout.layoutTitles).map(([key, value]) => (
+					<div
+						key={key}
+						onClick={() => handleTabClick(key)}
+						className="px-4 py-2 cursor-pointer rounded-t-lg text-xs"
+					>
+						{value}
+					</div>
+				))}
+			</div>
+		</div>
 	);
 }

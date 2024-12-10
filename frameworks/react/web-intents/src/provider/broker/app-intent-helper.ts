@@ -1,12 +1,12 @@
 import { isEmpty } from "../../helpers/utils";
-import type { AppIntents, AppsForIntent, PlatformApp } from "../../shapes/app-shapes";
+import type { AppGetterFn, AppIntents, AppsForIntent, PlatformApp } from "../../shapes/app-shapes";
 import type { Logger } from "../../shapes/logger-shapes";
 
 /**
  * The App Intent Helper inspects app catalogs to discover supported intents and contexts.
  */
 export class AppIntentHelper {
-	private readonly _getApps: () => Promise<PlatformApp[]>;
+	private readonly _getApps: AppGetterFn;
 
 	private readonly _logger: Logger;
 
@@ -15,7 +15,7 @@ export class AppIntentHelper {
 	 * @param getApps returns an array of Apps
 	 * @param logger the logger to use.
 	 */
-	constructor(getApps: () => Promise<PlatformApp[]>, logger: Logger) {
+	constructor(getApps: AppGetterFn, logger: Logger) {
 		this._getApps = getApps;
 		this._logger = logger;
 	}
@@ -25,8 +25,8 @@ export class AppIntentHelper {
 	 * @param intent The intent the application must support.
 	 * @returns The list of application that support the intent.
 	 */
-	public async getAppsByIntent(intent: string): Promise<PlatformApp[]> {
-		const apps = await this._getApps();
+	public getAppsByIntent(intent: string): PlatformApp[] {
+		const apps = this._getApps();
 		return apps.filter((app) => {
 			const listensFor = app.interop?.intents?.listensFor;
 
@@ -50,12 +50,8 @@ export class AppIntentHelper {
 	 * @param resultType Optional result type to look for.
 	 * @returns The intent and its supporting apps if found.
 	 */
-	public async getIntent(
-		intent: string,
-		contextType?: string,
-		resultType?: string,
-	): Promise<AppsForIntent | undefined> {
-		const apps = await this._getApps();
+	public getIntent(intent: string, contextType?: string, resultType?: string): AppsForIntent | undefined {
+		const apps = this._getApps();
 
 		if (apps.length === 0) {
 			this._logger.warn(
@@ -99,8 +95,8 @@ export class AppIntentHelper {
 	 * @param resultType The optional result type to match as well.
 	 * @returns The apps for the specified intent.
 	 */
-	public async getIntentsByContext(contextType: string, resultType?: string): Promise<AppsForIntent[]> {
-		const apps = await this._getApps();
+	public getIntentsByContext(contextType: string, resultType?: string): AppsForIntent[] {
+		const apps = this._getApps();
 
 		if (apps.length === 0) {
 			this._logger.warn(

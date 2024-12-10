@@ -419,3 +419,5 @@ export interface AppResolverOptions {
 	 */
 	title?: string;
 }
+
+export type AppGetterFn = () => PlatformApp[];

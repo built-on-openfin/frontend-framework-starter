@@ -1,9 +1,13 @@
 import "./App.css";
 import { Tabs } from "./components/Tabs.tsx";
+import { useApps } from "./hooks/useApps.ts";
 import { useInBrowser } from "./hooks/useInBrowser";
+import { useSettings } from "./hooks/useSettings.ts";
 
 function App() {
-	const { layout, error, changeLayout } = useInBrowser();
+	const { settings } = useSettings();
+	const { apps } = useApps();
+	const { layout, error, changeLayout } = useInBrowser({ apps, settings });
 
 	const handleTabClick = (key: string) => {
 		changeLayout(key);
@@ -16,10 +20,7 @@ function App() {
 	return (
 		<>
 			<header className="row spread middle">
-				<div className="col">
-					<h1>Web layout with intent support</h1>
-					<Tabs layout={layout} onTabClick={handleTabClick} />
-				</div>
+				<Tabs layout={layout} onTabClick={handleTabClick} />
 				<div className="row middle gap20">
 					<img src="./icon-blue.png" alt="OpenFin" height="40px"></img>
 				</div>

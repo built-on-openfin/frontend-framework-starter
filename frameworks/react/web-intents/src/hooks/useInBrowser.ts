@@ -1,8 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Provider } from "../provider/Provider.ts";
+import { type PlatformApp } from "../shapes/app-shapes.ts";
 import type { PlatformLayoutSnapshot } from "../shapes/layout-shapes.ts";
+import { type Settings } from "../shapes/setting-shapes.ts";
 
-export function useInBrowser(): {
+export type UseInBrowserProps = {
+	apps: PlatformApp[];
+	settings: Settings | null;
+};
+
+export function useInBrowser({ apps, settings }: UseInBrowserProps): {
 	isInitialized: boolean;
 	error: string | null;
 	layout: PlatformLayoutSnapshot | null;
@@ -18,26 +25,39 @@ export function useInBrowser(): {
 		const initialize = async () => {
 			try {
 				if (providerRef.current === null) {
-					const provider = new Provider();
+					console.log("Creating new Provider");
+					const provider = new Provider(apps, settings!);
 					providerRef.current = provider;
 					await provider.initializeWorkspacePlatform();
 					setLayout(provider.layout);
 					setIsInitialized(true);
+				} else {
+					providerRef.current.updateApps(apps);
 				}
 			} catch (error) {
-				console.error(error);
-				setError(error.toString());
+				if (error instanceof Error) {
+					console.error(error);
+					setError(error.message);
+				} else {
+					console.error("Unknown error:", error);
+					setError("An unknown error occurred.");
+				}
 			}
 		};
 
-		void initialize();
+		if (apps && settings) {
+			void initialize();
+		}
 
-		return () => {
-			if (providerRef.current) {
-				providerRef.current.teardown();
-			}
-		};
-	}, []);
+		// FIXME: Why is this being over-run?
+		// return () => {
+		// 	if (providerRef.current) {
+		// 		console.log("Teardown useInBrowser");
+		// 		providerRef.current.teardown();
+		// 		providerRef.current = null;
+		// 	}
+		// };
+	}, [apps, settings]);
 
 	const changeLayout = useCallback((layoutName: string) => {
 		const layoutManager = window.fin?.Platform.Layout.getCurrentLayoutManagerSync();

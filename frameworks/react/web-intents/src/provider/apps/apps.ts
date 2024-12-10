@@ -3,19 +3,14 @@ import type { PlatformApp, PlatformAppIdentifier } from "../../shapes/app-shapes
 import type { PlatformLayoutSnapshot } from "../../shapes/layout-shapes";
 import { getSettings } from "../settings/settings";
 
-let cachedApps: PlatformApp[] | undefined;
-
 /**
- * The the app by its id.
+ * Get the app by its id
+ * @param apps Collection of all apps
  * @param appId The id of the requested app.
  * @returns The app if it was found.
  */
-export async function getApp(appId: string): Promise<PlatformApp | undefined> {
-	const apps = await getApps();
-	const foundApp = apps.find(
-		(app) => app.appId === appId || (app.type === "web" && app.details.url === appId),
-	);
-	return foundApp;
+export function getApp(apps: PlatformApp[], appId: string): PlatformApp | undefined {
+	return apps.find((app) => app.appId === appId || (app.type === "web" && app.details.url === appId));
 }
 
 /**
@@ -23,9 +18,6 @@ export async function getApp(appId: string): Promise<PlatformApp | undefined> {
  * @returns The list of application.
  */
 export async function getApps(): Promise<PlatformApp[]> {
-	if (cachedApps) {
-		return cachedApps;
-	}
 	const settings = await getSettings();
 	if (Array.isArray(settings?.platform?.app?.directory)) {
 		// Fetch data from all URLs concurrently
@@ -33,11 +25,9 @@ export async function getApps(): Promise<PlatformApp[]> {
 		// Parse the JSON from all responses
 		const appDirectories = await Promise.all(responses.map(async (response) => response.json()));
 		// Combine all applications into a single array
-		cachedApps = appDirectories.flatMap((appDirectory) => appDirectory.applications);
-		return cachedApps;
+		return appDirectories.flatMap((appDirectory) => appDirectory.applications);
 	}
-	cachedApps = [];
-	return cachedApps;
+	return [];
 }
 
 /**

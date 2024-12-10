@@ -1,31 +1,36 @@
 import { cloudInteropOverride } from "@openfin/cloud-interop";
 import { type OpenFin } from "@openfin/core";
 import { connect, type WebLayoutSnapshot } from "@openfin/core-web";
+import { type PlatformApp } from "../shapes/app-shapes.ts";
 import { type PlatformLayoutSnapshot } from "../shapes/layout-shapes.ts";
 import { type Settings } from "../shapes/setting-shapes.ts";
 import { getConstructorOverride } from "./broker/interop-override.ts";
 import { makeOverride } from "./layout/layout-override.ts";
-import { getDefaultLayout, getSettings } from "./settings/settings.ts";
+import { getDefaultLayout } from "./settings/settings.ts";
 
 export class Provider {
 	public layout: PlatformLayoutSnapshot | null = null;
 
-	constructor() {
+	private apps: PlatformApp[] = [];
+	private settings: Settings;
+
+	constructor(apps: PlatformApp[], settings: Settings) {
 		console.log("Provider initialized");
+		this.apps = apps;
+		this.settings = settings;
 	}
 
 	public async initializeWorkspacePlatform(): Promise<void> {
-		const settings = await getSettings();
 		const layoutSnapshot = await getDefaultLayout();
 
-		if (settings === undefined || layoutSnapshot === undefined) {
+		if (this.settings === undefined || layoutSnapshot === undefined) {
 			console.error(
 				"Unable to run the sample as we have been unable to load the web manifest and it's settings from the currently running html page. Please ensure that the web manifest is being served and that it contains the custom_settings section.",
 			);
 			return;
 		}
 
-		this.listenForConfigRequests(settings);
+		this.listenForConfigRequests(this.settings);
 
 		// Connect to the OpenFin Web Broker and pass the default layout.
 		// It is good practice to specify providerId even if content is explicitly specifying it for cases where
@@ -33,10 +38,10 @@ export class Provider {
 		// is useful for defaulting any client that uses inheritance through our layout system.
 		const fin = await connect({
 			options: {
-				brokerUrl: settings.platform.interop.brokerUrl,
+				brokerUrl: this.settings.platform.interop.brokerUrl,
 				interopConfig: {
-					providerId: settings.platform.interop.providerId,
-					currentContextGroup: settings.platform.interop.defaultContextGroup,
+					providerId: this.settings.platform.interop.providerId,
+					currentContextGroup: this.settings.platform.interop.defaultContextGroup,
 				},
 			},
 			connectionInheritance: "enabled",
@@ -48,26 +53,29 @@ export class Provider {
 			window.fin = fin;
 			const layoutManagerOverride = makeOverride(
 				fin,
-				settings.platform.layout.layoutContainerId,
-				settings.platform.layout.layoutSelectorId,
+				this.settings.platform.layout.layoutContainerId,
+				this.settings.platform.layout.layoutSelectorId,
 			);
 
-			const interopOverride = await getConstructorOverride(settings.platform.interop.overrideOptions);
+			const interopOverride = await getConstructorOverride(
+				() => this.apps,
+				this.settings.platform.interop.overrideOptions,
+			);
 			const overrides = [interopOverride];
 
-			if (settings?.platform?.cloudInterop?.connectParams?.url?.startsWith("http")) {
+			if (this.settings?.platform?.cloudInterop?.connectParams?.url?.startsWith("http")) {
 				const cloudOverride = (await cloudInteropOverride(
-					settings.platform.cloudInterop.connectParams,
+					this.settings.platform.cloudInterop.connectParams,
 				)) as unknown as OpenFin.ConstructorOverride<OpenFin.InteropBroker>;
 				overrides.push(cloudOverride);
 			}
 			// You may now use the `fin` object to initialize the broker and the layout.
-			await fin.Interop.init(settings.platform.interop.providerId, overrides);
+			await fin.Interop.init(this.settings.platform.interop.providerId, overrides);
 			// Show the main container and hide the loading container
 			// initialize the layout and pass it the dom element to bind to
 			await fin.Platform.Layout.init({
 				layoutManagerOverride,
-				containerId: settings.platform.layout.layoutContainerId,
+				containerId: this.settings.platform.layout.layoutContainerId,
 			});
 			// now that everything has been setup notify others of globals
 			const finReadyEvent = new CustomEvent("finReady");
@@ -82,8 +90,19 @@ export class Provider {
 			// setup listeners now that everything has been initialized
 			// await attachListeners();
 
+			// this.setupPanels(settings);
+
 			this.layout = layoutSnapshot as PlatformLayoutSnapshot;
 		}
+	}
+
+	/**
+	 * Update the collection of apps
+	 * @param apps
+	 */
+	public updateApps(apps: PlatformApp[]): void {
+		console.log("Updating apps", apps);
+		this.apps = apps;
 	}
 
 	public teardown(): void {
@@ -143,4 +162,35 @@ export class Provider {
 			false,
 		);
 	}
+
+	// /**
+	//  * Sets up panels if supported.
+	//  * @param settings The settings to use.
+	//  */
+	// public setupPanels(settings: Settings): void {
+	// 	if (settings?.platform?.layout?.panels?.left) {
+	// 		const leftPanel = settings.platform.layout.panels.left;
+	// 		const leftPanelFrameContainer = document.querySelector<HTMLElement>(
+	// 			`#${leftPanel.frameContainerId}`,
+	// 		);
+	// 		const leftPanelFrame = document.querySelector<HTMLIFrameElement>(`#${leftPanel.frameId}`);
+	// 		if (leftPanelFrameContainer === null) {
+	// 			console.error(
+	// 				`Please ensure the document has an element with the following id #${leftPanel.frameContainerId} containing an iframe with an id of #${leftPanel.frameId} so that the layout can be applied.`,
+	// 			);
+	// 			return;
+	// 		}
+	// 		if (leftPanelFrame === null) {
+	// 			console.error(
+	// 				`Please ensure the document has an iframe with the following id #${leftPanel.frameId} so that the layout can be applied.`,
+	// 			);
+	// 			return;
+	// 		}
+	// 		leftPanelFrameContainer.classList.remove("hidden");
+	// 		leftPanelFrame.src = leftPanel.url;
+	// 		console.log(`Panel ${leftPanel.frameId} has been setup with the url ${leftPanel.url}`);
+	// 	} else {
+	// 		console.log("No panels require setup.");
+	// 	}
+	// }
 }

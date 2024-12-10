@@ -2,14 +2,14 @@ import type { AppIdentifier, AppMetadata } from "@finos/fdc3";
 import type { PlatformApp } from "../../shapes/app-shapes";
 
 /**
- * Gets app meta data in the right format based on the version.
- * @param apps the apps to get the meta data for.
- * @param findInstances the function to find the instances of an app so you can add them to the meta data.
- * @returns the app meta data.
+ * Gets app metadata in the right format based on the version.
+ * @param apps the apps to get the metadata for.
+ * @param findInstances the function to find the instances of an app so you can add them to the metadata.
+ * @returns the app metadata.
  */
 export async function getAppsMetaData(
 	apps: PlatformApp[],
-	findInstances: (appId: string) => Promise<AppIdentifier[]>
+	findInstances: (appId: string) => Promise<AppIdentifier[]>,
 ): Promise<AppMetadata[]> {
 	const appsMetaData: AppMetadata[] = [];
 
@@ -41,7 +41,7 @@ export function mapToAppMetaData(app: PlatformApp, resultType?: string): AppMeta
 		title: app.title,
 		tooltip: app.tooltip,
 		version: app.version,
-		resultType
+		resultType,
 	};
 	return appMetaData;
 }

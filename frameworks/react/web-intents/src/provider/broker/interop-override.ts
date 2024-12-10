@@ -8,6 +8,7 @@ import type {
 import type { OpenFin } from "@openfin/core";
 import { formatError, isEmpty, isString, isStringValue, randomUUID } from "../../helpers/utils";
 import type {
+	AppGetterFn,
 	AppsForIntent,
 	PlatformApp,
 	PlatformAppIdentifier,
@@ -21,7 +22,7 @@ import type {
 	OpenOptions,
 	PlatformInteropBrokerOptions,
 } from "../../shapes/interopbroker-shapes";
-import { bringAppToFront, getApp, getApps, launch } from "../apps/apps";
+import { bringAppToFront, getApp, launch } from "../apps/apps";
 import { AppIdHelper } from "./app-id-helper";
 import { AppIntentHelper } from "./app-intent-helper";
 import { getAppsMetaData, mapToAppMetaData } from "./app-meta-data-helper";
@@ -31,12 +32,14 @@ import { IntentResolverHelper } from "./intent-resolver-helper";
 
 /**
  * Get the override constructor for the interop broker (useful if you wish this implementation to be layered with other implementations and passed to the platform's initialization object as part of an array).
+ * @param getApps Function to return the collection of apps
  * @param options The options for the platform interop broker.
  * @returns The override constructor to be used in an array.
  */
-async function constructorOverride(
+function constructorOverride(
+	getApps: AppGetterFn,
 	options: PlatformInteropBrokerOptions,
-): Promise<OpenFin.ConstructorOverride<OpenFin.InteropBroker>> {
+): OpenFin.ConstructorOverride<OpenFin.InteropBroker> {
 	const logger = console;
 	return (Base: OpenFin.Constructor<OpenFin.InteropBroker>) =>
 		/**
@@ -265,7 +268,7 @@ async function constructorOverride(
 
 				// app specified flow
 				if (!isEmpty(targetAppIdentifier)) {
-					const targetApp = await getApp(targetAppIdentifier.appId);
+					const targetApp = getApp(getApps(), targetAppIdentifier.appId);
 
 					if (isEmpty(targetApp)) {
 						throw new Error(ResolveError.TargetAppUnavailable);
@@ -373,7 +376,7 @@ async function constructorOverride(
 					intentApps.push(...matchedIntents.apps);
 				}
 				if (!isEmpty(targetAppIdentifier)) {
-					const targetApp = await getApp(targetAppIdentifier.appId);
+					const targetApp = getApp(getApps(), targetAppIdentifier.appId);
 					if (isEmpty(targetApp)) {
 						throw new Error(ResolveError.TargetAppUnavailable);
 					}
@@ -508,7 +511,7 @@ async function constructorOverride(
 						instanceId = fdc3OpenOptions.app.instanceId;
 					}
 
-					const requestedApp = await getApp(requestedId);
+					const requestedApp = getApp(getApps(), requestedId);
 					if (isEmpty(requestedApp)) {
 						throw new Error(OpenError.AppNotFound);
 					}
@@ -663,7 +666,7 @@ async function constructorOverride(
 			): Promise<AppMetadata> {
 				logger.info("fdc3HandleGetAppMetadata call received.", app, clientIdentity);
 				// this will only be called by FDC3 2.0+
-				const platformApp = await getApp(app.appId);
+				const platformApp = getApp(getApps(), app.appId);
 				if (!isEmpty(platformApp)) {
 					const appMetaData: AppMetadata = mapToAppMetaData(platformApp);
 					return appMetaData;
@@ -790,7 +793,7 @@ async function constructorOverride(
 			): Promise<Omit<IntentResolution, "getResult">> {
 				// app specified flow
 				const intentsForSelection: AppsForIntent[] = [];
-				const targetApp = await getApp(targetAppIdentifier.appId);
+				const targetApp = getApp(getApps(), targetAppIdentifier.appId);
 
 				// if the specified app isn't available then let the caller know
 				if (isEmpty(targetApp)) {
@@ -1062,7 +1065,7 @@ async function constructorOverride(
 				intent: OpenFin.Intent<OpenFin.IntentMetadata<IntentTargetMetaData>>,
 				clientIdentity?: OpenFin.ClientIdentity,
 			): Promise<Omit<IntentResolution, "getResult">> {
-				const selectedApp = await getApp(userSelection.appId);
+				const selectedApp = getApp(getApps(), userSelection.appId);
 				if (isEmpty(selectedApp)) {
 					throw new Error(ResolveError.NoAppsFound);
 				}
@@ -1083,11 +1086,13 @@ async function constructorOverride(
 
 /**
  * Get the override constructor for the interop broker (useful if you wish this implementation to be layered with other implementations and passed to the platform's initialization object as part of an array).
+ * @param getApps Function to return the collection of apps
  * @param options The options for the broker.
  * @returns The override constructor to be used in an array.
  */
-export async function getConstructorOverride(
+export function getConstructorOverride(
+	getApps: AppGetterFn,
 	options: PlatformInteropBrokerOptions,
-): Promise<OpenFin.ConstructorOverride<OpenFin.InteropBroker>> {
-	return constructorOverride(options);
+): OpenFin.ConstructorOverride<OpenFin.InteropBroker> {
+	return constructorOverride(getApps, options);
 }

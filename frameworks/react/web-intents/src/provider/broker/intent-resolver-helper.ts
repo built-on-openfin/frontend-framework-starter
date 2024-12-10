@@ -1,12 +1,11 @@
 import type OpenFin from "@openfin/core";
 import type { PlatformApp } from "../../shapes/app-shapes";
 import type {
-	IntentResolverResponse,
+	AppIntent,
 	IntentResolverOptions,
-	AppIntent
+	IntentResolverResponse,
 } from "../../shapes/interopbroker-shapes";
 import type { Logger } from "../../shapes/logger-shapes";
-// import { formatError } from "../../utils";
 import { RESOLVE_ERROR as ResolveError } from "./fdc3-errors";
 
 /**
@@ -42,7 +41,7 @@ export class IntentResolverHelper {
 			width: this._defaultIntentResolverWidth,
 			fdc3InteropApi: "2.0",
 			title: "Intent Resolver",
-			...intentResolverOptions
+			...intentResolverOptions,
 		};
 		this._logger = logger;
 		this._dialogElement = document.createElement("dialog");
@@ -81,7 +80,7 @@ export class IntentResolverHelper {
 			intent?: Partial<AppIntent>;
 			intents?: { intent: Partial<AppIntent>; apps: PlatformApp[] }[];
 		},
-		clientIdentity: OpenFin.ClientIdentity
+		clientIdentity: OpenFin.ClientIdentity,
 	): Promise<IntentResolverResponse> {
 		if (this._dialogElement) {
 			this._dialogElement.showModal();
@@ -118,8 +117,8 @@ export class IntentResolverHelper {
 					title: this._intentResolverOptions?.title,
 					apps: launchOptions.apps,
 					intent: launchOptions.intent,
-					intents: launchOptions.intents
-				}
+					intents: launchOptions.intents,
+				},
 			});
 		}
 		return new Promise((resolve, reject) => {

@@ -49,7 +49,7 @@ export class ClientRegistrationHelper {
 	 * The client has disconnected form the broker.
 	 * @param clientIdentity The identity of the client that disconnected.
 	 */
-	public async clientDisconnected(clientIdentity: OpenFin.ClientIdentity): Promise<void> {
+	public clientDisconnected(clientIdentity: OpenFin.ClientIdentity): void {
 		this._logger.info("Client Disconnected.", clientIdentity);
 
 		for (const [key, value] of Object.entries(this._trackedIntentHandlers)) {
@@ -182,10 +182,10 @@ export class ClientRegistrationHelper {
 	 * @param id The client identity to capture from.
 	 * @param payload The payload.
 	 */
-	public async clientConnectionRegistered(
+	public clientConnectionRegistered(
 		id: OpenFin.ClientIdentity & { connectionUrl?: string; entityType?: string },
 		payload?: CaptureApiPayload,
-	): Promise<void> {
+	): void {
 		const key = `${id.uuid}-${id.name}`;
 		let apiVersion: ApiMetadata = {
 			type: "fdc3",
@@ -197,7 +197,7 @@ export class ClientRegistrationHelper {
 				if (!isEmpty(payloadApiVersion) && !isEmpty(payloadApiVersion?.type)) {
 					apiVersion = payloadApiVersion;
 				} else if (isStringValue(id.connectionUrl)) {
-					// if they haven't specified apiVersion meta data and it is external and has a url then we will assume fdc3 2.0
+					// if they haven't specified apiVersion metadata, and it is external and has a url then we will assume fdc3 2.0
 					apiVersion = { type: "fdc3", version: "2.0" };
 				} else {
 					// if a native app has specified a preference through apiVersion then we assume interop
@@ -366,7 +366,7 @@ export class ClientRegistrationHelper {
 			const timerId = setTimeout(() => {
 				if (!isEmpty(this._clientReadyRequests[key])) {
 					delete this._clientReadyRequests[key];
-					reject(ResolveError.IntentDeliveryFailed);
+					reject(new Error(ResolveError.IntentDeliveryFailed));
 				}
 			}, timeout);
 			this._clientReadyRequests[key] = (instanceId: string): void => {
@@ -432,7 +432,7 @@ export class ClientRegistrationHelper {
 				if (hasContextRequest || hasGlobalRequest) {
 					delete this._clientReadyRequests[contextKey];
 					delete this._clientReadyRequests[globalKey];
-					reject(OpenError.AppTimeout);
+					reject(new Error(OpenError.AppTimeout));
 				}
 			}, timeout);
 			let isResolved = false;
