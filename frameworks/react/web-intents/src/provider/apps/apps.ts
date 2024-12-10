@@ -38,16 +38,11 @@ export async function getApps(): Promise<PlatformApp[]> {
  * @returns Identifiers specific to the type of application launched.
  */
 export async function launch(
-	platformApp: PlatformApp | string,
+	platformApp: PlatformApp,
 	target?: { layout: boolean },
 ): Promise<PlatformAppIdentifier[] | undefined> {
 	try {
-		let appToLaunch: PlatformApp | undefined;
-		if (typeof platformApp === "string") {
-			appToLaunch = await getApp(platformApp);
-		} else {
-			appToLaunch = platformApp;
-		}
+		const appToLaunch = platformApp;
 		if (!appToLaunch) {
 			return undefined;
 		}

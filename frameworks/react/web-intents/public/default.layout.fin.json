@@ -1,5 +1,194 @@
 {
   "layouts": {
+    "tab-dashboard": {
+      "content": [
+        {
+          "type": "row",
+          "content": [
+            {
+              "type": "stack",
+              "width": 20,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "view",
+                  "componentState": {
+                    "name": "my-team/b9880bc2-2983-4b3c-a496-77d94783cb7e",
+                    "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/my-team/index.html",
+                    "componentName": "view"
+                  },
+                  "title": "My Team"
+                }
+              ]
+            },
+            {
+              "type": "column",
+              "width": 80,
+              "content": [
+                {
+                  "type": "stack",
+                  "width": 50,
+                  "height": 50,
+                  "activeItemIndex": 1,
+                  "content": [
+                    {
+                      "type": "component",
+                      "componentName": "view",
+                      "componentState": {
+                        "name": "internal-generated-view-0dd98149-16fb-4cf0-9b2a-d5bff2519d9b",
+                        "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/keeping-track/index.html",
+                        "componentName": "view"
+                      },
+                      "title": "Keeping Track"
+                    },
+                    {
+                      "type": "component",
+                      "componentName": "view",
+                      "componentState": {
+                        "name": "annual-leave/ef70ccee-2613-4f99-8a01-8cfba31064ba",
+                        "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/annual-leave/index.html",
+                        "componentName": "view"
+                      },
+                      "title": "Annual Leave"
+                    },
+                    {
+                      "type": "component",
+                      "componentName": "view",
+                      "componentState": {
+                        "name": "internal-generated-view-f898522a-5d85-4e9e-93eb-378179f0f909",
+                        "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/360-feedback/index.html",
+                        "componentName": "view"
+                      },
+                      "title": "360 Feedback"
+                    }
+                  ]
+                },
+                {
+                  "type": "row",
+                  "isClosable": false,
+
+                  "title": "",
+                  "height": 50,
+                  "content": [
+                    {
+                      "type": "stack",
+                      "height": 50,
+                      "width": 50,
+                      "content": [
+                        {
+                          "type": "component",
+                          "componentName": "view",
+                          "componentState": {
+                            "name": "manager-paths/b38f525a-77a9-48d9-bd02-b895cfbbf074",
+                            "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/manager-paths/index.html",
+                            "componentName": "view"
+                          },
+                          "title": "Manager Paths"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "stack",
+                      "width": 50,
+                      "content": [
+                        {
+                          "type": "component",
+                          "componentName": "view",
+                          "componentState": {
+                            "name": "company-comms/5292442d-4d19-4d71-bcf1-ca9081ec50b0",
+                            "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/company-comms/index.html",
+                            "componentName": "view"
+                          },
+                          "title": "Company News"
+                        },
+                        {
+                          "type": "component",
+                          "componentName": "view",
+                          "componentState": {
+                            "name": "company-cal/5292442d-4d19-4d71-bcf1-ca9081ec50b1",
+                            "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/company-cal/index.html",
+                            "componentName": "view"
+                          },
+                          "title": "Company Calendar"
+                        },
+                        {
+                          "type": "component",
+                          "componentName": "view",
+                          "componentState": {
+                            "name": "internal-generated-view-935bb258-ded4-4a85-ad92-0f2a742d4d42",
+                            "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/franchise-comms/index.html",
+                            "componentName": "view"
+                          },
+                          "title": "Franchise Comms"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "tab-apps": {
+      "content": [
+        {
+          "type": "row",
+          "content": [
+            {
+              "type": "stack",
+              "width": 20,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "view",
+                  "componentState": {
+                    "name": "my-team/b9880bc2-2983-4b3c-a496-77d94783cb7e",
+                    "url": "http://localhost:3000/menu",
+                    "componentName": "view"
+                  },
+                  "title": "Menu"
+                }
+              ]
+            },
+            {
+              "type": "column",
+              "width": 80,
+              "content": [
+                {
+                  "type": "stack",
+                  "width": 50,
+                  "height": 50,
+                  "content": [
+                    {
+                      "type": "component",
+                      "componentName": "view",
+                      "componentState": {
+                        "name": "internal-generated-view-0dd98149-16fb-4cf0-9b2a-d5bff2519d9b",
+                        "url": "http://localhost:3000/dashboard",
+                        "componentName": "view"
+                      },
+                      "title": "Dashboard"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "panels": [
+        {
+          "position": "Left",
+          "width": "240px",
+          "extendToTop": true,
+          "viewOptions": {
+            "name": "left-panel"
+          }
+        }
+      ]
+    },
     "tab-developer-tools": {
       "content": [
         {
@@ -110,67 +299,10 @@
           ]
         }
       ]
-    },
-    "tab-apps": {
-      "content": [
-        {
-          "type": "row",
-          "content": [
-            {
-              "type": "stack",
-              "width": 20,
-              "content": [
-                {
-                  "type": "component",
-                  "componentName": "view",
-                  "componentState": {
-                    "name": "my-team/b9880bc2-2983-4b3c-a496-77d94783cb7e",
-                    "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/my-team/index.html",
-                    "componentName": "view"
-                  },
-                  "title": "My Team"
-                }
-              ]
-            },
-            {
-              "type": "column",
-              "width": 80,
-              "content": [
-                {
-                  "type": "stack",
-                  "width": 50,
-                  "height": 50,
-                  "content": [
-                    {
-                      "type": "component",
-                      "componentName": "view",
-                      "componentState": {
-                        "name": "internal-generated-view-0dd98149-16fb-4cf0-9b2a-d5bff2519d9b",
-                        "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v19.1.0/workspace-platform-starter/common/views/manager-portal/keeping-track/index.html",
-                        "componentName": "view"
-                      },
-                      "title": "Keeping Track"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "panels": [
-        {
-          "position": "Left",
-          "width": "240px",
-          "extendToTop": true,
-          "viewOptions": {
-            "name": "left-panel"
-          }
-        }
-      ]
     }
   },
   "layoutTitles": {
+    "tab-dashboard": "Dashboard",
     "tab-apps": "Apps",
     "tab-developer-tools": "Developer Tools"
   },

@@ -1,5 +1,4 @@
 import { init as initBrokerConnection } from "@openfin/core-web/iframe-broker";
-import { SHARED_WORKER_URL } from "./config.ts";
 
 /**
  * Initializes the OpenFin Web Broker connection.
@@ -7,7 +6,7 @@ import { SHARED_WORKER_URL } from "./config.ts";
  */
 async function init(): Promise<void> {
 	return initBrokerConnection({
-		sharedWorkerUrl: SHARED_WORKER_URL,
+		sharedWorkerUrl: `${window.location.origin}/assets/shared-worker.js`,
 	});
 }
 
