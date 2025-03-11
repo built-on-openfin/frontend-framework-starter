@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
 				},
 			},
 			platform: { layoutSnapshot },
+			logLevel: "info",
 		});
 
 		// You may now use the `fin` object to initialize the broker and the layout.
