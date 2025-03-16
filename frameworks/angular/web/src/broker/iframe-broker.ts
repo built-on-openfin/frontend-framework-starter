@@ -9,6 +9,7 @@ async function init(): Promise<void> {
 	console.log("Initializing OpenFin broker connection");
 	return initBrokerConnection({
 		sharedWorkerUrl: environment.sharedWorkerUrl,
+		logLevel: "info",
 	});
 }
 
