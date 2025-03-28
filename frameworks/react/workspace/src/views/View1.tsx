@@ -1,12 +1,15 @@
 import * as Notifications from "@openfin/workspace/notifications";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../logo.svg";
 
 function View1() {
+	const [notificationActionMessage, setNotificationActionMessage] = useState("");
+
 	useEffect(() => {
 		Notifications.register().then(() => {
 			Notifications.addEventListener("notification-action", (event) => {
 				console.log("Notification clicked:", event.result["customData"]);
+				setNotificationActionMessage(event.result["customData"]);
 			});
 		});
 	}, []);
@@ -23,7 +26,7 @@ function View1() {
 					type: "button",
 					cta: true,
 					onClick: {
-						customData: "Arbitrary custom data",
+						customData: "custom notification data",
 					},
 				},
 			],
@@ -77,6 +80,7 @@ function View1() {
 				<button onClick={() => broadcastFDC3ContextAppChannel()}>
 					Broadcast FDC3 Context on App Channel
 				</button>
+				{notificationActionMessage && <div>Notification action: {notificationActionMessage}</div>}
 			</main>
 		</div>
 	);

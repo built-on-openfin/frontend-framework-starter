@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import type OpenFin from "@openfin/core";
 import type { App } from "@openfin/workspace";
 import { CustomActionCallerType, init } from "@openfin/workspace-platform";
 import { from, type Observable } from "rxjs";
@@ -7,7 +8,7 @@ import type { PlatformSettings } from "./types";
 
 @Injectable({ providedIn: "root" })
 export class PlatformService {
-	initializeWorkspacePlatform(platformSettings: PlatformSettings): Observable<void> {
+	initializeWorkspacePlatform(platformSettings: PlatformSettings): Observable<OpenFin.Platform> {
 		console.log("Initializing workspace platform");
 
 		return from(
