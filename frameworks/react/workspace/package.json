@@ -11,16 +11,16 @@
   },
   "dependencies": {
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "41.101.2",
-    "@openfin/workspace": "21.0.11",
-    "@openfin/workspace-platform": "21.0.11",
+    "@openfin/core": "41.102.1",
+    "@openfin/workspace": "21.0.12",
+    "@openfin/workspace-platform": "21.0.12",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@openfin/node-adapter": "41.101.2",
+    "@openfin/node-adapter": "41.102.1",
     "@testing-library/jest-dom": "6.5.0",
     "@testing-library/react": "16.0.1",
     "@testing-library/user-event": "14.5.2",
