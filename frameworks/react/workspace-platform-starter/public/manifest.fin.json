@@ -6,11 +6,11 @@
     "version": "41.134.102.1"
   },
   "platform": {
-    "name": "Workspace Platform Starter",
+    "name": "Workspace Platform Starter React Wrapper",
     "uuid": "workspace-platform-starter-react-wrapper",
-    "icon": "http://localhost:5173/favicon.png",
+    "icon": "http://localhost:8080/favicon.png",
     "autoShow": true,
-    "providerUrl": "http://localhost:5173",
+    "providerUrl": "http://localhost:8080",
     "preventQuitOnLastWindowClosed": true,
     "appLogsTimezone": "utc",
     "enableAppLogging": false,
@@ -74,7 +74,7 @@
   "shortcut": {
     "company": "OpenFin",
     "description": "A way of showing examples of what OpenFin can do.",
-    "icon": "http://localhost:5173/favicon.png",
+    "icon": "http://localhost:8080/favicon.png",
     "name": "Workspace Platform Starter - v20.0.0",
     "target": ["desktop", "start-menu"]
   },
@@ -96,21 +96,21 @@
       "autoShow": ["dock", "home"]
     },
     "splashScreenProvider": {
-      "url": "http://localhost:5173/splash.html"
+      "url": "http://localhost:8080/splash.html"
     },
     "platformProvider": {
-      "rootUrl": "http://localhost:5173",
+      "rootUrl": "http://localhost:8080",
       "language": {
         "initialLanguage": "en-US"
       },
       "modules": [
         {
           "id": "default-wps-platform",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Workspace Platform Starter Platform Override",
           "description": "This is the implementation included in workspace platform starter but it is now exposed as a module to allow for easy replacement.",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/wps-platform-override.bundle.js",
+          "url": "http://localhost:8080/js/modules/wps-platform-override.bundle.js",
           "data": {
             "loggerName": "WpsPlatformOverride"
           }
@@ -118,7 +118,7 @@
       ],
       "interop": {
         "intentResolver": {
-          "url": "http://localhost:5173/common/windows/intents/instance-picker.html",
+          "url": "http://localhost:8080/common/windows/intents/instance-picker.html",
           "height": 715,
           "width": 665,
           "fdc3InteropApi": "2.0"
@@ -132,7 +132,7 @@
           "description": "If you can not find an application to support your action please check the instances associated with this entry to see if it satisfies your need.",
           "icons": [
             {
-              "src": "http://localhost:5173/favicon.png"
+              "src": "http://localhost:8080/favicon.png"
             }
           ],
           "publisher": "Multiple",
@@ -193,11 +193,11 @@
         "modules": [
           {
             "id": "openfin-cloud-interop",
-            "icon": "http://localhost:5173/favicon.png",
+            "icon": "http://localhost:8080/favicon.png",
             "title": "OpenFin Cloud Interop",
             "description": "OpenFin Cloud Interop",
             "enabled": false,
-            "url": "http://localhost:5173/js/modules/openfin-cloud-interop.bundle.js",
+            "url": "http://localhost:8080/js/modules/openfin-cloud-interop.bundle.js",
             "data": {
               "userId": "",
               "password": "",
@@ -209,11 +209,11 @@
           },
           {
             "id": "default-wps-interop",
-            "icon": "http://localhost:5173/favicon.png",
+            "icon": "http://localhost:8080/favicon.png",
             "title": "Workspace Platform Starter Interop Broker",
             "description": "This is the implementation included in workspace platform starter but it is now exposed as a module to allow for easy replacement.",
             "enabled": true,
-            "url": "http://localhost:5173/js/modules/wps-interop-override.bundle.js",
+            "url": "http://localhost:8080/js/modules/wps-interop-override.bundle.js",
             "data": {
               "loggerName": "WpsInteropOverride"
             }
@@ -222,7 +222,7 @@
       }
     },
     "appProvider": {
-      "endpointIds": ["http://localhost:5173/apps.json"],
+      "endpointIds": ["http://localhost:8080/apps.json"],
       "cacheDurationInSeconds": 10,
       "cacheDurationInMinutes": 0,
       "manifestTypes": [
@@ -253,27 +253,27 @@
           "title": "Local Storage",
           "enabled": true,
           "id": "local-storage",
-          "url": "http://localhost:5173/js/modules/local-storage.bundle.js"
+          "url": "http://localhost:8080/js/modules/local-storage.bundle.js"
         },
         {
           "title": "Favorite Local Storage",
           "enabled": true,
           "id": "favorite-local-storage",
-          "url": "http://localhost:5173/js/modules/favorite-local-storage.bundle.js"
+          "url": "http://localhost:8080/js/modules/favorite-local-storage.bundle.js"
         },
         {
           "title": "Context Processor",
           "enabled": true,
           "id": "context-processor",
-          "url": "http://localhost:5173/js/modules/example-context-processor.bundle.js"
+          "url": "http://localhost:8080/js/modules/example-context-processor.bundle.js"
         },
         {
           "id": "example-notification-source",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Example Notification Source",
           "description": "Example Notification Source. Please see docs in client/src/modules/example-notification-source/README.md",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/example-notification-source.bundle.js",
+          "url": "http://localhost:8080/js/modules/example-notification-source.bundle.js",
           "data": {
             "websocket": {
               "url": ""
@@ -467,9 +467,9 @@
           "title": {
             "type": "view-title"
           },
-          "favicon": "http://localhost:5173/favicon.png",
-          "newTabUrl": "http://localhost:5173/common/views/platform/new-tab/new-tab.html",
-          "newPageUrl": "http://localhost:5173/common/views/platform/new-tab/new-tab.html",
+          "favicon": "http://localhost:8080/favicon.png",
+          "newTabUrl": "http://localhost:8080/common/views/platform/new-tab/new-tab.html",
+          "newPageUrl": "http://localhost:8080/common/views/platform/new-tab/new-tab.html",
           "navigationButtons": {
             "enabled": true
           }
@@ -574,7 +574,7 @@
             "type": "Custom",
             "tooltip": "Change Opacity",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/favicon.png",
+            "iconUrl": "http://localhost:8080/favicon.png",
             "action": {
               "id": "change-opacity",
               "customData": {
@@ -591,7 +591,7 @@
             "type": "Custom",
             "tooltip": "Restore Opacity",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/favicon.png",
+            "iconUrl": "http://localhost:8080/favicon.png",
             "action": {
               "id": "restore-opacity",
               "customData": {
@@ -608,7 +608,7 @@
             "type": "Custom",
             "tooltip": "Toggle Scheme",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/theme.svg",
+            "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/theme.svg",
             "action": {
               "id": "toggle-scheme",
               "customData": {}
@@ -623,7 +623,7 @@
             "type": "Custom",
             "tooltip": "Show Home",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/search.svg",
+            "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/search.svg",
             "action": {
               "id": "home-show",
               "customData": {}
@@ -637,7 +637,7 @@
             "type": "Custom",
             "tooltip": "Toggle Notification Center",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/bell.svg",
+            "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/bell.svg",
             "action": {
               "id": "notification-toggle",
               "customData": {}
@@ -651,7 +651,7 @@
             "type": "Custom",
             "tooltip": "Include in Snapshot",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/snapshot-removed.svg",
+            "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/snapshot-removed.svg",
             "action": {
               "id": "include-in-snapshot",
               "customData": {
@@ -669,7 +669,7 @@
             "type": "Custom",
             "tooltip": "Remove from snapshot",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/snapshot-included.svg",
+            "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/snapshot-included.svg",
             "action": {
               "id": "remove-from-snapshot",
               "customData": {
@@ -687,7 +687,7 @@
             "type": "Custom",
             "tooltip": "Pin this window",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/pin.svg",
+            "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/pin.svg",
             "action": {
               "id": "pin-window",
               "customData": {
@@ -704,7 +704,7 @@
             "type": "Custom",
             "tooltip": "Unpin this window",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/pin-vertical.svg",
+            "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/pin-vertical.svg",
             "action": {
               "id": "unpin-window",
               "customData": {
@@ -749,7 +749,7 @@
             "type": "Custom",
             "tooltip": "Share",
             "disabled": false,
-            "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/share.svg",
+            "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/share.svg",
             "action": {
               "id": "share",
               "customData": {}
@@ -771,7 +771,7 @@
         {
           "id": "default",
           "label": "Default",
-          "logoUrl": "http://localhost:5173/favicon.png",
+          "logoUrl": "http://localhost:8080/favicon.png",
           "default": "dark",
           "palettes": {
             "light": {
@@ -841,14 +841,14 @@
     "homeProvider": {
       "id": "workspace-platform-starter",
       "title": "Workspace Platform Starter",
-      "icon": "http://localhost:5173/favicon.png",
+      "icon": "http://localhost:8080/favicon.png",
       "queryMinLength": 3,
       "queryAgainst": ["title"]
     },
     "storefrontProvider": {
       "id": "workspace-platform-starter",
       "title": "Workspace Platform Starter",
-      "icon": "http://localhost:5173/favicon.png",
+      "icon": "http://localhost:8080/favicon.png",
       "landingPage": {
         "hero": {
           "title": "Custom Hero Title",
@@ -858,7 +858,7 @@
             "tags": ["hero"]
           },
           "image": {
-            "src": "http://localhost:5173/common/images/store/superhero-unsplash.jpg"
+            "src": "http://localhost:8080/common/images/store/superhero-unsplash.jpg"
           }
         },
         "topRow": {
@@ -868,7 +868,7 @@
               "title": "Dev Tools",
               "description": "A collection of developer tools that can aid with building and debugging OpenFin applications.",
               "image": {
-                "src": "http://localhost:5173/common/images/store/coding-2-unsplash.jpg"
+                "src": "http://localhost:8080/common/images/store/coding-2-unsplash.jpg"
               },
               "tags": ["tools"],
               "buttonTitle": "View"
@@ -877,7 +877,7 @@
               "title": "Learning Resource",
               "description": "A collection of developer documents that can aid with building and debugging OpenFin applications.",
               "image": {
-                "src": "http://localhost:5173/common/images/store/coding-3-unsplash.jpg"
+                "src": "http://localhost:8080/common/images/store/coding-3-unsplash.jpg"
               },
               "tags": ["page"],
               "buttonTitle": "View"
@@ -895,7 +895,7 @@
               "title": "Views",
               "description": "A collection of views made available through our catalog.",
               "image": {
-                "src": "http://localhost:5173/common/images/store/coding-4-unsplash.jpg"
+                "src": "http://localhost:8080/common/images/store/coding-4-unsplash.jpg"
               },
               "tags": ["view"],
               "buttonTitle": "View"
@@ -904,7 +904,7 @@
               "title": "Web Apps",
               "description": "A collection of web apps built using OpenFin.",
               "image": {
-                "src": "http://localhost:5173/common/images/store/coding-5-unsplash.jpg"
+                "src": "http://localhost:8080/common/images/store/coding-5-unsplash.jpg"
               },
               "tags": ["manifest"],
               "buttonTitle": "View"
@@ -913,7 +913,7 @@
               "title": "Native Apps",
               "description": "A collection of native apps made available through our catalog.",
               "image": {
-                "src": "http://localhost:5173/common/images/store/coding-6-unsplash.jpg"
+                "src": "http://localhost:8080/common/images/store/coding-6-unsplash.jpg"
               },
               "tags": ["native"],
               "buttonTitle": "View"
@@ -963,7 +963,7 @@
       ],
       "footer": {
         "logo": {
-          "src": "http://localhost:5173/favicon.png",
+          "src": "http://localhost:8080/favicon.png",
           "size": "32"
         },
         "text": "Welcome to the OpenFin Sample Footer",
@@ -982,7 +982,7 @@
     "dockProvider": {
       "id": "workspace-platform-starter",
       "title": "Workspace Platform Starter",
-      "icon": "http://localhost:5173/favicon.png",
+      "icon": "http://localhost:8080/favicon.png",
       "workspaceComponents": {
         "hideHomeButton": false,
         "hideWorkspacesButton": false,
@@ -993,7 +993,7 @@
         {
           "id": "workspaces",
           "tooltip": "Workspaces",
-          "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/workspace.svg",
+          "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/workspace.svg",
           "action": {
             "id": "workspaces-menu"
           },
@@ -1014,13 +1014,13 @@
           "id": "manager-apps",
           "display": "group",
           "tooltip": "Manager",
-          "iconUrl": "http://localhost:5173/common/images/icon-gradient.png",
+          "iconUrl": "http://localhost:8080/common/images/icon-gradient.png",
           "tags": ["manager"]
         },
         {
           "id": "favorites",
           "tooltip": "Favorites",
-          "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/favorite.svg",
+          "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/favorite.svg",
           "action": {
             "id": "favorites-menu"
           },
@@ -1029,7 +1029,7 @@
         {
           "id": "pages",
           "tooltip": "Pages",
-          "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/page.svg",
+          "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/page.svg",
           "action": {
             "id": "pages-menu"
           }
@@ -1048,7 +1048,7 @@
         {
           "id": "social",
           "tooltip": "Social",
-          "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/share.svg",
+          "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/share.svg",
           "options": [
             {
               "tooltip": "Twitter",
@@ -1119,7 +1119,7 @@
         {
           "id": "windows",
           "tooltip": "Window Visibility",
-          "iconUrl": "http://localhost:5173/common/icons/{theme}/{scheme}/windows.svg",
+          "iconUrl": "http://localhost:8080/common/icons/{theme}/{scheme}/windows.svg",
           "options": [
             {
               "tooltip": "Show All Windows",
@@ -1140,7 +1140,7 @@
     "notificationProvider": {
       "id": "workspace-platform-starter",
       "title": "Workspace Platform Starter",
-      "icon": "http://localhost:5173/favicon.png",
+      "icon": "http://localhost:8080/favicon.png",
       "notificationClients": {
         "defaults": {
           "enforceIcon": false,
@@ -1151,18 +1151,18 @@
       }
     },
     "integrationProvider": {
-      "icon": "http://localhost:5173/favicon.png",
+      "icon": "http://localhost:8080/favicon.png",
       "isManagementEnabled": false,
       "command": "integrations",
       "commandDescription": "Allows the management of integrations for this platform. You can decide whether enabled integrations should be included when a query is entered.",
       "modules": [
         {
           "id": "apps",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Apps",
           "description": "Search Applications",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/apps.bundle.js",
+          "url": "http://localhost:8080/js/modules/apps.bundle.js",
           "data": {
             "manifestTypeMapping": {
               "view": {
@@ -1227,29 +1227,29 @@
         },
         {
           "id": "workspaces",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Workspaces",
           "description": "Manage workspaces",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/workspaces.bundle.js",
+          "url": "http://localhost:8080/js/modules/workspaces.bundle.js",
           "data": {
             "favoritesEnabled": false,
             "images": {
-              "workspace": "http://localhost:5173/common/icons/{theme}/{scheme}/workspace.svg"
+              "workspace": "http://localhost:8080/common/icons/{theme}/{scheme}/workspace.svg"
             }
           }
         },
         {
           "id": "pages",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Pages",
           "description": "Manage Pages",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/pages.bundle.js",
+          "url": "http://localhost:8080/js/modules/pages.bundle.js",
           "data": {
             "favoritesEnabled": false,
             "images": {
-              "page": "http://localhost:5173/common/icons/{theme}/{scheme}/page.svg"
+              "page": "http://localhost:8080/common/icons/{theme}/{scheme}/page.svg"
             }
           }
         },
@@ -1288,7 +1288,7 @@
           "data": {
             "clientId": "",
             "tenantId": "",
-            "redirectUri": "http://localhost:5173/oauth_redirect.html",
+            "redirectUri": "http://localhost:8080/oauth_redirect.html",
             "permissions": [
               "User.Read",
               "Presence.Read",
@@ -1355,17 +1355,17 @@
         },
         {
           "id": "about",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "About",
           "description": "Provides information about this platform.",
           "enabled": true,
           "excludeFromSourceFilter": true,
-          "url": "http://localhost:5173/js/modules/about.bundle.js",
+          "url": "http://localhost:8080/js/modules/about.bundle.js",
           "data": {}
         },
         {
           "id": "quote",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Quote Provider",
           "enabled": false,
           "url": "https://built-on-openfin.github.io/dev-extensions/extensions/v20.0.0/integrations/js/modules/quote.bundle.js",
@@ -1375,7 +1375,7 @@
         },
         {
           "id": "emoji",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Emoji Provider",
           "enabled": false,
           "url": "https://built-on-openfin.github.io/dev-extensions/extensions/v20.0.0/integrations/js/modules/emoji.bundle.js",
@@ -1389,7 +1389,7 @@
           "enabled": true,
           "id": "interop",
           "title": "Init Options Interop",
-          "url": "http://localhost:5173/js/modules/interop.bundle.js",
+          "url": "http://localhost:8080/js/modules/interop.bundle.js",
           "data": {
             "supportedActions": ["raise-intent", "share-context"]
           }
@@ -1398,7 +1398,7 @@
           "enabled": true,
           "id": "launch-app",
           "title": "Init Options Launch App",
-          "url": "http://localhost:5173/js/modules/launch-app.bundle.js",
+          "url": "http://localhost:8080/js/modules/launch-app.bundle.js",
           "data": {
             "supportedActions": ["launch-app"],
             "supportedManifestTypes": [
@@ -1415,7 +1415,7 @@
           "enabled": true,
           "id": "show-page",
           "title": "Init Options Show Page",
-          "url": "http://localhost:5173/js/modules/pages.bundle.js",
+          "url": "http://localhost:8080/js/modules/pages.bundle.js",
           "data": {
             "supportedActions": ["show-page"]
           }
@@ -1424,7 +1424,7 @@
           "enabled": true,
           "id": "launch-workspace",
           "title": "Init Options Launch Workspace",
-          "url": "http://localhost:5173/js/modules/launch-workspace.bundle.js",
+          "url": "http://localhost:8080/js/modules/launch-workspace.bundle.js",
           "data": {
             "supportedActions": ["launch-workspace"]
           }
@@ -1437,7 +1437,7 @@
           "enabled": true,
           "id": "console",
           "title": "Console Logger",
-          "url": "http://localhost:5173/js/modules/console.bundle.js"
+          "url": "http://localhost:8080/js/modules/console.bundle.js"
         }
       ]
     },
@@ -1447,23 +1447,23 @@
           "enabled": true,
           "id": "opacity",
           "title": "Opacity Action",
-          "url": "http://localhost:5173/js/modules/opacity.bundle.js"
+          "url": "http://localhost:8080/js/modules/opacity.bundle.js"
         },
         {
           "enabled": true,
           "id": "developer-actions",
           "title": "Developer Actions",
-          "url": "http://localhost:5173/js/modules/developer.bundle.js"
+          "url": "http://localhost:8080/js/modules/developer.bundle.js"
         },
         {
           "enabled": true,
           "id": "about-actions",
           "title": "About Actions",
-          "url": "http://localhost:5173/js/modules/about.bundle.js",
+          "url": "http://localhost:8080/js/modules/about.bundle.js",
           "data": {
             "windowOptions": {
               "name": "about",
-              "url": "http://localhost:5173/common/windows/version/about.html",
+              "url": "http://localhost:8080/common/windows/version/about.html",
               "defaultCentered": true,
               "showTaskbarIcon": false,
               "autoShow": true,
@@ -1479,59 +1479,59 @@
           "enabled": true,
           "id": "page-actions",
           "title": "Page Actions",
-          "url": "http://localhost:5173/js/modules/pages.bundle.js"
+          "url": "http://localhost:8080/js/modules/pages.bundle.js"
         },
         {
           "enabled": true,
           "id": "window-actions",
           "title": "Window Actions",
-          "url": "http://localhost:5173/js/modules/windows.bundle.js"
+          "url": "http://localhost:8080/js/modules/windows.bundle.js"
         },
         {
           "id": "custom-menu",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Custom Menu",
           "description": "Custom Menu",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/custom-menu.bundle.js",
+          "url": "http://localhost:8080/js/modules/custom-menu.bundle.js",
           "data": {
             "images": {
-              "page": "http://localhost:5173/common/icons/{theme}/{scheme}/page.svg",
-              "workspace": "http://localhost:5173/common/icons/{theme}/{scheme}/workspace.svg"
+              "page": "http://localhost:8080/common/icons/{theme}/{scheme}/page.svg",
+              "workspace": "http://localhost:8080/common/icons/{theme}/{scheme}/workspace.svg"
             }
           }
         },
         {
           "id": "favorites-menu",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Favorites Menu",
           "description": "Favorites Menu",
           "enabled": false,
-          "url": "http://localhost:5173/js/modules/favorites-menu.bundle.js"
+          "url": "http://localhost:8080/js/modules/favorites-menu.bundle.js"
         },
         {
           "id": "include-in-snapshot",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Include In Snapshot",
           "description": "Include In Snapshot",
           "enabled": false,
-          "url": "http://localhost:5173/js/modules/include-in-snapshot.bundle.js"
+          "url": "http://localhost:8080/js/modules/include-in-snapshot.bundle.js"
         },
         {
           "id": "default-workspace",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Default Workspace",
           "description": "Allows the setting of a default workspace and whether or not it should be set when an active workspace is switched.",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/default-workspace.bundle.js"
+          "url": "http://localhost:8080/js/modules/default-workspace.bundle.js"
         },
         {
           "id": "window-platform",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Window Platform Actions",
           "description": "Window Platform Actions",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/window-platform.bundle.js"
+          "url": "http://localhost:8080/js/modules/window-platform.bundle.js"
         }
       ]
     },
@@ -1541,15 +1541,15 @@
           "enabled": true,
           "id": "about-conditions",
           "title": "About Conditions",
-          "url": "http://localhost:5173/js/modules/about.bundle.js"
+          "url": "http://localhost:8080/js/modules/about.bundle.js"
         },
         {
           "id": "include-in-snapshot",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Include In Snapshot",
           "description": "Include In Snapshot",
           "enabled": false,
-          "url": "http://localhost:5173/js/modules/include-in-snapshot.bundle.js"
+          "url": "http://localhost:8080/js/modules/include-in-snapshot.bundle.js"
         }
       ]
     },
@@ -1605,7 +1605,7 @@
           "enabled": true,
           "id": "analytics.console",
           "title": "Console Analytics",
-          "url": "http://localhost:5173/js/modules/console.bundle.js",
+          "url": "http://localhost:8080/js/modules/console.bundle.js",
           "data": {
             "eventLogLevel": "info"
           }
@@ -1614,7 +1614,7 @@
           "enabled": true,
           "id": "analytics.dev.channel",
           "title": "Analytics Dev Channel",
-          "url": "http://localhost:5173/js/modules/developer.bundle.js",
+          "url": "http://localhost:8080/js/modules/developer.bundle.js",
           "data": {}
         }
       ]
@@ -1626,7 +1626,7 @@
       },
       "versionWindow": {
         "name": "versioning",
-        "url": "http://localhost:5173/windows/version/version.html",
+        "url": "http://localhost:8080/windows/version/version.html",
         "defaultCentered": true,
         "showTaskbarIcon": false,
         "autoShow": true,
@@ -1641,49 +1641,49 @@
       "versionCheckIntervalInSeconds": 30
     },
     "menusProvider": {
-      "popupHtml": "http://localhost:5173/common/popups/menu/index.html",
+      "popupHtml": "http://localhost:8080/common/popups/menu/index.html",
       "modules": [
         {
           "enabled": true,
           "id": "developer-menus",
           "title": "Developer Menus",
-          "url": "http://localhost:5173/js/modules/developer.bundle.js",
+          "url": "http://localhost:8080/js/modules/developer.bundle.js",
           "data": {}
         },
         {
           "id": "about",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "About",
           "description": "Provides information about this platform.",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/about.bundle.js",
+          "url": "http://localhost:8080/js/modules/about.bundle.js",
           "data": {}
         },
         {
           "id": "pages",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Pages",
           "description": "Provides additional menu options for pages.",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/pages.bundle.js",
+          "url": "http://localhost:8080/js/modules/pages.bundle.js",
           "data": {}
         },
         {
           "id": "windows",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Windows",
           "description": "Provides additional menu options for windows.",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/windows.bundle.js",
+          "url": "http://localhost:8080/js/modules/windows.bundle.js",
           "data": {}
         },
         {
           "id": "default-workspace",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "default workspace menu options",
           "description": "set your default default workspace",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/default-workspace.bundle.js",
+          "url": "http://localhost:8080/js/modules/default-workspace.bundle.js",
           "data": {}
         }
       ]
@@ -1714,16 +1714,16 @@
       "modules": [
         {
           "id": "openid-connect",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "OpenId Connect",
           "description": "OpenId Connect",
           "enabled": false,
-          "url": "http://localhost:5173/js/modules/openid-connect.bundle.js",
+          "url": "http://localhost:8080/js/modules/openid-connect.bundle.js",
           "data": {
             "providerUrl": "",
             "clientId": "",
-            "loginRedirectUrl": "http://localhost:5173/oidc_login.html",
-            "logoutRedirectUrl": "http://localhost:5173/oidc_logout.html",
+            "loginRedirectUrl": "http://localhost:8080/oidc_login.html",
+            "logoutRedirectUrl": "http://localhost:8080/oidc_logout.html",
             "checkSessionValidityInSeconds": 30
           }
         }
@@ -1763,8 +1763,8 @@
     },
     "favoriteProvider": {
       "enabled": false,
-      "favoriteIcon": "http://localhost:5173/common/icons/{theme}/{scheme}/favorite.svg",
-      "unfavoriteIcon": "http://localhost:5173/common/icons/{theme}/{scheme}/unfavorite.svg",
+      "favoriteIcon": "http://localhost:8080/common/icons/{theme}/{scheme}/favorite.svg",
+      "unfavoriteIcon": "http://localhost:8080/common/icons/{theme}/{scheme}/unfavorite.svg",
       "favoriteCommand": "/fav",
       "supportedFavoriteTypes": ["workspace", "page", "app"]
     },
@@ -1772,20 +1772,20 @@
       "modules": [
         {
           "id": "default-workspace",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "default workspace management",
           "description": "set and apply your default workspace.",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/default-workspace.bundle.js",
+          "url": "http://localhost:8080/js/modules/default-workspace.bundle.js",
           "data": {}
         },
         {
           "id": "example-notification-service",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Example Notification Service",
           "description": "Example Notification Service. See more at client/src/modules/example-notification-service/README.md",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/example-notification-service.bundle.js",
+          "url": "http://localhost:8080/js/modules/example-notification-service.bundle.js",
           "data": {}
         }
       ]
@@ -1812,10 +1812,10 @@
       "modules": [
         {
           "id": "view-position-content-creation",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "View Position Content Creation",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/view-position.bundle.js",
+          "url": "http://localhost:8080/js/modules/view-position.bundle.js",
           "data": {
             "defaultViewPosition": "stack-right",
             "rules": [
@@ -1848,40 +1848,40 @@
       "modules": [
         {
           "id": "pages-share",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Pages Share",
           "description": "Pages Share",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/pages.bundle.js",
+          "url": "http://localhost:8080/js/modules/pages.bundle.js",
           "data": {
             "getEndpointId": "share-get",
             "setEndpointId": "share-set",
             "images": {
-              "error": "http://localhost:5173/common/icons/{theme}/{scheme}/error.svg",
-              "success": "http://localhost:5173/common/icons/{theme}/{scheme}/success.svg"
+              "error": "http://localhost:8080/common/icons/{theme}/{scheme}/error.svg",
+              "success": "http://localhost:8080/common/icons/{theme}/{scheme}/success.svg"
             }
           }
         },
         {
           "id": "workspaces-share",
-          "icon": "http://localhost:5173/favicon.png",
+          "icon": "http://localhost:8080/favicon.png",
           "title": "Workspaces Share",
           "description": "Workspaces Share",
           "enabled": true,
-          "url": "http://localhost:5173/js/modules/workspaces.bundle.js",
+          "url": "http://localhost:8080/js/modules/workspaces.bundle.js",
           "data": {
             "getEndpointId": "share-get",
             "setEndpointId": "share-set",
             "images": {
-              "error": "http://localhost:5173/common/icons/{theme}/{scheme}/error.svg",
-              "success": "http://localhost:5173/common/icons/{theme}/{scheme}/success.svg"
+              "error": "http://localhost:8080/common/icons/{theme}/{scheme}/error.svg",
+              "success": "http://localhost:8080/common/icons/{theme}/{scheme}/success.svg"
             }
           }
         }
       ]
     },
     "dialogProvider": {
-      "dialogHtml": "http://localhost:5173/common/popups/dialog/index.html"
+      "dialogHtml": "http://localhost:8080/common/popups/dialog/index.html"
     }
   }
 }
