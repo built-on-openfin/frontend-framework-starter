@@ -6,7 +6,8 @@
 
 ```
 npm install
-npm run dev
+npm run build
+npm start
 ```
 
-Launch [fin://localhost:5173/manifest.fin.json](fin://localhost:5173/manifest.fin.json)
+Launch [fin://localhost:8080/manifest.fin.json](fin://localhost:8080/manifest.fin.json)
