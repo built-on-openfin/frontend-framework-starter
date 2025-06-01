@@ -9,7 +9,7 @@
     "name": "Workspace Platform Starter React Wrapper",
     "uuid": "workspace-platform-starter-react-wrapper",
     "icon": "http://localhost:8080/favicon.png",
-    "autoShow": false,
+    "autoShow": true,
     "providerUrl": "http://localhost:8080",
     "preventQuitOnLastWindowClosed": true,
     "appLogsTimezone": "utc",
@@ -137,7 +137,7 @@
           "title": "Workspace Platform Starter Platform Override",
           "description": "This is the implementation included in workspace platform starter but it is now exposed as a module to allow for easy replacement.",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/platform-override/wps-platform-override.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/platform-override/wps-platform-override.bundle.js",
           "data": {
             "loggerName": "WpsPlatformOverride"
           }
@@ -251,7 +251,7 @@
             "title": "OpenFin Cloud Interop",
             "description": "OpenFin Cloud Interop",
             "enabled": false,
-            "url": "http://localhost:8080/js/modules/interop-override/openfin-cloud-interop.bundle.js",
+            "url": "http://localhost:8080/openfin/js/modules/interop-override/openfin-cloud-interop.bundle.js",
             "data": {
               "authenticationType": "basic",
               "basicAuthenticationParameters": {
@@ -270,7 +270,7 @@
             "title": "Workspace Platform Starter Interop Broker",
             "description": "This is the implementation included in workspace platform starter but it is now exposed as a module to allow for easy replacement.",
             "enabled": true,
-            "url": "http://localhost:8080/js/modules/interop-override/wps-interop-override.bundle.js",
+            "url": "http://localhost:8080/openfin/js/modules/interop-override/wps-interop-override.bundle.js",
             "data": {
               "loggerName": "WpsInteropOverride"
             }
@@ -330,19 +330,19 @@
           "title": "Local Storage",
           "enabled": true,
           "id": "local-storage",
-          "url": "http://localhost:8080/js/modules/endpoint/local-storage.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/endpoint/local-storage.bundle.js"
         },
         {
           "title": "Favorite Local Storage",
           "enabled": true,
           "id": "favorite-local-storage",
-          "url": "http://localhost:8080/js/modules/endpoint/favorite-local-storage.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/endpoint/favorite-local-storage.bundle.js"
         },
         {
           "title": "Context Processor",
           "enabled": true,
           "id": "context-processor",
-          "url": "http://localhost:8080/js/modules/endpoint/example.context.processor.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/endpoint/example.context.processor.bundle.js"
         },
         {
           "id": "example-notification-source",
@@ -350,7 +350,7 @@
           "title": "Example Notification Source",
           "description": "Example Notification Source. Please see docs in client/src/modules/endpoint/example-notification-source/README.md",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/endpoint/example-notification-source.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/endpoint/example-notification-source.bundle.js",
           "data": {
             "websocket": {
               "url": ""
@@ -1305,7 +1305,7 @@
           "title": "Apps",
           "description": "Search Applications",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/integrations/apps.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/integrations/apps.bundle.js",
           "data": {
             "manifestTypeMapping": {
               "view": {
@@ -1374,7 +1374,7 @@
           "title": "Workspaces",
           "description": "Manage workspaces",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/integrations/workspaces.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/integrations/workspaces.bundle.js",
           "data": {
             "favoritesEnabled": false,
             "images": {
@@ -1388,7 +1388,7 @@
           "title": "Pages",
           "description": "Manage Pages",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/integrations/pages.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/integrations/pages.bundle.js",
           "data": {
             "favoritesEnabled": false,
             "images": {
@@ -1503,7 +1503,7 @@
           "description": "Provides information about this platform.",
           "enabled": true,
           "excludeFromSourceFilter": true,
-          "url": "http://localhost:8080/js/modules/composite/about.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/about.bundle.js",
           "data": {}
         },
         {
@@ -1532,7 +1532,7 @@
           "enabled": true,
           "id": "interop",
           "title": "Init Options Interop",
-          "url": "http://localhost:8080/js/modules/init-options/interop.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/init-options/interop.bundle.js",
           "data": {
             "supportedActions": [
               "raise-intent",
@@ -1544,7 +1544,7 @@
           "enabled": true,
           "id": "launch-app",
           "title": "Init Options Launch App",
-          "url": "http://localhost:8080/js/modules/init-options/launch-app.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/init-options/launch-app.bundle.js",
           "data": {
             "supportedActions": [
               "launch-app"
@@ -1563,7 +1563,7 @@
           "enabled": true,
           "id": "show-page",
           "title": "Init Options Show Page",
-          "url": "http://localhost:8080/js/modules/composite/pages.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/pages.bundle.js",
           "data": {
             "supportedActions": [
               "show-page"
@@ -1574,7 +1574,7 @@
           "enabled": true,
           "id": "launch-workspace",
           "title": "Init Options Launch Workspace",
-          "url": "http://localhost:8080/js/modules/init-options/launch-workspace.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/init-options/launch-workspace.bundle.js",
           "data": {
             "supportedActions": [
               "launch-workspace"
@@ -1589,7 +1589,7 @@
           "enabled": true,
           "id": "console",
           "title": "Console Logger",
-          "url": "http://localhost:8080/js/modules/log/console.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/log/console.bundle.js"
         }
       ]
     },
@@ -1599,19 +1599,19 @@
           "enabled": true,
           "id": "opacity",
           "title": "Opacity Action",
-          "url": "http://localhost:8080/js/modules/actions/opacity.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/actions/opacity.bundle.js"
         },
         {
           "enabled": true,
           "id": "developer-actions",
           "title": "Developer Actions",
-          "url": "http://localhost:8080/js/modules/composite/developer.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/composite/developer.bundle.js"
         },
         {
           "enabled": true,
           "id": "about-actions",
           "title": "About Actions",
-          "url": "http://localhost:8080/js/modules/composite/about.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/about.bundle.js",
           "data": {
             "windowOptions": {
               "name": "about",
@@ -1631,13 +1631,13 @@
           "enabled": true,
           "id": "page-actions",
           "title": "Page Actions",
-          "url": "http://localhost:8080/js/modules/composite/pages.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/composite/pages.bundle.js"
         },
         {
           "enabled": true,
           "id": "window-actions",
           "title": "Window Actions",
-          "url": "http://localhost:8080/js/modules/composite/windows.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/composite/windows.bundle.js"
         },
         {
           "id": "custom-menu",
@@ -1645,7 +1645,7 @@
           "title": "Custom Menu",
           "description": "Custom Menu",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/actions/custom-menu.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/actions/custom-menu.bundle.js",
           "data": {
             "images": {
               "page": "http://localhost:8080/common/icons/{theme}/{scheme}/page.svg",
@@ -1659,7 +1659,7 @@
           "title": "Favorites Menu",
           "description": "Favorites Menu",
           "enabled": false,
-          "url": "http://localhost:8080/js/modules/actions/favorites-menu.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/actions/favorites-menu.bundle.js"
         },
         {
           "id": "include-in-snapshot",
@@ -1667,7 +1667,7 @@
           "title": "Include In Snapshot",
           "description": "Include In Snapshot",
           "enabled": false,
-          "url": "http://localhost:8080/js/modules/composite/include-in-snapshot.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/composite/include-in-snapshot.bundle.js"
         },
         {
           "id": "default-workspace",
@@ -1675,7 +1675,7 @@
           "title": "Default Workspace",
           "description": "Allows the setting of a default workspace and whether or not it should be set when an active workspace is switched.",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/composite/default-workspace.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/composite/default-workspace.bundle.js"
         },
         {
           "id": "window-platform",
@@ -1683,7 +1683,7 @@
           "title": "Window Platform Actions",
           "description": "Window Platform Actions",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/actions/window-platform.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/actions/window-platform.bundle.js"
         }
       ]
     },
@@ -1693,7 +1693,7 @@
           "enabled": true,
           "id": "about-conditions",
           "title": "About Conditions",
-          "url": "http://localhost:8080/js/modules/composite/about.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/composite/about.bundle.js"
         },
         {
           "id": "include-in-snapshot",
@@ -1701,7 +1701,7 @@
           "title": "Include In Snapshot",
           "description": "Include In Snapshot",
           "enabled": false,
-          "url": "http://localhost:8080/js/modules/composite/include-in-snapshot.bundle.js"
+          "url": "http://localhost:8080/openfin/js/modules/composite/include-in-snapshot.bundle.js"
         }
       ]
     },
@@ -1757,7 +1757,7 @@
           "enabled": true,
           "id": "analytics.console",
           "title": "Console Analytics",
-          "url": "http://localhost:8080/js/modules/analytics/console.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/analytics/console.bundle.js",
           "data": {
             "eventLogLevel": "info"
           }
@@ -1766,7 +1766,7 @@
           "enabled": true,
           "id": "analytics.dev.channel",
           "title": "Analytics Dev Channel",
-          "url": "http://localhost:8080/js/modules/composite/developer.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/developer.bundle.js",
           "data": {}
         }
       ]
@@ -1799,7 +1799,7 @@
           "enabled": true,
           "id": "developer-menus",
           "title": "Developer Menus",
-          "url": "http://localhost:8080/js/modules/composite/developer.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/developer.bundle.js",
           "data": {}
         },
         {
@@ -1808,7 +1808,7 @@
           "title": "About",
           "description": "Provides information about this platform.",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/composite/about.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/about.bundle.js",
           "data": {}
         },
         {
@@ -1817,7 +1817,7 @@
           "title": "Pages",
           "description": "Provides additional menu options for pages.",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/composite/pages.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/pages.bundle.js",
           "data": {}
         },
         {
@@ -1826,7 +1826,7 @@
           "title": "Windows",
           "description": "Provides additional menu options for windows.",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/composite/windows.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/windows.bundle.js",
           "data": {}
         },
         {
@@ -1835,7 +1835,7 @@
           "title": "default workspace menu options",
           "description": "set your default default workspace",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/composite/default-workspace.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/default-workspace.bundle.js",
           "data": {}
         }
       ]
@@ -1870,7 +1870,7 @@
           "title": "OpenId Connect",
           "description": "OpenId Connect",
           "enabled": false,
-          "url": "http://localhost:8080/js/modules/auth/openid-connect.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/auth/openid-connect.bundle.js",
           "data": {
             "providerUrl": "",
             "clientId": "",
@@ -1934,7 +1934,7 @@
           "title": "default workspace management",
           "description": "set and apply your default workspace.",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/composite/default-workspace.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/composite/default-workspace.bundle.js",
           "data": {}
         },
         {
@@ -1943,7 +1943,7 @@
           "title": "Example Notification Service",
           "description": "Example Notification Service. See more at client/src/modules/lifecycle/example-notification-service/README.md",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/lifecycle/example-notification-service.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/lifecycle/example-notification-service.bundle.js",
           "data": {}
         }
       ]
@@ -1968,7 +1968,7 @@
           "icon": "http://localhost:8080/favicon.ico",
           "title": "View Position Content Creation",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/content-creation/view-position.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/content-creation/view-position.bundle.js",
           "data": {
             "defaultViewPosition": "stack-right",
             "rules": [
@@ -2014,7 +2014,7 @@
           "title": "Pages Share",
           "description": "Pages Share",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/share/pages.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/share/pages.bundle.js",
           "data": {
             "getEndpointId": "share-get",
             "setEndpointId": "share-set",
@@ -2030,7 +2030,7 @@
           "title": "Workspaces Share",
           "description": "Workspaces Share",
           "enabled": true,
-          "url": "http://localhost:8080/js/modules/share/workspaces.bundle.js",
+          "url": "http://localhost:8080/openfin/js/modules/share/workspaces.bundle.js",
           "data": {
             "getEndpointId": "share-get",
             "setEndpointId": "share-set",
