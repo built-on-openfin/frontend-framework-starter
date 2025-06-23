@@ -1,3 +1,4 @@
+import type OpenFin from "@openfin/core";
 import { connect, type WebLayoutSnapshot } from "@openfin/core-web";
 import { BROKER_URL, LAYOUT_URL } from "./config.ts";
 
@@ -13,7 +14,7 @@ async function getDefaultLayout(): Promise<WebLayoutSnapshot> {
 /**
  * Initializes the OpenFin Web Broker connection.
  */
-export async function init(): Promise<void> {
+export async function init(): Promise<OpenFin.Fin<"external connection"> | undefined> {
 	// Get the default layout
 	const layoutSnapshot = await getDefaultLayout();
 
@@ -51,4 +52,6 @@ export async function init(): Promise<void> {
 	await fin.Platform.Layout.init({
 		container: layoutContainer,
 	});
+
+	return fin;
 }

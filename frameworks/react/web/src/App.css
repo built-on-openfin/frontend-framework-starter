@@ -1,3 +1,13 @@
+#notification_center_container {
+	position: fixed;
+	width: 345px;
+	height: 100dvh;
+	right: 0;
+	top: 0;
+	align-self: center;
+	z-index: 100;
+}
+
 main {
 	height: 100%;
 	width: 100%;
