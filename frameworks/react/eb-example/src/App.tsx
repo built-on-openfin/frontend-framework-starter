@@ -1,4 +1,5 @@
 import "./App.css";
+import { Notification } from "./components/Notification";
 import { ReceiveContext } from "./components/ReceiveContext";
 import { SendContext } from "./components/SendContext";
 
@@ -7,6 +8,7 @@ function App() {
 		<>
 			<SendContext />
 			<ReceiveContext />
+			<Notification />
 		</>
 	);
 }
