@@ -11,5 +11,11 @@
     "joe.ransegnola@openfin.co",
     "martyn.janes@openfin.co"
   ],
-  "license": "SEE LICENSE IN LICENSE.MD"
+  "license": "SEE LICENSE IN LICENSE.MD",
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "@openfin/core": "^41.102.4"
+  }
 }
