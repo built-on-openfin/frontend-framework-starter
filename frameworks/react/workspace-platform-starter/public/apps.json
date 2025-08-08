@@ -7,7 +7,8 @@
     "manifest": {
       "name": "view-1",
       "url": "http://localhost:8080/view1",
-      "autoShow": false
+      "autoShow": false,
+      "fdc3InteropApi": "2.0"
     },
     "manifestType": "inline-view",
     "icons": [{ "src": "http://localhost:8080/favicon.png" }],
@@ -23,12 +24,21 @@
     "manifest": {
       "name": "view-2",
       "url": "http://localhost:8080/view2",
-      "autoShow": false
+      "autoShow": false,
+      "fdc3InteropApi": "2.0"
     },
     "manifestType": "inline-view",
     "icons": [{ "src": "http://localhost:8080/favicon.png" }],
     "contactEmail": "contact@example.com",
     "supportEmail": "support@example.com",
-    "publisher": "OpenFin"
+    "publisher": "OpenFin",
+    "intents": [
+      {
+        "name": "ViewQuote",
+        "displayName": "View Quote",
+        "contexts": ["custom.instrument"],
+        "customConfig": {}
+      }
+    ]
   }
 ]

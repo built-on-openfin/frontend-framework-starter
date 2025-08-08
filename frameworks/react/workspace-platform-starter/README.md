@@ -1,11 +1,12 @@
 # React Wrapper for Workspace Platform Starter
 
-This project provides a React wrapper for the [workspace-platform-starter](https://github.com/built-on-openfin/workspace-starter/tree/main/how-to/workspace-platform-starter) for teams 
-who prefer to use the build tooling available in the React ecosystem such as hot reloading.
+This project provides a React wrapper for the [workspace-platform-starter](https://github.com/built-on-openfin/workspace-starter/tree/main/how-to/workspace-platform-starter) for teams who prefer to use the build tooling available in the React ecosystem for a familiar development experience.
 
-The workspace platform starter source files are for demonstration purposes and to help get started building your own project. Once the source is added to your project, consider it your 
-source code to manage for your production build. Once initial setup is complete, you should review the features you need and turn off many of the modules in the manifest.fin.json, and 
-remove many of the app endpoints listed in "appProvider" / "endpointIds".
+To use this project, the source files are manually copied into the project from the [workspace-platform-starter](https://github.com/built-on-openfin/workspace-starter/tree/main/how-to/workspace-platform-starter) project. A simple React-based provider demonstrates how to bootstrap a platform.
+
+This can then form the basis of your own OpenFin platform. The source within the /openfin folder becomes your source code to customize as you need to.
+
+Once setup, see the next steps section below.
 
 ## Prerequsites
 
@@ -21,20 +22,20 @@ Clone the main workspace-starter repo:
 git clone https://github.com/built-on-openfin/workspace-starter.git --depth=1
 ```
 
-Manually copy the following folders from the **how-to/workspace-platform-starter** directory:
+Manually copy the following folders from the **how-to/workspace-platform-starter** directory into the openfin folder:
 
 ```
-client/src/framework 
-client/src/modules
-public/common
+client/src/framework -> openfin/framework
+client/src/modules -> openfin/modules
+public/common -> openfin/common
 ```
 
-And paste them into the **/openfin** folder in this project so that you have:
+The **/openfin** folder in this project should then look like:
 
 ```
-/openfin/common
 /openfin/framework
 /openfin/modules
+/openfin/common
 ```
 
 ### Develop
@@ -62,5 +63,12 @@ npm run preview
 ```
 Launch [fin://localhost:8080/manifest.fin.json](fin://localhost:8080/manifest.fin.json)
 
+## Next steps
 
+- Remove or disable modules you don't need in public/manifest.fin.json
+- If necessary, remove modules from the build step in rollup.config.mjs
+- Remove the example app endpoints listed in "appProvider" / "endpointIds" in manifest.fin.json
+- Define your apps in /public/apps.json
+- Customize your theme in the themeProvider section of the manifest.fin.json
+- Follow the [how-to](https://github.com/built-on-openfin/workspace-starter/tree/main/how-to/workspace-platform-starter/docs) documentation to further customize your platform
 
