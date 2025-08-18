@@ -103,14 +103,7 @@
   "snapshot": {
     "windows": []
   },
-  "appAssets": [
-    {
-      "src": "http://localhost:8080/common/assets/workspace_platform.zip",
-      "alias": "self-hosted-workspace-platform",
-      "version": "21.0.0",
-      "target": "workspace.asar"
-    }
-  ],
+  "appAssets": [],
   "customSettings": {
     "bootstrap": {
       "home": true,

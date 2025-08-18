@@ -62,7 +62,7 @@ export default {
 		copy({
 			targets: [
 				{
-					src: path.resolve(__dirname, './openfin/common'),
+					src: './openfin/common',
 					dest: './public'
 				}
 			]
