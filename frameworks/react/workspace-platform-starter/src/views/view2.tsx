@@ -1,3 +1,12 @@
+import { usePlatformState } from "../hooks/usePlatformState";
+
 export function View2() {
-	return <div>View 2</div>;
+	const [myState] = usePlatformState<string>("demo");
+
+	return (
+		<>
+			<div>View 2</div>
+			<h1>{myState}</h1>
+		</>
+	);
 }
