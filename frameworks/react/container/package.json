@@ -1,6 +1,6 @@
 {
   "name": "react-container-starter",
-  "version": "21.0.0",
+  "version": "22.0.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -12,7 +12,7 @@
   "dependencies": {
     "@finos/fdc3": "2.0.3",
     "@openfin/core": "42.100.107",
-    "@openfin/workspace": "22.3.17",
+    "@openfin/workspace": "22.3.18",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.2"

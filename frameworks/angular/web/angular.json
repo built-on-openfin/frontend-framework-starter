@@ -25,7 +25,8 @@
               }
             ],
             "styles": ["src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["events", "buffer", "lodash/cloneDeep", "lodash/isEqual"]
           },
           "configurations": {
             "production": {

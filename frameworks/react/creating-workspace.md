@@ -113,7 +113,7 @@ export default App;
    "licenseKey": "openfin-demo-license-key",
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "42.138.100.102"
+      "version": "42.138.100.107"
    },
    "platform": {
       "uuid": "react-workspace-starter",
