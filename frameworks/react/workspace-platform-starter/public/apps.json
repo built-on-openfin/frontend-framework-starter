@@ -1,0 +1,44 @@
+[
+  {
+    "appId": "view-1",
+    "name": "view-1",
+    "title": "React View 1",
+    "description": "Example local React app",
+    "manifest": {
+      "name": "view-1",
+      "url": "http://localhost:8080/view1",
+      "autoShow": false,
+      "fdc3InteropApi": "2.0"
+    },
+    "manifestType": "inline-view",
+    "icons": [{ "src": "http://localhost:8080/favicon.png" }],
+    "contactEmail": "contact@example.com",
+    "supportEmail": "support@example.com",
+    "publisher": "OpenFin"
+  },
+  {
+    "appId": "view-2",
+    "name": "view-2",
+    "title": "React View 2",
+    "description": "Example local React app",
+    "manifest": {
+      "name": "view-2",
+      "url": "http://localhost:8080/view2",
+      "autoShow": false,
+      "fdc3InteropApi": "2.0"
+    },
+    "manifestType": "inline-view",
+    "icons": [{ "src": "http://localhost:8080/favicon.png" }],
+    "contactEmail": "contact@example.com",
+    "supportEmail": "support@example.com",
+    "publisher": "OpenFin",
+    "intents": [
+      {
+        "name": "ViewQuote",
+        "displayName": "View Quote",
+        "contexts": ["custom.instrument"],
+        "customConfig": {}
+      }
+    ]
+  }
+]
