@@ -7,16 +7,15 @@ import type { PlatformSettings } from "./shapes";
  * @returns The registration details for notifications.
  */
 export async function register(
-	platformSettings: PlatformSettings
+	platformSettings: PlatformSettings,
 ): Promise<Notifications.NotificationsRegistration | undefined> {
 	console.log("Initializing the notification provider.");
 
 	try {
 		const metaInfo = await Notifications.register({
-			notificationsPlatformOptions: platformSettings
+			notificationsPlatformOptions: platformSettings,
 		});
-		console.log(metaInfo);
-		console.log("Notification provider initialized.");
+		console.log("Notification provider initialized.", metaInfo);
 		return metaInfo;
 	} catch (err) {
 		console.error("An error was encountered while trying to register the notifications provider", err);

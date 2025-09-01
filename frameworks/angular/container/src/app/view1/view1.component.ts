@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { create } from "@openfin/workspace/notifications";
+import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angular/core";
+import { addEventListener, create, register } from "@openfin/workspace/notifications";
 
 @Component({
 	selector: "app-view1",
@@ -23,17 +23,39 @@ import { create } from "@openfin/workspace/notifications";
 				<button (click)="broadcastFDC3ContextAppChannel()">
 					Broadcast FDC3 Context on App Channel
 				</button>
+				<div>{{ notificationActionMessage() }}</div>
 			</main>
 		</div>
 	`,
 })
-export class View1Component {
+export class View1Component implements OnInit {
+	notificationActionMessage = signal("");
+
+	ngOnInit(): void {
+		register().then(() => {
+			addEventListener("notification-action", (event) => {
+				console.log("Notification clicked:", event.result["customData"]);
+				this.notificationActionMessage.set(event.result["customData"]);
+			});
+		});
+	}
+
 	showNotification(): void {
 		create({
 			platform: fin.me.identity.uuid,
 			title: "Simple Notification",
 			body: "This is a simple notification",
 			toast: "transient",
+			buttons: [
+				{
+					title: "Click me",
+					type: "button",
+					cta: true,
+					onClick: {
+						customData: "Notification action data",
+					},
+				},
+			],
 		});
 	}
 
