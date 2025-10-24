@@ -99,7 +99,7 @@ export default App;
 {
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "42.138.100.107"
+      "version": "42.138.102.4"
    },
    "platform": {
       "uuid": "react-container-starter",

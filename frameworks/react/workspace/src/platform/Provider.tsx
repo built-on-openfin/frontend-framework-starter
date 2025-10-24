@@ -40,6 +40,7 @@ function Provider() {
 					// Provide default icons and default theme for the browser windows
 					await initializeWorkspacePlatform(settings.platformSettings);
 				} catch (err) {
+					console.log(err)
 					setMessage(`Error Initializing Platform: ${err instanceof Error ? err.message : err}`)
 				}
 			}
