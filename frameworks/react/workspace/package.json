@@ -12,8 +12,8 @@
   "dependencies": {
     "@finos/fdc3": "2.0.3",
     "@openfin/core": "42.102.4",
-    "@openfin/workspace": "22.3.24",
-    "@openfin/workspace-platform": "22.3.24",
+    "@openfin/workspace": "22.3.25",
+    "@openfin/workspace-platform": "22.3.25",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.2"

@@ -22,7 +22,7 @@
     "@angular/router": "^19.0.0",
     "@finos/fdc3": "2.0.3",
     "@openfin/core": "42.102.4",
-    "@openfin/workspace": "22.3.24",
+    "@openfin/workspace": "22.3.25",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
