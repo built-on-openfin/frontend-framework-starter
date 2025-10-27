@@ -21,6 +21,6 @@ There are older branches which match the container/workspace release with the ve
 
 This branch covers the following versions:
 
-* OpenFin Workspace 19.2.0
-* Angular 18
-* React 18.2.0
+* OpenFin Workspace 22
+* Angular 19
+* React 18

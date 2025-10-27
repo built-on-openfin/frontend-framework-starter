@@ -102,7 +102,7 @@ export class AppComponent {
 {
    "runtime": {
       "arguments": "--v=1 --inspect",
-      "version": "41.134.102.6"
+      "version": "42.138.102.4"
    },
    "platform": {
       "uuid": "angular-container-starter",
