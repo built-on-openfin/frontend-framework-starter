@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from './App';
 import './index.css';
+import { Monitor } from "./views/monitor";
 
 const Provider = React.lazy(() => import('./platform/Provider'));
 const View1 = React.lazy(() => import('./views/View1'));
@@ -18,6 +19,7 @@ root.render(
             <Route path="/" element={<App />}></Route>
             <Route path="/views/view1" element={<View1 />}></Route>
             <Route path="/views/view2" element={<View2 />}></Route>
+            <Route path="/views/stock-peers-monitor" element={<Monitor />}></Route>
             <Route path="/platform/provider" element={<Provider />}></Route>
          </Routes>
       </BrowserRouter>

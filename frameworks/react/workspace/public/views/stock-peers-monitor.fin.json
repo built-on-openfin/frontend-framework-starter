@@ -1,0 +1,7 @@
+{
+  "url": "http://localhost:3000/views/stock-peers-monitor",
+  "fdc3InteropApi": "2.0",
+  "interop": {
+    "currentContextGroup": "green"
+  }
+}

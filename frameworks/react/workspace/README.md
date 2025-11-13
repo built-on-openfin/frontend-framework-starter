@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Quick Start
+
+```
+npm install 
+npm start
+```
+
+Open [fin://localhost:3000/platform/manifest.fin.json](fin://localhost:3000/platform/manifest.fin.json) in your web browser to launch OpenFin. 
+ 
+
 ## Available Scripts
 
 In the project directory, you can run:
