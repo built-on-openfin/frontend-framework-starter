@@ -1,3 +1,4 @@
+import OpenFin from "@openfin/core";
 import React, { useEffect, useState } from "react";
 import logo from "../logo.svg";
 
@@ -33,6 +34,22 @@ function View2() {
 		}
 	}
 
+	function handleSaveCustomData() {
+		console.log('Setting custom data');
+		const view = fin.me as OpenFin.View
+		view.updateOptions({
+			customData: {
+				foo: 'bar'
+			}
+		})
+	}
+
+	async function handleGetCustomData() {
+		const view = fin.me as OpenFin.View
+		const options = await view.getOptions();
+		console.log('Custom Data', options.customData);
+	}
+
 	return (
 		<div className="col fill gap20">
 			<header className="row spread middle">
@@ -52,6 +69,11 @@ function View2() {
 					</pre>
 				</fieldset>
 				<button onClick={() => setMessage("")}>Clear</button>
+
+				<hr/>
+
+				<button onClick={handleSaveCustomData}>Save Page custom data</button>
+				<button onClick={handleGetCustomData}>Get Page custom data</button>
 			</main>
 		</div>
 	);
