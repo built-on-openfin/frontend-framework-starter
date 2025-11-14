@@ -9,7 +9,10 @@
     "icon": "http://localhost:4200/favicon.ico",
     "autoShow": true,
     "providerUrl": "http://localhost:4200/provider",
-    "preventQuitOnLastWindowClosed": false
+    "preventQuitOnLastWindowClosed": false,
+    "permissions": {
+      "webAPIs": ["backgroundSync"]
+    }
   },
   "shortcut": {
     "company": "OpenFin",

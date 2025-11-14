@@ -8,13 +8,14 @@ import {
 	signal,
 } from "@angular/core";
 import { type Subscription } from "rxjs";
+import { ServiceWorkerComponent } from "../service-worker/service-worker.component";
 import { ChannelService } from "../services/channel.service";
 import { ContextService } from "../services/context.service";
 
 @Component({
 	selector: "app-view2",
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule],
+	imports: [CommonModule, ServiceWorkerComponent],
 	template: `
 		<div class="col fill gap20">
 			<header class="row spread middle">
@@ -35,6 +36,8 @@ import { ContextService } from "../services/context.service";
 					<button (click)="clearMessage()">Clear</button>
 				}
 			</main>
+
+			<app-service-worker/>
 		</div>
 	`,
 })

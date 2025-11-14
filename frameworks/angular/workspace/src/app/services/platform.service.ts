@@ -15,6 +15,10 @@ export class PlatformService {
 			init({
 				browser: {
 					defaultWindowOptions: {
+						permissions: {
+							// @ts-ignore
+							webAPIs: ["backgroundSync"],
+						},
 						icon: platformSettings.icon,
 						workspacePlatform: {
 							pages: [],
