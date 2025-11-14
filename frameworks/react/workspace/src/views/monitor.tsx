@@ -168,12 +168,12 @@ export function Monitor() {
 				<table style={{ width: "100%", borderCollapse: "separate", borderSpacing: 0 }}>
 					<thead>
 						<tr style={{ background: "#f5f7fa" }}>
-							<th style={{ textAlign: "left", padding: "8px 12px", borderBottom: "1px solid #e5e7eb" }}>Ticker</th>
-							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb" }}>Price</th>
-							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb" }}>Change</th>
-							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb" }}>%</th>
-							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb" }}>Volume</th>
-							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb" }}>Day Range</th>
+							<th style={{ textAlign: "left", padding: "8px 12px", borderBottom: "1px solid #e5e7eb", color: "#888" }}>Ticker</th>
+							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb", color: "#888" }}>Price</th>
+							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb", color: "#888" }}>Change</th>
+							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb", color: "#888" }}>%</th>
+							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb", color: "#888" }}>Volume</th>
+							<th style={{ textAlign: "right", padding: "8px 12px", borderBottom: "1px solid #e5e7eb", color: "#888" }}>Day Range</th>
 						</tr>
 					</thead>
 					<tbody>

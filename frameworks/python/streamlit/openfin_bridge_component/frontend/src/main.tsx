@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { createRoot } from "react-dom/client"
 import { Streamlit, withStreamlitConnection } from "streamlit-component-lib"
 import { mapInbound, mapOutbound, hashContext } from './helpers/context';
@@ -9,16 +9,10 @@ type Args = {
   data?: any
 }
 
-function useStableJson<T>(value: T): string {
-  // Recompute JSON only when necessary to keep useEffect deps stable
-  return useMemo(() => JSON.stringify(value ?? null), [value])
-}
-
 const SUPPRESSION_WINDOW_MS = 900 // ignore self-echo within this window
 
 function Bridge({ args }: { args: Args }) {
   const groupRef = useRef<any>(null)
-  const argsJson = useStableJson(args)
   const lastOutboundHashRef = useRef<string | null>(null)
   const lastOutboundAtRef = useRef<number>(0)
 
@@ -84,8 +78,7 @@ function Bridge({ args }: { args: Args }) {
 
   // Outbound broadcast when args change
   useEffect(() => {
-    const parsed: Args = JSON.parse(argsJson)
-    const ctx = mapOutbound(parsed?.eventType, parsed?.data)
+    const ctx = mapOutbound(args?.eventType, args?.data)
     if (!ctx || !groupRef.current) return
     try {
       // Record hash & timestamp for self-echo suppression on next inbound
@@ -95,7 +88,7 @@ function Bridge({ args }: { args: Args }) {
     groupRef.current
       .setContext(ctx)
       .catch((e: any) => console.error("[OpenFinBridge] setContext error", e))
-  }, [argsJson])
+  }, [JSON.stringify(args)])
 
   return null
 }

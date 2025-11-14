@@ -4,6 +4,36 @@ An example showing integration of [Streamlit](https://streamlit.io/) (Python) wi
 
 It extends the Stock Peers example from the Streamlit app gallery: https://demo-stockpeers.streamlit.app/
 
+## Try it on your machine
+
+1. Start a virtual environment and get the dependencies (requires [uv](https://github.com/astral-sh/uv)):
+
+   ```sh
+   $ uv venv
+
+   $ source .venv/bin/activate
+
+   $ uv sync
+   ```
+
+2. Build the client bridge
+
+   ```sh
+   $ cd openfin_bridge_component/frontend
+  
+   $ npm install
+  
+   $ npm run build
+   ```
+
+3. Start the app:  
+
+   (From the root directory)  
+
+   ```sh
+   $ streamlit run streamlit_app.py
+   ```
+
 ## How it works
 
 This project demonstrates a bidirectional communication bridge between a Python Streamlit application and the OpenFin platform using the FDC3 Interop API. The integration enables seamless data sharing between Streamlit and other OpenFin applications.
@@ -89,32 +119,3 @@ The `context.ts` helper module handles bidirectional mapping:
 - The OpenFin runtime is not a direct dependency but is expected to be running when the app is launched in an OpenFin container
 - The app gracefully handles cases where OpenFin is not available (e.g., when running in a standard browser)
 
-## Try it on your machine
-
-1. Start a virtual environment and get the dependencies (requires [uv](https://github.com/astral-sh/uv)):
-
-   ```sh
-   $ uv venv
-
-   $ source .venv/bin/activate
-
-   $ uv sync
-   ```
-
-2. Build the client bridge
-
-   ```sh
-   $ cd openfin_bridge_component/frontend
-  
-   $ npm install
-  
-   $ npm run build
-   ```
-
-3. Start the app:  
-
-   (From the root directory)  
-
-   ```sh
-   $ streamlit run streamlit_app.py
-   ```
