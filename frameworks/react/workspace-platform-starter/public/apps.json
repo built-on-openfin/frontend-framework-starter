@@ -88,5 +88,29 @@
     "intents": [],
     "images": [],
     "tags": ["view", "openfin"]
+  },
+  {
+    "appId": "FX Trading",
+    "name": "fx-trading",
+    "title": "FX Trading",
+    "description": "FX Trading",
+    "manifest": {
+      "name": "fx-trading-view",
+      "url": "http://localhost:8080/fx",
+      "autoShow": false,
+      "fdc3InteropApi": "2.0"
+    },
+    "manifestType": "inline-view",
+    "icons": [
+      {
+        "src": "http://localhost:3000/favicon.ico"
+      }
+    ],
+    "contactEmail": "contact@example.com",
+    "supportEmail": "support@example.com",
+    "publisher": "OpenFin",
+    "intents": [],
+    "images": [],
+    "tags": ["view", "openfin"]
   }
 ]

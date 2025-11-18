@@ -1,16 +1,17 @@
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
-import path from 'path';
+import path from "path";
 
 export default defineConfig({
-	plugins: [react()],
+	plugins: [react(), tailwindcss()],
 	resolve: {
 		alias: {
-			'workspace-platform-starter': path.resolve(__dirname, './openfin/framework')
+			"workspace-platform-starter": path.resolve(__dirname, "./openfin/framework"),
 		},
-		extensions: ['.tsx', '.ts', '.js', '.json'],
+		extensions: [".tsx", ".ts", ".js", ".json"],
 	},
 	server: {
-		port: 8080
+		port: 8080,
 	},
 });
