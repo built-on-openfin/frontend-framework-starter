@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prestart": "npm run build:openfin",
-    "dev": "vite",
+    "dev": "vite --host",
     "start": "npm run dev",
     "build": "tsc -b && npm run build:openfin && vite build",
     "build:openfin": "rollup -c rollup.config.mjs",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@finos/fdc3": "2.0.3",
     "@openfin/cloud-interop": "0.42.115",
+    "@openfin/excel": "^1.5.0",
     "@openfin/openid-connect": "^1.0.0",
     "@openfin/snap-sdk": "1.3.3",
     "@openfin/workspace": "22.3.27",

@@ -3,10 +3,11 @@ import type { CellClickedEvent, ColDef, GridApi, IRowNode } from "ag-grid-commun
 import { AllCommunityModule, ModuleRegistry, themeQuartz } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { initInterop } from "./excel-interop";
 import {
 	dirClass,
-	type FxRowWithPrev,
 	fxPxFormatter,
+	type FxRowWithPrev,
 	getPrice,
 	type InstrumentCommentContext,
 	type InstrumentContext,
@@ -20,13 +21,17 @@ import { excelIcon, syncOffIcon, syncOnIcon, ticketIcon } from "./icons";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-export default function FxPage() {
+export function FxPage() {
 	const [rowData, setRowData] = useState<FxRowWithPrev[]>(
 		rows.map((r) => ({ ...r, prevBid: r.bid, prevAsk: r.ask, prevMid: r.mid })),
 	);
 	const [isSyncEnabled, setIsSyncEnabled] = useState(false);
 	const [isRiskOpen, setIsRiskOpen] = useState(false);
 	const gridApiRef = useRef<GridApi<FxRowWithPrev> | null>(null);
+
+	useEffect(() => {
+		initInterop();
+	}, []);
 
 	const buildContext = useCallback((): Context | null => {
 		const api = gridApiRef.current;
@@ -57,7 +62,7 @@ export default function FxPage() {
 				return;
 			}
 			console.log("FDC3: broadcast", context);
-			await window.fdc3?.broadcast(context);
+			await fdc3?.broadcast(context);
 		} catch (e) {
 			console.error("Sync Cells failed", e);
 		}
@@ -80,7 +85,7 @@ export default function FxPage() {
 		try {
 			const context: Context = { type: "Custom.LaunchWorkbook", id: { workbook: "risk-calculator" } };
 			console.log("FDC3: broadcast", context);
-			await window.fdc3?.broadcast(context);
+			await fdc3?.broadcast(context);
 			setTimeout(() => {
 				setIsRiskOpen(true);
 			}, 2000);
@@ -93,7 +98,7 @@ export default function FxPage() {
 		try {
 			const context: Context = { type: "Custom.NewWorkbook" };
 			console.log("FDC3: broadcast", context);
-			await window.fdc3?.broadcast(context);
+			await fdc3?.broadcast(context);
 		} catch (e) {
 			console.error("New workbook failed", e);
 		}
@@ -110,7 +115,7 @@ export default function FxPage() {
 
 	const handleTradeTicket = useCallback(async () => {
 		try {
-			await window.fdc3?.raiseIntent("CreateOrder", {
+			await fdc3?.raiseIntent("CreateOrder", {
 				type: "fdc3.instrument",
 				id: {
 					ticker: "",
@@ -125,14 +130,14 @@ export default function FxPage() {
 		try {
 			const context = rowToInstrument(event.node) as Context;
 			console.log("Raising intent", context);
-			await window.fdc3?.raiseIntent("CreateOrder", context);
+			await fdc3?.raiseIntent("CreateOrder", context);
 		} catch (e) {
 			console.error("Trade ticket failed", e);
 		}
 	}, []);
 
 	useEffect(() => {
-		window.fdc3?.addContextListener(null, (ctx) => {
+		fdc3?.addContextListener(null, (ctx) => {
 			if (ctx.type !== "here.instrumentComment") {
 				return;
 			}

@@ -98,7 +98,16 @@
       "name": "fx-trading-view",
       "url": "http://localhost:8080/fx",
       "autoShow": false,
-      "fdc3InteropApi": "2.0"
+      "fdc3InteropApi": "2.0",
+      "interop": {
+        "currentContextGroup": "green"
+      },
+      "permissions": {
+      "System": {
+        "launchExternalProcess": true,
+        "downloadAsset": true
+      }
+    }
     },
     "manifestType": "inline-view",
     "icons": [

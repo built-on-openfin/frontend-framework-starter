@@ -1,0 +1,81 @@
+import type { OpenFin } from "@openfin/core";
+
+/**
+ * Custom settings for the application.
+ */
+export interface CustomSettings {
+	/**
+	 * The settings for excel.
+	 */
+	excel?: ExcelSettings;
+}
+
+/**
+ * Settings for integration with Excel.
+ */
+export interface ExcelSettings {
+	/**
+	 * The icons to display.
+	 */
+	icon: string;
+
+	/**
+	 * The asset for the excel integration.
+	 */
+	asset: ExcelAssetSettings;
+
+	/**
+	 * The app asset information.
+	 */
+	appAsset: OpenFin.AppAssetInfo;
+}
+
+/**
+ * Definition for excel worksheet settings.
+ */
+export interface ExcelWorksheetSettings {
+	/**
+	 * The name of the excel worksheet.
+	 */
+	name: string;
+
+	/**
+	 * Cells to watch for raising context.
+	 */
+	watchCells?: {
+		cell?: string;
+		cellRange?: string;
+		contextTypes: string[];
+		contextGroup: "green" | "purple" | "orange" | "red" | "pink" | "yellow";
+	}[];
+
+	identityCells?: {
+		cellRange?: string;
+		idField: string;
+	}[];
+}
+
+/**
+ * Excel asset settings.
+ */
+export interface ExcelAssetSettings {
+	/**
+	 * Title of the asset.
+	 */
+	title: string;
+
+	/**
+	 * Description for the asset.
+	 */
+	description: string;
+
+	/**
+	 * The workbook for the asset.
+	 */
+	workbook: string;
+
+	/**
+	 * The worksheet settings for the workbook.
+	 */
+	worksheets: ExcelWorksheetSettings[];
+}
