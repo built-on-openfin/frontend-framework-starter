@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "./Provider";
-import FxPage from "./views/fx/fx";
+import { FxPage } from "./views/fx/fx";
 import { Monitor } from "./views/monitor";
+import { Ticket } from "./views/ticket";
 import { View1 } from "./views/view1";
 import { View2 } from "./views/view2";
 
@@ -14,6 +15,7 @@ export default function App() {
 				<Route path="/view2" element={<View2 />} />
 				<Route path="/stock-peers-monitor" element={<Monitor />}></Route>
 				<Route path="/fx" element={<FxPage />}></Route>
+				<Route path="/fx-ticket" element={<Ticket />}></Route>
 			</Routes>
 		</BrowserRouter>
 	);
