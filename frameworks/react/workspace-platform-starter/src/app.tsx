@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "./Provider";
+import { ExcelDevtools } from "./views/excel-devtools/excel-devtools";
 import { FxPage } from "./views/fx/fx";
 import { Monitor } from "./views/monitor";
 import { Ticket } from "./views/ticket";
@@ -16,6 +17,7 @@ export default function App() {
 				<Route path="/stock-peers-monitor" element={<Monitor />}></Route>
 				<Route path="/fx" element={<FxPage />}></Route>
 				<Route path="/fx-ticket" element={<Ticket />}></Route>
+				<Route path="/excel-devtools" element={<ExcelDevtools />}></Route>
 			</Routes>
 		</BrowserRouter>
 	);
