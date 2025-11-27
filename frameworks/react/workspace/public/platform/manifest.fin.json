@@ -2,7 +2,7 @@
   "licenseKey": "openfin-demo-license-key",
   "runtime": {
     "arguments": "--v=1 --inspect",
-    "version": "42.138.102.4"
+    "version": "42.138.103.1"
   },
   "platform": {
     "uuid": "react-workspace-starter",
@@ -16,7 +16,10 @@
     "description": "A way of showing examples of what OpenFin can do.",
     "icon": "http://localhost:3000/favicon.ico",
     "name": "React Workspace Starter",
-    "target": ["desktop", "start-menu"]
+    "target": [
+      "desktop",
+      "start-menu"
+    ]
   },
   "supportInformation": {
     "company": "OpenFin",
@@ -43,7 +46,10 @@
         "publisher": "OpenFin",
         "intents": [],
         "images": [],
-        "tags": ["view", "openfin"]
+        "tags": [
+          "view",
+          "openfin"
+        ]
       },
       {
         "appId": "react-view2",
@@ -62,7 +68,10 @@
         "publisher": "OpenFin",
         "intents": [],
         "images": [],
-        "tags": ["view", "openfin"]
+        "tags": [
+          "view",
+          "openfin"
+        ]
       }
     ]
   }
