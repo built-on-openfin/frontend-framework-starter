@@ -14,7 +14,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@openfin/core-web": "~0.41.131",
+    "@openfin/core-web": "0.42.103",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

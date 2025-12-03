@@ -1,0 +1,285 @@
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
+import { execSync } from "child_process";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const FRAMEWORKS_DIR = path.resolve(__dirname, "../frameworks");
+
+const PACKAGES_TO_UPDATE = [
+	"@openfin/core",
+	"@openfin/workspace",
+	"@openfin/workspace-platform",
+	"@openfin/node-adapter",
+	"@openfin/core-web",
+];
+
+const DEFAULT_VERSIONS = {
+	runtime: "42.138.103.1",
+	core: "42.103.1",
+	workspace: "22.3.27",
+	"workspace-platform": "22.3.27",
+	"core-web": "0.42.103",
+};
+
+// Parse arguments
+const args = process.argv.slice(2);
+const versions = {};
+let runtimeVersion = null;
+
+function updateVersion(key, value) {
+	if (key === "runtime") {
+		runtimeVersion = value;
+	} else if (["core", "@openfin/core", "node-adapter", "@openfin/node-adapter"].includes(key)) {
+		versions["@openfin/core"] = value;
+		versions["@openfin/node-adapter"] = value;
+	} else if (
+		["workspace", "@openfin/workspace", "workspace-platform", "@openfin/workspace-platform"].includes(key)
+	) {
+		versions["@openfin/workspace"] = value;
+		versions["@openfin/workspace-platform"] = value;
+	} else if (PACKAGES_TO_UPDATE.some((pkg) => pkg.endsWith(key))) {
+		// map shorthand keys (e.g. "core" -> "@openfin/core") or full names
+		const pkgName = PACKAGES_TO_UPDATE.find((p) => p.endsWith(key)) || key;
+		versions[pkgName] = value;
+	} else {
+		// Allow passing full package name as key? e.g. --@openfin/core 1.2.3
+		versions[key] = value;
+	}
+}
+
+// Apply defaults
+Object.entries(DEFAULT_VERSIONS).forEach(([key, value]) => updateVersion(key, value));
+
+for (let i = 0; i < args.length; i++) {
+	const arg = args[i];
+	if (arg.startsWith("--")) {
+		const key = arg.substring(2);
+		const value = args[i + 1];
+		if (value && !value.startsWith("--")) {
+			updateVersion(key, value);
+			i++;
+		}
+	}
+}
+
+if (Object.keys(versions).length === 0 && !runtimeVersion) {
+	console.log(
+		"Usage: node upgrade-openfin.mjs --runtime <version> --workspace <version> --core <version> ...",
+	);
+	console.log(
+		"Supported flags: --runtime, --core, --workspace, --workspace-platform, --node-adapter, --core-web",
+	);
+	process.exit(1);
+}
+
+async function findProjects(dir) {
+	const projects = [];
+	const entries = await fs.readdir(dir, { withFileTypes: true });
+
+	for (const entry of entries) {
+		const fullPath = path.join(dir, entry.name);
+		if (entry.isDirectory()) {
+			if (entry.name === "node_modules" || entry.name === ".git" || entry.name === ".angular") continue;
+
+			// Check if this directory is a project (has package.json)
+			try {
+				await fs.access(path.join(fullPath, "package.json"));
+				projects.push(fullPath);
+			} catch (e) {
+				// Not a project, recurse
+				const subProjects = await findProjects(fullPath);
+				projects.push(...subProjects);
+			}
+		}
+	}
+	return projects;
+}
+
+async function updatePackageJson(projectDir, versions) {
+	const packageJsonPath = path.join(projectDir, "package.json");
+	try {
+		const content = await fs.readFile(packageJsonPath, "utf-8");
+		let pkg = JSON.parse(content);
+		let modified = false;
+
+		["dependencies", "devDependencies", "peerDependencies"].forEach((depType) => {
+			if (!pkg[depType]) return;
+			for (const [pkgName, newVersion] of Object.entries(versions)) {
+				if (pkg[depType][pkgName]) {
+					console.log(`  Updating ${pkgName} to ${newVersion} in ${depType}`);
+					pkg[depType][pkgName] = newVersion;
+					modified = true;
+				}
+			}
+		});
+
+		if (modified) {
+			await fs.writeFile(packageJsonPath, JSON.stringify(pkg, null, 2) + "\n");
+			return true;
+		}
+	} catch (e) {
+		console.error(`  Error updating package.json in ${projectDir}: ${e.message}`);
+	}
+	return false;
+}
+
+async function findManifest(projectDir) {
+	// Common locations for manifest.fin.json
+	const candidates = [
+		path.join(projectDir, "public", "manifest.fin.json"),
+		path.join(projectDir, "public", "platform", "manifest.fin.json"),
+		path.join(projectDir, "manifest.fin.json"),
+	];
+
+	for (const candidate of candidates) {
+		try {
+			await fs.access(candidate);
+			return candidate;
+		} catch (e) {}
+	}
+	return null;
+}
+
+async function updateManifest(manifestPath, newRuntimeVersion) {
+	try {
+		const content = await fs.readFile(manifestPath, "utf-8");
+		const manifest = JSON.parse(content);
+
+		let oldVersion = null;
+		if (manifest.runtime && manifest.runtime.version) {
+			oldVersion = manifest.runtime.version;
+			if (oldVersion !== newRuntimeVersion) {
+				console.log(
+					`  Updating runtime version from ${oldVersion} to ${newRuntimeVersion} in ${path.basename(manifestPath)}`,
+				);
+				manifest.runtime.version = newRuntimeVersion;
+				await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+				return oldVersion;
+			}
+		}
+		return null; // No update needed or runtime not found
+	} catch (e) {
+		console.error(`  Error updating manifest ${manifestPath}: ${e.message}`);
+		return null;
+	}
+}
+
+async function findMarkdownFiles(dir) {
+	let results = [];
+	const entries = await fs.readdir(dir, { withFileTypes: true });
+	for (const entry of entries) {
+		const fullPath = path.join(dir, entry.name);
+		if (entry.isDirectory()) {
+			if (
+				entry.name === "node_modules" ||
+				entry.name === ".git" ||
+				entry.name === "dist" ||
+				entry.name === "build"
+			)
+				continue;
+			results = results.concat(await findMarkdownFiles(fullPath));
+		} else if (entry.name.endsWith(".md")) {
+			results.push(fullPath);
+		}
+	}
+	return results;
+}
+
+async function updateMarkdown(projectDir, oldVersion, newVersion) {
+	if (!oldVersion || !newVersion || oldVersion === newVersion) return;
+
+	const mdFiles = await findMarkdownFiles(projectDir);
+	for (const file of mdFiles) {
+		try {
+			const content = await fs.readFile(file, "utf-8");
+			if (content.includes(oldVersion)) {
+				console.log(`  Updating runtime version in ${path.relative(projectDir, file)}`);
+				const newContent = content.replaceAll(oldVersion, newVersion);
+				await fs.writeFile(file, newContent);
+			}
+		} catch (e) {
+			console.error(`  Error updating markdown ${file}: ${e.message}`);
+		}
+	}
+}
+
+async function runCommand(command, cwd) {
+	try {
+		console.log(`  Running: ${command}`);
+		execSync(command, { cwd, stdio: "inherit" }); // Inherit to show output and errors
+		return true;
+	} catch (e) {
+		console.error(`  Failed: ${command}`);
+		return false;
+	}
+}
+
+async function main() {
+	console.log("Searching for projects in:", FRAMEWORKS_DIR);
+	const projects = await findProjects(FRAMEWORKS_DIR);
+	console.log(`Found ${projects.length} projects.`);
+
+	const results = [];
+
+	for (const projectDir of projects) {
+		const projectName = path.basename(projectDir);
+		console.log(`\nProcessing ${projectName} (${path.relative(FRAMEWORKS_DIR, projectDir)})...`);
+
+		let failed = false;
+
+		// 1. Update package.json
+		if (Object.keys(versions).length > 0) {
+			await updatePackageJson(projectDir, versions);
+		}
+
+		// 2. Update manifest and markdown
+		if (runtimeVersion) {
+			const manifestPath = await findManifest(projectDir);
+			if (manifestPath) {
+				const oldVersion = await updateManifest(manifestPath, runtimeVersion);
+				if (oldVersion) {
+					await updateMarkdown(projectDir, oldVersion, runtimeVersion);
+				}
+			} else {
+				console.log(`  No manifest.fin.json found, skipping runtime/markdown update.`);
+			}
+		}
+
+		// 3. npm install
+		if (!(await runCommand("npm install", projectDir))) {
+			failed = true;
+		}
+
+		// 4. npm audit fix
+		if (!failed) {
+			await runCommand("npm audit fix", projectDir);
+		}
+
+		// 5. npm run build
+		if (!failed) {
+			if (!(await runCommand("npm run build", projectDir))) {
+				failed = true;
+			}
+		}
+
+		results.push({ project: projectName, path: projectDir, success: !failed });
+	}
+
+	console.log("\n--- Summary ---");
+	const failures = results.filter((r) => !r.success);
+	if (failures.length > 0) {
+		console.log("The following projects failed:");
+		failures.forEach((f) => console.log(`- ${f.project} (${f.path})`));
+		process.exit(1);
+	} else {
+		console.log("All projects updated and built successfully!");
+	}
+}
+
+main().catch((err) => {
+	console.error("Unexpected error:", err);
+	process.exit(1);
+});
