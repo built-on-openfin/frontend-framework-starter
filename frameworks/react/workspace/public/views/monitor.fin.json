@@ -1,0 +1,7 @@
+{
+  "url": "http://localhost:3000/views/monitor",
+  "fdc3InteropApi": "2.0",
+  "interop": {
+    "currentContextGroup": "green"
+  }
+}

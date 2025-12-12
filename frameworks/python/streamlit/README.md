@@ -6,13 +6,11 @@ It extends the Stock Peers example from the Streamlit app gallery: https://demo-
 
 ## Try it on your machine
 
-1. Start a virtual environment and get the dependencies (requires [uv](https://github.com/astral-sh/uv)):
+First, make sure uv is installed. https://github.com/astral-sh/uv
+
+1. Install dependencies (creates virtual environment automatically):
 
    ```sh
-   $ uv venv
-
-   $ source .venv/bin/activate
-
    $ uv sync
    ```
 
@@ -31,7 +29,7 @@ It extends the Stock Peers example from the Streamlit app gallery: https://demo-
    (From the root directory)  
 
    ```sh
-   $ streamlit run streamlit_app.py
+   $ uv run streamlit run streamlit_app.py
    ```
 
 ## How it works
@@ -118,4 +116,3 @@ The `context.ts` helper module handles bidirectional mapping:
 **OpenFin**:
 - The OpenFin runtime is not a direct dependency but is expected to be running when the app is launched in an OpenFin container
 - The app gracefully handles cases where OpenFin is not available (e.g., when running in a standard browser)
-

@@ -1,25 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from './App';
-import './index.css';
+import App from "./App";
+import "./index.css";
 
-const Provider = React.lazy(() => import('./platform/Provider'));
-const View1 = React.lazy(() => import('./views/View1'));
-const View2 = React.lazy(() => import('./views/View2'));
+const Provider = React.lazy(() => import("./platform/Provider"));
+const View1 = React.lazy(() => import("./views/View1"));
+const View2 = React.lazy(() => import("./views/View2"));
+const Monitor = React.lazy(() => import("./views/Monitor"));
 
-const root = ReactDOM.createRoot(
-   document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
-   <React.StrictMode>
-      <BrowserRouter>
-         <Routes>
-            <Route path="/" element={<App />}></Route>
-            <Route path="/views/view1" element={<View1 />}></Route>
-            <Route path="/views/view2" element={<View2 />}></Route>
-            <Route path="/platform/provider" element={<Provider />}></Route>
-         </Routes>
-      </BrowserRouter>
-   </React.StrictMode>
+	<React.StrictMode>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<App />}></Route>
+				<Route path="/views/view1" element={<View1 />}></Route>
+				<Route path="/views/view2" element={<View2 />}></Route>
+				<Route path="/views/monitor" element={<Monitor />}></Route>
+				<Route path="/platform/provider" element={<Provider />}></Route>
+			</Routes>
+		</BrowserRouter>
+	</React.StrictMode>,
 );

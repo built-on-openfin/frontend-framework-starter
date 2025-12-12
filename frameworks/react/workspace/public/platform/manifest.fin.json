@@ -27,6 +27,44 @@
   "customSettings": {
     "apps": [
       {
+        "appId": "streamlit-stockpeers",
+        "name": "streamlit-stockpeers",
+        "title": "Streamlit Stockpeers",
+        "description": "Python App",
+        "manifest": "http://localhost:3000/views/stock-peers.fin.json",
+        "manifestType": "view",
+        "icons": [
+          {
+            "src": "http://localhost:3000/favicon.ico"
+          }
+        ],
+        "contactEmail": "contact@example.com",
+        "supportEmail": "support@example.com",
+        "publisher": "HERE",
+        "intents": [],
+        "images": [],
+        "tags": ["view", "openfin"]
+      },
+      {
+        "appId": "stock-peers-monitor",
+        "name": "stock-peers-monitor",
+        "title": "Streamlit Monitor",
+        "description": "Streamlit Monitor",
+        "manifest": "http://localhost:3000/views/monitor.fin.json",
+        "manifestType": "view",
+        "icons": [
+          {
+            "src": "http://localhost:3000/favicon.ico"
+          }
+        ],
+        "contactEmail": "contact@example.com",
+        "supportEmail": "support@example.com",
+        "publisher": "OpenFin",
+        "intents": [],
+        "images": [],
+        "tags": ["view", "openfin"]
+      },
+      {
         "appId": "react-view1",
         "name": "react-view1",
         "title": "React View 1",
