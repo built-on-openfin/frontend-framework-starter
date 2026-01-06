@@ -1,0 +1,72 @@
+{
+  "runtime": {
+    "arguments": "--v=1 --inspect",
+    "version": "42.138.103.1"
+  },
+  "platform": {
+    "uuid": "streamlit-container-starter",
+    "icon": "http://localhost:8500/favicon.ico",
+    "autoShow": false,
+    "providerUrl": "http://localhost:8500/provider.html",
+    "defaultViewOptions": {
+      "preloadScripts": [
+        {
+          "url": "http://localhost:8500/openfin_bridge.js"
+        }
+      ]
+    }
+  },
+  "snapshot": {
+    "windows": [
+      {
+        "layout": {
+          "content": [
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "stack",
+                  "content": [
+                    {
+                      "type": "component",
+                      "title": "view1",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:8501/view1",
+                        "name": "view1",
+                        "componentName": "view",
+                        "fdc3InteropApi": "2.0",
+                        "interop": {
+                          "currentContextGroup": "green"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "stack",
+                  "content": [
+                    {
+                      "type": "component",
+                      "title": "view2",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:8501/view2",
+                        "name": "view2",
+                        "componentName": "view",
+                        "fdc3InteropApi": "2.0",
+                        "interop": {
+                          "currentContextGroup": "green"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root {
+    --brand-background: #1e1f23;
+    --brand-border: #2f3136;
+    --brand-primary: #0a76d3;
+    --brand-text: #ffffff;
+    --brand-text-secondary: #c9cbd2;
+    --brand-input-background: #383a40;
+    --brand-input-border: #53565f;
+    --brand-input-border-highlight: #c9cbd2;
+    --brand-error: #be1d1f;
+    --brand-success: #35c759;
+
+    accent-color: var(--brand-primary);
+}
+
+::selection {
+    background-color: var(--brand-primary);
+}
+
+* {
+    font-family: Inter, 'Sans Serif', sans-serif;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    overflow: hidden;
+    padding: 20px;
+    background-color: var(--brand-background);
+    color: var(--brand-text);
+}
+
+#root {
+    display: flex;
+    flex: 1;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+h1.tag {
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 5px;
+    color: var(--brand-text-secondary);
+}
+
+p {
+    color: var(--brand-text-secondary);
+    font-size: 12px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--brand-input-background);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--brand-border);
+    border-radius: 5px;
+    border: 1px solid var(--brand-input-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border: 1px solid var(--brand-input-border-highlight);
+}
+
+main {
+    min-height: 100px;
+}
+
+button {
+    background-color: var(--brand-primary);
+    border: 2px solid var(--brand-primary);
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 8px 20px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    outline: 0;
+    white-space: nowrap;
+    transition-property: background-color, color, opacity;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button:not(:disabled):focus,
+button:not(:disabled):hover {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1) 0 0);
+}
+
+button.secondary {
+    background-color: var(--brand-input-background);
+    color: var(--brand-text);
+    border-color: var(--brand-input-border);
+}
+
+button.secondary:not(:disabled):hover {
+    background-color: var(--brand-input-background);
+}
+
+pre {
+    margin: 0;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    border: 1px solid var(--brand-input-border);
+    background-color: var(--brand-input-background);
+    width: 100%;
+    min-height: 110px;
+    color: var(--brand-text);
+}
+
+header {
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--brand-border);
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    gap: 5px;
+}
+
+label {
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: var(--brand-text);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.fill {
+    flex: 1;
+}
+
+.middle {
+    align-items: center;
+}
+
+.spread {
+    justify-content: space-between;
+}
+
+.left {
+    display: flex;
+    align-items: flex-start;
+}
+
+.gap5 {
+    gap: 5px;
+}
+
+.gap10 {
+    gap: 10px;
+}
+
+.gap20 {
+    gap: 20px;
+}
+
+.width-full {
+    width: 100%;
+}
+
+/* Logo styling */
+.logo {
+    height: 40px;
+}

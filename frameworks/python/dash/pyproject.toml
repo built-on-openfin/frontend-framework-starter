@@ -1,0 +1,9 @@
+[project]
+name = "dash-openfin-example"
+version = "0.1.0"
+description = "Dash Plotly example with OpenFin FDC3 integration"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "dash>=2.14.0",
+]

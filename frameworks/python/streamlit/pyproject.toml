@@ -1,0 +1,10 @@
+[project]
+name = "streamlit-openfin-example"
+version = "0.1.0"
+description = "Streamlit example with OpenFin FDC3 integration"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.32.0",
+    "flask>=3.0.0",
+]

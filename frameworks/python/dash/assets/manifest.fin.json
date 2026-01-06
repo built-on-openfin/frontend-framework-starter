@@ -1,0 +1,65 @@
+{
+  "runtime": {
+    "arguments": "--v=1 --inspect",
+    "version": "42.138.103.1"
+  },
+  "platform": {
+    "uuid": "dash-container-starter",
+    "icon": "http://localhost:8050/assets/favicon.ico",
+    "autoShow": false,
+    "providerUrl": "http://localhost:8050/assets/provider.html"
+  },
+  "snapshot": {
+    "windows": [
+      {
+        "layout": {
+          "content": [
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "stack",
+                  "content": [
+                    {
+                      "type": "component",
+                      "title": "view1",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:8050/view1",
+                        "name": "view1",
+                        "componentName": "view",
+                        "fdc3InteropApi": "2.0",
+                        "interop": {
+                          "currentContextGroup": "green"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "stack",
+                  "content": [
+                    {
+                      "type": "component",
+                      "title": "view2",
+                      "componentName": "view",
+                      "componentState": {
+                        "url": "http://localhost:8050/view2",
+                        "name": "view2",
+                        "componentName": "view",
+                        "fdc3InteropApi": "2.0",
+                        "interop": {
+                          "currentContextGroup": "green"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
