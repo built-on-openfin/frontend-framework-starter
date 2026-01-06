@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenFin Platform Provider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .tag {
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OpenFin Platform Provider</h1>
+        <div class="tag">Dash Platform Provider</div>
+        <p id="status">Initializing Platform...</p>
+    </div>
+
+    <script>
+        async function initPlatform() {
+            if (typeof fin !== 'undefined') {
+                try {
+                    await fin.Platform.init({});
+                    const runtimeInfo = await fin.System.getRuntimeInfo();
+                    document.getElementById('status').textContent = `OpenFin Runtime: ${runtimeInfo.version}`;
+                    console.log("OpenFin Platform initialized");
+                } catch (e) {
+                    console.error("Error initializing OpenFin Platform:", e);
+                    document.getElementById('status').textContent = "Error initializing OpenFin Platform";
+                }
+            } else {
+                document.getElementById('status').textContent = "OpenFin runtime is not available";
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initPlatform);
+    </script>
+</body>
+</html>
