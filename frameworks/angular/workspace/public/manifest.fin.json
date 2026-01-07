@@ -2,7 +2,7 @@
   "licenseKey": "openfin-demo-license-key",
   "runtime": {
     "arguments": "--v=1 --inspect",
-    "version": "42.138.103.1"
+    "version": "42.138.103.2"
   },
   "platform": {
     "uuid": "angular-workspace-starter",

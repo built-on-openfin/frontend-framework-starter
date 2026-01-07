@@ -17,10 +17,10 @@ const PACKAGES_TO_UPDATE = [
 ];
 
 const DEFAULT_VERSIONS = {
-	runtime: "42.138.103.1",
-	core: "42.103.1",
-	workspace: "22.3.27",
-	"workspace-platform": "22.3.27",
+	runtime: "42.138.103.2",
+	core: "42.103.2",
+	workspace: "22.3.28",
+	"workspace-platform": "22.3.28",
 	"core-web": "0.42.103",
 };
 
