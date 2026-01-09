@@ -5,6 +5,7 @@ updatable-packages.txt
 /tmp
 /out-tsc
 /bazel-out
+__pycache__
 
 # Node
 /node_modules

@@ -1,10 +1,10 @@
 """Dash / OpenFin example runner.
 
-This mirrors the Streamlit example's entry point so you can start the Dash app with:
+Start the Dash app with:
 
     uv run run.py
 
-The actual Dash app is defined in `dash_app.py`.
+The Dash app is defined in `dash_app.py`.
 """
 
 from __future__ import annotations

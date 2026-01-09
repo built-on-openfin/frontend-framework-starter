@@ -14,14 +14,16 @@ const PACKAGES_TO_UPDATE = [
 	"@openfin/workspace-platform",
 	"@openfin/node-adapter",
 	"@openfin/core-web",
+	"@openfin/cloud-interop",
 ];
 
 const DEFAULT_VERSIONS = {
-	runtime: "42.138.103.2",
-	core: "42.103.2",
-	workspace: "22.3.28",
-	"workspace-platform": "22.3.28",
-	"core-web": "0.42.103",
+	runtime: "43.142.100.111",
+	core: "43.100.111",
+	workspace: "23.0.13",
+	"workspace-platform": "23.0.13",
+	"core-web": "0.43.110",
+	"cloud-interop": "0.43.110",
 };
 
 // Parse arguments
@@ -70,7 +72,7 @@ if (Object.keys(versions).length === 0 && !runtimeVersion) {
 		"Usage: node upgrade-openfin.mjs --runtime <version> --workspace <version> --core <version> ...",
 	);
 	console.log(
-		"Supported flags: --runtime, --core, --workspace, --workspace-platform, --node-adapter, --core-web",
+		"Supported flags: --runtime, --core, --workspace, --workspace-platform, --node-adapter, --core-web, --cloud-interop",
 	);
 	process.exit(1);
 }
@@ -82,7 +84,7 @@ async function findProjects(dir) {
 	for (const entry of entries) {
 		const fullPath = path.join(dir, entry.name);
 		if (entry.isDirectory()) {
-			if (entry.name === "node_modules" || entry.name === ".git" || entry.name === ".angular") continue;
+			if (entry.name === "node_modules" || entry.name === ".git" || entry.name === ".angular" || entry.name === ".venv") continue;
 
 			// Check if this directory is a project (has package.json)
 			try {
@@ -126,21 +128,26 @@ async function updatePackageJson(projectDir, versions) {
 	return false;
 }
 
-async function findManifest(projectDir) {
-	// Common locations for manifest.fin.json
-	const candidates = [
-		path.join(projectDir, "public", "manifest.fin.json"),
-		path.join(projectDir, "public", "platform", "manifest.fin.json"),
-		path.join(projectDir, "manifest.fin.json"),
-	];
+async function findManifests(dir, manifests = []) {
+	const entries = await fs.readdir(dir, { withFileTypes: true });
 
-	for (const candidate of candidates) {
-		try {
-			await fs.access(candidate);
-			return candidate;
-		} catch (e) {}
+	for (const entry of entries) {
+		const fullPath = path.join(dir, entry.name);
+		if (entry.isDirectory()) {
+			if (
+				entry.name === "node_modules" ||
+				entry.name === ".git" ||
+				entry.name === ".venv" ||
+				entry.name === "dist" ||
+				entry.name === "build"
+			)
+				continue;
+			await findManifests(fullPath, manifests);
+		} else if (entry.name === "manifest.fin.json") {
+			manifests.push(fullPath);
+		}
 	}
-	return null;
+	return manifests;
 }
 
 async function updateManifest(manifestPath, newRuntimeVersion) {
@@ -176,6 +183,7 @@ async function findMarkdownFiles(dir) {
 			if (
 				entry.name === "node_modules" ||
 				entry.name === ".git" ||
+				entry.name === ".venv" ||
 				entry.name === "dist" ||
 				entry.name === "build"
 			)
@@ -218,7 +226,23 @@ async function runCommand(command, cwd) {
 }
 
 async function main() {
-	console.log("Searching for projects in:", FRAMEWORKS_DIR);
+	// 1. Update all manifests across the entire frameworks directory
+	if (runtimeVersion) {
+		console.log("Searching for manifests in:", FRAMEWORKS_DIR);
+		const allManifests = await findManifests(FRAMEWORKS_DIR);
+		console.log(`Found ${allManifests.length} manifest(s).`);
+
+		for (const manifestPath of allManifests) {
+			const oldVersion = await updateManifest(manifestPath, runtimeVersion);
+			if (oldVersion) {
+				const manifestDir = path.dirname(manifestPath);
+				await updateMarkdown(manifestDir, oldVersion, runtimeVersion);
+			}
+		}
+	}
+
+	// 2. Find and process npm projects
+	console.log("\nSearching for projects in:", FRAMEWORKS_DIR);
 	const projects = await findProjects(FRAMEWORKS_DIR);
 	console.log(`Found ${projects.length} projects.`);
 
@@ -230,35 +254,22 @@ async function main() {
 
 		let failed = false;
 
-		// 1. Update package.json
+		// Update package.json
 		if (Object.keys(versions).length > 0) {
 			await updatePackageJson(projectDir, versions);
 		}
 
-		// 2. Update manifest and markdown
-		if (runtimeVersion) {
-			const manifestPath = await findManifest(projectDir);
-			if (manifestPath) {
-				const oldVersion = await updateManifest(manifestPath, runtimeVersion);
-				if (oldVersion) {
-					await updateMarkdown(projectDir, oldVersion, runtimeVersion);
-				}
-			} else {
-				console.log(`  No manifest.fin.json found, skipping runtime/markdown update.`);
-			}
-		}
-
-		// 3. npm install
+		// npm install
 		if (!(await runCommand("npm install", projectDir))) {
 			failed = true;
 		}
 
-		// 4. npm audit fix
+		// npm audit fix
 		if (!failed) {
 			await runCommand("npm audit fix", projectDir);
 		}
 
-		// 5. npm run build
+		// npm run build
 		if (!failed) {
 			if (!(await runCommand("npm run build", projectDir))) {
 				failed = true;
