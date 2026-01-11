@@ -28,6 +28,7 @@ Manually copy the following folders from the **how-to/workspace-platform-starter
 client/src/framework -> openfin/framework
 client/src/modules -> openfin/modules
 public/common -> openfin/common
+public/schemas -> openfin/schemas (optional, to help with manifest and app configuration)
 ```
 
 The **/openfin** folder in this project should then look like:
@@ -72,3 +73,20 @@ Launch [fin://localhost:8080/manifest.fin.json](fin://localhost:8080/manifest.fi
 - Customize your theme in the themeProvider section of the manifest.fin.json
 - Follow the [how-to](https://github.com/built-on-openfin/workspace-starter/tree/main/how-to/workspace-platform-starter/docs) documentation to further customize your platform
 
+## Debugging
+
+### Source maps
+
+Source maps are disabled by default assuming a production-like configuration. 
+
+To enable source maps for debugging, modify the `rollup.config.mjs` file to include source maps in the output configuration:
+
+```javascript
+{
+  ...
+  output: {
+    ...
+    sourcemap: true
+  }
+}
+```
