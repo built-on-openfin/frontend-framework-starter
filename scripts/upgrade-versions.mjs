@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const FRAMEWORKS_DIR = path.resolve(__dirname, "../frameworks");
+const ROOT_DIR = path.resolve(__dirname, "..");
 
 const PACKAGES_TO_UPDATE = [
 	"@openfin/core",
@@ -18,18 +19,21 @@ const PACKAGES_TO_UPDATE = [
 ];
 
 const DEFAULT_VERSIONS = {
-	runtime: "43.142.100.111",
-	core: "43.100.111",
-	workspace: "23.0.13",
-	"workspace-platform": "23.0.13",
-	"core-web": "0.43.110",
-	"cloud-interop": "0.43.110",
+	major: "23.0.0",
+	runtime: "43.142.101.1",
+	core: "43.101.1",
+	workspace: "23.0.16",
+	"workspace-platform": "23.0.16",
+	"core-web": "0.43.112",
+	"cloud-interop": "0.43.112",
 };
 
 // Parse arguments
 const args = process.argv.slice(2);
 const versions = {};
 let runtimeVersion = null;
+let installOnly = false;
+let buildOnly = false;
 
 function updateVersion(key, value) {
 	if (key === "runtime") {
@@ -59,10 +63,16 @@ for (let i = 0; i < args.length; i++) {
 	const arg = args[i];
 	if (arg.startsWith("--")) {
 		const key = arg.substring(2);
-		const value = args[i + 1];
-		if (value && !value.startsWith("--")) {
-			updateVersion(key, value);
-			i++;
+		if (key === "install-only") {
+			installOnly = true;
+		} else if (key === "build-only") {
+			buildOnly = true;
+		} else {
+			const value = args[i + 1];
+			if (value && !value.startsWith("--")) {
+				updateVersion(key, value);
+				i++;
+			}
 		}
 	}
 }
@@ -74,6 +84,7 @@ if (Object.keys(versions).length === 0 && !runtimeVersion) {
 	console.log(
 		"Supported flags: --runtime, --core, --workspace, --workspace-platform, --node-adapter, --core-web, --cloud-interop",
 	);
+	console.log("Options: --install-only (skip build), --build-only (skip install)");
 	process.exit(1);
 }
 
@@ -84,7 +95,13 @@ async function findProjects(dir) {
 	for (const entry of entries) {
 		const fullPath = path.join(dir, entry.name);
 		if (entry.isDirectory()) {
-			if (entry.name === "node_modules" || entry.name === ".git" || entry.name === ".angular" || entry.name === ".venv") continue;
+			if (
+				entry.name === "node_modules" ||
+				entry.name === ".git" ||
+				entry.name === ".angular" ||
+				entry.name === ".venv"
+			)
+				continue;
 
 			// Check if this directory is a project (has package.json)
 			try {
@@ -98,6 +115,24 @@ async function findProjects(dir) {
 		}
 	}
 	return projects;
+}
+
+async function updatePackageJsonVersion(projectDir, newVersion) {
+	const packageJsonPath = path.join(projectDir, "package.json");
+	try {
+		const content = await fs.readFile(packageJsonPath, "utf-8");
+		let pkg = JSON.parse(content);
+
+		if (pkg.version !== newVersion) {
+			console.log(`  Updating package version from ${pkg.version} to ${newVersion}`);
+			pkg.version = newVersion;
+			await fs.writeFile(packageJsonPath, JSON.stringify(pkg, null, 2) + "\n");
+			return true;
+		}
+	} catch (e) {
+		console.error(`  Error updating package.json version in ${projectDir}: ${e.message}`);
+	}
+	return false;
 }
 
 async function updatePackageJson(projectDir, versions) {
@@ -226,9 +261,15 @@ async function runCommand(command, cwd) {
 }
 
 async function main() {
-	// 1. Update all manifests across the entire frameworks directory
+	const majorVersion = DEFAULT_VERSIONS.major;
+
+	// 1. Update root package.json version
+	console.log("Updating root package.json version...");
+	await updatePackageJsonVersion(ROOT_DIR, majorVersion);
+
+	// 2. Update all manifests across the entire frameworks directory
 	if (runtimeVersion) {
-		console.log("Searching for manifests in:", FRAMEWORKS_DIR);
+		console.log("\nSearching for manifests in:", FRAMEWORKS_DIR);
 		const allManifests = await findManifests(FRAMEWORKS_DIR);
 		console.log(`Found ${allManifests.length} manifest(s).`);
 
@@ -241,7 +282,7 @@ async function main() {
 		}
 	}
 
-	// 2. Find and process npm projects
+	// 3. Find and process npm projects
 	console.log("\nSearching for projects in:", FRAMEWORKS_DIR);
 	const projects = await findProjects(FRAMEWORKS_DIR);
 	console.log(`Found ${projects.length} projects.`);
@@ -254,23 +295,28 @@ async function main() {
 
 		let failed = false;
 
-		// Update package.json
+		// Update package.json version
+		await updatePackageJsonVersion(projectDir, majorVersion);
+
+		// Update package.json dependencies
 		if (Object.keys(versions).length > 0) {
 			await updatePackageJson(projectDir, versions);
 		}
 
-		// npm install
-		if (!(await runCommand("npm install", projectDir))) {
-			failed = true;
+		// npm install (skip if build-only)
+		if (!buildOnly) {
+			if (!(await runCommand("npm install", projectDir))) {
+				failed = true;
+			}
+
+			// npm audit fix
+			if (!failed) {
+				await runCommand("npm audit fix", projectDir);
+			}
 		}
 
-		// npm audit fix
-		if (!failed) {
-			await runCommand("npm audit fix", projectDir);
-		}
-
-		// npm run build
-		if (!failed) {
+		// npm run build (skip if install-only)
+		if (!failed && !installOnly) {
 			if (!(await runCommand("npm run build", projectDir))) {
 				failed = true;
 			}
