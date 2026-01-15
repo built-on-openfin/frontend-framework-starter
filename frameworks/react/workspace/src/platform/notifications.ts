@@ -8,7 +8,7 @@ import type { PlatformSettings } from "./shapes";
  */
 export async function register(
 	platformSettings: PlatformSettings,
-): Promise<Notifications.NotificationsRegisterOptions | undefined> {
+): Promise<Notifications.NotificationsRegistration | undefined> {
 	console.log("Initializing the notification provider.");
 
 	try {
