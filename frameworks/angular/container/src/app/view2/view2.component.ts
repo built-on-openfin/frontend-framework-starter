@@ -9,11 +9,11 @@ import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angula
 		<div class="col fill gap20">
 			<header class="row spread middle">
 				<div class="col">
-					<h1>OpenFin Angular View 2</h1>
-					<h1 class="tag">Angular app view in an OpenFin container</h1>
+					<h1>HERE Angular View 2</h1>
+					<h1 class="tag">Angular app view in an HERE container</h1>
 				</div>
 				<div class="row middle gap10">
-					<img src="logo.svg" alt="OpenFin" height="40px" />
+					<img src="logo.svg" alt="HERE" height="40px" />
 				</div>
 			</header>
 			<main class="col gap10 left width-full">

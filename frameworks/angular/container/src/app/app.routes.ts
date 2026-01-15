@@ -1,7 +1,7 @@
 import { type Routes } from "@angular/router";
 
 /*
-Routes for OpenFin sample application
+Routes for HERE Core Container sample application
 
 In a production app we would likely have each application as an independently deployable standalone project.
 For this example we have separate routes representing the applications, this is an acceptable pattern for

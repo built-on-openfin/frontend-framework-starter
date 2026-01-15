@@ -2,8 +2,8 @@
 
 Contained in this folder are samples for the following patterns.
 
-* [container](./container) - A platform built using the OpenFin container technology.
-* [workspace](./workspace) - A platform which demonstrates implementing an OpenFin workspace platform and interacting with its components.
+* [container](./container) - A platform built using the HERE container technology.
+* [workspace](./workspace) - A platform which demonstrates implementing a HERE Core platform and interacting with its components.
 
 ## Container
 
@@ -40,7 +40,7 @@ If you then run `npm run client` it will start the platform instead, you should 
 
 The platform window content is the [./workspace/src/platform/Provider.tsx](./workspace/src/platform/Provider.tsx) which also initializes the platform. The applications made available in your platform are read from [./workspace/public/platform/manifest.fin.json](./workspace/public/platform/manifest.fin.json)
 
-The component visible with the platform window is the OpenFin Workspace Home component, the Home component lists 2 applications which can be launched.
+The component visible with the platform window is the HERE Core Home component, the Home component lists 2 applications which can be launched.
 
 ![Workspace Browsers](./workspace-browsers.png)
 

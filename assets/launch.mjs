@@ -1,11 +1,11 @@
 /* eslint-disable unicorn/no-process-exit */
 /**
- * This script will launch an OpenFin application.
- * It uses the OpenFin NodeJS adapter to launch the url specified on the command line.
+ * This script will launch a HERE Core application.
+ * It uses the HERE NodeJS adapter to launch the url specified on the command line.
  * Pressing Ctrl+C/Command+C will terminate the application.
  */
-import { connect, launch } from '@openfin/node-adapter';
-import { setDefaultResultOrder } from 'dns';
+import { connect, launch } from "@openfin/node-adapter";
+import { setDefaultResultOrder } from "dns";
 
 /**
  * Run the process.
@@ -26,14 +26,14 @@ async function run(manifestUrl) {
 					try {
 						if (!quitRequested) {
 							quitRequested = true;
-							console.log('Calling platform quit');
+							console.log("Calling platform quit");
 							const platform = fin.Platform.wrapSync({ uuid: manifest.platform.uuid });
 							await platform.quit();
 						}
 					} catch (err) {
-						if (err.toString().includes('no longer connected')) {
-							console.log('Platform no longer connected');
-							console.log('Exiting process');
+						if (err.toString().includes("no longer connected")) {
+							console.log("Platform no longer connected");
+							console.log("Exiting process");
 							process.exit();
 						} else {
 							console.error(err);
@@ -46,7 +46,7 @@ async function run(manifestUrl) {
 					try {
 						if (!quitRequested) {
 							quitRequested = true;
-							console.log('Calling application quit');
+							console.log("Calling application quit");
 							const app = fin.Application.wrapSync({ uuid: manifest.startup_app.uuid });
 							await app.quit();
 						}
@@ -58,14 +58,14 @@ async function run(manifestUrl) {
 			}
 
 			// do something when app is closing
-			process.on('exit', async () => {
-				console.log('Process exit called');
+			process.on("exit", async () => {
+				console.log("Process exit called");
 				await quit();
 			});
 
 			// catches ctrl+c event
-			process.on('SIGINT', async () => {
-				console.log('Ctrl + C called');
+			process.on("SIGINT", async () => {
+				console.log("Ctrl + C called");
 				await quit();
 			});
 
@@ -73,7 +73,9 @@ async function run(manifestUrl) {
 			console.log(`Please wait while the sample loads.`);
 			console.log();
 			console.log(`If using browser use the Quit option from the main menu.`);
-			console.log(`Otherwise press Ctrl + C (Windows) or Command + C (Mac) to exit and close the sample.`);
+			console.log(
+				`Otherwise press Ctrl + C (Windows) or Command + C (Mac) to exit and close the sample.`,
+			);
 			console.log();
 		}
 	} catch (e) {
@@ -95,41 +97,41 @@ async function launchFromNode(manifestUrl, exitMethod) {
 
 		const port = await launch({ manifestUrl });
 
-		// We will use the port to connect from Node to determine when OpenFin exists.
+		// We will use the port to connect from Node to determine when HERE exists.
 		const fin = await connect({
 			uuid: `dev-connection-${Date.now()}`, // Supply an addressable Id for the connection
 			address: `ws://127.0.0.1:${port}`, // Connect to the given port.
-			nonPersistent: true // We want OpenFin to exit as our application exists.
+			nonPersistent: true, // We want HERE to exit as our application exists.
 		});
 
-		// Once OpenFin exits we shut down the process.
-		fin.once('disconnected', () => {
-			console.log('Platform disconnected');
-			console.log('Exiting process');
+		// Once HERE exits, we shut down the process.
+		fin.once("disconnected", () => {
+			console.log("Platform disconnected");
+			console.log("Exiting process");
 			process.exit();
 		});
 
 		return fin;
 	} catch (e) {
-		console.error('Error: Failed launching manifest');
+		console.error("Error: Failed launching manifest");
 		console.error(e.message);
-		if (e.message.includes('Could not locate')) {
-			console.error('Is the web server running and the manifest JSON valid ?');
+		if (e.message.includes("Could not locate")) {
+			console.error("Is the web server running and the manifest JSON valid ?");
 		}
 	}
 }
 
-console.log('Launch Manifest');
-console.log('===============');
+console.log("Launch Manifest");
+console.log("===============");
 console.log();
 console.log(`Platform: ${process.platform}`);
 
 const launchArgs = process.argv.slice(2);
-const manifest = launchArgs.length > 0 ? launchArgs[0] : 'http://localhost:3000/platform/manifest.fin.json';
+const manifest = launchArgs.length > 0 ? launchArgs[0] : "http://localhost:3000/platform/manifest.fin.json";
 console.log(`Manifest: ${manifest}`);
 
 try {
-	setDefaultResultOrder('ipv4first');
+	setDefaultResultOrder("ipv4first");
 } catch {
 	// Early versions of node do not support this method, but those earlier versions
 	// also do not have the same issue with interface ordering, so it doesn't matter

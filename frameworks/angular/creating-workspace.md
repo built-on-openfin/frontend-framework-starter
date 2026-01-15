@@ -24,7 +24,7 @@ npm install @openfin/core @openfin/workspace @openfin/workspace-platform @openfi
 
 ## Modify angular.json
 
-The `host` option is required for NodeJs v17+ to be able to resolve the Angular server from the OpenFin launch script. (see [https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705](https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705))
+The `host` option is required for NodeJs v17+ to be able to resolve the Angular server from the HERE Core launch script. (see [https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705](https://github.com/chimurai/http-proxy-middleware#nodejs-17-econnrefused-issue-with-ipv6-and-localhost-705))
 
 ```json
 "projects": {
@@ -122,16 +122,16 @@ export class AppComponent {
       "preventQuitOnLastWindowClosed": true
    },
    "shortcut": {
-      "company": "OpenFin",
-      "description": "A way of showing examples of what OpenFin can do.",
+      "company": "HERE",
+      "description": "A way of showing examples of what HERE Core can do.",
       "icon": "http://localhost:4200/favicon.ico",
       "name": "Angular Workspace Starter",
       "target": ["desktop", "start-menu"]
    },
    "supportInformation": {
-      "company": "OpenFin",
+      "company": "HERE",
       "product": "Workspace Starter - Angular Workspace Starter",
-      "email": "support@openfin.co",
+      "email": "support@here.io",
       "forwardErrorReports": true
    },
    "customSettings": {
@@ -150,11 +150,11 @@ export class AppComponent {
             ],
             "contactEmail": "contact@example.com",
             "supportEmail": "support@example.com",
-            "publisher": "OpenFin",
+            "publisher": "HERE",
             "intents": [],
             "images": [
             ],
-            "tags": ["view", "openfin"]
+            "tags": ["view", "here"]
          },
          {
             "appId": "angular-view2",
@@ -170,11 +170,11 @@ export class AppComponent {
             ],
             "contactEmail": "contact@example.com",
             "supportEmail": "support@example.com",
-            "publisher": "OpenFin",
+            "publisher": "HERE",
             "intents": [],
             "images": [
             ],
-            "tags": ["view", "openfin"]
+            "tags": ["view", "here"]
          }
       ]
    }
@@ -209,11 +209,11 @@ export class ProviderRoutingModule { }
 <div class="col fill gap20">
    <header class="row spread middle">
       <div class="col">
-         <h1>OpenFin Platform Window</h1>
+         <h1>HERE Core Platform Window</h1>
          <h1 class="tag">Container platform window</h1>
       </div>
       <div class="row middle gap10">
-         <img src="../../assets/logo.svg" alt="OpenFin" height="40px" />
+         <img src="../../assets/logo.svg" alt="HERE" height="40px" />
       </div>
    </header>
    <main class="col gap10">
@@ -430,15 +430,15 @@ export class InstructionsRoutingModule { }
 <div id="root" class="col fill gap20">
    <header class="row spread middle">
       <div class="col">
-         <h1>OpenFin Angular</h1>
-         <h1 class="tag">Example demonstrating running a Angular app in an OpenFin workspace</h1>
+         <h1>HERE Core Angular</h1>
+         <h1 class="tag">Example demonstrating running an Angular app in HERE Core</h1>
       </div>
       <div class="row middle gap10">
-         <img src="../assets/logo.svg" alt="OpenFin" height="40px" />
+         <img src="../assets/logo.svg" alt="HERE" height="40px" />
       </div>
    </header>
    <main class="col gap10">
-      <p>To launch this application in the OpenFin container, run the following command:</p>
+      <p>To launch this application in the HERE Core container, run the following command:</p>
       <pre>npm run client</pre>
    </main>
 </div>
@@ -504,11 +504,11 @@ export class View1RoutingModule { }
 <div class="col fill gap20">
    <header class="row spread middle">
       <div class="col">
-         <h1>OpenFin Angular View 1</h1>
-         <h1 class="tag">Angular app view in an OpenFin workspace</h1>
+         <h1>HERE Core Angular View 1</h1>
+         <h1 class="tag">Angular app view in a HERE Core</h1>
       </div>
       <div class="row middle gap10">
-         <img src="../../assets/logo.svg" alt="OpenFin" height="40px" />
+         <img src="../../assets/logo.svg" alt="HERE" height="40px" />
       </div>
    </header>
    <main class="col gap10 left">
@@ -620,11 +620,11 @@ export class View2RoutingModule { }
 <div class="col fill gap20">
    <header class="row spread middle">
       <div class="col">
-         <h1>OpenFin Angular View 2</h1>
-         <h1 class="tag">Angular app view in an OpenFin workspace</h1>
+         <h1>HERE Core Angular View 2</h1>
+         <h1 class="tag">Angular app view in a HERE Core</h1>
       </div>
       <div class="row middle gap10">
-         <img src="../../assets/logo.svg" alt="OpenFin" height="40px" />
+         <img src="../../assets/logo.svg" alt="HERE" height="40px" />
       </div>
    </header>
    <main class="col gap10 left width-full">

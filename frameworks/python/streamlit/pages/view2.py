@@ -10,8 +10,8 @@ fdc3_listener_html = """
 <link rel="stylesheet" href="http://localhost:8500/styles.css">
 <header class="row spread middle">
   <div class="col gap5">
-    <h1>OpenFin Streamlit View 2</h1>
-    <h1 class="tag">Streamlit app view in an OpenFin container</h1>
+    <h1>HERE Streamlit View 2</h1>
+    <h1 class="tag">Streamlit app view in an HERE container</h1>
   </div>
 </header>
 

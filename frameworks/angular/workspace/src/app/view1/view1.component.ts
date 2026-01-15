@@ -13,11 +13,11 @@ import { NotificationsService } from "../services/notifications.service";
 		<div class="col fill gap20">
 			<header class="row spread middle">
 				<div class="col">
-					<h1>OpenFin Angular View 1</h1>
-					<h1 class="tag">Angular app view in an OpenFin workspace</h1>
+					<h1>HERE Angular View 1</h1>
+					<h1 class="tag">Angular app view in HERE Core</h1>
 				</div>
 				<div class="row middle gap10">
-					<img src="logo.svg" alt="OpenFin" height="40px" />
+					<img src="logo.svg" alt="HERE" height="40px" />
 				</div>
 			</header>
 			<main class="col gap10 left">

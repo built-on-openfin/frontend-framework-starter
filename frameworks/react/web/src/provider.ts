@@ -11,7 +11,7 @@ async function getDefaultLayout(): Promise<WebLayoutSnapshot> {
 	return layoutJson;
 }
 /**
- * Initializes the OpenFin Web Broker connection.
+ * Initializes the HERE Web Broker connection.
  */
 export async function init(): Promise<void> {
 	// Get the default layout
@@ -29,7 +29,7 @@ export async function init(): Promise<void> {
 		);
 		return;
 	}
-	// Connect to the OpenFin Web Broker and pass the default layout.
+	// Connect to the https://resources.here.io/docs/core/ Web Broker and pass the default layout.
 	// It is good practice to specify providerId even if content is explicitly specifying it for cases where
 	// this provider uses our layout system and content uses inheritance. currentContextGroup
 	// is useful for defaulting any client that uses inheritance through our layout system.

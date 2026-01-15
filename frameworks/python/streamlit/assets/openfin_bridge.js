@@ -1,4 +1,4 @@
-// OpenFin FDC3 Bridge for Streamlit
+// HERE FDC3 Bridge for Streamlit
 // This file provides client-side JavaScript functions for FDC3 interoperability
 
 window.streamlitFdc3Listeners = window.streamlitFdc3Listeners || {
@@ -97,7 +97,7 @@ function updateReceivedContext(context) {
 async function broadcastFdc3UserContext() {
 	if (!window.fdc3) {
 		console.error("FDC3 is not available");
-		alert("FDC3 is not available. Please run this app in an OpenFin container.");
+		alert("FDC3 is not available. Please run this app in an HERE container.");
 		return;
 	}
 
@@ -122,7 +122,7 @@ async function broadcastFdc3UserContext() {
 async function broadcastFdc3AppContext() {
 	if (!window.fdc3) {
 		console.error("FDC3 is not available");
-		alert("FDC3 is not available. Please run this app in an OpenFin container.");
+		alert("FDC3 is not available. Please run this app in an HERE container.");
 		return;
 	}
 

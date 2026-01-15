@@ -20,7 +20,7 @@ export class ProviderComponent implements OnInit, OnDestroy {
 				.pipe(
 					tap(() => this.message.set("Initializing...")),
 					concatMap(() => from(fin.System.getRuntimeInfo())),
-					map((runtimeInfo) => this.message.set(`OpenFin Runtime: ${runtimeInfo.version}`)),
+					map((runtimeInfo) => this.message.set(`HERE Runtime: ${runtimeInfo.version}`)),
 					takeUntil(this.unsubscribe$),
 					catchError((e) => {
 						console.error(`Error Initializing Platform: ${e instanceof Error ? e.message : e}`);
@@ -30,7 +30,7 @@ export class ProviderComponent implements OnInit, OnDestroy {
 				)
 				.subscribe();
 		} else {
-			this.message.set("OpenFin runtime is not available");
+			this.message.set("HERE runtime is not available");
 		}
 	}
 

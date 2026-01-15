@@ -4,7 +4,7 @@ This project provides a React wrapper for the [workspace-platform-starter](https
 
 To use this project, the source files are manually copied into the project from the [workspace-platform-starter](https://github.com/built-on-openfin/workspace-starter/tree/main/how-to/workspace-platform-starter) project. A simple React-based provider demonstrates how to bootstrap a platform.
 
-This can then form the basis of your own OpenFin platform. The source within the /openfin folder becomes your source code to customize as you need to.
+This can then form the basis of your own HERE Core platform. The source within the /openfin folder becomes your source code to customize as you need to.
 
 Once setup, see the next steps section below.
 
