@@ -8,3 +8,34 @@ dependencies = [
     "streamlit>=1.32.0",
     "flask>=3.0.0",
 ]
+
+[build-system]
+requires = ["hatchling>=1.22.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+# This repo ships an app (run.py / streamlit_app.py), not a library.
+# Disable automatic package discovery so top-level folders like `assets/` and
+# `pages/` don't get treated as Python packages during editable builds.
+skip-excluded-dirs = true
+
+[tool.hatch.build.targets.wheel]
+# Treat this as an application project; ship just the top-level entry modules.
+# This satisfies hatchling's file selection rules without turning `pages/` or
+# `assets/` into Python packages.
+include = [
+  "run.py",
+  "streamlit_app.py",
+  "pages/**/*.py",
+  "assets/**/*",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "pyproject.toml",
+  "README.md",
+  "run.py",
+  "streamlit_app.py",
+  "pages/**/*.py",
+  "assets/**/*",
+]
