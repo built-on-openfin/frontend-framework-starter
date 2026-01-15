@@ -27,7 +27,7 @@ export class WorkspaceService {
 
 	init(): Observable<boolean> {
 		if (!this.isOpenFin()) {
-			this.status$.next("Not running in openfin");
+			this.status$.next("Not running in HERE Core");
 			return of(false);
 		}
 

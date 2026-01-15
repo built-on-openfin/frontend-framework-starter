@@ -2,7 +2,6 @@ import * as Notifications from "@openfin/workspace/notifications";
 import logo from "../logo.svg";
 import { useEffect } from "react";
 
-
 function View3() {
 	useEffect(() => {
 		Notifications.register().then(() => {
@@ -34,11 +33,11 @@ function View3() {
 		<div className="col fill gap20">
 			<header className="row spread middle">
 				<div className="col">
-					<h1>OpenFin React View 3</h1>
-					<h1 className="tag">React app view in an OpenFin container</h1>
+					<h1>HERE React View 3</h1>
+					<h1 className="tag">React app view in an HERE container</h1>
 				</div>
 				<div className="row middle gap10">
-					<img src={logo} alt="OpenFin" height="40px" />
+					<img src={logo} alt="HERE" height="40px" />
 				</div>
 			</header>
 			<main className="col gap10 left">

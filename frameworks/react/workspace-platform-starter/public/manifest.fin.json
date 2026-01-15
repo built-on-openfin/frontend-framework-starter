@@ -74,16 +74,16 @@
     }
   },
   "shortcut": {
-    "company": "OpenFin",
-    "description": "A way of showing examples of what OpenFin can do.",
+    "company": "HERE",
+    "description": "A way of showing examples of what HERE can do.",
     "icon": "http://localhost:8080/favicon.ico",
     "name": "Workspace Platform Starter - v22.0.0",
     "target": ["desktop", "start-menu"]
   },
   "supportInformation": {
-    "company": "OpenFin",
+    "company": "HERE",
     "product": "Workspace Starter - Workspace Platform Starter - Client",
-    "email": "support@openfin.co",
+    "email": "support@here.io",
     "forwardErrorReports": true
   },
   "snapshot": {
@@ -893,7 +893,7 @@
           "items": [
             {
               "title": "Dev Tools",
-              "description": "A collection of developer tools that can aid with building and debugging OpenFin applications.",
+              "description": "A collection of developer tools that can aid with building and debugging HERE applications.",
               "image": {
                 "src": "http://localhost:8080/common/images/store/coding-2-unsplash.jpg"
               },
@@ -902,7 +902,7 @@
             },
             {
               "title": "Learning Resource",
-              "description": "A collection of developer documents that can aid with building and debugging OpenFin applications.",
+              "description": "A collection of developer documents that can aid with building and debugging HERE applications.",
               "image": {
                 "src": "http://localhost:8080/common/images/store/coding-3-unsplash.jpg"
               },
@@ -929,7 +929,7 @@
             },
             {
               "title": "Web Apps",
-              "description": "A collection of web apps built using OpenFin.",
+              "description": "A collection of web apps built using HERE.",
               "image": {
                 "src": "http://localhost:8080/common/images/store/coding-5-unsplash.jpg"
               },
@@ -993,7 +993,7 @@
           "src": "http://localhost:8080/favicon.ico",
           "size": "32"
         },
-        "text": "Welcome to the OpenFin Sample Footer",
+        "text": "Welcome to the HERE Sample Footer",
         "links": [
           {
             "title": "Github",

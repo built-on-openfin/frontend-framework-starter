@@ -1,5 +1,5 @@
 """
-Dash Plotly OpenFin FDC3 Integration Example
+Dash Plotly HERE FDC3 Integration Example
 """
 
 from dash import Dash, html, dcc, clientside_callback, Output, Input

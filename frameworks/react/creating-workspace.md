@@ -88,15 +88,15 @@ function App() {
       <div className="col fill gap20">
          <header className="row spread middle">
             <div className="col">
-               <h1>OpenFin React</h1>
-               <h1 className="tag">Example demonstrating running a react app in an OpenFin workspace</h1>
+               <h1>HERE React</h1>
+               <h1 className="tag">Example demonstrating running a react app in HERE Core</h1>
             </div>
             <div className="row middle gap10">
-               <img src={logo} alt="OpenFin" height="40px" />
+               <img src={logo} alt="HERE" height="40px" />
             </div>
          </header>
          <main className="col gap10">
-            <p>To launch this application in the OpenFin workspace, run the following command:</p>
+            <p>To launch this application in HERE Core, run the following command:</p>
             <pre>npm run client</pre>
          </main>
       </div>
@@ -123,16 +123,16 @@ export default App;
       "preventQuitOnLastWindowClosed": true
    },
    "shortcut": {
-      "company": "OpenFin",
-      "description": "A way of showing examples of what OpenFin can do.",
+      "company": "HERE",
+      "description": "A way of showing examples of what HERE Core can do.",
       "icon": "http://localhost:3000/favicon.ico",
       "name": "React Workspace Starter",
       "target": ["desktop", "start-menu"]
    },
    "supportInformation": {
-      "company": "OpenFin",
+      "company": "HERE",
       "product": "Workspace Starter - React Workspace Starter",
-      "email": "support@openfin.co",
+      "email": "support@here.io",
       "forwardErrorReports": true
    },
    "customSettings": {
@@ -151,11 +151,11 @@ export default App;
             ],
             "contactEmail": "contact@example.com",
             "supportEmail": "support@example.com",
-            "publisher": "OpenFin",
+            "publisher": "HERE",
             "intents": [],
             "images": [
             ],
-            "tags": ["view", "openfin"]
+            "tags": ["view", "here"]
          },
          {
             "appId": "react-view2",
@@ -171,11 +171,11 @@ export default App;
             ],
             "contactEmail": "contact@example.com",
             "supportEmail": "support@example.com",
-            "publisher": "OpenFin",
+            "publisher": "HERE",
             "intents": [],
             "images": [
             ],
-            "tags": ["view", "openfin"]
+            "tags": ["view", "here"]
          }
       ]
    }
@@ -237,11 +237,11 @@ function Provider() {
       <div className="col fill gap20">
          <header className="row spread middle">
             <div className="col">
-               <h1>OpenFin Platform Window</h1>
+               <h1>HERE Platform Window</h1>
                <h1 className="tag">Workspace platform window</h1>
             </div>
             <div className="row middle gap10">
-               <img src={logo} alt="OpenFin" height="40px" />
+               <img src={logo} alt="HERE" height="40px" />
             </div>
          </header>
          <main className="col gap10">
@@ -411,11 +411,11 @@ function View1() {
       <div className="col fill gap20">
          <header className="row spread middle">
             <div className="col">
-               <h1>OpenFin React View 1</h1>
-               <h1 className="tag">React app view in an OpenFin workspace</h1>
+               <h1>HERE React View 1</h1>
+               <h1 className="tag">React app view in HERE Core</h1>
             </div>
             <div className="row middle gap10">
-               <img src={logo} alt="OpenFin" height="40px" />
+               <img src={logo} alt="HERE" height="40px" />
             </div>
          </header>
          <main className="col gap10 left">
@@ -472,11 +472,11 @@ function View2() {
       <div className="col fill gap20">
          <header className="row spread middle">
             <div className="col">
-               <h1>OpenFin React View 2</h1>
-               <h1 className="tag">React app view in an OpenFin workspace</h1>
+               <h1>HERE React View 2</h1>
+               <h1 className="tag">React app view in a HERE Core</h1>
             </div>
             <div className="row middle gap10">
-               <img src={logo} alt="OpenFin" height="40px" />
+               <img src={logo} alt="HERE" height="40px" />
             </div>
          </header>
          <main className="col gap10 left width-full">
