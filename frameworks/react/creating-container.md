@@ -75,15 +75,15 @@ function App() {
       <div className="col fill gap20">
          <header className="row spread middle">
             <div className="col">
-               <h1>OpenFin React</h1>
-               <h1 className="tag">Example demonstrating running a react app in an OpenFin container</h1>
+               <h1>HERE React</h1>
+               <h1 className="tag">Example demonstrating running a react app in a HERE Core container</h1>
             </div>
             <div className="row middle gap10">
-               <img src={logo} alt="OpenFin" height="40px" />
+               <img src={logo} alt="HERE" height="40px" />
             </div>
          </header>
          <main className="col gap10">
-            <p>To launch this application in the OpenFin container, run the following command:</p>
+            <p>To launch this application in the HERE container, run the following command:</p>
             <pre>npm run client</pre>
          </main>
       </div>
@@ -195,9 +195,9 @@ function Provider() {
 
          if (runtimeAvailable) {
             const runtimeInfo = await fin.System.getRuntimeInfo();
-            setMessage(`OpenFin Runtime: ${runtimeInfo.version}`);
+            setMessage(`HERE Runtime: ${runtimeInfo.version}`);
          } else {
-            setMessage("OpenFin runtime is not available");
+            setMessage("HERE runtime is not available");
          }
 
       })();
@@ -207,11 +207,11 @@ function Provider() {
       <div className="col fill gap20">
          <header className="row spread middle">
             <div className="col">
-               <h1>OpenFin Platform Window</h1>
+               <h1>HERE Platform Window</h1>
                <h1 className="tag">Container platform window</h1>
             </div>
             <div className="row middle gap10">
-               <img src={logo} alt="OpenFin" height="40px" />
+               <img src={logo} alt="HERE" height="40px" />
             </div>
          </header>
          <main className="col gap10">
@@ -279,11 +279,11 @@ function View1() {
       <div className="col fill gap20">
          <header className="row spread middle">
             <div className="col">
-               <h1>OpenFin React View 1</h1>
-               <h1 className="tag">React app view in an OpenFin container</h1>
+               <h1>HERE React View 1</h1>
+               <h1 className="tag">React app view in a HERE Core container</h1>
             </div>
             <div className="row middle gap10">
-               <img src={logo} alt="OpenFin" height="40px" />
+               <img src={logo} alt="HERE" height="40px" />
             </div>
          </header>
          <main className="col gap10 left">
@@ -341,8 +341,8 @@ function View2() {
       <div className="col fill gap20">
          <header className="row spread middle">
             <div className="col">
-               <h1>OpenFin React View 2</h1>
-               <h1 className="tag">React app view in an OpenFin container</h1>
+               <h1>HERE React View 2</h1>
+               <h1 className="tag">React app view in a HERE Core container</h1>
             </div>
             <div className="row middle gap10">
                <img src={logo} alt="OpenFin" height="40px" />

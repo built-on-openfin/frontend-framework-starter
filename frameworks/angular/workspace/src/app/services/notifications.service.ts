@@ -41,7 +41,7 @@ export class NotificationsService {
 
 	observeNotificationActions(): Observable<Notifications.NotificationActionEvent> {
 		return new Observable<Notifications.NotificationActionEvent>((observer) => {
-			// Note addEventListener from OpenFin package (not default javascript function)
+			// Note addEventListener from HERE package (not default javascript function)
 			addEventListener("notification-action", (event) => {
 				observer.next(event);
 			});

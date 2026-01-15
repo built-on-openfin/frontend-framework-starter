@@ -7,7 +7,8 @@ on:
     types: [opened, synchronize, reopened, edited]
 
 jobs:
-  build:
+  build-node:
+    name: Build Node.js Projects
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,6 +19,8 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org
           scope: '@openfin'
+
+      # Angular Projects
       - name: Build Angular Container
         run: |
           cd frameworks/angular/container
@@ -28,6 +31,13 @@ jobs:
           cd frameworks/angular/workspace
           npm ci
           npm run build
+      - name: Build Angular Web
+        run: |
+          cd frameworks/angular/web
+          npm ci
+          npm run build
+
+      # React Projects
       - name: Build React Container
         run: |
           cd frameworks/react/container
@@ -38,3 +48,40 @@ jobs:
           cd frameworks/react/workspace
           npm ci
           npm run build
+      - name: Build React Web
+        run: |
+          cd frameworks/react/web
+          npm ci
+          npm run build
+
+      # Web Components
+      - name: Build Web Components
+        run: |
+          cd components/wc-fin
+          npm ci
+          npm run build
+
+  build-python:
+    name: Build Python Projects
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install uv
+        run: pip install uv
+
+      # Python Streamlit
+      - name: Install Streamlit Dependencies
+        run: |
+          cd frameworks/python/streamlit
+          uv pip install -e . --system
+
+      # Python Dash
+      - name: Install Dash Dependencies
+        run: |
+          cd frameworks/python/dash
+          uv pip install -e . --system

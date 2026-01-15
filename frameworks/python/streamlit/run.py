@@ -22,7 +22,7 @@ def run_flask_server():
 
 def launch_openfin():
 	openfin_url = "fin://localhost:8500/manifest.fin.json"
-	print(f"Launching OpenFin: {openfin_url}")
+	print(f"Launching HERE Core: {openfin_url}")
 
 	system = platform.system()
 	if system == "Windows":
@@ -30,7 +30,7 @@ def launch_openfin():
 	elif system == "Darwin":
 		subprocess.run(["open", openfin_url], check=False)
 	else:
-		print(f"Cannot automatically launch OpenFin on {system}. Please open: {openfin_url}")
+		print(f"Cannot automatically launch HERE Core on {system}. Please open: {openfin_url}")
 
 
 def main():

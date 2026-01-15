@@ -1,8 +1,8 @@
 # Front-end Framework Starter
 
-OpenFin is framework agnostic. Our documentation and example repos do not use a specific frontend framework and use JavaScript/TypeScript and css where possible. If you are using a frontend framework and are looking to get started with OpenFin we have created some basic examples to help you get started.
+HERE Core is framework-agnostic. Our documentation and example repos do not use a specific frontend framework and use JavaScript/TypeScript and css where possible. If you are using a frontend framework and are looking to get started with OpenFin we have created some basic examples to help you get started.
 
-Deeper coverage of the OpenFin capability is covered by the [Container Starters](https://github.com/built-on-openfin/container-starter) and [Workspace Starters](https://github.com/built-on-openfin/workspace-starter).
+Deeper coverage of the HERE Core capability is covered by the [Container Starters](https://github.com/built-on-openfin/container-starter) and [Workspace Starters](https://github.com/built-on-openfin/workspace-starter).
 
 ## Frameworks
 
@@ -15,7 +15,7 @@ Please see the README.md files in each sub-folder for more details on getting st
 
 ## Branches
 
-The current main branch always matches the stable release of the OpenFin components.
+The current main branch always matches the stable release of the HERE Core components.
 
 There are older branches which match the container/workspace release with the version of the frameworks that were available at the time of release.
 
@@ -23,7 +23,7 @@ https://github.com/built-on-openfin/frontend-framework-starter/branches/all
 
 ## Upgrade Script
 
-To automate the upgrade of OpenFin versions across all projects, use the `upgrade-versions.mjs` script. This script updates `package.json` dependencies, `manifest.fin.json` runtime settings, and version references in documentation.
+To automate the upgrade of HERE versions across all projects, use the `upgrade-versions.mjs` script. This script updates `package.json` dependencies, `manifest.fin.json` runtime settings, and version references in documentation.
 
 ### Usage
 
