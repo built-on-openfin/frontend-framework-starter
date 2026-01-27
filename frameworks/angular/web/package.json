@@ -1,6 +1,9 @@
 {
   "name": "angular-web",
   "version": "23.0.0",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "ng": "ng",
     "start": "npm-run-all --parallel serve:broker serve:web",

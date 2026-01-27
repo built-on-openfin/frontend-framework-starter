@@ -1,6 +1,9 @@
 {
   "name": "angular-workspace-starter",
   "version": "23.0.0",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

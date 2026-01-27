@@ -2,6 +2,9 @@
   "name": "wc-fin",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
+  "engines": {
+    "node": ">=22"
+  },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",

@@ -2,6 +2,9 @@
   "name": "react-container-starter",
   "version": "23.0.0",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

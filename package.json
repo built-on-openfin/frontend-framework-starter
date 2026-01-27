@@ -2,6 +2,9 @@
   "name": "frontend-framework-starter",
   "version": "23.0.0",
   "description": "Examples using HERE Core with frontend frameworks",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "remove-packages": "npx --yes rimraf --glob **/node_modules && npx rimraf --glob **/package-lock.json",
     "list-update-packages": "npx --yes npm-check-updates --deep > updatable-packages.txt",
