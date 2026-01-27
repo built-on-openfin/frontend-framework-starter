@@ -1,7 +1,7 @@
 {
   "runtime": {
-    "arguments": "--v=1 --inspect",
-    "version": "43.142.101.1"
+    "arguments": "--enable-mesh --security-realm=angular-container-starter",
+    "version": "43.142.101.2"
   },
   "platform": {
     "uuid": "angular-container-starter",

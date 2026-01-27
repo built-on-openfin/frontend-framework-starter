@@ -13,14 +13,7 @@ const __dirname = path.dirname(__filename);
 const FRAMEWORKS_DIR = path.resolve(__dirname, "../frameworks");
 const ROOT_DIR = path.resolve(__dirname, "..");
 
-const EXCLUDED_DIRECTORIES = new Set([
-	"node_modules",
-	".git",
-	".angular",
-	".venv",
-	"dist",
-	"build",
-]);
+const EXCLUDED_DIRECTORIES = new Set(["node_modules", ".git", ".angular", ".venv", "dist", "build"]);
 
 const PACKAGES_TO_UPDATE = [
 	"@openfin/core",
@@ -36,12 +29,12 @@ const VERSIONED_URL_EXTENSIONS = new Set([".html", ".json", ".ts", ".tsx", ".js"
 const DEFAULT_VERSIONS = {
 	major: "23.0.0",
 	"github-url": "23.0.0",
-	runtime: "43.142.101.1",
-	core: "43.101.1",
-	workspace: "23.0.16",
-	"workspace-platform": "23.0.16",
-	"core-web": "0.43.112",
-	"cloud-interop": "0.43.112",
+	runtime: "43.142.101.2",
+	core: "43.101.2",
+	workspace: "23.0.20",
+	"workspace-platform": "23.0.20",
+	"core-web": "0.43.113",
+	"cloud-interop": "0.43.113",
 };
 
 // =============================================================================
@@ -134,11 +127,9 @@ async function findProjects(dir) {
 	return projects;
 }
 
-const findManifests = (dir) =>
-	walkDirectory(dir, (entry) => entry.name === "manifest.fin.json");
+const findManifests = (dir) => walkDirectory(dir, (entry) => entry.name === "manifest.fin.json");
 
-const findMarkdownFiles = (dir) =>
-	walkDirectory(dir, (entry) => entry.name.endsWith(".md"));
+const findMarkdownFiles = (dir) => walkDirectory(dir, (entry) => entry.name.endsWith(".md"));
 
 const findVersionedUrlFiles = (dir) =>
 	walkDirectory(dir, (entry) => VERSIONED_URL_EXTENSIONS.has(path.extname(entry.name)));
@@ -332,7 +323,9 @@ function parseArguments() {
 			versions["@openfin/core"] = value;
 			versions["@openfin/node-adapter"] = value;
 		} else if (
-			["workspace", "@openfin/workspace", "workspace-platform", "@openfin/workspace-platform"].includes(key)
+			["workspace", "@openfin/workspace", "workspace-platform", "@openfin/workspace-platform"].includes(
+				key,
+			)
 		) {
 			versions["@openfin/workspace"] = value;
 			versions["@openfin/workspace-platform"] = value;
