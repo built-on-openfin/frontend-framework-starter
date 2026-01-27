@@ -2,8 +2,8 @@
 
 Contained in this folder are samples for the following patterns.
 
-* [container](./container) - A platform built using the OpenFin container technology.
-* [workspace](./workspace) - A platform which demonstrates implementing an OpenFin workspace platform and interacting with its components.
+* [container](./container) - A platform built using the HERE container technology.
+* [workspace](./workspace) - A platform which demonstrates implementing a HERE Core platform and interacting with its components.
 
 ## Container
 

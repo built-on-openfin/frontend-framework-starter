@@ -1,9 +1,12 @@
 {
   "name": "web",
   "private": true,
-  "version": "0.0.1",
+  "version": "23.0.0",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE.MD",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "start": "webpack serve --mode development --open",
     "start:vite": "vite",
@@ -14,7 +17,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@openfin/core-web": "0.42.103",
+    "@openfin/core-web": "0.43.113",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

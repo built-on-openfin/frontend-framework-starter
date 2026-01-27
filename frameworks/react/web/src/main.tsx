@@ -7,7 +7,7 @@ import { init } from "./provider.ts";
 
 init()
 	.then(() => {
-		console.log("Created the OpenFin Web Layout.");
+		console.log("Created the HERE Web Layout.");
 		return true;
 	})
 	.catch((err) => console.error(err));

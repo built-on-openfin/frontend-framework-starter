@@ -1,12 +1,12 @@
 """
-Streamlit OpenFin FDC3 Integration Example
+Streamlit HERE FDC3 Integration Example
 """
 
 import streamlit as st
 from pathlib import Path
 
 st.set_page_config(
-	page_title="OpenFin Streamlit",
+	page_title="HERE Streamlit",
 	page_icon="📊",
 	layout="wide",
 	initial_sidebar_state="collapsed",

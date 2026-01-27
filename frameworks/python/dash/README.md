@@ -1,12 +1,12 @@
-# Dash / OpenFin (FDC3) example
+# Dash / HERE (FDC3) example
 
-A simple example showing integration of [Dash](https://dash.plotly.com/) (Python) with OpenFin using FDC3 for interoperability.
+A simple example showing integration of [Dash](https://dash.plotly.com/) (Python) with HERE Core using FDC3 for interoperability.
 
-This example demonstrates bidirectional FDC3 messaging between a Dash application and other OpenFin applications using a multi-view architecture.
+This example demonstrates bidirectional FDC3 messaging between a Dash application and other HERE applications using a multi-view architecture.
 
 ## Features
 
-- **Platform Provider**: Dedicated provider window to initialize the OpenFin Platform (`assets/provider.html`).
+- **Platform Provider**: Dedicated provider window to initialize the HERE Core Platform (`assets/provider.html`).
 - **Multi-View Support**: Two views served via Dash routing (`/view1` and `/view2`).
 - **Broadcast FDC3 user context**: Send an instrument context (MSFT) on the current user channel (View 1).
 - **Broadcast FDC3 app-channel context**: Send an instrument context (AAPL) on a custom app channel (View 1).
@@ -27,10 +27,10 @@ First, make sure `uv` is installed: https://github.com/astral-sh/uv
    uv run run.py
    ```
 
-   This starts the Dash server and then attempts to launch OpenFin automatically with:
+   This starts the Dash server and then attempts to launch HERE Core automatically with:
    `fin://localhost:8050/assets/manifest.fin.json`
 
-3. If OpenFin doesn’t auto-launch on your machine, open this URL manually (copy/paste into your default browser):
+3. If HERE Core doesn’t auto-launch on your machine, open this URL manually (copy/paste into your default browser):
 
    `fin://localhost:8050/assets/manifest.fin.json`
 
@@ -43,9 +43,9 @@ The integration uses Dash routing for the two views and Dash clientside callback
 The integration consists of:
 
 1. **Dash application** (`dash_app.py`) - Routing and clientside callbacks.
-2. **Runner** (`run.py`) - Starts Dash and (optionally) launches OpenFin.
+2. **Runner** (`run.py`) - Starts Dash and (optionally) launches HERE Core.
 3. **Views** (`pages/`) - `view1.py` and `view2.py` define the layouts.
-4. **Platform provider** (`assets/provider.html`) - Initializes the OpenFin Platform.
+4. **Platform provider** (`assets/provider.html`) - Initializes the HERE Core Platform.
 5. **JavaScript bridge** (`assets/openfin_bridge.js`) - FDC3 send/receive helpers (auto-loaded by Dash).
 
 ### Data flow

@@ -1,7 +1,7 @@
 {
   "runtime": {
-    "arguments": "--v=1 --inspect",
-    "version": "42.138.103.1"
+    "arguments": "--enable-mesh --security-realm=python-dash-starter",
+    "version": "43.142.101.2"
   },
   "platform": {
     "uuid": "dash-container-starter",
