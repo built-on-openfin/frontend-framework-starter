@@ -63,25 +63,6 @@
         "intents": [],
         "images": [],
         "tags": ["view", "here"]
-      },
-      {
-        "appId": "fx-grid",
-        "name": "fx-grid",
-        "title": "Fx Grid",
-        "description": "FX Grid",
-        "manifest": "http://localhost:5173/fx-grid.fin.json",
-        "manifestType": "view",
-        "icons": [
-          {
-            "src": "http://localhost:4200/favicon.ico"
-          }
-        ],
-        "contactEmail": "contact@example.com",
-        "supportEmail": "support@example.com",
-        "publisher": "HERE",
-        "intents": [],
-        "images": [],
-        "tags": []
       }
     ]
   }

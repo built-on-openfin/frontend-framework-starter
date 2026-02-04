@@ -17,6 +17,7 @@
     "@openfin/core": "43.101.2",
     "@openfin/workspace": "23.0.20",
     "@openfin/workspace-platform": "23.0.20",
+    "@openfin/notifications": "2.13.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.2"

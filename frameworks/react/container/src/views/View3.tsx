@@ -1,4 +1,4 @@
-import * as Notifications from "@openfin/workspace/notifications";
+import * as Notifications from "@openfin/notifications";
 import logo from "../logo.svg";
 import { useEffect } from "react";
 

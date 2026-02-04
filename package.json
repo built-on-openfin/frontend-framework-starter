@@ -9,7 +9,8 @@
     "remove-packages": "npx --yes rimraf --glob **/node_modules && npx rimraf --glob **/package-lock.json",
     "list-update-packages": "npx --yes npm-check-updates --deep > updatable-packages.txt",
     "update-packages": "npx --yes npm-check-updates --upgrade --deep -x @openfin/core,@openfin/node-adapter,@openfin/workspace,@openfin/workspace-platform",
-    "upgrade-versions": "node scripts/upgrade-versions.mjs"
+    "upgrade-versions": "node scripts/upgrade-versions.mjs",
+    "build-all": "node scripts/upgrade-versions.mjs --build-only"
   },
   "contributors": [
     "joe.ransegnola@openfin.co",

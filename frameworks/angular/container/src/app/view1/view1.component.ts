@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angular/core";
-import { addEventListener, create, register } from "@openfin/workspace/notifications";
+import { addEventListener, create, register } from "@openfin/notifications";
 
 @Component({
 	selector: "app-view1",

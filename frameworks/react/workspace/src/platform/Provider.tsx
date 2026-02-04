@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import logo from "../logo.svg";
 import { Dock, Home, Storefront, type App } from "@openfin/workspace";
 import { CustomActionCallerType, init } from "@openfin/workspace-platform";
-import * as Notifications from "@openfin/workspace/notifications";
 import { register as registerDock } from "./dock";
 import { register as registerHome } from "./home";
 import { launchApp } from "./launch";
@@ -139,7 +138,7 @@ async function initializeWorkspaceComponents(
 
 	// Register with notifications
 	logMessage("Initializing the workspace components: notifications");
-	await registerNotifications(platformSettings);
+	await registerNotifications();
 
 	// When the platform requests to be close we deregister from home and quit
 	const providerWindow = fin.Window.getCurrentSync();
@@ -147,7 +146,6 @@ async function initializeWorkspaceComponents(
 		await Home.deregister(platformSettings.id);
 		await Storefront.deregister(platformSettings.id);
 		await Dock.deregister();
-		await Notifications.deregister(platformSettings.id);
 		await fin.Platform.getCurrentSync().quit();
 	});
 }

@@ -37,6 +37,7 @@ The **/openfin** folder in this project should then look like:
 /openfin/framework
 /openfin/modules
 /openfin/common
+/openfin/schemas
 ```
 
 ### Develop

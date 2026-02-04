@@ -22,6 +22,7 @@ const PACKAGES_TO_UPDATE = [
 	"@openfin/node-adapter",
 	"@openfin/core-web",
 	"@openfin/cloud-interop",
+	"@openfin/notifications",
 ];
 
 const VERSIONED_URL_EXTENSIONS = new Set([".html", ".json", ".ts", ".tsx", ".js", ".jsx", ".md"]);
@@ -35,6 +36,7 @@ const DEFAULT_VERSIONS = {
 	"workspace-platform": "23.0.20",
 	"core-web": "0.43.113",
 	"cloud-interop": "0.43.113",
+	notifications: "2.13.1",
 };
 
 // =============================================================================
