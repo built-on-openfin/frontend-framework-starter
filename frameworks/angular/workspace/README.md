@@ -1,6 +1,6 @@
-# OpenFin Front-End Framework Starter: Angular Workspace
+# HERE Front-End Framework Starter: Angular Workspace
 
-Shows usage patterns using OpenFin Workspace with Angular 18+
+Shows usage patterns using HERE Core with Angular 18+
 
 Demonstrates newer patterns and best practices encouraged in the Angular community including:
 
@@ -11,7 +11,7 @@ Demonstrates newer patterns and best practices encouraged in the Angular communi
 - Service pattern 
 - RxJS observables wrapping promise-based platform apis
 
-For more comprehensive examples of OpenFin features see the [workspace-starter](https://github.com/built-on-openfin/workspace-starter) repo.
+For more comprehensive examples of HERE features see the [workspace-starter](https://github.com/built-on-openfin/workspace-starter) repo.
 
 ---
 
@@ -19,7 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Prerequisites
 
-OpenFin RVM  
+HERE RVM  
 Node.js v20+
 
 ## Getting started
@@ -36,7 +36,7 @@ Start the Angular dev server
 npm start
 ```
 
-Launch OpenFin (separate console)
+Launch HERE Core (separate console)
 
 ```
 npm run client

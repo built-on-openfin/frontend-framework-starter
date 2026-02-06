@@ -1,17 +1,14 @@
 import { inject, Injectable } from "@angular/core";
-import type * as Notifications from "@openfin/workspace/notifications";
 import {
 	addEventListener,
 	create as createNotification,
-	deregister as deregisterPlatform,
-	register as registerPlatform,
+	register as registerNotificationPlatform,
+	type NotificationActionEvent,
+	type NotificationOptions,
 } from "@openfin/workspace/notifications";
-import { from, Observable, Subject, takeUntil, tap } from "rxjs";
+import { Observable, Subject, takeUntil, tap } from "rxjs";
 import { SettingsService } from "./settings.service";
 
-/**
- * Note openfin-notifications package is deprecated - use @openfin/workspace/notifications (as shown here)
- */
 @Injectable({ providedIn: "root" })
 export class NotificationsService {
 	private settingsService = inject(SettingsService);
@@ -29,33 +26,28 @@ export class NotificationsService {
 		this.settingsService
 			.getManifestSettings()
 			.pipe(
-				tap(({ platformSettings }) => {
-					registerPlatform({
-						notificationsPlatformOptions: platformSettings,
-					});
-				}),
+				tap(() => registerNotificationPlatform()),
 				takeUntil(this.unsubscribe$),
 			)
 			.subscribe();
 	}
 
-	observeNotificationActions(): Observable<Notifications.NotificationActionEvent> {
-		return new Observable<Notifications.NotificationActionEvent>((observer) => {
-			// Note addEventListener from OpenFin package (not default javascript function)
+	observeNotificationActions(): Observable<NotificationActionEvent> {
+		return new Observable<NotificationActionEvent>((observer) => {
+			// Note addEventListener from notifications package (not default javascript function)
 			addEventListener("notification-action", (event) => {
 				observer.next(event);
 			});
 		});
 	}
 
-	deregister(platformId: string): Observable<void> {
+	deregister(platformId: string): void {
 		console.log("De-registering Notifications for id:", platformId);
 		this.unsubscribe$.next();
 		this.unsubscribe$.complete();
-		return from(deregisterPlatform(platformId));
 	}
 
-	create(config: Notifications.NotificationOptions): void {
+	create(config: NotificationOptions): void {
 		console.log("Create notification:", config);
 		createNotification(config);
 	}

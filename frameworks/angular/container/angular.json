@@ -27,7 +27,7 @@
             "styles": ["src/styles.css", "src/openfin.css"],
             "scripts": [],
             "allowedCommonJsDependencies": [
-              "@openfin/workspace/notifications",
+              "@openfin/notifications",
               "@openfin/workspace",
               "@openfin/workspace-platform"
             ]

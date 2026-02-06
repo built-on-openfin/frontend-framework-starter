@@ -2,12 +2,10 @@
 
 Contained in this folder are samples for the following patterns.
 
-* [container](./container) - A platform built using the OpenFin container technology.
-* [workspace](./workspace) - A platform which demonstrates implementing an OpenFin workspace platform and interacting with its components.
+* [container](./container) - A platform built using the HERE container technology.
+* [workspace](./workspace) - A platform which demonstrates implementing a HERE Core platform and interacting with its components.
 
 ## Container
-
-For a guide on how this example was created see [creating-container.md](./creating-container.md)
 
 When you execute this example with `npm run start`, you can launch [http://localhost:4200](http://localhost:4200) in your system browser (this is the [./container/src/app/app.component.ts](./container/src/app/app.component.ts) content).
 
@@ -27,8 +25,6 @@ These components demonstrate the following:
 * Broadcasting/listening for FDC3 contexts between views
 
 ## Workspace
-
-For a guide on how this example was created see [creating-workspace.md](./creating-workspace.md)
 
 When you execute this example with `npm run start`,you can launch [http://localhost:4200](http://localhost:4200) in your system browser (this is the [./workspace/src/app/app.component.ts](./workspace/src/app/app.component.ts) content).
 

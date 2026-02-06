@@ -11,8 +11,8 @@ def get_layout():
                     html.Div(
                         className="col",
                         children=[
-                            html.H1("OpenFin Dash View 2"),
-                            html.H1("Dash app view in an OpenFin container", className="tag"),
+                            html.H1("HERE Dash View 2"),
+                            html.H1("Dash app view in an HERE container", className="tag"),
                         ],
                     ),
                 ],

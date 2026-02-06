@@ -1,9 +1,40 @@
 [project]
 name = "dash-openfin-example"
 version = "0.1.0"
-description = "Dash Plotly example with OpenFin FDC3 integration"
+description = "Dash Plotly example with HERE FDC3 integration"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "dash>=2.14.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.22.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+# This repo ships an app (run.py / dash_app.py), not a library.
+# Disable automatic package discovery so top-level folders like `assets/` and
+# `pages/` don't get treated as Python packages during editable builds.
+skip-excluded-dirs = true
+
+[tool.hatch.build.targets.wheel]
+# Treat this as an application project; ship just the top-level entry modules.
+# This satisfies hatchling's file selection rules without turning `pages/` or
+# `assets/` into Python packages.
+include = [
+  "run.py",
+  "dash_app.py",
+  "pages/**/*.py",
+  "assets/**/*",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "pyproject.toml",
+  "README.md",
+  "run.py",
+  "dash_app.py",
+  "pages/**/*.py",
+  "assets/**/*",
 ]

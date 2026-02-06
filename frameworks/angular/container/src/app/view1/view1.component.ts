@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angular/core";
-import { addEventListener, create, register } from "@openfin/workspace/notifications";
+import { addEventListener, create, register } from "@openfin/notifications";
 
 @Component({
 	selector: "app-view1",
@@ -10,11 +10,11 @@ import { addEventListener, create, register } from "@openfin/workspace/notificat
 		<div class="col fill gap20">
 			<header class="row spread middle">
 				<div class="col">
-					<h1>OpenFin Angular View 1</h1>
-					<h1 class="tag">Angular app view in an OpenFin container</h1>
+					<h1>HERE Angular View 1</h1>
+					<h1 class="tag">Angular app view in an HERE container</h1>
 				</div>
 				<div class="row middle gap10">
-					<img src="logo.svg" alt="OpenFin" height="40px" />
+					<img src="logo.svg" alt="HERE" height="40px" />
 				</div>
 			</header>
 			<main class="col gap10 left">

@@ -5,7 +5,7 @@ import { init as initializePlatform } from "workspace-platform-starter/platform/
 import * as platformSplashProvider from "workspace-platform-starter/platform/platform-splash";
 
 /**
- * Initialize the provider and bootstrap the OpenFin platform
+ * Initialize the provider and bootstrap the HERE Core platform
  *
  * @returns True if the provider started successfully.
  */

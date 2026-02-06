@@ -1,10 +1,10 @@
-# OpenFin Front-End Framework Starter: Angular Container
+# HERE Front-End Framework Starter: Angular Container
 
-OpenFin Container with Angular 18+
+HERE Core Container with Angular 18+
 
 Demonstrates basic context sharing and notification functionality.
 
-For more comprehensive examples of OpenFin features see the [workspace-starter](https://github.com/built-on-openfin/workspace-starter) repo.
+For more comprehensive examples of HERE Core features, see the [workspace-starter](https://github.com/built-on-openfin/workspace-starter) repo.
 
 ---
 
@@ -12,7 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Prerequisites
 
-OpenFin RVM  
+HERE Core RVM  
 Node.js v20+
 
 ## Getting started
@@ -29,7 +29,7 @@ Start the Angular dev server
 npm start
 ```
 
-Launch OpenFin (separate console)
+Launch HERE Core (separate console)
 
 ```
 npm run client

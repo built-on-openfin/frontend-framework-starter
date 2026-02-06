@@ -1,12 +1,12 @@
-# Streamlit / OpenFin container integration
+# Streamlit / HERE container integration
 
-A simple example showing integration of [Streamlit](https://streamlit.io/) (Python) with OpenFin using FDC3 for interoperability.
+A simple example showing integration of [Streamlit](https://streamlit.io/) (Python) with HERE Core using FDC3 for interoperability.
 
 This example demonstrates bidirectional FDC3 messaging between two Streamlit views using a multi-view layout.
 
 ## Features
 
-- **Platform Provider**: A dedicated provider window that initializes the OpenFin Platform.
+- **Platform Provider**: A dedicated provider window that initializes the HERE Core Platform.
 - **Multi-View Support**: Separate views for broadcasting and receiving context.
 - **Broadcast FDC3 User Context**: Send an instrument context (MSFT) on the user channel (View 1).
 - **Broadcast FDC3 App Context**: Send an instrument context (AAPL) on a custom app channel (View 1).
@@ -31,10 +31,10 @@ First, make sure `uv` is installed: https://github.com/astral-sh/uv
 
    This starts:
 
-   - A small Flask static server on **http://localhost:8500** serving the OpenFin assets (manifest, provider, bridge JS, CSS).
+   - A small Flask static server on **http://localhost:8500** serving the HERE Core assets (manifest, provider, bridge JS, CSS).
    - The Streamlit server on **http://localhost:8501** serving the Streamlit views.  
 
-3. Launch OpenFin
+3. Launch HERE Core
 
    If it doesn't open automatically, paste this into your browser:
 
@@ -48,9 +48,9 @@ The integration consists of:
 
 1. **Streamlit Application** (`streamlit_app.py`) - Defines Streamlit pages and navigation.
 2. **Views** (`pages/`) - `view1.py` (broadcast) and `view2.py` (receive).
-3. **Platform Provider** (`assets/provider.html`) - A plain HTML page referenced by the OpenFin manifest as `providerUrl`.
+3. **Platform Provider** (`assets/provider.html`) - A plain HTML page referenced by the HERE Core manifest as `providerUrl`.
 4. **OpenFin Bridge** (`assets/openfin_bridge.js`) - Loaded via `preloadScripts` in the manifest so each view can call `window.fdc3` / receive contexts.
-5. **Manifest** (`assets/manifest.fin.json`) - Defines the OpenFin Platform configuration and the snapshot (two views).
+5. **Manifest** (`assets/manifest.fin.json`) - Defines the HERE Core Platform configuration and the snapshot (two views).
 
 ### How the bridge works
 

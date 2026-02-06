@@ -1,9 +1,8 @@
 import type OpenFin from "@openfin/core";
-import React, { useEffect, useState } from 'react';
-import logo from '../logo.svg';
+import React, { useEffect, useState } from "react";
+import logo from "../logo.svg";
 import { Dock, Home, Storefront, type App } from "@openfin/workspace";
 import { CustomActionCallerType, init } from "@openfin/workspace-platform";
-import * as Notifications from "@openfin/workspace/notifications";
 import { register as registerDock } from "./dock";
 import { register as registerHome } from "./home";
 import { launchApp } from "./launch";
@@ -32,7 +31,10 @@ function Provider() {
 					// When the platform api is ready we bootstrap the platform.
 					const platform = fin.Platform.getCurrentSync();
 					await platform.once("platform-api-ready", async () => {
-						await initializeWorkspaceComponents(settings.platformSettings, settings.customSettings)
+						await initializeWorkspaceComponents(
+							settings.platformSettings,
+							settings.customSettings,
+						);
 						setMessage("Workspace platform initialized");
 					});
 
@@ -40,8 +42,8 @@ function Provider() {
 					// Provide default icons and default theme for the browser windows
 					await initializeWorkspacePlatform(settings.platformSettings);
 				} catch (err) {
-					console.log(err)
-					setMessage(`Error Initializing Platform: ${err instanceof Error ? err.message : err}`)
+					console.log(err);
+					setMessage(`Error Initializing Platform: ${err instanceof Error ? err.message : err}`);
 				}
 			}
 		})();
@@ -51,7 +53,7 @@ function Provider() {
 		<div className="col fill gap20">
 			<header className="row spread middle">
 				<div className="col">
-					<h1>OpenFin Platform Window</h1>
+					<h1>HERE Core Platform Window</h1>
 					<h1 className="tag">Workspace platform window</h1>
 				</div>
 				<div className="row middle gap10">
@@ -60,7 +62,10 @@ function Provider() {
 			</header>
 			<main className="col gap10">
 				<p>This is the platform window, which initializes the platform.</p>
-				<p>The window would usually be hidden, you can make it hidden on startup by setting the platform.autoShow flag to false in the manifest.fin.json</p>
+				<p>
+					The window would usually be hidden, you can make it hidden on startup by setting the
+					platform.autoShow flag to false in the manifest.fin.json
+				</p>
 				<p>{message}</p>
 			</main>
 		</div>
@@ -79,9 +84,9 @@ async function initializeWorkspacePlatform(platformSettings: PlatformSettings): 
 				icon: platformSettings.icon,
 				workspacePlatform: {
 					pages: [],
-					favicon: platformSettings.icon
-				}
-			}
+					favicon: platformSettings.icon,
+				},
+			},
 		},
 		theme: [
 			{
@@ -90,9 +95,9 @@ async function initializeWorkspacePlatform(platformSettings: PlatformSettings): 
 				palette: {
 					brandPrimary: "#0A76D3",
 					brandSecondary: "#383A40",
-					backgroundPrimary: "#1E1F23"
-				}
-			}
+					backgroundPrimary: "#1E1F23",
+				},
+			},
 		],
 		customActions: {
 			"launch-app": async (e): Promise<void> => {
@@ -102,8 +107,8 @@ async function initializeWorkspacePlatform(platformSettings: PlatformSettings): 
 				) {
 					await launchApp(e.customData as App);
 				}
-			}
-		}
+			},
+		},
 	});
 }
 
@@ -114,7 +119,7 @@ async function initializeWorkspacePlatform(platformSettings: PlatformSettings): 
  */
 async function initializeWorkspaceComponents(
 	platformSettings: PlatformSettings,
-	customSettings?: CustomSettings
+	customSettings?: CustomSettings,
 ): Promise<void> {
 	logMessage("Initializing the workspace components");
 
@@ -133,7 +138,7 @@ async function initializeWorkspaceComponents(
 
 	// Register with notifications
 	logMessage("Initializing the workspace components: notifications");
-	await registerNotifications(platformSettings);
+	await registerNotifications();
 
 	// When the platform requests to be close we deregister from home and quit
 	const providerWindow = fin.Window.getCurrentSync();
@@ -141,7 +146,6 @@ async function initializeWorkspaceComponents(
 		await Home.deregister(platformSettings.id);
 		await Storefront.deregister(platformSettings.id);
 		await Dock.deregister();
-		await Notifications.deregister(platformSettings.id);
 		await fin.Platform.getCurrentSync().quit();
 	});
 }
@@ -163,9 +167,9 @@ async function getManifestCustomSettings(): Promise<{
 		platformSettings: {
 			id: manifest.platform?.uuid ?? "",
 			title: manifest.shortcut?.name ?? "",
-			icon: manifest.platform?.icon ?? ""
+			icon: manifest.platform?.icon ?? "",
 		},
-		customSettings: manifest.customSettings
+		customSettings: manifest.customSettings,
 	};
 }
 

@@ -9,7 +9,7 @@ const Provider = React.lazy(() => import('./platform/Provider'));
 const View1 = React.lazy(() => import('./views/View1'));
 const View2 = React.lazy(() => import('./views/View2'));
 const View3 = React.lazy(() => import('./views/View3'));
-const AnywhereShim = "https://built-on-openfin.github.io/web-starter/web/v19.1.0/web-client-api/js/shim.api.bundle.js";
+const AnywhereShim = "https://built-on-openfin.github.io/web-starter/web/v23.0.0/web-client-api/js/shim.api.bundle.js";
 const View1WithScript = withScript(View1, AnywhereShim);
 const View2WithScript = withScript(View2, AnywhereShim);
 

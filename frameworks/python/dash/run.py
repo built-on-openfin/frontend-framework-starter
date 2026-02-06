@@ -1,10 +1,10 @@
-"""Dash / OpenFin example runner.
+"""Dash / HERE example runner.
 
-This mirrors the Streamlit example's entry point so you can start the Dash app with:
+Start the Dash app with:
 
     uv run run.py
 
-The actual Dash app is defined in `dash_app.py`.
+The Dash app is defined in `dash_app.py`.
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ from dash_app import app
 
 def launch_openfin() -> None:
     openfin_url = "fin://localhost:8050/assets/manifest.fin.json"
-    print(f"Launching OpenFin: {openfin_url}")
+    print(f"Launching HERE Core: {openfin_url}")
 
     system = platform.system()
     if system == "Windows":
@@ -28,7 +28,7 @@ def launch_openfin() -> None:
     elif system == "Darwin":
         subprocess.run(["open", openfin_url], check=False)
     else:
-        print(f"Cannot automatically launch OpenFin on {system}. Please open: {openfin_url}")
+        print(f"Cannot automatically launch HERE Core on {system}. Please open: {openfin_url}")
 
 
 def main() -> None:

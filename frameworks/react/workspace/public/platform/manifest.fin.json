@@ -1,8 +1,8 @@
 {
   "licenseKey": "openfin-demo-license-key",
   "runtime": {
-    "arguments": "--v=1 --inspect",
-    "version": "42.138.103.2"
+    "arguments": "--enable-mesh --security-realm=react-workspace-starter",
+    "version": "43.142.101.2"
   },
   "platform": {
     "uuid": "react-workspace-starter",
@@ -12,19 +12,16 @@
     "preventQuitOnLastWindowClosed": true
   },
   "shortcut": {
-    "company": "OpenFin",
-    "description": "A way of showing examples of what OpenFin can do.",
+    "company": "HERE",
+    "description": "A way of showing examples of what HERE can do.",
     "icon": "http://localhost:3000/favicon.ico",
     "name": "React Workspace Starter",
-    "target": [
-      "desktop",
-      "start-menu"
-    ]
+    "target": ["desktop", "start-menu"]
   },
   "supportInformation": {
-    "company": "OpenFin",
+    "company": "HERE",
     "product": "Workspace Starter - React Workspace Starter",
-    "email": "support@openfin.co",
+    "email": "support@here.io",
     "forwardErrorReports": true
   },
   "customSettings": {
@@ -43,13 +40,10 @@
         ],
         "contactEmail": "contact@example.com",
         "supportEmail": "support@example.com",
-        "publisher": "OpenFin",
+        "publisher": "HERE",
         "intents": [],
         "images": [],
-        "tags": [
-          "view",
-          "openfin"
-        ]
+        "tags": ["view", "here"]
       },
       {
         "appId": "react-view2",
@@ -65,13 +59,10 @@
         ],
         "contactEmail": "contact@example.com",
         "supportEmail": "support@example.com",
-        "publisher": "OpenFin",
+        "publisher": "HERE",
         "intents": [],
         "images": [],
-        "tags": [
-          "view",
-          "openfin"
-        ]
+        "tags": ["view", "here"]
       }
     ]
   }

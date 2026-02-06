@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenFin Platform Provider</title>
+    <title>HERE Platform Provider</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,7 +32,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>OpenFin Platform Provider</h1>
+        <h1>HERE Platform Provider</h1>
         <div class="tag">Dash Platform Provider</div>
         <p id="status">Initializing Platform...</p>
     </div>
@@ -43,14 +43,14 @@
                 try {
                     await fin.Platform.init({});
                     const runtimeInfo = await fin.System.getRuntimeInfo();
-                    document.getElementById('status').textContent = `OpenFin Runtime: ${runtimeInfo.version}`;
-                    console.log("OpenFin Platform initialized");
+                    document.getElementById('status').textContent = `HERE Runtime: ${runtimeInfo.version}`;
+                    console.log("HERE Platform initialized");
                 } catch (e) {
-                    console.error("Error initializing OpenFin Platform:", e);
-                    document.getElementById('status').textContent = "Error initializing OpenFin Platform";
+                    console.error("Error initializing HERE Platform:", e);
+                    document.getElementById('status').textContent = "Error initializing HERE Platform";
                 }
             } else {
-                document.getElementById('status').textContent = "OpenFin runtime is not available";
+                document.getElementById('status').textContent = "HERE runtime is not available";
             }
         }
 

@@ -4,7 +4,7 @@ This project provides a React wrapper for the [workspace-platform-starter](https
 
 To use this project, the source files are manually copied into the project from the [workspace-platform-starter](https://github.com/built-on-openfin/workspace-starter/tree/main/how-to/workspace-platform-starter) project. A simple React-based provider demonstrates how to bootstrap a platform.
 
-This can then form the basis of your own OpenFin platform. The source within the /openfin folder becomes your source code to customize as you need to.
+This can then form the basis of your own HERE Core platform. The source within the /openfin folder becomes your source code to customize as you need to.
 
 Once setup, see the next steps section below.
 
@@ -28,6 +28,7 @@ Manually copy the following folders from the **how-to/workspace-platform-starter
 client/src/framework -> openfin/framework
 client/src/modules -> openfin/modules
 public/common -> openfin/common
+public/schemas -> openfin/schemas (optional, to help with manifest and app configuration)
 ```
 
 The **/openfin** folder in this project should then look like:
@@ -36,6 +37,7 @@ The **/openfin** folder in this project should then look like:
 /openfin/framework
 /openfin/modules
 /openfin/common
+/openfin/schemas
 ```
 
 ### Develop
@@ -72,3 +74,20 @@ Launch [fin://localhost:8080/manifest.fin.json](fin://localhost:8080/manifest.fi
 - Customize your theme in the themeProvider section of the manifest.fin.json
 - Follow the [how-to](https://github.com/built-on-openfin/workspace-starter/tree/main/how-to/workspace-platform-starter/docs) documentation to further customize your platform
 
+## Debugging
+
+### Source maps
+
+Source maps are disabled by default assuming a production-like configuration. 
+
+To enable source maps for debugging, modify the `rollup.config.mjs` file to include source maps in the output configuration:
+
+```javascript
+{
+  ...
+  output: {
+    ...
+    sourcemap: true
+  }
+}
+```
