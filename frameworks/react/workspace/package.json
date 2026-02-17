@@ -14,17 +14,17 @@
   },
   "dependencies": {
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "43.101.2",
-    "@openfin/workspace": "23.0.20",
-    "@openfin/workspace-platform": "23.0.20",
-    "@openfin/notifications": "2.13.1",
+    "@openfin/core": "43.101.4",
+    "@openfin/workspace": "23.2.6",
+    "@openfin/workspace-platform": "23.2.6",
+    "@openfin/notifications": "2.14.0-alpha-4489",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@openfin/node-adapter": "43.101.2",
+    "@openfin/node-adapter": "43.101.4",
     "@testing-library/jest-dom": "6.5.0",
     "@testing-library/react": "16.0.1",
     "@testing-library/user-event": "14.5.2",

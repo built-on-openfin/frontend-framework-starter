@@ -7,9 +7,9 @@
   "platform": {
     "uuid": "react-workspace-starter",
     "icon": "http://localhost:3000/favicon.ico",
-    "autoShow": true,
+    "autoShow": false,
     "providerUrl": "http://localhost:3000/platform/provider",
-    "preventQuitOnLastWindowClosed": true
+    "preventQuitOnLastWindowClosed": false
   },
   "shortcut": {
     "company": "HERE",
