@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, inject, type OnDestroy, type OnInit } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { WorkspaceService } from "../services/workspace.service";
+import { Ms365Service } from "../services/ms365.service";
 
 @Component({
 	selector: "app-provider",
@@ -30,17 +31,21 @@ import { WorkspaceService } from "../services/workspace.service";
 })
 export class ProviderComponent implements OnInit, OnDestroy {
 	private workspaceService = inject(WorkspaceService);
+	private ms365Service = inject(Ms365Service);
 	private unsubscribe$ = new Subject<void>();
 
 	message$ = this.workspaceService.getStatus$();
 
 	ngOnInit(): void {
 		this.workspaceService.init().pipe(takeUntil(this.unsubscribe$)).subscribe();
+		this.ms365Service.connect();
 	}
 
 	ngOnDestroy(): void {
 		this.workspaceService.quit();
 		this.unsubscribe$.next();
 		this.unsubscribe$.complete();
+
+		this.ms365Service.disconnect();
 	}
 }

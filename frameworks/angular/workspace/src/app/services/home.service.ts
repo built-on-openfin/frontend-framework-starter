@@ -13,11 +13,13 @@ import {
 import { from, type Observable } from "rxjs";
 import { launchApp } from "./launch";
 import { SettingsService } from "./settings.service";
+import { Ms365Service } from "./ms365.service";
 import { type PlatformSettings } from "./types";
 
 @Injectable({ providedIn: "root" })
 export class HomeService {
 	private settingsService = inject(SettingsService);
+	private ms365Service = inject(Ms365Service);
 
 	register(platformSettings: PlatformSettings): Observable<HomeRegistration | undefined> {
 		console.log("Initializing the Home provider");
@@ -32,7 +34,21 @@ export class HomeService {
 				const queryLower = request.query.toLowerCase();
 
 				// Async results
-				response.respond([]);
+				this.ms365Service.searchPeople(queryLower).then((people) => {
+					const peopleResults = people.map((person) => ({
+						key: `ms365-${person.id}`,
+						title: person.displayName ?? "Unknown",
+						label: "Person",
+						description: `${person.jobTitle ?? ""} ${person.mail ?? ""}`.trim(),
+						icon: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+						template: CLITemplate.SimpleText,
+						templateContent: person.mail ?? "",
+						actions: [],
+						data: person,
+					})) as HomeSearchResult[];
+
+					response.respond(peopleResults);
+				});
 
 				// Immediate results
 				return {
