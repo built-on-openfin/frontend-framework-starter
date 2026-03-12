@@ -10,6 +10,17 @@ import { execSync } from "child_process";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const DEFAULT_VERSIONS = {
+	major: "23.2.0",
+	"github-url": "23.0.0",
+	runtime: "43.142.104.1",
+	core: "43.104.1",
+	workspace: "23.2.23",
+	"workspace-platform": "23.2.23",
+	"core-web": "0.44.112",
+	notifications: "2.14.3",
+};
+
 const FRAMEWORKS_DIR = path.resolve(__dirname, "../frameworks");
 const ROOT_DIR = path.resolve(__dirname, "..");
 
@@ -21,23 +32,10 @@ const PACKAGES_TO_UPDATE = [
 	"@openfin/workspace-platform",
 	"@openfin/node-adapter",
 	"@openfin/core-web",
-	"@openfin/cloud-interop",
 	"@openfin/notifications",
 ];
 
 const VERSIONED_URL_EXTENSIONS = new Set([".html", ".json", ".ts", ".tsx", ".js", ".jsx", ".md"]);
-
-const DEFAULT_VERSIONS = {
-	major: "23.0.0",
-	"github-url": "23.0.0",
-	runtime: "43.142.101.2",
-	core: "43.102.2",
-	workspace: "23.0.21",
-	"workspace-platform": "23.0.21",
-	"core-web": "0.43.115",
-	"cloud-interop": "0.43.117",
-	notifications: "2.13.5",
-};
 
 // =============================================================================
 // File System Utilities
@@ -376,7 +374,7 @@ function printUsageAndExit() {
 		"Usage: node upgrade-openfin.mjs --runtime <version> --workspace <version> --core <version> ...",
 	);
 	console.log(
-		"Supported flags: --runtime, --core, --workspace, --workspace-platform, --node-adapter, --core-web, --cloud-interop",
+		"Supported flags: --runtime, --core, --workspace, --workspace-platform, --node-adapter, --core-web",
 	);
 	console.log("Options: --install-only (skip build), --build-only (skip install)");
 	process.exit(1);

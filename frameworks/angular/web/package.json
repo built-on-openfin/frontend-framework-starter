@@ -1,6 +1,6 @@
 {
   "name": "angular-web",
-  "version": "23.0.0",
+  "version": "23.2.0",
   "engines": {
     "node": ">=22"
   },
@@ -24,7 +24,7 @@
     "@angular/platform-browser": "^19.2.1",
     "@angular/platform-browser-dynamic": "^19.2.1",
     "@angular/router": "^19.2.1",
-    "@openfin/core-web": "0.43.115",
+    "@openfin/core-web": "0.44.112",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

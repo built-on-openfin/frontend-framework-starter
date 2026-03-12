@@ -2,7 +2,12 @@ import type OpenFin from "@openfin/core";
 import React, { useEffect, useState } from "react";
 import logo from "../logo.svg";
 import { Dock, Home, Storefront, type App } from "@openfin/workspace";
-import { CustomActionCallerType, init } from "@openfin/workspace-platform";
+import {
+	ColorSchemeOptionType,
+	CustomActionCallerType,
+	CustomThemes,
+	init,
+} from "@openfin/workspace-platform";
 import { register as registerDock } from "./dock";
 import { register as registerHome } from "./home";
 import { launchApp } from "./launch";
@@ -91,14 +96,14 @@ async function initializeWorkspacePlatform(platformSettings: PlatformSettings): 
 		theme: [
 			{
 				label: "Default",
-				default: "dark",
-				palette: {
+				default: ColorSchemeOptionType.Dark,
+				seed: {
 					brandPrimary: "#0A76D3",
 					brandSecondary: "#383A40",
 					backgroundPrimary: "#1E1F23",
 				},
 			},
-		],
+		] as CustomThemes,
 		customActions: {
 			"launch-app": async (e): Promise<void> => {
 				if (

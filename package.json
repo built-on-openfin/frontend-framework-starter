@@ -1,6 +1,6 @@
 {
   "name": "frontend-framework-starter",
-  "version": "23.0.0",
+  "version": "23.2.0",
   "description": "Examples using HERE Core with frontend frameworks",
   "engines": {
     "node": ">=22"

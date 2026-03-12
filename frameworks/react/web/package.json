@@ -1,7 +1,7 @@
 {
   "name": "web",
   "private": true,
-  "version": "23.0.0",
+  "version": "23.2.0",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE.MD",
   "engines": {
@@ -17,7 +17,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@openfin/core-web": "0.43.115",
+    "@openfin/core-web": "0.44.112",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
