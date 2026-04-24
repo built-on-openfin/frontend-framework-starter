@@ -1,4 +1,7 @@
 import { type Routes } from "@angular/router";
+import { ProviderComponent } from "./provider/provider.component";
+import { View1Component } from "./view1/view1.component";
+import { View2Component } from "./view2/view2.component";
 
 /*
 Routes for HERE sample application
@@ -13,14 +16,14 @@ so that the whole application isn't bootstrapped when opening an individual wind
 export const routes: Routes = [
 	{
 		path: "provider",
-		loadComponent: () => import("./provider/provider.component").then((m) => m.ProviderComponent),
+		component: ProviderComponent,
 	},
 	{
 		path: "view1",
-		loadComponent: () => import("./view1/view1.component").then((m) => m.View1Component),
+		component: View1Component,
 	},
 	{
 		path: "view2",
-		loadComponent: () => import("./view2/view2.component").then((m) => m.View2Component),
+		component: View2Component,
 	},
 ];
