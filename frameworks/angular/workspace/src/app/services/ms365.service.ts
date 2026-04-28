@@ -22,18 +22,14 @@ export class Ms365Service {
 	}
 
 	async searchPeople(query: string): Promise<Graph.User[]> {
-		if (!this.ms365Connection) {
-			return [];
-		}
-
+		if (!this.ms365Connection) return [];
+		if (!query) return [];
 		try {
 			const response = await this.ms365Connection.executeApiRequest<{ value: Graph.User[] }>(
 				`/v1.0/users?$search="displayName:${query}"&$select=id,displayName,mail,jobTitle`,
-				{
-					headers: {
-						ConsistencyLevel: "eventual",
-					},
-				},
+				"GET",
+				undefined,
+				{ ConsistencyLevel: "eventual" },
 			);
 			return response?.data?.value ?? [];
 		} catch (e: unknown) {
