@@ -1,21 +1,17 @@
 import type { PlatformApp, PlatformAppIdentifier } from "../../shapes/app-shapes";
 import type { PlatformLayoutSnapshot } from "../../shapes/layout-shapes";
 import { isEmpty, randomUUID } from "../helpers/utils";
-import { getSettings } from "../settings/settings";
 
 let cachedApps: PlatformApp[] | undefined;
 
 /**
- * The the app by its id.
+ * The app by its id.
  * @param appId The id of the requested app.
  * @returns The app if it was found.
  */
 export async function getApp(appId: string): Promise<PlatformApp | undefined> {
 	const apps = await getApps();
-	const foundApp = apps.find(
-		(app) => app.appId === appId || (app.type === "web" && app.details.url === appId),
-	);
-	return foundApp;
+	return apps.find((app) => app.appId === appId || (app.type === "web" && app.details.url === appId));
 }
 
 /**
@@ -26,18 +22,12 @@ export async function getApps(): Promise<PlatformApp[]> {
 	if (cachedApps) {
 		return cachedApps;
 	}
-	const settings = await getSettings();
-	if (Array.isArray(settings?.platform?.app?.directory)) {
-		// Fetch data from all URLs concurrently
-		const responses = await Promise.all(settings.platform.app.directory.map(async (url) => fetch(url)));
-		// Parse the JSON from all responses
-		const appDirectories = await Promise.all(responses.map(async (response) => response.json()));
-		// Combine all applications into a single array
-		cachedApps = appDirectories.flatMap((appDirectory) => appDirectory.applications);
-		return cachedApps;
-	}
-	cachedApps = [];
-	return cachedApps;
+
+	// For simplicity loading a named apps.json file. A more flexible solution could load an array of app configs from a settings file.
+	const response = await fetch("/apps.json");
+	const data = (await response.json()) as { applications: PlatformApp[] };
+	cachedApps = data?.applications;
+	return cachedApps ?? [];
 }
 
 /**

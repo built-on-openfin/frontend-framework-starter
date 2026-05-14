@@ -45,5 +45,7 @@ export async function init(): Promise<OpenFin.Fin<OpenFin.EntityType> | undefine
 	// You may now use the `fin` object to initialize the broker and the layout.
 	await fin.Interop.init("web-layout-basic", [interopOverride]);
 
+	window.fin = fin;
+
 	return fin;
 }
