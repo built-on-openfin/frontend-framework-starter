@@ -1,0 +1,16 @@
+{
+  "name": "HERE Web Intents",
+  "short_name": "HEREWebIntents",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "An example showing a simplified implementation of Intents in HERE core-web",
+  "icons": [
+    {
+      "src": "icon-blue.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }
+  ],
+  "related_applications": []
+}
