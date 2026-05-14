@@ -1,6 +1,7 @@
 import { type OpenFin } from "@openfin/core";
 import { connect, type WebLayoutSnapshot } from "@openfin/core-web";
 import { BROKER_URL, LAYOUT_URL } from "./config.ts";
+import { getConstructorOverride } from "./platform/broker/interop-override.ts";
 
 /**
  * Gets the default layout for this app.
@@ -22,6 +23,9 @@ export async function init(): Promise<OpenFin.Fin<OpenFin.EntityType> | undefine
 		console.error("Unable to load the default snapshot.");
 		return;
 	}
+
+	const interopOverride = await getConstructorOverride({});
+
 	// Connect to the https://resources.here.io/docs/core/ Web Broker and pass the default layout.
 	// It is good practice to specify providerId even if content is explicitly specifying it for cases where
 	// this provider uses our layout system and content uses inheritance. currentContextGroup
@@ -39,7 +43,7 @@ export async function init(): Promise<OpenFin.Fin<OpenFin.EntityType> | undefine
 	});
 
 	// You may now use the `fin` object to initialize the broker and the layout.
-	await fin.Interop.init("web-layout-basic");
+	await fin.Interop.init("web-layout-basic", [interopOverride]);
 
 	return fin;
 }

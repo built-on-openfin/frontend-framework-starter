@@ -32,5 +32,6 @@ export default tseslint.config({
 			"warn",
 			{ prefer: "type-imports", fixStyle: "inline-type-imports" },
 		],
+		"@typescript-eslint/require-await": ["off"],
 	},
 });
