@@ -3,6 +3,10 @@ import "../../App.css";
 import { useIntentListener } from "../hooks/use-intent-listener.tsx";
 import { useOpenFinWeb } from "../hooks/use-openfin-web.tsx";
 
+/**
+ * This app is co-located with the provider app and exposed as a route to demonstrate the intent flow.
+ * Ordinarily a view would be a separate web app at any url.
+ */
 export function ViewContact() {
 	useOpenFinWeb();
 	const { context, loading, error } = useIntentListener("ViewContact");

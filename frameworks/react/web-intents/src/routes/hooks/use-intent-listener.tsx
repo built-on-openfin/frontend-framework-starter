@@ -1,3 +1,7 @@
+/**
+ * React hook for registering an FDC3 intent listener and exposing the latest
+ * received context together with loading and error state for the subscription.
+ */
 import { addIntentListener, type Context, type Listener } from "@finos/fdc3";
 import { useEffect, useState } from "react";
 

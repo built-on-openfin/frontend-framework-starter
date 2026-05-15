@@ -26,10 +26,6 @@ export async function init(): Promise<OpenFin.Fin<OpenFin.EntityType> | undefine
 
 	const interopOverride = await getConstructorOverride({});
 
-	// Connect to the https://resources.here.io/docs/core/ Web Broker and pass the default layout.
-	// It is good practice to specify providerId even if content is explicitly specifying it for cases where
-	// this provider uses our layout system and content uses inheritance. currentContextGroup
-	// is useful for defaulting any client that uses inheritance through our layout system.
 	const fin = await connect({
 		connectionInheritance: "enabled",
 		options: {
@@ -42,7 +38,6 @@ export async function init(): Promise<OpenFin.Fin<OpenFin.EntityType> | undefine
 		platform: { layoutSnapshot },
 	});
 
-	// You may now use the `fin` object to initialize the broker and the layout.
 	await fin.Interop.init("web-layout-basic", [interopOverride]);
 
 	window.fin = fin;

@@ -1,3 +1,6 @@
+/**
+ * React hook for establishing the OpenFin Web connection, initializing the global FDC3 2.0 API
+ */
 import { connect } from "@openfin/core-web";
 import { useEffect } from "react";
 

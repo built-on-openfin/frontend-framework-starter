@@ -1,6 +1,5 @@
 import { type OpenFin } from "@openfin/core";
 import { useEffect } from "react";
-// import { makeOverride } from "../platform/layout/layout-override";
 import { makeOverride } from "../layout/layout-override";
 
 export type UseLayoutProps = {

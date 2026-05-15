@@ -137,7 +137,12 @@ export function Intents() {
 			<div className="col gap10">
 				<label className="col gap10" htmlFor="intentName">
 					<span>Intent</span>
-					<select id="intentName" value={formState.intentName} onChange={handleIntentChange} className="field">
+					<select
+						id="intentName"
+						value={formState.intentName}
+						onChange={handleIntentChange}
+						className="field"
+					>
 						{INTENT_OPTIONS.map((option) => (
 							<option key={option.value} value={option.value}>
 								{option.label}
