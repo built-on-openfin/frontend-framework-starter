@@ -605,9 +605,6 @@ async function constructorOverride(
 					}
 
 					if (!isEmpty(appId)) {
-						if (focusApp && !isEmpty(platformIdentities)) {
-							await bringAppToFront(requestedApp, platformIdentities);
-						}
 						return { appId, instanceId };
 					}
 
@@ -1007,9 +1004,9 @@ async function constructorOverride(
 					await super.setIntentTarget(intent, target);
 					if (existingInstance) {
 						try {
-							if (bringAppToFront) {
-								await bringAppToFront(app, [target]);
-							}
+							// if (bringAppToFront) {
+							// 	await bringAppToFront(app, [target]);
+							// }
 						} catch (bringToFrontError) {
 							logger.warn(
 								`There was an error bringing app: ${target.appId}, and instance ${target.instanceId} with name: ${target.name} to front.`,

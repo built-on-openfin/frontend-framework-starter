@@ -1,10 +1,11 @@
 import "./App.css";
+
 import { useLayout } from "./hooks/use-layout.ts";
 import { useWebProvider } from "./hooks/use-web-provider.ts";
 
 function App() {
-	const { fin } = useWebProvider();
-	useLayout({ fin });
+	const finApi = useWebProvider();
+	useLayout({ finApi });
 
 	return (
 		<>

@@ -1,16 +1,16 @@
 import { type OpenFin } from "@openfin/core";
 import { useEffect } from "react";
+// import { makeOverride } from "../platform/layout/layout-override";
 import { makeOverride } from "../layout/layout-override";
-import { init } from "../provider.ts";
 
 export type UseLayoutProps = {
-	// settings: Settings;
-	// defaultLayout: WebPageLayout | null;
-	fin: OpenFin.Fin<OpenFin.EntityType> | undefined;
+	finApi: OpenFin.Fin<OpenFin.EntityType> | undefined;
 };
 
-export function useLayout({ fin }: UseLayoutProps) {
+export function useLayout({ finApi }: UseLayoutProps) {
 	useEffect(() => {
+		if (!finApi) return;
+
 		// Get the dom element that should host the layout
 		const container = document.querySelector<HTMLElement>("#layout_container");
 		if (container === null) {
@@ -20,9 +20,14 @@ export function useLayout({ fin }: UseLayoutProps) {
 			return;
 		}
 
-		void init().then(async () => {
-			const layoutManagerOverride = makeOverride();
-			await fin?.Platform.Layout.init({ layoutManagerOverride, container });
-		});
-	});
+		const layoutManagerOverride = makeOverride();
+
+		finApi?.Platform.Layout.init({ layoutManagerOverride, container })
+			.then(() => {
+				console.log("Layout initialized");
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}, [finApi]);
 }

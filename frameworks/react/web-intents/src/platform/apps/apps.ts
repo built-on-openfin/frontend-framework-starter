@@ -31,20 +31,6 @@ export async function getApps(): Promise<PlatformApp[]> {
 }
 
 /**
- * Formats the app title and adds a count suffix to disambiguate the tabs.
- * @param app The app for which to format the title
- * @returns The formatted title, with a count suffix if multiple instances exist
- */
-async function formatAppTitleWithSuffix(app: PlatformApp): Promise<string | undefined> {
-	const layout = fin.Platform.Layout.getCurrentSync();
-	const views = await layout.getCurrentViews();
-	const existingInstances = views.filter((view) => view.identity.name.split("/")[0] === app.appId);
-	return existingInstances && existingInstances.length > 0
-		? `${app.title} (${existingInstances.length})`
-		: app.title;
-}
-
-/**
  * Launch an application in the way specified by its manifest type.
  * @param platformApp The application to launch or it's id.
  * @param target The target layout to launch the app in.
@@ -69,21 +55,14 @@ export async function launch(
 		const name = `${appToLaunch.appId}/${randomUUID()}`;
 		const uuid = fin.me.identity.uuid;
 		const appId = appToLaunch.appId;
-		const title = await formatAppTitleWithSuffix(appToLaunch);
+		const title = appToLaunch.title;
 
-		if (target?.layout) {
-			await fin?.Platform.Layout.getCurrentSync().addView({
-				name,
-				url: appToLaunch.details.url,
-				titlePriority: "options",
-				title,
-			});
-		} else {
-			const currentLayout = fin?.Platform.Layout.getCurrentLayoutManagerSync();
-			const layoutId = `tab-${randomUUID()}`;
-			const appSnapshot = getAppLayout(appToLaunch, layoutId, name, title);
-			await currentLayout?.applyLayoutSnapshot(appSnapshot);
-		}
+		await fin?.Platform.Layout.getCurrentSync().addView({
+			name,
+			url: appToLaunch.details.url,
+			titlePriority: "options",
+			title,
+		});
 		return [{ name, uuid, appId }];
 	} catch (error) {
 		console.error("Error launching app", error);

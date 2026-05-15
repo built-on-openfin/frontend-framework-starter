@@ -9,7 +9,7 @@ import type { PlatformApp } from "../../shapes/app-shapes";
  */
 export async function getAppsMetaData(
 	apps: PlatformApp[],
-	findInstances: (appId: string) => Promise<AppIdentifier[]>
+	findInstances: (appId: string) => Promise<AppIdentifier[]>,
 ): Promise<AppMetadata[]> {
 	const appsMetaData: AppMetadata[] = [];
 
@@ -41,7 +41,7 @@ export function mapToAppMetaData(app: PlatformApp, resultType?: string): AppMeta
 		title: app.title,
 		tooltip: app.tooltip,
 		version: app.version,
-		resultType
+		resultType,
 	};
 	return appMetaData;
 }

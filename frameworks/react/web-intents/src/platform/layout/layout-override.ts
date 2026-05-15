@@ -4,21 +4,16 @@ import type {
 	LayoutManager,
 	LayoutManagerConstructor,
 	LayoutManagerItem,
-	PlatformLayoutSnapshot
+	PlatformLayoutSnapshot,
 } from "../../shapes/layout-shapes";
 
 /**
  * MakeOverride assists in loading the Fin object before the applyLayoutSnapshot Manager call.
  * @param fin the fin object.
  * @param layoutContainerId the layout container id.
- * @param layoutSelectorId the layout selector id.
  * @returns a function call.
  */
-export function makeOverride(
-	fin: OpenFin.Fin<OpenFin.EntityType>,
-	layoutContainerId: string,
-	layoutSelectorId: string
-) {
+export function makeOverride(fin: OpenFin.Fin<OpenFin.EntityType>, layoutContainerId: string) {
 	return function layoutManagerOverride(Base: LayoutManagerConstructor): LayoutManagerConstructor {
 		/**
 		 * @class LayoutManagerBasic
@@ -29,8 +24,6 @@ export function makeOverride(
 
 			private readonly _layoutContainer: HTMLElement | null;
 
-			private readonly _layoutSelector: HTMLSelectElement | null;
-
 			private _selectedLayout: string | undefined;
 
 			/**
@@ -40,14 +33,6 @@ export function makeOverride(
 				super();
 				this._layoutMapArray = [];
 				this._layoutContainer = document.querySelector<HTMLElement>(`#${layoutContainerId}`);
-				this._layoutSelector = document.querySelector<HTMLSelectElement>(`#${layoutSelectorId}`);
-				if (this._layoutSelector !== null) {
-					this._layoutSelector.addEventListener("change", async (event) => {
-						const selectElement = event.target as HTMLSelectElement;
-						const selectedValue = selectElement.value;
-						await this.showLayout({ layoutName: selectedValue, uuid: fin.me.uuid, name: fin.me.name });
-					});
-				}
 			}
 
 			/**
@@ -59,7 +44,7 @@ export function makeOverride(
 				const platformLayoutSnapshot: PlatformLayoutSnapshot = {
 					layouts: layoutSnapshot.layouts,
 					layoutTitles: {},
-					layoutSelected: this._selectedLayout
+					layoutSelected: this._selectedLayout,
 				};
 				for (const layout of this._layoutMapArray) {
 					if (layout.layoutTitle !== undefined) {
@@ -85,7 +70,7 @@ export function makeOverride(
 							layoutName: key,
 							layoutTitle,
 							layout: value,
-							container: this._layoutContainer
+							container: this._layoutContainer,
 						});
 					}
 					setTimeout(async () => {
@@ -99,12 +84,11 @@ export function makeOverride(
 								entry[1],
 								entryInstance,
 								entries.length,
-								platformLayoutSnapshot.layoutSelected
+								platformLayoutSnapshot.layoutSelected,
 							);
 						}
 					}, 1000);
 					console.log("[Apply Layout] Layouts loaded");
-					console.log(`[Apply Layout] Layouts are: ${JSON.stringify(this._layoutMapArray)}`);
 				}
 			}
 
@@ -144,7 +128,9 @@ export function makeOverride(
 			 * @throws Error if the view is not found in any layout.
 			 */
 			public getLayoutIdentityForView(viewIdentity: OpenFin.Identity): OpenFin.LayoutIdentity {
-				const viewElement = document.querySelector<HTMLElement>(`div[of-name="${viewIdentity.name}"]`);
+				const viewElement = document.querySelector<HTMLElement>(
+					`div[of-name="${viewIdentity.name}"]`,
+				);
 				if (viewElement !== null) {
 					const layoutElement = viewElement.closest("[data-openfin-layout-name]");
 					if (layoutElement !== null) {
@@ -185,18 +171,6 @@ export function makeOverride(
 					layoutNameElement.remove();
 					await fin.Platform.Layout.destroy({ layoutName, uuid: fin.me.uuid, name: fin.me.name });
 					this._layoutMapArray = this._layoutMapArray.filter((x) => x.layoutName !== layoutName);
-					const nextLayoutName =
-						this._layoutMapArray[index]?.layoutName ?? this._layoutMapArray[index - 1]?.layoutName;
-					if (this._layoutSelector !== null) {
-						for (let i = 0; i < this._layoutSelector.options.length; i++) {
-							if (this._layoutSelector.options[i].value === layoutName) {
-								this._layoutSelector.remove(i);
-								break;
-							}
-						}
-						this.bindLayoutSelector(nextLayoutName, false);
-						await this.showLayout({ layoutName: nextLayoutName, uuid: fin.me.uuid, name: fin.me.name });
-					}
 				}
 			}
 
@@ -213,7 +187,7 @@ export function makeOverride(
 				layout: OpenFin.LayoutOptions,
 				entry: number,
 				length: number,
-				selectedLayout: string | undefined
+				selectedLayout: string | undefined,
 			): Promise<void> {
 				// Create a new div container for the layout.
 				const container = document.createElement("div");
@@ -222,32 +196,11 @@ export function makeOverride(
 				this._layoutContainer?.append(container);
 				await fin.Platform.Layout.create({ layoutName, layout, container });
 				if (entry === length) {
-					this.bindLayoutSelector(selectedLayout ?? layoutName);
 					await this.showLayout({
 						layoutName: selectedLayout ?? layoutName,
 						uuid: fin.me.uuid,
-						name: fin.me.name
+						name: fin.me.name,
 					});
-				}
-			}
-
-			/**
-			 * Binds the layout selector to the latest collecting of layouts and selects the specified layout.
-			 * @param layoutName The name of the layout to bind to the layout selector.
-			 * @param rebind Whether to rebind the layout selector.
-			 */
-			private bindLayoutSelector(layoutName: string, rebind: boolean = true): void {
-				if (this._layoutSelector !== null) {
-					if (rebind) {
-						this._layoutSelector.innerHTML = "";
-						for (const layout of this._layoutMapArray) {
-							const option = document.createElement("option");
-							option.value = layout.layoutName;
-							option.text = layout.layoutTitle ?? layout.layoutName;
-							this._layoutSelector.add(option);
-						}
-					}
-					this._layoutSelector.value = layoutName;
 				}
 			}
 		};

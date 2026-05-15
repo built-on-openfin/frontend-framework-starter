@@ -24,5 +24,5 @@ export function useWebProvider() {
 		};
 	}, []);
 
-	return { fin };
+	return fin;
 }

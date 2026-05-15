@@ -52,5 +52,6 @@ h1.tag {
 	color: var(--brand-text-secondary);
 }
 
-
-
+.layout-container {
+	height: calc(100dvh - 60px);
+}

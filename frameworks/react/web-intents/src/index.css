@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 :root {
 	--brand-background: var(--theme-background-primary, #1e1f23);
@@ -20,7 +20,7 @@
 }
 
 * {
-	font-family: Inter, 'Sans Serif', sans-serif;
+	font-family: Inter, "Sans Serif", sans-serif;
 	box-sizing: border-box;
 }
 

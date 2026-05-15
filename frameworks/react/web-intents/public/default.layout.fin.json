@@ -30,31 +30,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "column",
-              "width": 50,
-              "content": [
-                {
-                  "type": "stack",
-                  "width": 50,
-                  "height": 50,
-                  "content": [
-                    {
-                      "type": "component",
-                      "componentName": "view",
-                      "componentState": {
-                        "url": "https://example.com",
-                        "name": "internal-generated-view-64a8efd7-3d92-42ae-8fae-dffcc0fdac96",
-                        "web": {
-                          "frameName": "custom-name-disables-interop-inheritance-3"
-                        }
-                      },
-                      "title": "Example.com"
-                    }
-                  ]
-                }
-              ]
             }
           ]
         }

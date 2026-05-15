@@ -9,7 +9,7 @@ export const OPEN_ERROR = {
 	/** Returned if the FDC3 desktop agent implementation is not currently able to handle the request.*/
 	ResolverUnavailable: "ResolverUnavailable",
 	/** Returned if a call to the `open` function is made with an invalid context argument. Contexts should be Objects with at least a `type` field that has a `string` value.*/
-	MalformedContext: "MalformedContext"
+	MalformedContext: "MalformedContext",
 };
 /** Constants representing the errors that can be encountered when calling the `findIntent`, `findIntentsByContext`, `raiseIntent` or `raiseIntentForContext` methods on the DesktopAgent (`fdc3`). */
 export const RESOLVE_ERROR = {
@@ -28,5 +28,5 @@ export const RESOLVE_ERROR = {
 	/** Returned if the intent and context could not be delivered to the selected application or instance, for example because it has not added an intent handler within a timeout.*/
 	IntentDeliveryFailed: "IntentDeliveryFailed",
 	/** Returned if a call to one of the `raiseIntent` functions is made with an invalid context argument. Contexts should be Objects with at least a `type` field that has a `string` value.*/
-	MalformedContext: "MalformedContext"
+	MalformedContext: "MalformedContext",
 };
