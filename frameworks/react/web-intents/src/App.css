@@ -55,3 +55,26 @@ h1.tag {
 .layout-container {
 	height: calc(100dvh - 60px);
 }
+
+.field {
+	background-color: var(--brand-input-background);
+	border: 1px solid var(--brand-input-border);
+	border-radius: 6px;
+	color: var(--brand-text);
+	padding: 10px 12px;
+	width: 100%;
+}
+
+.field-textarea {
+	min-height: 240px;
+	resize: vertical;
+}
+
+.button-primary {
+	background-color: var(--brand-primary);
+	border: none;
+	border-radius: 6px;
+	color: var(--brand-text);
+	cursor: pointer;
+	padding: 10px 16px;
+}

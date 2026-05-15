@@ -21,7 +21,7 @@
                       "type": "component",
                       "componentName": "view",
                       "componentState": {
-                        "url": "http://localhost:3000/views/fdc3-intent-view-v2.html",
+                        "url": "http://localhost:3000/intents",
                         "name": "fdc3-intent-view-2-0/54a8ef85-a885-4234-be46-9d52e88fcb74",
                         "titlePriority": "options"
                       },
