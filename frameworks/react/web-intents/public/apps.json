@@ -38,6 +38,30 @@
           }
         }
       }
+    },
+    {
+      "appId": "quote",
+      "name": "quote",
+      "title": "Quote",
+      "description": "View quote details",
+      "categories": [],
+      "version": "2.0.0",
+      "tooltip": "Quote",
+      "lang": "en-US",
+      "type": "web",
+      "details": {
+        "url": "http://localhost:3000/quote"
+      },
+      "interop": {
+        "intents": {
+          "listensFor": {
+            "ViewQuote": {
+              "displayName": "View Quote",
+              "contexts": ["custom.instrument"]
+            }
+          }
+        }
+      }
     }
   ]
 }
