@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { init } from "../provider";
+import { init } from "../platform/provider";
 
 export function useWebProvider() {
 	const [fin, setFin] = useState<Awaited<ReturnType<typeof init>> | undefined>(undefined);

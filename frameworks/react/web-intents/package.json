@@ -18,7 +18,8 @@
     "@finos/fdc3": "2.0.3",
     "@openfin/core-web": "0.43.115",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.15.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

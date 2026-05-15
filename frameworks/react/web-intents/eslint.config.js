@@ -33,5 +33,6 @@ export default tseslint.config({
 			{ prefer: "type-imports", fixStyle: "inline-type-imports" },
 		],
 		"@typescript-eslint/require-await": ["off"],
+		"@typescript-eslint/no-floating-promises": ["off"],
 	},
 });

@@ -1,7 +1,7 @@
 import { type OpenFin } from "@openfin/core";
 import { connect, type WebLayoutSnapshot } from "@openfin/core-web";
-import { BROKER_URL, LAYOUT_URL } from "./config.ts";
-import { getConstructorOverride } from "./platform/broker/interop-override.ts";
+import { BROKER_URL, LAYOUT_URL } from "../config.ts";
+import { getConstructorOverride } from "./broker/interop-override.ts";
 
 /**
  * Gets the default layout for this app.
