@@ -24,7 +24,7 @@
     "@openfin/workspace-platform": "23.0.20",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.1"
+    "react-router-dom": "^7.15.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
