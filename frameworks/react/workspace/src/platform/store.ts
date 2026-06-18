@@ -10,7 +10,7 @@ import type { PlatformSettings } from "./shapes";
  */
 export async function register(
 	platformSettings: PlatformSettings,
-	apps?: App[]
+	apps?: App[],
 ): Promise<StoreRegistration | undefined> {
 	console.log("Initializing the storefront provider.");
 	try {
@@ -26,11 +26,11 @@ export async function register(
 							title: "All Apps",
 							templateId: StorefrontTemplate.AppGrid,
 							templateData: {
-								apps: apps ?? []
-							}
-						}
-					]
-				}
+								apps: apps ?? [],
+							},
+						},
+					],
+				},
 			],
 			getLandingPage: async () => ({
 				topRow: {
@@ -41,33 +41,33 @@ export async function register(
 							title: "All Apps",
 							description: "All of your applications.",
 							image: {
-								src: platformSettings.icon
+								src: platformSettings.icon,
 							},
 							templateId: StorefrontTemplate.AppGrid,
 							templateData: {
-								apps: apps ?? []
-							}
-						}
-					]
+								apps: apps ?? [],
+							},
+						},
+					],
 				},
 				middleRow: {
 					title: "",
-					apps: []
+					apps: [],
 				},
 				bottomRow: {
 					title: "",
-					items: []
-				}
+					items: [],
+				},
 			}),
 			getFooter: async () => ({
 				logo: { src: platformSettings.icon, size: "32" },
 				text: platformSettings.title,
-				links: []
+				links: [],
 			}),
 			getApps: async () => apps ?? [],
 			launchApp: async (app) => {
 				await launchApp(app);
-			}
+			},
 		});
 		console.log("Storefront provider initialized.", metaInfo);
 		return metaInfo;

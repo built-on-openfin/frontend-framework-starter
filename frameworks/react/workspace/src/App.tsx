@@ -1,24 +1,16 @@
-import React from "react";
-import logo from "./logo.svg";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "./platform/Provider";
+import { View1 } from "./views/view1";
+import { View2 } from "./views/view2";
 
-function App() {
+export default function App() {
 	return (
-		<div className="col fill gap20">
-			<header className="row spread middle">
-				<div className="col">
-					<h1>HERE React</h1>
-					<h1 className="tag">Example demonstrating running a react app in an HERE workspace</h1>
-				</div>
-				<div className="row middle gap10">
-					<img src={logo} alt="HERE" height="40px" />
-				</div>
-			</header>
-			<main className="col gap10">
-				<p>To launch this application in the HERE workspace, run the following command:</p>
-				<pre>npm run client</pre>
-			</main>
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Provider />} />
+				<Route path="/view1" element={<View1 />} />
+				<Route path="/view2" element={<View2 />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
-
-export default App;
