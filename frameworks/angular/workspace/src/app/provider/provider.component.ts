@@ -1,6 +1,13 @@
-import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, type OnDestroy, type OnInit } from "@angular/core";
-import { Subject, takeUntil } from "rxjs";
+import { AsyncPipe } from "@angular/common";
+import {
+	ChangeDetectionStrategy,
+	Component,
+	DestroyRef,
+	inject,
+	type OnDestroy,
+	type OnInit,
+} from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { WorkspaceService } from "../services/workspace.service";
 
 @Component({
@@ -26,21 +33,19 @@ import { WorkspaceService } from "../services/workspace.service";
 	</div>`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [WorkspaceService],
-	imports: [CommonModule],
+	imports: [AsyncPipe],
 })
 export class ProviderComponent implements OnInit, OnDestroy {
 	private workspaceService = inject(WorkspaceService);
-	private unsubscribe$ = new Subject<void>();
+	private destroyRef = inject(DestroyRef);
 
 	message$ = this.workspaceService.getStatus$();
 
 	ngOnInit(): void {
-		this.workspaceService.init().pipe(takeUntil(this.unsubscribe$)).subscribe();
+		this.workspaceService.init().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
 	}
 
 	ngOnDestroy(): void {
 		this.workspaceService.quit();
-		this.unsubscribe$.next();
-		this.unsubscribe$.complete();
 	}
 }

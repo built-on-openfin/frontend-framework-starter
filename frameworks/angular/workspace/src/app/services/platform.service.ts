@@ -4,7 +4,7 @@ import type { App } from "@openfin/workspace";
 import {
 	ColorSchemeOptionType,
 	CustomActionCallerType,
-	CustomThemes,
+	type CustomThemes,
 	init,
 } from "@openfin/workspace-platform";
 import { from, type Observable } from "rxjs";

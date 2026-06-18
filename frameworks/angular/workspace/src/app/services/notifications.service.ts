@@ -5,7 +5,7 @@ import {
 	register as registerNotificationPlatform,
 	type NotificationActionEvent,
 	type NotificationOptions,
-} from "@openfin/workspace/notifications";
+} from "@openfin/notifications";
 import { Observable, Subject, takeUntil, tap } from "rxjs";
 import { SettingsService } from "./settings.service";
 
