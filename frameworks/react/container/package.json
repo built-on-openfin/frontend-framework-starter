@@ -16,20 +16,28 @@
     "@finos/fdc3": "2.0.3",
     "@openfin/core": "43.104.1",
     "@openfin/workspace": "23.2.23",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-router-dom": "6.26.2"
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-router-dom": "6.30.4"
+  },
+  "overrides": {
+    "@tootallnate/once": "^2.0.1",
+    "nth-check": "^2.1.1",
+    "postcss": "^8.4.31",
+    "serialize-javascript": "^7.0.6",
+    "underscore": "^1.13.7",
+    "uuid": "^11.1.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@openfin/node-adapter": "43.104.1",
     "@testing-library/jest-dom": "6.5.0",
-    "@testing-library/react": "16.0.1",
+    "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.5.2",
     "@types/jest": "29.5.12",
     "@types/node": "22.5.4",
-    "@types/react": "18.3.5",
-    "@types/react-dom": "18.3.0",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
     "react-scripts": "5.0.1",
     "typescript": "4.9.5",
     "web-vitals": "4.2.3"
