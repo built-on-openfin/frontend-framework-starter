@@ -31,12 +31,12 @@ const DEFAULT_VERSIONS = {
 	major: "23.0.0",
 	"github-url": "23.0.0",
 	runtime: "43.142.101.2",
-	core: "43.101.2",
-	workspace: "23.0.20",
-	"workspace-platform": "23.0.20",
-	"core-web": "0.43.113",
-	"cloud-interop": "0.43.113",
-	notifications: "2.13.1",
+	core: "43.102.2",
+	workspace: "23.0.21",
+	"workspace-platform": "23.0.21",
+	"core-web": "0.43.115",
+	"cloud-interop": "0.43.117",
+	notifications: "2.13.5",
 };
 
 // =============================================================================
