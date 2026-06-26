@@ -1,7 +1,12 @@
 import { Injectable } from "@angular/core";
 import type OpenFin from "@openfin/core";
 import type { App } from "@openfin/workspace";
-import { CustomActionCallerType, init } from "@openfin/workspace-platform";
+import {
+	ColorSchemeOptionType,
+	CustomActionCallerType,
+	type CustomThemes,
+	init,
+} from "@openfin/workspace-platform";
 import { from, type Observable } from "rxjs";
 import { launchApp } from "./launch";
 import type { PlatformSettings } from "./types";
@@ -25,14 +30,14 @@ export class PlatformService {
 				theme: [
 					{
 						label: "Default",
-						default: "dark",
-						palette: {
+						default: ColorSchemeOptionType.Dark,
+						seed: {
 							brandPrimary: "#0A76D3",
 							brandSecondary: "#383A40",
 							backgroundPrimary: "#1E1F23",
 						},
 					},
-				],
+				] as CustomThemes,
 				customActions: {
 					"launch-app": async (e): Promise<void> => {
 						if (

@@ -4,7 +4,9 @@ OpenFin frontend framework starter demonstrating the use of HERE [core-web](http
 
 The focus of this starter is on project structure, bundling, and tooling within the Angular ecosystem. For more comprehensive examples of HERE Core features, see the [web-starter samples](https://github.com/built-on-openfin/web-starter).
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+Built with Angular 22 using current best practices: standalone components, [zoneless change detection](https://angular.dev/guide/zoneless) (no `zone.js`), and [signal-based queries](https://angular.dev/guide/signals/queries) (`viewChild`).
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) and is kept up to date with Angular 22.
 
 ## Getting started
 

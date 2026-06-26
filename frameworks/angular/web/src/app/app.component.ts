@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import {
+	ChangeDetectionStrategy,
+	Component,
+	type ElementRef,
+	type OnInit,
+	viewChild,
+} from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { connect, WebLayoutSnapshot } from "@openfin/core-web";
 import { environment } from "../environments/environment";
@@ -7,10 +13,11 @@ import { environment } from "../environments/environment";
 	selector: "app-root",
 	imports: [RouterOutlet],
 	templateUrl: "./app.component.html",
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	styleUrl: "./app.component.css",
 })
 export class AppComponent implements OnInit {
-	@ViewChild("layoutContainer") layoutContainer!: ElementRef<HTMLElement>;
+	private readonly layoutContainer = viewChild<ElementRef<HTMLElement>>("layoutContainer");
 
 	ngOnInit(): void {
 		this.init();
@@ -23,7 +30,8 @@ export class AppComponent implements OnInit {
 			console.error("Unable to load the default snapshot");
 			return;
 		}
-		if (!this.layoutContainer) {
+		const layoutContainer = this.layoutContainer();
+		if (!layoutContainer) {
 			console.error("Host element #layout_container not found");
 			return;
 		}
@@ -50,7 +58,7 @@ export class AppComponent implements OnInit {
 
 		// initialize the layout and pass it the dom element to bind to
 		await fin.Platform.Layout.init({
-			container: this.layoutContainer.nativeElement,
+			container: layoutContainer.nativeElement,
 		});
 	}
 

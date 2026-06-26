@@ -1,10 +1,9 @@
-import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angular/core";
 
 @Component({
 	selector: "app-view2",
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule],
+	imports: [],
 	template: `
 		<div class="col fill gap20">
 			<header class="row spread middle">

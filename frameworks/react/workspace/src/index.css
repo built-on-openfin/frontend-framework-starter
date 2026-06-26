@@ -64,8 +64,6 @@ body {
 
 body {
   display: flex;
-  justify-content: stretch;
-  align-items: stretch;
   overflow: hidden;
   padding: 20px;
   margin: 0;

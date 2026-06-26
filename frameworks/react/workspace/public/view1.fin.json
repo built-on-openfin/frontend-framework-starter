@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:3000/views/view1",
+  "url": "http://localhost:3000/view1",
   "fdc3InteropApi": "2.0",
   "interop": {
     "currentContextGroup": "green"

@@ -1,18 +1,25 @@
-import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, type OnDestroy, type OnInit, signal } from "@angular/core";
-import { catchError, concatMap, from, map, of, Subject, takeUntil, tap } from "rxjs";
+import {
+	ChangeDetectionStrategy,
+	Component,
+	DestroyRef,
+	inject,
+	type OnInit,
+	signal,
+} from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { catchError, concatMap, from, map, of, tap } from "rxjs";
 
 @Component({
 	selector: "app-provider",
 	templateUrl: "./provider.component.html",
 	styleUrl: "provider.component.css",
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule],
+	imports: [],
 })
-export class ProviderComponent implements OnInit, OnDestroy {
+export class ProviderComponent implements OnInit {
 	message = signal<string>("");
 
-	private unsubscribe$ = new Subject<void>();
+	private destroyRef = inject(DestroyRef);
 
 	ngOnInit() {
 		if (fin) {
@@ -21,7 +28,7 @@ export class ProviderComponent implements OnInit, OnDestroy {
 					tap(() => this.message.set("Initializing...")),
 					concatMap(() => from(fin.System.getRuntimeInfo())),
 					map((runtimeInfo) => this.message.set(`HERE Runtime: ${runtimeInfo.version}`)),
-					takeUntil(this.unsubscribe$),
+					takeUntilDestroyed(this.destroyRef),
 					catchError((e) => {
 						console.error(`Error Initializing Platform: ${e instanceof Error ? e.message : e}`);
 						this.message.set("Error Initializing Platform");
@@ -32,10 +39,5 @@ export class ProviderComponent implements OnInit, OnDestroy {
 		} else {
 			this.message.set("HERE runtime is not available");
 		}
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe$.next();
-		this.unsubscribe$.complete();
 	}
 }

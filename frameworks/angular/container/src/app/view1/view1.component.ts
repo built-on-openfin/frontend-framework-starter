@@ -1,11 +1,10 @@
-import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, type OnInit, signal } from "@angular/core";
 import { addEventListener, create, register } from "@openfin/notifications";
 
 @Component({
 	selector: "app-view1",
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule],
+	imports: [],
 	template: `
 		<div class="col fill gap20">
 			<header class="row spread middle">

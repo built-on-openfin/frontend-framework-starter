@@ -1,20 +1,20 @@
-import { CommonModule } from "@angular/common";
 import {
 	ChangeDetectionStrategy,
 	Component,
+	DestroyRef,
 	inject,
 	type OnDestroy,
 	type OnInit,
 	signal,
 } from "@angular/core";
-import { type Subscription } from "rxjs";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ChannelService } from "../services/channel.service";
 import { ContextService } from "../services/context.service";
 
 @Component({
 	selector: "app-view2",
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule],
+	imports: [],
 	template: `
 		<div class="col fill gap20">
 			<header class="row spread middle">
@@ -41,30 +41,23 @@ import { ContextService } from "../services/context.service";
 export class View2Component implements OnInit, OnDestroy {
 	private contextService = inject(ContextService);
 	private channelService = inject(ChannelService);
-	private contextSubscription: Subscription | null = null;
-	private channelSubscription: Subscription | null = null;
+	private destroyRef = inject(DestroyRef);
 
 	message = signal<string>("");
 
 	ngOnInit(): void {
 		this.contextService.registerContextListener("fdc3.instrument");
-		this.contextSubscription = this.contextService.context$.subscribe((context) => {
+		this.contextService.context$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((context) => {
 			this.message.set(JSON.stringify(context, undefined, "  "));
 		});
 
 		this.channelService.registerChannelListener("CUSTOM-APP-CHANNEL", "fdc3.instrument");
-		this.channelSubscription = this.channelService.channel$.subscribe((context) => {
+		this.channelService.channel$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((context) => {
 			this.message.set(JSON.stringify(context, undefined, "  "));
 		});
 	}
 
 	ngOnDestroy() {
-		if (this.contextSubscription) {
-			this.contextSubscription.unsubscribe();
-		}
-		if (this.channelSubscription) {
-			this.channelSubscription.unsubscribe();
-		}
 		this.contextService.removeListener();
 		this.channelService.removeListener();
 	}

@@ -6,9 +6,8 @@ import {
 	type HomeProvider,
 	type HomeRegistration,
 	type HomeSearchListenerRequest,
-	type HomeSearchListenerResponse,
 	type HomeSearchResponse,
-	type HomeSearchResult
+	type HomeSearchResult,
 } from "@openfin/workspace";
 import { launchApp } from "./launch";
 import type { PlatformSettings } from "./shapes";
@@ -21,7 +20,7 @@ import type { PlatformSettings } from "./shapes";
  */
 export async function register(
 	platformSettings: PlatformSettings,
-	apps?: App[]
+	apps?: App[],
 ): Promise<HomeRegistration | undefined> {
 	console.log("Initializing home.");
 
@@ -35,7 +34,7 @@ export async function register(
 		 */
 		onUserInput: async (
 			request: HomeSearchListenerRequest,
-			response: HomeSearchListenerResponse
+			// response: HomeSearchListenerResponse
 		): Promise<HomeSearchResponse> => {
 			const queryLower = request.query.toLowerCase();
 
@@ -46,7 +45,7 @@ export async function register(
 			}
 
 			return {
-				results: mapAppEntriesToSearchEntries(apps ?? [])
+				results: mapAppEntriesToSearchEntries(apps ?? []),
 			};
 		},
 		/**
@@ -59,7 +58,7 @@ export async function register(
 			} else {
 				console.warn("Unable to execute result without data being passed");
 			}
-		}
+		},
 	};
 
 	const homeRegistration = await Home.register(homeProvider);
@@ -86,7 +85,7 @@ function mapAppEntriesToSearchEntries(apps: App[]): HomeSearchResult[] {
 				description: app.description,
 				shortDescription: app.description,
 				template: CLITemplate.SimpleText,
-				templateContent: app.description
+				templateContent: app.description,
 			};
 
 			if (app.manifestType === "view") {

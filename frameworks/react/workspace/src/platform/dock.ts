@@ -9,7 +9,7 @@ import type { PlatformSettings } from "./shapes";
  */
 export async function register(
 	platformSettings: PlatformSettings,
-	apps?: App[]
+	apps?: App[],
 ): Promise<RegistrationMetaInfo | undefined> {
 	console.log("Initializing the dock provider.");
 
@@ -17,7 +17,7 @@ export async function register(
 		const metaInfo = await Dock.register({
 			...platformSettings,
 			workspaceComponents: ["home", "store", "notifications", "switchWorkspace"],
-			disableUserRearrangement: true,
+			disableUserRearrangement: false,
 			buttons: [
 				{
 					type: "DropdownButton" as DockButtonNames.DropdownButton,
@@ -29,11 +29,11 @@ export async function register(
 						iconUrl: app.icons?.length ? app.icons[0].src : platformSettings.icon,
 						action: {
 							id: "launch-app",
-							customData: app
-						}
-					}))
-				}
-			]
+							customData: app,
+						},
+					})),
+				},
+			],
 		});
 		console.log(metaInfo);
 		console.log("Dock provider initialized.");

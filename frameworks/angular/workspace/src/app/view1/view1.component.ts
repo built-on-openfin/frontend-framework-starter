@@ -1,6 +1,13 @@
-import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, type OnDestroy, type OnInit } from "@angular/core";
-import { Subject, takeUntil, tap } from "rxjs";
+import {
+	ChangeDetectionStrategy,
+	Component,
+	DestroyRef,
+	inject,
+	type OnDestroy,
+	type OnInit,
+} from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { tap } from "rxjs";
 import { ChannelService } from "../services/channel.service";
 import { ContextService } from "../services/context.service";
 import { NotificationsService } from "../services/notifications.service";
@@ -8,7 +15,7 @@ import { NotificationsService } from "../services/notifications.service";
 @Component({
 	selector: "app-view1",
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule],
+	imports: [],
 	template: `
 		<div class="col fill gap20">
 			<header class="row spread middle">
@@ -34,8 +41,7 @@ export class View1Component implements OnInit, OnDestroy {
 	private notificationService = inject(NotificationsService);
 	private contextService = inject(ContextService);
 	private channelService = inject(ChannelService);
-
-	private unsubscribe$ = new Subject<void>();
+	private destroyRef = inject(DestroyRef);
 
 	ngOnInit(): void {
 		this.notificationService
@@ -44,15 +50,13 @@ export class View1Component implements OnInit, OnDestroy {
 				tap((event) => {
 					console.log("Notification clicked:", event.result["customData"]);
 				}),
-				takeUntil(this.unsubscribe$),
+				takeUntilDestroyed(this.destroyRef),
 			)
 			.subscribe();
 	}
 
 	ngOnDestroy(): void {
 		this.notificationService.deregister(fin.me.identity.uuid);
-		this.unsubscribe$.next();
-		this.unsubscribe$.complete();
 	}
 
 	showNotification(): void {
