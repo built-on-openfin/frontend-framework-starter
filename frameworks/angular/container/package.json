@@ -1,6 +1,6 @@
 {
   "name": "angular-container-starter",
-  "version": "23.2.0",
+  "version": "24.0.0",
   "engines": {
     "node": ">=22"
   },
@@ -23,8 +23,8 @@
     "@angular/platform-browser": "^22.0.2",
     "@angular/router": "^22.0.2",
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "43.104.1",
-    "@openfin/workspace": "23.2.23",
+    "@openfin/core": "44.101.5",
+    "@openfin/workspace": "24.0.19",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0"
   },
@@ -32,7 +32,7 @@
     "@angular/build": "^22.0.3",
     "@angular/cli": "^22.0.3",
     "@angular/compiler-cli": "^22.0.2",
-    "@openfin/node-adapter": "43.104.1",
+    "@openfin/node-adapter": "44.101.5",
     "angular-eslint": "22.0.0",
     "eslint": "^9.28.0",
     "istanbul-lib-instrument": "^6.0.3",

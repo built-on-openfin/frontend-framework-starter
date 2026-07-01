@@ -1,7 +1,7 @@
 {
   "runtime": {
     "arguments": "--enable-mesh --security-realm=react-container-starter",
-    "version": "43.142.104.1"
+    "version": "44.146.101.5"
   },
   "platform": {
     "uuid": "react-container-starter",

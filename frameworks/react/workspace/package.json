@@ -1,6 +1,6 @@
 {
   "name": "react-workspace-starter",
-  "version": "23.2.0",
+  "version": "24.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,17 +12,17 @@
   },
   "dependencies": {
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "43.104.1",
-    "@openfin/notifications": "2.14.3",
-    "@openfin/workspace": "23.2.23",
-    "@openfin/workspace-platform": "23.2.23",
+    "@openfin/core": "44.101.5",
+    "@openfin/notifications": "2.15.0",
+    "@openfin/workspace": "24.0.19",
+    "@openfin/workspace-platform": "24.0.19",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.18.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@openfin/node-adapter": "43.104.1",
+    "@openfin/node-adapter": "44.101.5",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

@@ -11,14 +11,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DEFAULT_VERSIONS = {
-	major: "23.2.0",
+	major: "24.0.0",
 	"github-url": "23.0.0",
-	runtime: "43.142.104.1",
-	core: "43.104.1",
-	workspace: "23.2.23",
-	"workspace-platform": "23.2.23",
+	runtime: "44.146.101.5",
+	core: "44.101.5",
+	workspace: "24.0.19",
+	"workspace-platform": "24.0.19",
 	"core-web": "0.44.112",
-	notifications: "2.14.3",
+	notifications: "2.15.0",
 };
 
 const FRAMEWORKS_DIR = path.resolve(__dirname, "../frameworks");
@@ -401,6 +401,14 @@ async function processProject(projectDir, { versions, majorVersion, installOnly,
 
 	// npm install (skip if build-only)
 	if (!buildOnly) {
+		const nodeModulesPath = path.join(projectDir, "node_modules");
+		try {
+			await fs.rm(nodeModulesPath, { recursive: true, force: true });
+			console.log(`  Removed node_modules`);
+		} catch (e) {
+			console.error(`  Warning: could not remove node_modules: ${e.message}`);
+		}
+
 		if (!(await runCommand("npm install", projectDir))) {
 			return false;
 		}
