@@ -12,17 +12,17 @@
   },
   "dependencies": {
     "@finos/fdc3": "2.0.3",
-    "@openfin/core": "44.101.5",
-    "@openfin/notifications": "2.15.0",
-    "@openfin/workspace": "24.0.19",
-    "@openfin/workspace-platform": "24.0.19",
+    "@openfin/core": "44.101.7",
+    "@openfin/notifications": "2.15.1",
+    "@openfin/workspace": "24.0.22",
+    "@openfin/workspace-platform": "24.0.22",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.18.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@openfin/node-adapter": "44.101.5",
+    "@openfin/node-adapter": "44.101.7",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
