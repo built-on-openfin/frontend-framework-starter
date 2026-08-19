@@ -10,6 +10,7 @@
     "list-update-packages": "npx --yes npm-check-updates --deep > updatable-packages.txt",
     "update-packages": "npx --yes npm-check-updates --upgrade --deep -x @openfin/core,@openfin/node-adapter,@openfin/workspace,@openfin/workspace-platform",
     "upgrade-versions": "node scripts/upgrade-versions.mjs",
+    "launch-debug": "node scripts/launch-debug.mjs",
     "build-all": "node scripts/upgrade-versions.mjs --build-only"
   },
   "contributors": [
