@@ -15,10 +15,10 @@ const DEFAULT_VERSIONS = {
 	"github-url": "24.0.0",
 	runtime: "44.146.101.5",
 	core: "44.101.7",
-	workspace: "24.0.22",
-	"workspace-platform": "24.0.22",
+	workspace: "24.0.24",
+	"workspace-platform": "24.0.24",
 	"core-web": "0.44.115",
-	notifications: "2.15.1",
+	notifications: "2.15.3",
 };
 
 const FRAMEWORKS_DIR = path.resolve(__dirname, "../frameworks");
