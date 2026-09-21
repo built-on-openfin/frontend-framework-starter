@@ -53,8 +53,9 @@ def main():
 		],
 	)
 
-	time.sleep(2)
-	launch_openfin()
+	if os.environ.get("OPENFIN_AUTO_LAUNCH") != "0":
+		time.sleep(2)
+		launch_openfin()
 
 	try:
 		while True:

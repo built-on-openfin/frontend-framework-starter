@@ -15,12 +15,12 @@ This example demonstrates bidirectional FDC3 messaging between two Streamlit vie
 
 ## Try it out
 
-First, make sure `uv` is installed: https://github.com/astral-sh/uv
+First, install Python 3.12 or later and `uv`: https://github.com/astral-sh/uv
 
 1. Install dependencies (creates a virtual environment automatically):
 
    ```sh
-   uv sync
+   uv sync --locked
    ```
 
 2. Start the app:
