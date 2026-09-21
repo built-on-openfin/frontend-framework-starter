@@ -1,7 +1,7 @@
 {
   "name": "workspace-platform-starter",
   "private": true,
-  "version": "23.2.0",
+  "version": "45.0.0",
   "type": "module",
   "engines": {
     "node": ">=22"
@@ -17,22 +17,19 @@
   },
   "dependencies": {
     "@finos/fdc3": "2.0.3",
-    "@openfin/cloud-interop": "0.40.40",
+    "@openfin/cloud-interop": "0.45.113",
     "@openfin/openid-connect": "^1.0.0",
     "@openfin/snap-sdk": "1.3.4",
-    "@openfin/workspace": "23.2.23",
-    "@openfin/workspace-platform": "23.2.23",
+    "@openfin/workspace": "45.2.6",
+    "@openfin/workspace-platform": "45.2.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.6.1"
   },
-  "overrides": {
-    "@openfin/core": "43.104.1"
-  },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
-    "@openfin/core": "43.104.1",
-    "@openfin/node-adapter": "43.104.1",
+    "@openfin/core": "45.101.1",
+    "@openfin/node-adapter": "45.101.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^1.0.0",
