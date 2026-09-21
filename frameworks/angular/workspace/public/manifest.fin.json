@@ -2,7 +2,7 @@
   "licenseKey": "openfin-demo-license-key",
   "runtime": {
     "arguments": "--enable-mesh --security-realm=angular-workspace-starter",
-    "version": "44.146.101.5"
+    "version": "45.150.101.1"
   },
   "platform": {
     "uuid": "angular-workspace-starter",
