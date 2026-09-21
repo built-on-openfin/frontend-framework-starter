@@ -37,7 +37,8 @@ def main() -> None:
     # Note: In debug mode, Dash/Flask's reloader spawns a second process and would
     # otherwise trigger `launch_openfin()` twice. We disable the reloader here to
     # make behavior deterministic.
-    threading.Thread(target=lambda: (time.sleep(2), launch_openfin()), daemon=True).start()
+    if os.environ.get("OPENFIN_AUTO_LAUNCH") != "0":
+        threading.Thread(target=lambda: (time.sleep(2), launch_openfin()), daemon=True).start()
 
     app.run(debug=True, host="0.0.0.0", port=8050, use_reloader=False)
 

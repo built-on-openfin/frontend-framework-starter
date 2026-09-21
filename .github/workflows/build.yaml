@@ -70,18 +70,22 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
       - name: Install uv
-        run: pip install uv
+        uses: astral-sh/setup-uv@v5
 
       # Python Streamlit
-      - name: Install Streamlit Dependencies
+      - name: Test Streamlit Example
         run: |
           cd frameworks/python/streamlit
-          uv pip install -e . --system
+          uv sync --locked --all-groups
+          uv run pytest tests/test_http_smoke.py -v
+          uv tool run pip-audit --path .venv
 
       # Python Dash
-      - name: Install Dash Dependencies
+      - name: Test Dash Example
         run: |
           cd frameworks/python/dash
-          uv pip install -e . --system
+          uv sync --locked --all-groups
+          uv run pytest tests/test_http_smoke.py -v
+          uv tool run pip-audit --path .venv
