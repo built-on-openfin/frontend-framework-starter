@@ -3,7 +3,7 @@
   "licenseKey": "openfin-demo-license-key",
   "runtime": {
     "arguments": "--enable-mesh --security-realm=workspace-platform-starter-react-wrapper",
-    "version": "43.142.104.1"
+    "version": "45.150.101.1"
   },
   "platform": {
     "name": "Workspace Platform Starter React Wrapper",
@@ -26,13 +26,10 @@
         "serveAsset": true,
         "openUrlWithBrowser": {
           "enabled": true,
-          "protocols": [
-            "mailto",
-            "msteams",
-            "tel"
-          ]
+          "protocols": ["mailto", "msteams", "tel"]
         }
-      }
+      },
+      "webAPIs": ["clipboard-sanitized-write"]
     },
     "defaultWindowOptions": {
       "roundedCorners": true,
@@ -40,11 +37,7 @@
         "System": {
           "openUrlWithBrowser": {
             "enabled": true,
-            "protocols": [
-              "mailto",
-              "msteams",
-              "tel"
-            ]
+            "protocols": ["mailto", "msteams", "tel"]
           }
         }
       },
@@ -65,11 +58,7 @@
         "System": {
           "openUrlWithBrowser": {
             "enabled": true,
-            "protocols": [
-              "mailto",
-              "msteams",
-              "tel"
-            ]
+            "protocols": ["mailto", "msteams", "tel"]
           }
         }
       }
@@ -83,21 +72,24 @@
           "enabled": true
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "command": "findInPage.show",
+        "keys": "CommandOrControl+f"
+      }
+    ]
   },
   "shortcut": {
     "company": "HERE",
     "description": "A way of showing examples of what HERE can do.",
     "icon": "http://localhost:8080/favicon.ico",
-    "name": "Workspace Platform Starter - v23.0.0",
-    "target": [
-      "desktop",
-      "start-menu"
-    ]
+    "name": "HERE Core UI Platform Starter - v45.0.0",
+    "target": ["desktop", "start-menu"]
   },
   "supportInformation": {
     "company": "HERE",
-    "product": "Workspace Starter - Workspace Platform Starter - Client",
+    "product": "Workspace Starter - HERE Core UI Platform Starter - Client",
     "email": "support@here.io",
     "forwardErrorReports": true
   },
@@ -111,13 +103,7 @@
       "store": true,
       "dock": true,
       "notifications": true,
-      "autoShow": [
-        "dock",
-        "home"
-      ]
-    },
-    "splashScreenProvider": {
-      "url": "http://localhost:8080/splash.html"
+      "autoShow": ["dock", "home"]
     },
     "platformProvider": {
       "rootUrl": "http://localhost:8080",
@@ -128,8 +114,8 @@
         {
           "id": "default-wps-platform",
           "icon": "http://localhost:8080/favicon.ico",
-          "title": "Workspace Platform Starter Platform Override",
-          "description": "This is the implementation included in workspace platform starter but it is now exposed as a module to allow for easy replacement.",
+          "title": "HERE Core UI Platform Starter Platform Override",
+          "description": "This is the implementation included in HERE Core UI Platform starter but it is now exposed as a module to allow for easy replacement.",
           "enabled": true,
           "url": "http://localhost:8080/openfin/js/modules/platform-override/wps-platform-override.bundle.js",
           "data": {
@@ -144,7 +130,9 @@
           "width": 665,
           "fdc3InteropApi": "2.0"
         },
-        "intentOptions": {},
+        "intentOptions": {
+          "intentTimeout": 60000
+        },
         "openOptions": {},
         "contextOptions": {},
         "getInfoOptions": {
@@ -165,49 +153,32 @@
             {
               "name": "StartCall",
               "displayName": "Start a Call",
-              "contexts": [
-                "fdc3.contact",
-                "fdc3.contactList"
-              ]
+              "contexts": ["fdc3.contact", "fdc3.contactList"]
             },
             {
               "name": "StartChat",
               "displayName": "Start a Chat",
-              "contexts": [
-                "fdc3.contact",
-                "fdc3.contactList"
-              ]
+              "contexts": ["fdc3.contact", "fdc3.contactList"]
             },
             {
               "name": "ViewChart",
               "displayName": "View Chart",
-              "contexts": [
-                "fdc3.instrument",
-                "fdc3.instrumentList",
-                "fdc3.portfolio",
-                "fdc3.position"
-              ]
+              "contexts": ["fdc3.instrument", "fdc3.instrumentList", "fdc3.portfolio", "fdc3.position"]
             },
             {
               "name": "ViewContact",
               "displayName": "View Contact Details",
-              "contexts": [
-                "fdc3.contact"
-              ]
+              "contexts": ["fdc3.contact"]
             },
             {
               "name": "ViewProfile",
               "displayName": "View Profile",
-              "contexts": [
-                "fdc3.contact"
-              ]
+              "contexts": ["fdc3.contact"]
             },
             {
               "name": "ViewQuote",
               "displayName": "View Quote",
-              "contexts": [
-                "fdc3.instrument"
-              ]
+              "contexts": ["fdc3.instrument"]
             },
             {
               "name": "ViewNews",
@@ -223,18 +194,12 @@
             {
               "name": "ViewAnalysis",
               "displayName": "View Analysis",
-              "contexts": [
-                "fdc3.instrument",
-                "fdc3.organization",
-                "fdc3.portfolio"
-              ]
+              "contexts": ["fdc3.instrument", "fdc3.organization", "fdc3.portfolio"]
             },
             {
               "name": "ViewInstrument",
               "displayName": "View Instrument Details",
-              "contexts": [
-                "fdc3.instrument"
-              ]
+              "contexts": ["fdc3.instrument"]
             }
           ]
         },
@@ -259,10 +224,26 @@
             }
           },
           {
+            "id": "intent-short-circuit",
+            "icon": "http://localhost:8080/favicon.ico",
+            "title": "Intent Short Circuit",
+            "description": "Intent Short Circuit",
+            "enabled": true,
+            "url": "http://localhost:8080/openfin/js/modules/interop-override/intent-short-circuit.bundle.js",
+            "data": {
+              "intentMappings": [
+                {
+                  "intentName": "GetVersion",
+                  "appId": "workspace-platform-starter"
+                }
+              ]
+            }
+          },
+          {
             "id": "default-wps-interop",
             "icon": "http://localhost:8080/favicon.ico",
-            "title": "Workspace Platform Starter Interop Broker",
-            "description": "This is the implementation included in workspace platform starter but it is now exposed as a module to allow for easy replacement.",
+            "title": "HERE Core UI Platform Starter Interop Broker",
+            "description": "This is the implementation included in HERE Core UI Platform starter but it is now exposed as a module to allow for easy replacement.",
             "enabled": true,
             "url": "http://localhost:8080/openfin/js/modules/interop-override/wps-interop-override.bundle.js",
             "data": {
@@ -481,40 +462,27 @@
           {
             "enabled": true,
             "id": "default-workspace",
-            "endpointIds": [
-              "get-default-workspace",
-              "set-default-workspace"
-            ]
+            "endpointIds": ["get-default-workspace", "set-default-workspace"]
           },
           {
             "enabled": true,
             "id": "pages-share",
-            "endpointIds": [
-              "share-get",
-              "share-set"
-            ]
+            "endpointIds": ["share-get", "share-set"]
           },
           {
             "enabled": true,
             "id": "workspaces-share",
-            "endpointIds": [
-              "share-get",
-              "share-set"
-            ]
+            "endpointIds": ["share-get", "share-set"]
           },
           {
             "enabled": true,
             "id": "default-wps-interop",
-            "endpointIds": [
-              "*"
-            ]
+            "endpointIds": ["*"]
           },
           {
             "enabled": true,
             "id": "default-wps-platform",
-            "endpointIds": [
-              "*"
-            ]
+            "endpointIds": ["*"]
           },
           {
             "enabled": true,
@@ -553,6 +521,14 @@
           "newPageUrl": "http://localhost:8080/common/views/platform/new-tab/new-tab.html",
           "navigationButtons": {
             "enabled": true
+          },
+          "tabSearchButton": {
+            "pageTabs": {
+              "enabled": true
+            },
+            "viewTabs": {
+              "enabled": true
+            }
           }
         }
       },
@@ -612,9 +588,7 @@
             "type": "Quit",
             "operation": "after"
           },
-          "conditions": [
-            "authenticated"
-          ]
+          "conditions": ["authenticated"]
         }
       ],
       "pageMenu": [
@@ -697,9 +671,7 @@
               "customData": {}
             }
           },
-          "conditions": [
-            "themed"
-          ]
+          "conditions": ["themed"]
         },
         {
           "include": false,
@@ -745,9 +717,7 @@
               }
             }
           },
-          "conditions": [
-            "removed-from-snapshot"
-          ]
+          "conditions": ["removed-from-snapshot"]
         },
         {
           "include": false,
@@ -765,9 +735,7 @@
               }
             }
           },
-          "conditions": [
-            "included-in-snapshot"
-          ]
+          "conditions": ["included-in-snapshot"]
         },
         {
           "include": true,
@@ -844,9 +812,7 @@
               "customData": {}
             }
           },
-          "conditions": [
-            "sharing"
-          ]
+          "conditions": ["sharing"]
         },
         {
           "include": true,
@@ -867,7 +833,7 @@
           "palettes": {
             "light": {
               "brandPrimary": "#0A76D3",
-              "brandSecondary": "#1E1F23",
+              "brandSecondary": "#ECEEF1",
               "backgroundPrimary": "#FAFBFE",
               "background1": "#FFFFFF",
               "background2": "#FAFBFE",
@@ -931,16 +897,16 @@
     },
     "homeProvider": {
       "id": "workspace-platform-starter",
-      "title": "Workspace Platform Starter",
+      "homeType": "platform",
+      "title": "HERE Core UI Platform Starter",
       "icon": "http://localhost:8080/favicon.ico",
       "queryMinLength": 3,
-      "queryAgainst": [
-        "title"
-      ]
+      "queryAgainst": ["title"]
     },
     "storefrontProvider": {
       "id": "workspace-platform-starter",
-      "title": "Workspace Platform Starter",
+      "storeType": "platform",
+      "title": "HERE Core UI Platform Starter",
       "icon": "http://localhost:8080/favicon.ico",
       "landingPage": {
         "hero": {
@@ -948,9 +914,7 @@
           "description": "This is a demonstration of the hero section that you can configure for your store.",
           "cta": {
             "title": "Hero Apps!",
-            "tags": [
-              "hero"
-            ]
+            "tags": ["hero"]
           },
           "image": {
             "src": "http://localhost:8080/common/images/store/superhero-unsplash.jpg"
@@ -965,9 +929,7 @@
               "image": {
                 "src": "http://localhost:8080/common/images/store/coding-2-unsplash.jpg"
               },
-              "tags": [
-                "tools"
-              ],
+              "tags": ["tools"],
               "buttonTitle": "View"
             },
             {
@@ -976,19 +938,14 @@
               "image": {
                 "src": "http://localhost:8080/common/images/store/coding-3-unsplash.jpg"
               },
-              "tags": [
-                "page"
-              ],
+              "tags": ["page"],
               "buttonTitle": "View"
             }
           ]
         },
         "middleRow": {
           "title": "A collection of simple views that show how to share context using the FDC3 or Interop APIs.",
-          "tags": [
-            "fdc3",
-            "interop"
-          ]
+          "tags": ["fdc3", "interop"]
         },
         "bottomRow": {
           "title": "Quick Access",
@@ -999,20 +956,16 @@
               "image": {
                 "src": "http://localhost:8080/common/images/store/coding-4-unsplash.jpg"
               },
-              "tags": [
-                "view"
-              ],
+              "tags": ["view"],
               "buttonTitle": "View"
             },
             {
               "title": "Web Apps",
-              "description": "A collection of web apps built using HERE.",
+              "description": "A collection of web apps built using OpenFin.",
               "image": {
                 "src": "http://localhost:8080/common/images/store/coding-5-unsplash.jpg"
               },
-              "tags": [
-                "manifest"
-              ],
+              "tags": ["manifest"],
               "buttonTitle": "View"
             },
             {
@@ -1021,9 +974,7 @@
               "image": {
                 "src": "http://localhost:8080/common/images/store/coding-6-unsplash.jpg"
               },
-              "tags": [
-                "native"
-              ],
+              "tags": ["native"],
               "buttonTitle": "View"
             }
           ]
@@ -1035,37 +986,23 @@
           "items": [
             {
               "title": "All Apps",
-              "tags": [
-                "view",
-                "page",
-                "manifest",
-                "native",
-                "desktop-browser"
-              ]
+              "tags": ["view", "page", "manifest", "native", "desktop-browser"]
             },
             {
               "title": "Views",
-              "tags": [
-                "view"
-              ]
+              "tags": ["view"]
             },
             {
               "title": "Pages",
-              "tags": [
-                "page"
-              ]
+              "tags": ["page"]
             },
             {
               "title": "Manifest",
-              "tags": [
-                "manifest"
-              ]
+              "tags": ["manifest"]
             },
             {
               "title": "Native",
-              "tags": [
-                "native"
-              ]
+              "tags": ["native"]
             }
           ]
         },
@@ -1074,15 +1011,11 @@
           "items": [
             {
               "title": "FDC3 API",
-              "tags": [
-                "fdc3"
-              ]
+              "tags": ["fdc3"]
             },
             {
               "title": "Interop API",
-              "tags": [
-                "interop"
-              ]
+              "tags": ["interop"]
             }
           ]
         }
@@ -1107,13 +1040,33 @@
     },
     "dockProvider": {
       "id": "workspace-platform-starter",
-      "title": "Workspace Platform Starter",
+      "title": "HERE Core UI Platform Starter",
       "icon": "http://localhost:8080/favicon.ico",
       "workspaceComponents": {
         "hideHomeButton": false,
         "hideWorkspacesButton": false,
         "hideNotificationsButton": false,
-        "hideStorefrontButton": false
+        "hideStorefrontButton": false,
+        "hideContentButton": false
+      },
+      "dockType": "platform",
+      "dockWindowOptions": {
+        "experimental": {
+          "snapZone": {
+            "enabled": true
+          }
+        }
+      },
+      "dockUIConfig": {
+        "contentMenu": {
+          "enableBookmarking": false
+        },
+        "moreMenu": {
+          "moreMenuCustomOption": {
+            "label": "Help",
+            "options": [{ "tooltip": "About", "action": "show-about" }]
+          }
+        }
       },
       "entries": [
         {
@@ -1128,26 +1081,20 @@
         {
           "id": "dock-apps",
           "display": "individual",
-          "tags": [
-            "dock"
-          ]
+          "tags": ["dock"]
         },
         {
           "id": "fdc3-apps",
           "display": "group",
           "tooltip": "FDC3",
-          "tags": [
-            "fdc3"
-          ]
+          "tags": ["fdc3"]
         },
         {
           "id": "manager-apps",
           "display": "group",
           "tooltip": "Manager",
           "iconUrl": "http://localhost:8080/common/images/icon-gradient.png",
-          "tags": [
-            "manager"
-          ]
+          "tags": ["manager"]
         },
         {
           "id": "favorites",
@@ -1156,9 +1103,7 @@
           "action": {
             "id": "favorites-menu"
           },
-          "conditions": [
-            "favorites"
-          ]
+          "conditions": ["favorites"]
         },
         {
           "id": "pages",
@@ -1273,7 +1218,7 @@
     },
     "notificationProvider": {
       "id": "workspace-platform-starter",
-      "title": "Workspace Platform Starter",
+      "title": "HERE Core UI Platform Starter",
       "icon": "http://localhost:8080/favicon.ico",
       "notificationClients": {
         "defaults": {
@@ -1389,36 +1334,36 @@
         },
         {
           "id": "salesforce",
-          "icon": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/favicon.ico",
+          "icon": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/favicon.ico",
           "title": "Salesforce",
           "enabled": false,
-          "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/js/modules/integrations/salesforce.bundle.js",
+          "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/js/modules/integrations/salesforce.bundle.js",
           "data": {
             "appId": "",
             "consumerKey": "",
             "orgUrl": "",
-            "preload": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/js/preload.js",
+            "preload": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/js/preload.js",
             "enableLibLogging": true,
             "iconMap": {
-              "salesforce": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/salesforce.svg",
-              "contact": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/contact.svg",
-              "account": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/account.svg",
-              "chatter": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/chatter.svg",
-              "note": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/note.svg",
-              "task": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/task.svg",
-              "dashboard": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/dashboard.svg",
-              "phone": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/phone.svg",
-              "chat": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/chat.svg",
-              "email": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-salesforce/images/email.svg"
+              "salesforce": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/salesforce.svg",
+              "contact": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/contact.svg",
+              "account": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/account.svg",
+              "chatter": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/chatter.svg",
+              "note": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/note.svg",
+              "task": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/task.svg",
+              "dashboard": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/dashboard.svg",
+              "phone": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/phone.svg",
+              "chat": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/chat.svg",
+              "email": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-salesforce/images/email.svg"
             }
           }
         },
         {
           "id": "ms365",
-          "icon": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/favicon.ico",
+          "icon": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/favicon.ico",
           "title": "Microsoft 365",
           "enabled": false,
-          "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/js/integrations/ms365.bundle.js",
+          "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/js/integrations/ms365.bundle.js",
           "data": {
             "clientId": "",
             "tenantId": "",
@@ -1442,48 +1387,48 @@
             "disableGraphExplorer": false,
             "enableLibLogging": true,
             "images": {
-              "microsoft365": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/apps/microsoft365.svg",
-              "teams": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/apps/teams.svg",
-              "word": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/apps/word.svg",
-              "excel": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/apps/excel.svg",
-              "onenote": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/apps/onenote.svg",
-              "powerpoint": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/apps/powerpoint.svg",
-              "outlook": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/apps/outlook-mail.svg",
-              "email": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/email.svg",
-              "calendar": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/calendar.svg",
-              "share": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/share.svg",
-              "chat": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/chat.svg",
-              "call": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/call.svg",
-              "contact": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/contact.svg",
-              "team": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/team.svg",
-              "file": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/file.svg",
-              "folder": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/folder.svg",
-              "channel": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/channel.svg",
-              "clock": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/clock.svg",
-              "check": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/check.svg",
-              "cross": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-ms365/images/icons/cross.svg"
+              "microsoft365": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/apps/microsoft365.svg",
+              "teams": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/apps/teams.svg",
+              "word": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/apps/word.svg",
+              "excel": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/apps/excel.svg",
+              "onenote": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/apps/onenote.svg",
+              "powerpoint": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/apps/powerpoint.svg",
+              "outlook": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/apps/outlook-mail.svg",
+              "email": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/email.svg",
+              "calendar": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/calendar.svg",
+              "share": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/share.svg",
+              "chat": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/chat.svg",
+              "call": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/call.svg",
+              "contact": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/contact.svg",
+              "team": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/team.svg",
+              "file": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/file.svg",
+              "folder": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/folder.svg",
+              "channel": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/channel.svg",
+              "clock": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/clock.svg",
+              "check": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/check.svg",
+              "cross": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-ms365/images/icons/cross.svg"
             }
           }
         },
         {
           "id": "servicenow",
-          "icon": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/favicon.ico",
+          "icon": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/favicon.ico",
           "title": "ServiceNow",
           "enabled": false,
-          "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/js/integrations/servicenow.bundle.js",
+          "url": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/js/integrations/servicenow.bundle.js",
           "data": {
             "instanceUrl": "",
             "clientId": "",
             "enableLibLogging": true,
             "images": {
-              "servicenow": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/images/apps/servicenow.svg",
-              "contact": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/images/types/contact.svg",
-              "account": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/images/types/account.svg",
-              "case": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/images/types/case.svg",
-              "task": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/images/types/task.svg",
-              "incident": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/images/types/incident.svg",
-              "call": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/images/icons/call.svg",
-              "email": "https://built-on-openfin.github.io/workspace-starter/workspace/v23.0.0/integrate-with-servicenow/images/icons/email.svg"
+              "servicenow": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/images/apps/servicenow.svg",
+              "contact": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/images/types/contact.svg",
+              "account": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/images/types/account.svg",
+              "case": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/images/types/case.svg",
+              "task": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/images/types/task.svg",
+              "incident": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/images/types/incident.svg",
+              "call": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/images/icons/call.svg",
+              "email": "https://built-on-openfin.github.io/workspace-starter/workspace/v45.0.0/integrate-with-servicenow/images/icons/email.svg"
             }
           }
         },
@@ -1502,9 +1447,9 @@
           "icon": "http://localhost:8080/favicon.ico",
           "title": "Quote Provider",
           "enabled": false,
-          "url": "https://built-on-openfin.github.io/dev-extensions/extensions/v23.0.0/integrations/js/modules/integrations/quote.bundle.js",
+          "url": "https://built-on-openfin.github.io/dev-extensions/extensions/v45.0.0/integrations/js/modules/integrations/quote.bundle.js",
           "data": {
-            "rootUrl": "https://built-on-openfin.github.io/dev-extensions/extensions/v23.0.0/integrations/data/quotes/"
+            "rootUrl": "https://built-on-openfin.github.io/dev-extensions/extensions/v45.0.0/integrations/data/quotes/"
           }
         },
         {
@@ -1512,7 +1457,7 @@
           "icon": "http://localhost:8080/favicon.ico",
           "title": "Emoji Provider",
           "enabled": false,
-          "url": "https://built-on-openfin.github.io/dev-extensions/extensions/v23.0.0/integrations/js/modules/integrations/emoji.bundle.js",
+          "url": "https://built-on-openfin.github.io/dev-extensions/extensions/v45.0.0/integrations/js/modules/integrations/emoji.bundle.js",
           "data": {}
         }
       ]
@@ -1525,10 +1470,7 @@
           "title": "Init Options Interop",
           "url": "http://localhost:8080/openfin/js/modules/init-options/interop.bundle.js",
           "data": {
-            "supportedActions": [
-              "raise-intent",
-              "share-context"
-            ]
+            "supportedActions": ["raise-intent", "share-context"]
           }
         },
         {
@@ -1537,9 +1479,7 @@
           "title": "Init Options Launch App",
           "url": "http://localhost:8080/openfin/js/modules/init-options/launch-app.bundle.js",
           "data": {
-            "supportedActions": [
-              "launch-app"
-            ],
+            "supportedActions": ["launch-app"],
             "supportedManifestTypes": [
               "view",
               "inline-view",
@@ -1556,9 +1496,7 @@
           "title": "Init Options Show Page",
           "url": "http://localhost:8080/openfin/js/modules/composite/pages.bundle.js",
           "data": {
-            "supportedActions": [
-              "show-page"
-            ]
+            "supportedActions": ["show-page"]
           }
         },
         {
@@ -1567,9 +1505,7 @@
           "title": "Init Options Launch Workspace",
           "url": "http://localhost:8080/openfin/js/modules/init-options/launch-workspace.bundle.js",
           "data": {
-            "supportedActions": [
-              "launch-workspace"
-            ]
+            "supportedActions": ["launch-workspace"]
           }
         }
       ]
@@ -1597,6 +1533,26 @@
           "id": "developer-actions",
           "title": "Developer Actions",
           "url": "http://localhost:8080/openfin/js/modules/composite/developer.bundle.js"
+        },
+        {
+          "enabled": true,
+          "id": "about-actions",
+          "title": "About Actions",
+          "url": "http://localhost:8080/openfin/js/modules/composite/about.bundle.js",
+          "data": {
+            "windowOptions": {
+              "name": "about",
+              "url": "http://localhost:8080/common/windows/version/about.html",
+              "defaultCentered": true,
+              "showTaskbarIcon": false,
+              "autoShow": true,
+              "minimizable": false,
+              "maximizable": false,
+              "defaultHeight": 396,
+              "defaultWidth": 760,
+              "customData": {}
+            }
+          }
         },
         {
           "enabled": true,
@@ -1742,6 +1698,28 @@
         }
       ]
     },
+    "versionProvider": {
+      "appVersion": "1.0.0",
+      "supportGetVersionIntent": true,
+      "minVersion": {
+        "workspace": "19.0.0"
+      },
+      "versionWindow": {
+        "name": "versioning",
+        "url": "http://localhost:8080/openfin/windows/version/version.html",
+        "defaultCentered": true,
+        "showTaskbarIcon": false,
+        "autoShow": true,
+        "minimizable": false,
+        "maximizable": false,
+        "defaultHeight": 481,
+        "defaultWidth": 760,
+        "saveWindowState": false,
+        "includeInSnapshots": false
+      },
+      "endpointId": "version",
+      "versionCheckIntervalInSeconds": 30
+    },
     "menusProvider": {
       "popupHtml": "http://localhost:8080/common/popups/menu/index.html",
       "modules": [
@@ -1859,9 +1837,7 @@
           "position": {
             "operation": "end"
           },
-          "conditions": [
-            "authenticated"
-          ]
+          "conditions": ["authenticated"]
         }
       ]
     },
@@ -1870,11 +1846,7 @@
       "favoriteIcon": "http://localhost:8080/common/icons/{theme}/{scheme}/favorite.svg",
       "unfavoriteIcon": "http://localhost:8080/common/icons/{theme}/{scheme}/unfavorite.svg",
       "favoriteCommand": "/fav",
-      "supportedFavoriteTypes": [
-        "workspace",
-        "page",
-        "app"
-      ]
+      "supportedFavoriteTypes": ["workspace", "page", "app"]
     },
     "lifecycleProvider": {
       "modules": [
@@ -1924,9 +1896,7 @@
             "rules": [
               {
                 "behavior": "window",
-                "match": [
-                  "https://www.newscientist.com/*"
-                ],
+                "match": ["https://www.newscientist.com/*"],
                 "options": {
                   "defaultWidth": 800,
                   "defaultHeight": 600
@@ -1934,22 +1904,15 @@
               },
               {
                 "behavior": "browser",
-                "match": [
-                  "https://www.livescience.com/*"
-                ]
+                "match": ["https://www.livescience.com/*"]
               },
               {
                 "behavior": "block",
-                "match": [
-                  "https://www.sciencenews.org/*"
-                ]
+                "match": ["https://www.sciencenews.org/*"]
               },
               {
                 "behavior": "view",
-                "match": [
-                  "https://*",
-                  "http://*"
-                ]
+                "match": ["https://*", "http://*"]
               }
             ]
           }
