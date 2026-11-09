@@ -1,7 +1,7 @@
 {
   "runtime": {
     "arguments": "--enable-mesh --security-realm=python-streamlit-starter",
-    "version": "45.150.101.1"
+    "version": "45.150.102.10"
   },
   "platform": {
     "uuid": "streamlit-container-starter",

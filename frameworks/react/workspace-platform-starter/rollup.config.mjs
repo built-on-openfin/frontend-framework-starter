@@ -1,13 +1,28 @@
 import path from 'path';
+import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import typescript from '@rollup/plugin-typescript';
-import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 import copy from 'rollup-plugin-copy';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Resolves bare npm imports from node_modules so they get bundled
+const nodeModulesResolve = () => ({
+	name: 'node-modules-resolve',
+	resolveId(source, importer) {
+		if (!importer || source.startsWith('.') || path.isAbsolute(source) || source.startsWith('\0')) {
+			return null;
+		}
+		try {
+			return createRequire(importer).resolve(source);
+		} catch {
+			return null;
+		}
+	}
+});
 
 const entryDefinitions = [
 	{ entry: './openfin/modules/auth/example/index.ts', outputPathRelative: 'js/modules/auth', outputFilenameKey: 'example' },
@@ -54,8 +69,8 @@ const rollupInput = entryDefinitions.reduce((acc, item) => {
 
 export default {
 	plugins: [
-		resolve({ extensions: ['.js', '.ts', '.mjs', '.json'] }),
-    	commonjs(),
+		nodeModulesResolve(),
+		commonjs(),
 		typescript({
 			tsconfig: './tsconfig.app.json'
 		}),
