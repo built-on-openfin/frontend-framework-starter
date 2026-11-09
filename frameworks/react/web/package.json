@@ -1,7 +1,7 @@
 {
   "name": "web",
   "private": true,
-  "version": "24.0.0",
+  "version": "45.0.0",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE.MD",
   "engines": {
@@ -17,12 +17,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@openfin/core-web": "0.44.115",
+    "@openfin/core-web": "0.45.113",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "overrides": {
     "uuid": "^11.1.1",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.5"
+    },
     "webpack-dev-server": {
       "http-proxy-middleware": "^3.0.6"
     }

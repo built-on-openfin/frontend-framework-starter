@@ -11,14 +11,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DEFAULT_VERSIONS = {
-	major: "24.0.0",
-	"github-url": "24.0.0",
-	runtime: "44.146.101.5",
-	core: "44.101.7",
-	workspace: "24.0.24",
-	"workspace-platform": "24.0.24",
-	"core-web": "0.44.115",
-	notifications: "2.15.3",
+	major: "45.0.0",
+	"github-url": "45.0.0",
+	runtime: "45.150.102.10",
+	core: "45.102.10",
+	workspace: "45.2.12",
+	"workspace-platform": "45.2.12",
+	"core-web": "0.45.113",
+	notifications: "45.2.6",
 };
 
 const FRAMEWORKS_DIR = path.resolve(__dirname, "../frameworks");
