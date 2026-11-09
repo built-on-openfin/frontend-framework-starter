@@ -1,6 +1,6 @@
 {
   "name": "angular-web",
-  "version": "23.2.0",
+  "version": "24.0.0",
   "engines": {
     "node": ">=22"
   },
@@ -23,7 +23,7 @@
     "@angular/forms": "^22.0.2",
     "@angular/platform-browser": "^22.0.2",
     "@angular/router": "^22.0.2",
-    "@openfin/core-web": "0.44.112",
+    "@openfin/core-web": "0.44.115",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
